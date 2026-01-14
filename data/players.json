@@ -1,0 +1,6 @@
+{
+  "lastUpdated": "manual placeholder",
+  "players": [
+    { "id": "p1", "name": "Example Player", "apps": 0, "goals": 0, "assists": 0, "ownGoals": 0 }
+  ]
+}

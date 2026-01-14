@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🦈 Football Stats</title>
+
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="icon" href="./images/favicon.png" type="image/png">
+</head>
+<body>
+
+<header class="site-header">
+  <h1>⚽ Football Stats</h1>
+  <p class="tagline">FIFA cards from Airtable data. No spreadsheets harmed.</p>
+</header>
+
+<main class="container">
+
+  <section class="controls">
+    <div class="status" id="status">Loading data…</div>
+  </section>
+
+  <section class="grid" id="cards">
+    <!-- Cards get rendered here -->
+  </section>
+
+  <section class="smallprint">
+    <p>Last updated: <span id="lastUpdated">unknown</span></p>
+  </section>
+
+</main>
+
+<script src="./js/app.js"></script>
+</body>
+</html>

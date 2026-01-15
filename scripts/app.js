@@ -19,7 +19,7 @@ function parseFormCode(code) {
     last === "D" ? "d" :
     last === "L" ? "l" : "x";
 
-    const label = captain ? "C" : last;
+  const label = captain ? "C" : last;
 
   return {
     result,
@@ -44,16 +44,15 @@ function renderFormStrip(formCodes = []) {
           f.motm ? "is-motm" : ""
         ].filter(Boolean).join(" ");
 
-    return `
-  <div class="${classes}" title="${code}">
-    <span class="form-label">${f.label}</span>
-  </div>
-`;
+        return `
+          <div class="${classes}" title="${code}">
+            <span class="form-label">${f.label}</span>
+          </div>
+        `;
       }).join("")}
     </div>
   `;
 }
-
 
 async function loadAggregated() {
   const status = document.getElementById("status");
@@ -114,7 +113,7 @@ function applyFiltersAndRender(cardsEl, statusEl) {
 
   // 2) stat filter
   if (mode !== "all") {
-    const statKey = mode; // same keys as stats object
+    const statKey = mode;
     list = list
       .filter((p) => (p?.stats?.[statKey] ?? 0) > 0)
       .sort((a, b) => (b?.stats?.[statKey] ?? 0) - (a?.stats?.[statKey] ?? 0));
@@ -135,11 +134,9 @@ function applyFiltersAndRender(cardsEl, statusEl) {
     });
   }
 
-  // render
   cardsEl.innerHTML = "";
   renderPlayers(list, cardsEl);
 
-  // status text
   const base = `Showing ${list.length} of ${ALL_PLAYERS.length} players`;
   const bits = [];
   if (q) bits.push(`name: "${q}"`);
@@ -161,84 +158,85 @@ function renderPlayers(players, cardsEl) {
     const cleanSheets = s.cleanSheets ?? 0;
     const otfs = s.otfs ?? 0;
     const motm = s.motm ?? 0;
-    const motm2026 = s.motm2026 ?? 0;
     const caps = s.caps ?? 0;
-    const caps2026 = s.caps2026 ?? 0;
     const subs = s.subs ?? 0;
 
-    const position = meta.position ?? "—";
+    // ⭐ OVERALL RATING (new)
+    const ovr = s.ovr ?? 50;
 
+    const position = meta.position ?? "—";
     const photoSrc = photoPathFromName(name) || fallbackSrc;
 
     const el = document.createElement("div");
     el.className = "card";
-  el.innerHTML = `
-  <div class="overlay">
-    <div class="card-top">
-      <div class="rating">${caps2026}</div>
-      <div class="pos">${escapeHtml(position)}</div>
-    </div>
 
-    <div class="portrait">
-      <img
-        class="player-photo"
-        src="${escapeHtml(photoSrc)}"
-        alt="${escapeHtml(name)}"
-        loading="lazy"
-        decoding="async"
-        onerror="this.onerror=null; this.src='${escapeHtml(fallbackSrc)}';"
-      />
-    </div>
+    el.innerHTML = `
+      <div class="overlay">
+        <div class="card-top">
+          <div class="rating">${ovr}</div>
+          <div class="pos">${escapeHtml(position)}</div>
+        </div>
 
-    <div class="nameplate">
-      <div class="name">${escapeHtml(name)}</div>
-    </div>
+        <div class="portrait">
+          <img
+            class="player-photo"
+            src="${escapeHtml(photoSrc)}"
+            alt="${escapeHtml(name)}"
+            loading="lazy"
+            decoding="async"
+            onerror="this.onerror=null; this.src='${escapeHtml(fallbackSrc)}';"
+          />
+        </div>
 
-    <div class="stats-columns">
-  <div class="stat-col">
-    <div class="stat-item">
-      <div class="value">${goals}</div>
-      <div class="label">GOALS</div>
-    </div>
-    <div class="stat-item">
-      <div class="value">${assists}</div>
-      <div class="label">AST</div>
-    </div>
-    <div class="stat-item">
-      <div class="value">${motm}</div>
-      <div class="label">MOTM</div>
-    </div>
-    <div class="stat-item">
-      <div class="value">${caps}</div>
-      <div class="label">CAPS</div>
-    </div>
-  </div>
+        <div class="nameplate">
+          <div class="name">${escapeHtml(name)}</div>
+        </div>
 
-  <div class="stat-col">
-    <div class="stat-item">
-      <div class="value">${cleanSheets}</div>
-      <div class="label">CS</div>
-    </div>
-    <div class="stat-item">
-      <div class="value">${otfs}</div>
-      <div class="label">OTF</div>
-    </div>
-    <div class="stat-item">
-      <div class="value">${ogs}</div>
-      <div class="label">OGS</div>
-    </div>
-    <div class="stat-item">
-      <div class="value">${subs}</div>
-      <div class="label">SUBS</div>
-    </div>
-  </div>
-</div>
+        <div class="stats-columns">
+          <div class="stat-col">
+            <div class="stat-item">
+              <div class="value">${goals}</div>
+              <div class="label">GOALS</div>
+            </div>
+            <div class="stat-item">
+              <div class="value">${assists}</div>
+              <div class="label">AST</div>
+            </div>
+            <div class="stat-item">
+              <div class="value">${motm}</div>
+              <div class="label">MOTM</div>
+            </div>
+            <div class="stat-item">
+              <div class="value">${caps}</div>
+              <div class="label">CAPS</div>
+            </div>
+          </div>
 
-<div class="form-row">
-  ${renderFormStrip(s.form)}
-</div>
-  </div>
-`;
+          <div class="stat-col">
+            <div class="stat-item">
+              <div class="value">${cleanSheets}</div>
+              <div class="label">CS</div>
+            </div>
+            <div class="stat-item">
+              <div class="value">${otfs}</div>
+              <div class="label">OTF</div>
+            </div>
+            <div class="stat-item">
+              <div class="value">${ogs}</div>
+              <div class="label">OGS</div>
+            </div>
+            <div class="stat-item">
+              <div class="value">${subs}</div>
+              <div class="label">SUBS</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          ${renderFormStrip(s.form)}
+        </div>
+      </div>
+    `;
 
     cardsEl.appendChild(el);
   }

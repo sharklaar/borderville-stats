@@ -2,6 +2,10 @@
 const fs = require("fs");
 const path = require("path");
 const { fetchAllRecords, getConfig } = require("./fetchAirtable");
+const {
+  computeCombined,
+  normaliseTo100,
+} = require("./calculateOverallScore");
 
 const TABLES = {
   PLAYERS: "tbl58HHS5mKXWlAby",
@@ -39,10 +43,10 @@ const FIELDS = {
   BLUE_GOALS: "Blue Goals",
   MOTM: "Player of the Match",
 
-  // NEW: match flag
+  // match flag
   COUNTS_FOR_STATS: "Counts for stats",
 
-  // NEW: captains
+  // captains
   CAPTAIN_PINK: "Captain (Pink)",
   CAPTAIN_BLUE: "Captain (Blue)",
 
@@ -90,19 +94,36 @@ function ensurePlayer(outPlayers, playerId, name = "Unknown") {
         gkCleanSheets: 0, // only counts when GK explicitly set and in clean sheet list
         otfs: 0,
 
+        // NEW: season defensive-ish stat
+        conceded2026: 0,
+
+        // NEW: captain outcome stats (stat matches only)
+        winningCaptain2026: 0,
+        motmCaptain2026: 0,
+
         // NOTE: "subs" is subscription credit balance (can go negative)
         subs: 0,
 
         caps: 0,
         caps2026: 0,
 
-        motm: 0,       // baseline legacy MOTM injected when loading Players
-        motm2026: 0,   // stat matches in-year
+        motm: 0,      // baseline legacy MOTM injected when loading Players
+        motm2026: 0,  // stat matches in-year
 
-        captain: 0,    // stat matches only
+        // captain totals (kept for completeness, not used directly by OVR)
+        captain: 0,
         captain2026: 0,
 
-        form: [],      // last 10 match codes, most recent first
+        // last 10 participation count (derived from form)
+        playedLast10: 0,
+
+        // OVR outputs
+        ovr: 0,             // 0..100 integer
+        ovrRawSeason: 0,    // float (debug)
+        ovrPenalty: 0,      // float (debug)
+        ovrCombined: 0,     // float (debug / tie-break)
+
+        form: [], // last 10 match codes, most recent first
       },
       meta: {},
     };
@@ -268,7 +289,6 @@ async function main() {
       otfs: asArray(f[FIELDS.OTFS]),
       motm: asArray(f[FIELDS.MOTM]),
 
-      // NEW: captains (single player id each, or null)
       captainPink: asSingleId(f[FIELDS.CAPTAIN_PINK]),
       captainBlue: asSingleId(f[FIELDS.CAPTAIN_BLUE]),
 
@@ -276,7 +296,7 @@ async function main() {
       pinkGoals: asNumber(f[FIELDS.PINK_GOALS]),
       blueGoals: asNumber(f[FIELDS.BLUE_GOALS]),
 
-      // NEW: explicit match flag (default true if unset/missing)
+      // default true if unset
       countsForStats: f[FIELDS.COUNTS_FOR_STATS] ?? true,
     };
   });
@@ -319,18 +339,14 @@ async function main() {
     }
     matchesCountForStatsInYear++;
 
-    // Captains (stat matches only)
+    // Captain totals (stat matches only)
     if (m.captainPink) {
-      ensurePlayer(outPlayers, m.captainPink, playersById[m.captainPink]?.name).stats
-        .captain++;
-      ensurePlayer(outPlayers, m.captainPink, playersById[m.captainPink]?.name).stats
-        .captain2026++;
+      ensurePlayer(outPlayers, m.captainPink, playersById[m.captainPink]?.name).stats.captain++;
+      ensurePlayer(outPlayers, m.captainPink, playersById[m.captainPink]?.name).stats.captain2026++;
     }
     if (m.captainBlue) {
-      ensurePlayer(outPlayers, m.captainBlue, playersById[m.captainBlue]?.name).stats
-        .captain++;
-      ensurePlayer(outPlayers, m.captainBlue, playersById[m.captainBlue]?.name).stats
-        .captain2026++;
+      ensurePlayer(outPlayers, m.captainBlue, playersById[m.captainBlue]?.name).stats.captain++;
+      ensurePlayer(outPlayers, m.captainBlue, playersById[m.captainBlue]?.name).stats.captain2026++;
     }
 
     // W/D/L (stat matches only)
@@ -345,7 +361,32 @@ async function main() {
       pink.forEach((pid) => ensurePlayer(outPlayers, pid).stats.losses++);
     }
 
-    // Clean sheets / OTFs (stat matches only)
+    // Conceded goals per player (season 2026, stat matches only)
+    // - Pink conceded Blue Goals
+    // - Blue conceded Pink Goals
+    pink.forEach((pid) => {
+      ensurePlayer(outPlayers, pid).stats.conceded2026 += m.blueGoals;
+    });
+    blue.forEach((pid) => {
+      ensurePlayer(outPlayers, pid).stats.conceded2026 += m.pinkGoals;
+    });
+
+    // Winning captain (stat matches only)
+    if (m.winningTeam === "PINK" && m.captainPink) {
+      ensurePlayer(outPlayers, m.captainPink).stats.winningCaptain2026 += 1;
+    } else if (m.winningTeam === "BLUE" && m.captainBlue) {
+      ensurePlayer(outPlayers, m.captainBlue).stats.winningCaptain2026 += 1;
+    }
+
+    // MOTM + Captain (stat matches only; can be multiple MOTM)
+    if (m.captainPink && m.motm.includes(m.captainPink)) {
+      ensurePlayer(outPlayers, m.captainPink).stats.motmCaptain2026 += 1;
+    }
+    if (m.captainBlue && m.motm.includes(m.captainBlue)) {
+      ensurePlayer(outPlayers, m.captainBlue).stats.motmCaptain2026 += 1;
+    }
+
+    // Clean sheets (stat matches only)
     m.cleanPink.forEach((pid) =>
       ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.cleanSheets++
     );
@@ -355,12 +396,10 @@ async function main() {
 
     // GK clean sheets (stat matches only)
     if (m.pinkGK && m.cleanPink.includes(m.pinkGK)) {
-      ensurePlayer(outPlayers, m.pinkGK, playersById[m.pinkGK]?.name).stats
-        .gkCleanSheets++;
+      ensurePlayer(outPlayers, m.pinkGK, playersById[m.pinkGK]?.name).stats.gkCleanSheets++;
     }
     if (m.blueGK && m.cleanBlue.includes(m.blueGK)) {
-      ensurePlayer(outPlayers, m.blueGK, playersById[m.blueGK]?.name).stats
-        .gkCleanSheets++;
+      ensurePlayer(outPlayers, m.blueGK, playersById[m.blueGK]?.name).stats.gkCleanSheets++;
     }
 
     // Defensive stats (stat matches only)
@@ -499,6 +538,7 @@ async function main() {
   // ----------------------------
   // FORM arrays (last 10 stat matches in-year; most recent first)
   // If fewer than 10 matches exist, pad the OLDEST slots with X (append).
+  // Also derive playedLast10 from these codes (count non-X).
   // ----------------------------
   const formMatches = matches
     .filter((m) => m.date && inYear(m.date, YEAR) && m.countsForStats)
@@ -509,8 +549,65 @@ async function main() {
     const codes = formMatches.map((m) => formCodeForPlayerInMatch(pid, m));
     while (codes.length < 10) codes.push("X");
     p.stats.form = codes;
+
+    // playedLast10 = number of non-X codes
+    p.stats.playedLast10 = codes.reduce((acc, c) => acc + (c === "X" ? 0 : 1), 0);
   }
 
+  // ----------------------------
+  // OVR (overall score)
+  // Season-based stats + recent inactivity penalty (last 10 only)
+  // then normalise to 0..100 across all players.
+  // ----------------------------
+  const matchesSeason = matchesCountForStatsInYear;
+  const combinedByPlayerId = {};
+
+  for (const [pid, p] of Object.entries(outPlayers)) {
+    const s = p.stats;
+
+    const inputs = {
+      // Season (2026) totals:
+      playedSeason: s.caps2026,
+      wins: s.wins,
+      draws: s.draws,
+      goals: s.goals,
+      assists: s.assists,
+      cleanSheets: s.cleanSheets,
+      conceded: s.conceded2026,
+      ogs: s.ogs,
+      otfs: s.otfs,
+      motm: s.motm2026,
+      motmCaptain: s.motmCaptain2026,
+      winningCaptain: s.winningCaptain2026,
+
+      // Recent (last 10) attendance:
+      playedLast10: s.playedLast10,
+
+      // Context:
+      matchesSeason,
+
+      // Policy:
+      attendanceImmunity: 0.20, // 20% (your latest decision)
+      penaltyMax: 12,
+    };
+
+    const { rawSeason, penalty, combined } = computeCombined(inputs);
+
+    s.ovrRawSeason = rawSeason;
+    s.ovrPenalty = penalty;
+    s.ovrCombined = combined;
+
+    combinedByPlayerId[pid] = combined;
+  }
+
+  const ovrMap = normaliseTo100(combinedByPlayerId);
+  for (const [pid, p] of Object.entries(outPlayers)) {
+    p.stats.ovr = ovrMap[pid] ?? 50;
+  }
+
+  // ----------------------------
+  // Output
+  // ----------------------------
   const outPath = path.join(process.cwd(), "data", "aggregated.json");
 
   const defensivePartnerships = Object.entries(defensivePartnershipCounts)

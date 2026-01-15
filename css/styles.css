@@ -522,3 +522,159 @@ body {
   letter-spacing: 0.9px;
   margin-top: 1px;
 }
+
+.form-strip {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Base badge */
+.form-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 1;
+  user-select: none;
+
+  /* subtle “card UI” look */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+/* Colours */
+.form-badge.is-w {
+  background: #7CFF7C;  /* green */
+  color: #0b2b0b;
+}
+
+.form-badge.is-d {
+  background: #C8C8C8;  /* grey */
+  color: #1a1a1a;
+}
+
+.form-badge.is-l {
+  background: #FF4A4A;  /* red */
+  color: #2b0b0b;
+}
+
+/* X state: white with black X */
+.form-badge.is-x {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid rgba(0,0,0,0.35);
+  box-shadow: none;
+}
+
+/* Text */
+.form-label {
+  transform: translateY(0.5px);
+}
+
+/* Captain band */
+.form-badge.is-captain .captain-band {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  font-weight: 900;
+
+  /* dark band like your reference */
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+
+  /* tiny “fold” vibe */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* MOM star edges via clip-path */
+.form-badge.is-motm {
+  border-radius: 0; /* clip-path will define shape */
+  clip-path: polygon(
+    50% 0%,
+    62% 16%,
+    80% 10%,
+    78% 30%,
+    96% 35%,
+    82% 50%,
+    96% 65%,
+    78% 70%,
+    80% 90%,
+    62% 84%,
+    50% 100%,
+    38% 84%,
+    20% 90%,
+    22% 70%,
+    4% 65%,
+    18% 50%,
+    4% 35%,
+    22% 30%,
+    20% 10%,
+    38% 16%
+  );
+}
+
+/* Optional: make MOM badges pop slightly */
+.form-badge.is-motm {
+  box-shadow: 0 2px 3px rgba(0,0,0,0.45);
+}
+
+/* If both captain + MOM, keep band readable */
+.form-badge.is-motm.is-captain .captain-band {
+  top: -3px;
+  left: -3px;
+}
+
+/* Captain band: centred “equator” sash */
+.form-badge.is-captain .captain-band {
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  height: 12px;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+
+  box-shadow: 0 1px 2px rgba(0,0,0,0.45);
+  pointer-events: none;
+}
+
+/* Make sure text stays legible over the band */
+.form-badge.is-captain .form-label {
+  position: relative;
+  z-index: 1;
+}
+.form-badge.is-captain .captain-band {
+  z-index: 2;
+}
+
+.form-badge.is-captain {
+  outline: 2px solid rgba(255,255,255,0.75);
+  outline-offset: -2px;
+}
+
+.form-badge.is-captain .form-label {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}

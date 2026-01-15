@@ -5,6 +5,56 @@ const UI_STATE = {
   statFilter: "all", // all | goals | ogs | cleanSheets | otfs | motm
 };
 
+function parseFormCode(code) {
+  if (code === "X") {
+    return { result: "x", captain: false, motm: false, label: "X" };
+  }
+
+  const motm = code.startsWith("M");
+  const captain = code.includes("C");
+
+  const last = code[code.length - 1]; // W / D / L
+  const result =
+    last === "W" ? "w" :
+    last === "D" ? "d" :
+    last === "L" ? "l" : "x";
+
+    const label = captain ? "C" : last;
+
+  return {
+    result,
+    captain,
+    motm,
+    label
+  };
+}
+
+function renderFormStrip(formCodes = []) {
+  const codes = formCodes.slice(0, 10);
+  while (codes.length < 10) codes.push("X");
+
+  return `
+    <div class="form-strip">
+      ${codes.map(code => {
+        const f = parseFormCode(code);
+        const classes = [
+          "form-badge",
+          `is-${f.result}`,
+          f.captain ? "is-captain" : "",
+          f.motm ? "is-motm" : ""
+        ].filter(Boolean).join(" ");
+
+    return `
+  <div class="${classes}" title="${code}">
+    <span class="form-label">${f.label}</span>
+  </div>
+`;
+      }).join("")}
+    </div>
+  `;
+}
+
+
 async function loadAggregated() {
   const status = document.getElementById("status");
   const cards = document.getElementById("cards");
@@ -184,7 +234,9 @@ function renderPlayers(players, cardsEl) {
   </div>
 </div>
 
-    <div class="formplate">FORM: (coming soon)</div>
+<div class="form-row">
+  ${renderFormStrip(s.form)}
+</div>
   </div>
 `;
 

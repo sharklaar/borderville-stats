@@ -42,6 +42,10 @@ const FIELDS = {
   // NEW: match flag
   COUNTS_FOR_STATS: "Counts for stats",
 
+  // NEW: captains
+  CAPTAIN_PINK: "Captain (Pink)",
+  CAPTAIN_BLUE: "Captain (Blue)",
+
   // Goals
   GOAL_MATCH: "Match",
   GOAL_SCORER: "Scorer",
@@ -85,10 +89,20 @@ function ensurePlayer(outPlayers, playerId, name = "Unknown") {
         cleanSheets: 0,
         gkCleanSheets: 0, // only counts when GK explicitly set and in clean sheet list
         otfs: 0,
+
+        // NOTE: "subs" is subscription credit balance (can go negative)
         subs: 0,
+
         caps: 0,
         caps2026: 0,
-        motm: 0, // NOTE: baseline legacy MOTM is injected when we load Players
+
+        motm: 0,       // baseline legacy MOTM injected when loading Players
+        motm2026: 0,   // stat matches in-year
+
+        captain: 0,    // stat matches only
+        captain2026: 0,
+
+        form: [],      // last 10 match codes, most recent first
       },
       meta: {},
     };
@@ -123,6 +137,65 @@ function mapToSortedPairs(map) {
       return { scorerId, assistId, ...v };
     })
     .sort((a, b) => b.count - a.count);
+}
+
+/**
+ * FORM code rules (last 10 matches overall, most recent first):
+ *
+ * X  - didn't play
+ * W  - win
+ * L  - lose
+ * D  - draw
+ * CL - captain, lost
+ * CD - captain, draw
+ * CW - captain, win
+ * MD - MOM, draw
+ * MW - MOM, won  (MOM cannot be on losing team)
+ * MCD - MOM + Captain, draw
+ * MCW - MOM + Captain, won
+ */
+function formCodeForPlayerInMatch(playerId, m) {
+  const inPink = m.pink.includes(playerId);
+  const inBlue = m.blue.includes(playerId);
+
+  if (!inPink && !inBlue) return "X";
+
+  const team = inPink ? "PINK" : "BLUE";
+
+  const isCaptain =
+    (team === "PINK" && m.captainPink === playerId) ||
+    (team === "BLUE" && m.captainBlue === playerId);
+
+  const isMotm = m.motm.includes(playerId);
+
+  const isDraw = m.winningTeam === "DRAW";
+  const isWin = !isDraw && m.winningTeam === team;
+  const isLoss = !isDraw && m.winningTeam !== team;
+
+  // Enforce: cannot be MOM if on losing team
+  if (isMotm && isLoss) {
+    throw new Error(
+      `Invalid MOTM: player ${playerId} is MOTM in a loss (match ${m.id})`
+    );
+  }
+
+  if (isDraw) {
+    if (isMotm && isCaptain) return "MCD";
+    if (isMotm) return "MD";
+    if (isCaptain) return "CD";
+    return "D";
+  }
+
+  if (isWin) {
+    if (isMotm && isCaptain) return "MCW";
+    if (isMotm) return "MW"; // MOM not captain -> MW (as requested)
+    if (isCaptain) return "CW";
+    return "W";
+  }
+
+  // Loss
+  if (isCaptain) return "CL";
+  return "L";
 }
 
 async function main() {
@@ -161,7 +234,7 @@ async function main() {
     // Baseline MOTM totals from legacy seasons
     o.stats.motm = p.startingMotm || 0;
     o.stats.motm2026 = 0;
-    
+
     o.meta = {
       position: p.position,
       dob: p.dob,
@@ -179,16 +252,26 @@ async function main() {
       name: f[FIELDS.MATCH_NAME] || r.id,
       date: parseISODate(f[FIELDS.DATE_PLAYED]),
       winningTeam: f[FIELDS.WINNING_TEAM] || null,
+
       pink: asArray(f[FIELDS.PINK_PLAYERS]),
       blue: asArray(f[FIELDS.BLUE_PLAYERS]),
+
       cleanPink: asArray(f[FIELDS.CLEAN_PINK]),
       cleanBlue: asArray(f[FIELDS.CLEAN_BLUE]),
+
       pinkGK: asSingleId(f[FIELDS.PINK_GK]),
       blueGK: asSingleId(f[FIELDS.BLUE_GK]),
+
       pinkDefs: asArray(f[FIELDS.PINK_DEFS]),
       blueDefs: asArray(f[FIELDS.BLUE_DEFS]),
+
       otfs: asArray(f[FIELDS.OTFS]),
       motm: asArray(f[FIELDS.MOTM]),
+
+      // NEW: captains (single player id each, or null)
+      captainPink: asSingleId(f[FIELDS.CAPTAIN_PINK]),
+      captainBlue: asSingleId(f[FIELDS.CAPTAIN_BLUE]),
+
       notes: f[FIELDS.NOTES] || null,
       pinkGoals: asNumber(f[FIELDS.PINK_GOALS]),
       blueGoals: asNumber(f[FIELDS.BLUE_GOALS]),
@@ -236,6 +319,20 @@ async function main() {
     }
     matchesCountForStatsInYear++;
 
+    // Captains (stat matches only)
+    if (m.captainPink) {
+      ensurePlayer(outPlayers, m.captainPink, playersById[m.captainPink]?.name).stats
+        .captain++;
+      ensurePlayer(outPlayers, m.captainPink, playersById[m.captainPink]?.name).stats
+        .captain2026++;
+    }
+    if (m.captainBlue) {
+      ensurePlayer(outPlayers, m.captainBlue, playersById[m.captainBlue]?.name).stats
+        .captain++;
+      ensurePlayer(outPlayers, m.captainBlue, playersById[m.captainBlue]?.name).stats
+        .captain2026++;
+    }
+
     // W/D/L (stat matches only)
     if (m.winningTeam === "DRAW") {
       pink.forEach((pid) => ensurePlayer(outPlayers, pid).stats.draws++);
@@ -258,10 +355,12 @@ async function main() {
 
     // GK clean sheets (stat matches only)
     if (m.pinkGK && m.cleanPink.includes(m.pinkGK)) {
-      ensurePlayer(outPlayers, m.pinkGK, playersById[m.pinkGK]?.name).stats.gkCleanSheets++;
+      ensurePlayer(outPlayers, m.pinkGK, playersById[m.pinkGK]?.name).stats
+        .gkCleanSheets++;
     }
     if (m.blueGK && m.cleanBlue.includes(m.blueGK)) {
-      ensurePlayer(outPlayers, m.blueGK, playersById[m.blueGK]?.name).stats.gkCleanSheets++;
+      ensurePlayer(outPlayers, m.blueGK, playersById[m.blueGK]?.name).stats
+        .gkCleanSheets++;
     }
 
     // Defensive stats (stat matches only)
@@ -327,7 +426,7 @@ async function main() {
     );
 
     // MOTM (stat matches only; can be multiple)
-      m.motm.forEach((pid) => {
+    m.motm.forEach((pid) => {
       ensurePlayer(outPlayers, pid).stats.motm2026++;
       ensurePlayer(outPlayers, pid).stats.motm++;
     });
@@ -395,6 +494,21 @@ async function main() {
     // Subs derived as: starting_subs + subs_added - caps_2026
     // (Your rule allows negatives; keep as-is.)
     o.stats.subs = startingSubs + subsAdded - o.stats.caps2026;
+  }
+
+  // ----------------------------
+  // FORM arrays (last 10 stat matches in-year; most recent first)
+  // If fewer than 10 matches exist, pad the OLDEST slots with X (append).
+  // ----------------------------
+  const formMatches = matches
+    .filter((m) => m.date && inYear(m.date, YEAR) && m.countsForStats)
+    .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0))
+    .slice(0, 10);
+
+  for (const [pid, p] of Object.entries(outPlayers)) {
+    const codes = formMatches.map((m) => formCodeForPlayerInMatch(pid, m));
+    while (codes.length < 10) codes.push("X");
+    p.stats.form = codes;
   }
 
   const outPath = path.join(process.cwd(), "data", "aggregated.json");

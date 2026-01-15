@@ -1,0 +1,3 @@
+.env
+scripts/*.http
+.DS_Store

@@ -155,3 +155,313 @@ body {
   border-radius: 10px;
   border: 1px solid #ccc;
 }
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 14px 0 18px;
+}
+
+.controls input,
+.controls select {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #fff;
+  font-size: 14px;
+  line-height: 40px;
+}
+
+.controls input {
+  flex: 1 1 260px;
+  min-width: 220px;
+}
+
+.controls select {
+  flex: 0 0 auto;
+  min-width: 220px;
+  cursor: pointer;
+}
+
+/* Focus styling */
+.controls input:focus,
+.controls select:focus {
+  outline: none;
+  border-color: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Slightly nicer select arrow spacing */
+.controls select {
+  padding-right: 34px;
+}
+
+/* --- Card becomes a badge canvas --- */
+.card {
+  position: relative;
+  width: 320px;               /* tweak for taste */
+  aspect-ratio: 3 / 4;        /* FIFA-ish */
+  background: url("../images/card-background.png") center/contain no-repeat;
+  border-radius: 0;           /* let the PNG define shape */
+  overflow: visible;          /* important: PNG has transparent edges */
+  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+  padding: 0;
+}
+
+/* Make your existing grid play nicely with fixed-size cards */
+#cards.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+/* Inner overlay layer */
+.card .overlay {
+  position: absolute;
+  inset: 0;
+  padding: 18px 18px 20px;
+  display: grid;
+  grid-template-rows: 44px 1fr auto;
+  pointer-events: none; /* card is display-only for now */
+}
+
+/* Top line: rating + position (or whatever you want there later) */
+.card .topline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  color: #0b0b16;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.card .rating {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.card .pos {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* Player photo placement */
+.card .photo-wrap {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.card img.player-photo {
+  width: 68%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  background: rgba(255,255,255,0.15);
+}
+
+/* Name banner */
+.card .namebar {
+  margin-top: 14px;
+  text-align: center;
+  color: #fff;
+  font-weight: 800;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.55);
+}
+
+.card .namebar .name {
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+/* Stats block */
+.card .stats {
+  margin-top: 12px;
+  background: rgba(255,255,255,0.72);
+  border-radius: 14px;
+  padding: 10px 12px;
+  color: #121225;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.card .stats .item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card .stats .label {
+  opacity: 0.75;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+/* Bottom “form strip” placeholder (you’ll fill later) */
+.card .bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 800;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.55);
+  font-size: 13px;
+}
+
+.card {
+  position: relative;
+  width: 320px;
+  aspect-ratio: 3 / 4;
+  background: url("../images/card-background.png") center/contain no-repeat;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+}
+
+/* Everything that appears "printed" on the card */
+.card .overlay {
+  position: absolute;
+  inset: 0;
+
+  /* This is the magic: keep content inside the badge contour */
+  padding: 22px 22px 26px;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 10px;
+
+  pointer-events: none;
+  color: rgba(10, 8, 20, 0.95);
+}
+
+/* Top: rating + position "printed" onto the card */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4px 2px 0;
+}
+
+.rating {
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: -1px;
+
+  color: rgba(255,255,255,0.95);
+
+  text-shadow:
+    0 2px 6px rgba(0,0,0,0.45),
+    0 0 18px rgba(255,255,255,0.25);
+}
+
+.pos {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+/* Portrait sits in the "medallion" zone */
+.portrait {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin-top: 2px;
+}
+
+.player-photo {
+  width: 45%;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  object-fit: cover;
+
+  background: none;
+  border: none;
+
+  box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+}
+
+/* Name plate: tighter, looks like part of card */
+.nameplate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px 12px;
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.20);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.nameplate .name {
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;
+  color: rgba(255,255,255,0.96);
+  text-shadow: 0 10px 26px rgba(0,0,0,0.45);
+}
+
+/* Stats plate: lives on the card, not floating off it */
+.statsplate {
+  margin-top: 2px;
+
+  padding: 10px 12px;
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border: 1px solid rgba(255,255,255,0.35);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 14px;
+
+  font-weight: 900;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.stat span {
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  opacity: 0.72;
+}
+
+.stat b {
+  font-size: 16px;
+  letter-spacing: -0.2px;
+}
+
+/* Form label at very bottom inside badge */
+.formplate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 900;
+
+  color: rgba(255,255,255,0.90);
+  text-shadow: 0 8px 22px rgba(0,0,0,0.55);
+}

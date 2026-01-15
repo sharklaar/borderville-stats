@@ -1,32 +1,76 @@
 let ALL_PLAYERS = [];
 
+const UI_STATE = {
+  nameQuery: "",
+  statFilter: "all", // all | goals | ogs | cleanSheets | otfs | motm
+};
+
 async function loadAggregated() {
   const status = document.getElementById("status");
   const cards = document.getElementById("cards");
   const lastUpdated = document.getElementById("lastUpdated");
-  const filterInput = document.getElementById("playerFilterInput");
+
+  const nameInput = document.getElementById("playerFilterInput");
+  const statSelect = document.getElementById("statFilter");
 
   try {
     status.textContent = "Fetching aggregated stats…";
 
-    // IMPORTANT: relative path (no leading slash) for GitHub Pages project sites
     const res = await fetch("./data/aggregated.json", { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const payload = await res.json();
 
-    // meta display
     const generatedAt = payload?.meta?.generatedAt ?? null;
     lastUpdated.textContent = generatedAt
       ? new Date(generatedAt).toLocaleString()
       : "unknown";
 
-    // players is an object keyed by playerId
     const playersObj = payload?.players ?? {};
-    const players = Object.values(playersObj);
+    ALL_PLAYERS = Object.values(playersObj);
 
-    // Optional: sort by goals then assists then played, descending
-    players.sort((a, b) => {
+    // Wire up name filter
+    if (nameInput) {
+      nameInput.addEventListener("input", () => {
+        UI_STATE.nameQuery = (nameInput.value ?? "").trim().toLowerCase();
+        applyFiltersAndRender(cards, status);
+      });
+    }
+
+    // Wire up stat filter
+    if (statSelect) {
+      statSelect.addEventListener("change", () => {
+        UI_STATE.statFilter = statSelect.value || "all";
+        applyFiltersAndRender(cards, status);
+      });
+    }
+
+    // Initial render
+    applyFiltersAndRender(cards, status);
+  } catch (err) {
+    console.error(err);
+    status.textContent = "Failed to load aggregated stats (check console).";
+  }
+}
+
+function applyFiltersAndRender(cardsEl, statusEl) {
+  const q = UI_STATE.nameQuery;
+  const mode = UI_STATE.statFilter;
+
+  // 1) name filter
+  let list = !q
+    ? ALL_PLAYERS.slice()
+    : ALL_PLAYERS.filter((p) => (p?.name ?? "").toLowerCase().includes(q));
+
+  // 2) stat filter
+  if (mode !== "all") {
+    const statKey = mode; // same keys as stats object
+    list = list
+      .filter((p) => (p?.stats?.[statKey] ?? 0) > 0)
+      .sort((a, b) => (b?.stats?.[statKey] ?? 0) - (a?.stats?.[statKey] ?? 0));
+  } else {
+    // default sort when "All players" selected
+    list.sort((a, b) => {
       const ag = a?.stats?.goals ?? 0;
       const bg = b?.stats?.goals ?? 0;
       if (bg !== ag) return bg - ag;
@@ -35,42 +79,22 @@ async function loadAggregated() {
       const ba = b?.stats?.assists ?? 0;
       if (ba !== aa) return ba - aa;
 
-      const ap = a?.stats?.played ?? 0;
-      const bp = b?.stats?.played ?? 0;
-      return bp - ap;
+      const ac = a?.stats?.caps ?? 0;
+      const bc = b?.stats?.caps ?? 0;
+      return bc - ac;
     });
-
-    ALL_PLAYERS = players;
-
-    // Initial render (unfiltered)
-    renderInto(cards, ALL_PLAYERS);
-    status.textContent = `Loaded ${ALL_PLAYERS.length} players`;
-
-    // Wire up filter (if the input exists on the page)
-    if (filterInput) {
-      filterInput.addEventListener("input", () => {
-        const q = (filterInput.value ?? "").trim().toLowerCase();
-
-        const filtered = !q
-          ? ALL_PLAYERS
-          : ALL_PLAYERS.filter((p) => (p?.name ?? "").toLowerCase().includes(q));
-
-        renderInto(cards, filtered);
-
-        status.textContent = q
-          ? `Showing ${filtered.length} of ${ALL_PLAYERS.length} players`
-          : `Loaded ${ALL_PLAYERS.length} players`;
-      });
-    }
-  } catch (err) {
-    console.error(err);
-    status.textContent = "Failed to load aggregated stats (check console).";
   }
-}
 
-function renderInto(cardsEl, players) {
+  // render
   cardsEl.innerHTML = "";
-  renderPlayers(players, cardsEl);
+  renderPlayers(list, cardsEl);
+
+  // status text
+  const base = `Showing ${list.length} of ${ALL_PLAYERS.length} players`;
+  const bits = [];
+  if (q) bits.push(`name: "${q}"`);
+  if (mode !== "all") bits.push(`filter: ${mode} > 0`);
+  statusEl.textContent = bits.length ? `${base} (${bits.join(", ")})` : base;
 }
 
 function renderPlayers(players, cardsEl) {
@@ -85,6 +109,7 @@ function renderPlayers(players, cardsEl) {
     const assists = s.assists ?? 0;
     const ogs = s.ogs ?? 0;
     const cleanSheets = s.cleanSheets ?? 0;
+    const otfs = s.otfs ?? 0;
     const motm = s.motm ?? 0;
     const motm2026 = s.motm2026 ?? 0;
     const caps = s.caps ?? 0;
@@ -93,36 +118,50 @@ function renderPlayers(players, cardsEl) {
 
     const position = meta.position ?? "—";
 
-    const photoPrimary = photoPathFromName(name); // may or may not exist
+    const photoSrc = photoPathFromName(name) || fallbackSrc;
 
     const el = document.createElement("div");
     el.className = "card";
-    el.innerHTML = `
-      <div class="card-header">
-        <img
-          class="player-photo"
-          src="${escapeHtml(fallbackSrc)}"
-          alt="${escapeHtml(name)}"
-          loading="lazy"
-        />
-        <h2>${escapeHtml(name)}</h2>
-      </div>
+  el.innerHTML = `
+  <div class="overlay">
+    <div class="card-top">
+      <div class="rating">${caps2026}</div>
+      <div class="pos">${escapeHtml(position)}</div>
+    </div>
 
-      <ul class="meta">
-        <li><strong>Pos</strong>: ${escapeHtml(position)}</li>
-        <li><strong>Caps</strong>: ${caps} (${caps2026} in 2026)</li>
-        <li><strong>Subs</strong>: ${subs}</li>
-        <li><strong>Goals</strong>: ${goals}</li>
-        <li><strong>Assists</strong>: ${assists}</li>
-        <li><strong>OGs</strong>: ${ogs}</li>
-        <li><strong>CS</strong>: ${cleanSheets}</li>
-        <li><strong>MOTM</strong>: ${motm} (${motm2026} in 2026)</li>
-      </ul>
-    `;
+    <div class="portrait">
+      <img
+        class="player-photo"
+        src="${escapeHtml(photoSrc)}"
+        alt="${escapeHtml(name)}"
+        loading="lazy"
+        decoding="async"
+        onerror="this.onerror=null; this.src='${escapeHtml(fallbackSrc)}';"
+      />
+    </div>
 
-    // Avoid 404 spam: only swap to the real image if it successfully preloads
-    const imgEl = el.querySelector(".player-photo");
-    setPlayerImage(imgEl, photoPrimary, fallbackSrc);
+    <div class="nameplate">
+      <div class="name">${escapeHtml(name)}</div>
+    </div>
+
+    <div class="statsplate">
+      <div class="stat"><span>CAPS</span><b>${caps}</b></div>
+      <div class="stat"><span>SUBS</span><b>${subs}</b></div>
+
+      <div class="stat"><span>GOALS</span><b>${goals}</b></div>
+      <div class="stat"><span>ASSISTS</span><b>${assists}</b></div>
+
+     
+      <div class="stat"><span>CS</span><b>${cleanSheets}</b></div>
+      <div class="stat"><span>MOTM</span><b>${motm}</b></div>
+
+      <div class="stat"><span>OTF</span><b>${otfs}</b></div>
+      <div class="stat"><span>OGS</span><b>${ogs}</b></div>
+    </div>
+
+    <div class="formplate">FORM: (coming soon)</div>
+  </div>
+`;
 
     cardsEl.appendChild(el);
   }
@@ -139,33 +178,8 @@ function escapeHtml(s) {
 
 function photoPathFromName(name) {
   if (!name || typeof name !== "string") return null;
-
-  // "Sam Sinclair" -> "Sam_Sinclair.png"
   const safe = name.trim().replace(/\s+/g, "_");
   return `./images/playerPhotos/${encodeURIComponent(safe)}.png`;
-}
-
-/**
- * Avoids 404 spam:
- * - Do NOT set <img src="primary"> until we've confirmed it loads.
- * - Start with fallback already showing.
- */
-function setPlayerImage(imgEl, primarySrc, fallbackSrc) {
-  if (!imgEl) return;
-
-  if (!primarySrc) {
-    imgEl.src = fallbackSrc;
-    return;
-  }
-
-  const testImg = new Image();
-  testImg.onload = () => {
-    imgEl.src = primarySrc;
-  };
-  testImg.onerror = () => {
-    imgEl.src = fallbackSrc;
-  };
-  testImg.src = primarySrc;
 }
 
 loadAggregated();

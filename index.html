@@ -21,15 +21,24 @@
     <div class="status" id="status">Loading data…</div>
   </section>
 
-  <section class="player-filter">
-  <label for="playerFilterInput">Filter players</label>
+<div class="controls">
   <input
     id="playerFilterInput"
     type="text"
-    placeholder="Type a name…"
+    placeholder="Filter players by name…"
     autocomplete="off"
+    spellcheck="false"
   />
-</section>
+
+  <select id="statFilter">
+    <option value="all">All players</option>
+    <option value="goals">Goal scorers (goals &gt; 0)</option>
+    <option value="ogs">Own goals (OGs &gt; 0)</option>
+    <option value="cleanSheets">Clean sheets (CS &gt; 0)</option>
+    <option value="otfs">OTFs (OTFs &gt; 0)</option>
+    <option value="motm">MOTMs (MOTM &gt; 0)</option>
+  </select>
+</div>
 
   <section class="grid" id="cards">
     <!-- Cards get rendered here -->

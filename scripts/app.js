@@ -144,20 +144,45 @@ function renderPlayers(players, cardsEl) {
       <div class="name">${escapeHtml(name)}</div>
     </div>
 
-    <div class="statsplate">
-      <div class="stat"><span>CAPS</span><b>${caps}</b></div>
-      <div class="stat"><span>SUBS</span><b>${subs}</b></div>
-
-      <div class="stat"><span>GOALS</span><b>${goals}</b></div>
-      <div class="stat"><span>ASSISTS</span><b>${assists}</b></div>
-
-     
-      <div class="stat"><span>CS</span><b>${cleanSheets}</b></div>
-      <div class="stat"><span>MOTM</span><b>${motm}</b></div>
-
-      <div class="stat"><span>OTF</span><b>${otfs}</b></div>
-      <div class="stat"><span>OGS</span><b>${ogs}</b></div>
+    <div class="stats-columns">
+  <div class="stat-col">
+    <div class="stat-item">
+      <div class="value">${goals}</div>
+      <div class="label">GOALS</div>
     </div>
+    <div class="stat-item">
+      <div class="value">${assists}</div>
+      <div class="label">AST</div>
+    </div>
+    <div class="stat-item">
+      <div class="value">${motm}</div>
+      <div class="label">MOTM</div>
+    </div>
+    <div class="stat-item">
+      <div class="value">${caps}</div>
+      <div class="label">CAPS</div>
+    </div>
+  </div>
+
+  <div class="stat-col">
+    <div class="stat-item">
+      <div class="value">${cleanSheets}</div>
+      <div class="label">CS</div>
+    </div>
+    <div class="stat-item">
+      <div class="value">${otfs}</div>
+      <div class="label">OTF</div>
+    </div>
+    <div class="stat-item">
+      <div class="value">${ogs}</div>
+      <div class="label">OGS</div>
+    </div>
+    <div class="stat-item">
+      <div class="value">${subs}</div>
+      <div class="label">SUBS</div>
+    </div>
+  </div>
+</div>
 
     <div class="formplate">FORM: (coming soon)</div>
   </div>

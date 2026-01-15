@@ -223,10 +223,11 @@ body {
 .card .overlay {
   position: absolute;
   inset: 0;
-  padding: 18px 18px 20px;
+  padding: 18px 20px 18px;   /* was bigger */
   display: grid;
-  grid-template-rows: 44px 1fr auto;
-  pointer-events: none; /* card is display-only for now */
+  grid-template-rows: auto auto auto auto; /* top, portrait, name, stats */
+  gap: 8px;                   /* tighter */
+  pointer-events: none;
 }
 
 /* Top line: rating + position (or whatever you want there later) */
@@ -380,7 +381,7 @@ body {
 }
 
 .player-photo {
-  width: 45%;
+  width: 44%;
   aspect-ratio: 1 / 1;
   border-radius: 999px;
   object-fit: cover;
@@ -397,7 +398,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  padding: 10px 12px;
+  padding: 7px 12px;
   border-radius: 14px;
 
   background: rgba(255,255,255,0.20);
@@ -408,7 +409,7 @@ body {
 }
 
 .nameplate .name {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 900;
   text-align: center;
   color: rgba(255,255,255,0.96);
@@ -458,10 +459,66 @@ body {
   justify-content: center;
   align-items: center;
 
-  margin-top: 4px;
-  font-size: 14px;
+  margin-top: 2px;
+  font-size: 12px;
   font-weight: 900;
 
   color: rgba(255,255,255,0.90);
   text-shadow: 0 8px 22px rgba(0,0,0,0.55);
+}
+
+/* FIFA-style stat columns */
+.stats-columns {
+  margin-top: 4px;
+  padding: 10px 12px;          /* smaller */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;                   /* smaller gap between columns */
+
+  background: rgba(255,255,255,0.60);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.28);
+}
+
+.stat-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-item .value {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  color: #0b0b16;
+}
+
+.stat-item .label {
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  opacity: 0.75;
+}
+
+.stat-col { gap: 8px; }         /* was 10px+ */
+.stat-item .value {
+  font-size: 22px;              /* was 24 */
+  line-height: 1;
+}
+.stat-item .label {
+  font-size: 10px;              /* was 11 */
+  letter-spacing: 0.9px;
+  margin-top: 1px;
 }

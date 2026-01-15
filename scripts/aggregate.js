@@ -14,6 +14,7 @@ const FIELDS = {
   // Players
   NAME: "Name",
   STARTING_CAPS: "Starting Caps",
+  STARTING_MOTM: "Starting MOMs",
   STARTING_SUBS: "Starting Subs",
   SUBS_ADDED: "Subs Added",
   POSITION: "Position",
@@ -87,7 +88,7 @@ function ensurePlayer(outPlayers, playerId, name = "Unknown") {
         subs: 0,
         caps: 0,
         caps2026: 0,
-        motm: 0,
+        motm: 0, // NOTE: baseline legacy MOTM is injected when we load Players
       },
       meta: {},
     };
@@ -144,6 +145,7 @@ async function main() {
       id: r.id,
       name: f[FIELDS.NAME] || "Unknown",
       startingCaps: asNumber(f[FIELDS.STARTING_CAPS]),
+      startingMotm: asNumber(f[FIELDS.STARTING_MOTM]),
       startingSubs: asNumber(f[FIELDS.STARTING_SUBS]),
       subsAdded: asNumber(f[FIELDS.SUBS_ADDED]),
       position: f[FIELDS.POSITION] || null,
@@ -155,6 +157,11 @@ async function main() {
   const outPlayers = {};
   Object.values(playersById).forEach((p) => {
     const o = ensurePlayer(outPlayers, p.id, p.name);
+
+    // Baseline MOTM totals from legacy seasons
+    o.stats.motm = p.startingMotm || 0;
+    o.stats.motm2026 = 0;
+    
     o.meta = {
       position: p.position,
       dob: p.dob,
@@ -320,9 +327,10 @@ async function main() {
     );
 
     // MOTM (stat matches only; can be multiple)
-    m.motm.forEach((pid) =>
-      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.motm++
-    );
+      m.motm.forEach((pid) => {
+      ensurePlayer(outPlayers, pid).stats.motm2026++;
+      ensurePlayer(outPlayers, pid).stats.motm++;
+    });
   }
 
   // ----------------------------

@@ -16,7 +16,8 @@
         "subs": 2,
         "caps": 33,
         "caps2026": 0,
-        "motm": 0
+        "motm": 4,
+        "motm2026": 0
       },
       "meta": {
         "position": "FWD",
@@ -40,7 +41,8 @@
         "subs": 1,
         "caps": 104,
         "caps2026": 1,
-        "motm": 0
+        "motm": 10,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -91,7 +93,8 @@
         "subs": -3,
         "caps": 39,
         "caps2026": 1,
-        "motm": 0
+        "motm": 1,
+        "motm2026": 0
       },
       "meta": {
         "position": "DEF",
@@ -115,7 +118,8 @@
         "subs": -2,
         "caps": 176,
         "caps2026": 0,
-        "motm": 0
+        "motm": 8,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -166,7 +170,8 @@
         "subs": -1,
         "caps": 2,
         "caps2026": 0,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -190,7 +195,8 @@
         "subs": 2,
         "caps": 138,
         "caps2026": 1,
-        "motm": 0
+        "motm": 10,
+        "motm2026": 0
       },
       "meta": {
         "position": "FWD",
@@ -241,7 +247,8 @@
         "subs": -4,
         "caps": 78,
         "caps2026": 1,
-        "motm": 0
+        "motm": 5,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -292,7 +299,8 @@
         "subs": -3,
         "caps": 114,
         "caps2026": 1,
-        "motm": 0
+        "motm": 4,
+        "motm2026": 0
       },
       "meta": {
         "position": "DEF",
@@ -343,7 +351,8 @@
         "subs": -5,
         "caps": 83,
         "caps2026": 0,
-        "motm": 0
+        "motm": 6,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -394,7 +403,8 @@
         "subs": 2,
         "caps": 23,
         "caps2026": 0,
-        "motm": 0
+        "motm": 4,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -418,7 +428,8 @@
         "subs": 0,
         "caps": 45,
         "caps2026": 0,
-        "motm": 0
+        "motm": 7,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -442,7 +453,8 @@
         "subs": -1,
         "caps": 115,
         "caps2026": 2,
-        "motm": 0
+        "motm": 14,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -493,7 +505,8 @@
         "subs": -8,
         "caps": 102,
         "caps2026": 2,
-        "motm": 0
+        "motm": 5,
+        "motm2026": 0
       },
       "meta": {
         "position": "DEF",
@@ -544,7 +557,8 @@
         "subs": 3,
         "caps": 67,
         "caps2026": 0,
-        "motm": 0
+        "motm": 8,
+        "motm2026": 0
       },
       "meta": {
         "position": "FWD",
@@ -568,7 +582,8 @@
         "subs": 2,
         "caps": 35,
         "caps2026": 0,
-        "motm": 0
+        "motm": 1,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -589,10 +604,11 @@
         "cleanSheets": 0,
         "gkCleanSheets": 0,
         "otfs": 0,
-        "subs": -8,
+        "subs": -7,
         "caps": 131,
         "caps2026": 2,
-        "motm": 1
+        "motm": 12,
+        "motm2026": 1
       },
       "meta": {
         "position": "FWD",
@@ -643,7 +659,8 @@
         "subs": 2,
         "caps": 67,
         "caps2026": 0,
-        "motm": 0
+        "motm": 8,
+        "motm2026": 0
       },
       "meta": {
         "position": "DEF",
@@ -694,7 +711,8 @@
         "subs": 0,
         "caps": 20,
         "caps2026": 0,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -718,7 +736,8 @@
         "subs": 3,
         "caps": 7,
         "caps2026": 0,
-        "motm": 0
+        "motm": 1,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -742,7 +761,8 @@
         "subs": 0,
         "caps": 16,
         "caps2026": 1,
-        "motm": 0
+        "motm": 1,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -766,7 +786,8 @@
         "subs": -3,
         "caps": 38,
         "caps2026": 0,
-        "motm": 0
+        "motm": 3,
+        "motm2026": 0
       },
       "meta": {
         "position": "FWD",
@@ -790,7 +811,8 @@
         "subs": 3,
         "caps": 2,
         "caps2026": 0,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -814,7 +836,8 @@
         "subs": 1,
         "caps": 17,
         "caps2026": 0,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -838,7 +861,8 @@
         "subs": 2,
         "caps": 53,
         "caps2026": 1,
-        "motm": 1
+        "motm": 6,
+        "motm2026": 1
       },
       "meta": {
         "position": "MID",
@@ -889,7 +913,8 @@
         "subs": 0,
         "caps": 30,
         "caps2026": 0,
-        "motm": 0
+        "motm": 1,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -913,7 +938,8 @@
         "subs": -2,
         "caps": 43,
         "caps2026": 0,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": "FWD",
@@ -937,7 +963,8 @@
         "subs": -1,
         "caps": 91,
         "caps2026": 0,
-        "motm": 0
+        "motm": 6,
+        "motm2026": 0
       },
       "meta": {
         "position": "DEF",
@@ -961,7 +988,8 @@
         "subs": -4,
         "caps": 99,
         "caps2026": 1,
-        "motm": 0
+        "motm": 9,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -1012,7 +1040,8 @@
         "subs": 1,
         "caps": 9,
         "caps2026": 0,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -1036,7 +1065,8 @@
         "subs": 0,
         "caps": 1,
         "caps2026": 0,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -1060,7 +1090,8 @@
         "subs": -6,
         "caps": 163,
         "caps2026": 1,
-        "motm": 0
+        "motm": 4,
+        "motm2026": 0
       },
       "meta": {
         "position": "DEF",
@@ -1111,7 +1142,8 @@
         "subs": 3,
         "caps": 131,
         "caps2026": 0,
-        "motm": 0
+        "motm": 3,
+        "motm2026": 0
       },
       "meta": {
         "position": "DEF",
@@ -1162,7 +1194,8 @@
         "subs": -5,
         "caps": 56,
         "caps2026": 1,
-        "motm": 0
+        "motm": 4,
+        "motm2026": 0
       },
       "meta": {
         "position": "DEF",
@@ -1186,7 +1219,8 @@
         "subs": 0,
         "caps": 10,
         "caps2026": 1,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -1210,7 +1244,8 @@
         "subs": -8,
         "caps": 173,
         "caps2026": 1,
-        "motm": 0
+        "motm": 5,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -1261,7 +1296,8 @@
         "subs": 2,
         "caps": 78,
         "caps2026": 0,
-        "motm": 0
+        "motm": 5,
+        "motm2026": 0
       },
       "meta": {
         "position": "DEF",
@@ -1285,7 +1321,8 @@
         "subs": -6,
         "caps": 22,
         "caps2026": 0,
-        "motm": 0
+        "motm": 2,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -1309,7 +1346,8 @@
         "subs": -1,
         "caps": 12,
         "caps2026": 1,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -1333,7 +1371,8 @@
         "subs": 9,
         "caps": 92,
         "caps2026": 1,
-        "motm": 0
+        "motm": 2,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -1357,7 +1396,8 @@
         "subs": -5,
         "caps": 95,
         "caps2026": 1,
-        "motm": 0
+        "motm": 6,
+        "motm2026": 0
       },
       "meta": {
         "position": "FWD",
@@ -1408,7 +1448,8 @@
         "subs": 1,
         "caps": 7,
         "caps2026": 0,
-        "motm": 0
+        "motm": 3,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -1432,7 +1473,8 @@
         "subs": -1,
         "caps": 128,
         "caps2026": 1,
-        "motm": 0
+        "motm": 8,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -1483,7 +1525,8 @@
         "subs": 0,
         "caps": 21,
         "caps2026": 1,
-        "motm": 0
+        "motm": 1,
+        "motm2026": 0
       },
       "meta": {
         "position": "FWD",
@@ -1507,7 +1550,8 @@
         "subs": 0,
         "caps": 5,
         "caps2026": 0,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -1531,7 +1575,8 @@
         "subs": -5,
         "caps": 119,
         "caps2026": 2,
-        "motm": 0
+        "motm": 12,
+        "motm2026": 0
       },
       "meta": {
         "position": "FWD",
@@ -1582,7 +1627,8 @@
         "subs": -2,
         "caps": 117,
         "caps2026": 1,
-        "motm": 1
+        "motm": 3,
+        "motm2026": 1
       },
       "meta": {
         "position": "MID",
@@ -1633,7 +1679,8 @@
         "subs": 4,
         "caps": 2,
         "caps2026": 0,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -1657,7 +1704,8 @@
         "subs": -3,
         "caps": 161,
         "caps2026": 1,
-        "motm": 0
+        "motm": 10,
+        "motm2026": 0
       },
       "meta": {
         "position": "GK",
@@ -1708,7 +1756,8 @@
         "subs": 5,
         "caps": 57,
         "caps2026": 0,
-        "motm": 0
+        "motm": 2,
+        "motm2026": 0
       },
       "meta": {
         "position": "GK",
@@ -1759,7 +1808,8 @@
         "subs": 0,
         "caps": 1,
         "caps2026": 0,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": null,
@@ -1783,7 +1833,8 @@
         "subs": 4,
         "caps": 12,
         "caps2026": 0,
-        "motm": 0
+        "motm": 0,
+        "motm2026": 0
       },
       "meta": {
         "position": "MID",
@@ -1925,7 +1976,7 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-01-15T14:12:25.322Z",
+    "generatedAt": "2026-01-15T15:10:50.295Z",
     "year": 2026,
     "matchesInYear": 2,
     "matchesCountForStatsInYear": 2,

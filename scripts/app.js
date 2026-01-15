@@ -47,26 +47,40 @@ async function loadAggregated() {
       const ogs = s.ogs ?? 0;
       const cleanSheets = s.cleanSheets ?? 0;
       const motm = s.motm ?? 0;
-     const caps = s.caps ?? 0;
+      const motm2026 = s.motm2026 ?? 0;
+      const caps = s.caps ?? 0;
       const caps2026 = s.caps2026 ?? 0;
       const subs = s.subs ?? 0;
 
       const position = meta.position ?? "—";
 
+      // Photo path from name (Firstname Lastname -> Firstname_Lastname.png)
+      const photoSrc = photoPathFromName(name) || "./images/playerPhotos/No_Photo.png";
+      const fallbackSrc = "./images/playerPhotos/No_Photo.png";
+
       const el = document.createElement("div");
       el.className = "card";
       el.innerHTML = `
-        <h2>${escapeHtml(name)}</h2>
-        <div class="meta">
-            Pos: ${escapeHtml(position)} ·
-            Caps: ${caps} (${caps2026} in 2026) ·
-            Subs: ${subs} ·
-            Goals: ${goals} ·
-            Assists: ${assists} ·
-            OGs: ${ogs} ·
-            CS: ${cleanSheets} ·
-            MOTM: ${motm}
+        <div class="card-header">
+          <img
+            class="player-photo"
+            src="${escapeHtml(photoSrc)}"
+            alt="${escapeHtml(name)}"
+            onerror="this.onerror=null; this.src='${escapeHtml(fallbackSrc)}';"
+          />
+          <h2>${escapeHtml(name)}</h2>
         </div>
+
+        <ul class="meta">
+          <li><strong>Pos</strong>: ${escapeHtml(position)}</li>
+          <li><strong>Caps</strong>: ${caps} (${caps2026} in 2026)</li>
+          <li><strong>Subs</strong>: ${subs}</li>
+          <li><strong>Goals</strong>: ${goals}</li>
+          <li><strong>Assists</strong>: ${assists}</li>
+          <li><strong>OGs</strong>: ${ogs}</li>
+          <li><strong>CS</strong>: ${cleanSheets}</li>
+          <li><strong>MOTM</strong>: ${motm} (${motm2026} in 2026)</li>
+        </ul>
       `;
       cards.appendChild(el);
     }
@@ -85,6 +99,14 @@ function escapeHtml(s) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function photoPathFromName(name) {
+  if (!name || typeof name !== "string") return null;
+
+  // "Sam Sinclair" -> "Sam_Sinclair.png"
+  const safe = name.trim().replace(/\s+/g, "_");
+  return `./images/playerPhotos/${encodeURIComponent(safe)}.png`;
 }
 
 loadAggregated();

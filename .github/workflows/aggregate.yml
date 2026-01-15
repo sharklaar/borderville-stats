@@ -1,0 +1,51 @@
+name: Aggregate Airtable stats
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "15 3 * * *" # daily 03:15 UTC (adjust later if you want)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aggregate-stats
+  cancel-in-progress: false
+
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run aggregator
+        env:
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+          # If you use any other env vars locally, add them here too:
+          # AIRTABLE_TABLE_MATCHES: ${{ secrets.AIRTABLE_TABLE_MATCHES }}
+        run: |
+          node scripts/aggregate.js
+
+      - name: Commit updated aggregated.json (if changed)
+        run: |
+          set -e
+
+          if git diff --quiet -- data/aggregated.json; then
+            echo "No changes in data/aggregated.json"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/aggregated.json
+          git commit -m "Update aggregated stats"
+          git push

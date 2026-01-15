@@ -678,3 +678,42 @@ body {
 .form-badge.is-captain .form-label {
   text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
+
+/* Subtle “OVR pop” on render */
+.rating.ovr-pop {
+  animation: ovrPop 220ms ease-out;
+}
+
+@keyframes ovrPop {
+  0%   { transform: scale(0.92); filter: brightness(0.9); }
+  70%  { transform: scale(1.06); filter: brightness(1.05); }
+  100% { transform: scale(1.00); filter: brightness(1.0); }
+}
+
+/* Optional: cursor hint that hover shows detail */
+.rating,
+.overlay {
+  cursor: help;
+}
+
+.ovr-tooltip {
+  position: fixed;
+  z-index: 9999;
+  max-width: 260px;
+
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.35;
+
+  background: rgba(15, 20, 30, 0.95);
+  color: #fff;
+  border-radius: 6px;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+  pointer-events: none;
+  white-space: pre-line;
+}
+
+.ovr-tooltip.hidden {
+  display: none;
+}

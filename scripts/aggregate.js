@@ -36,7 +36,10 @@ const FIELDS = {
   NOTES: "Notes",
   PINK_GOALS: "Pink Goals",
   BLUE_GOALS: "Blue Goals",
-  MOTM: "Player of the Match", // <-- change this if your field name differs
+  MOTM: "Player of the Match",
+
+  // NEW: match flag
+  COUNTS_FOR_STATS: "Counts for stats",
 
   // Goals
   GOAL_MATCH: "Match",
@@ -72,7 +75,6 @@ function ensurePlayer(outPlayers, playerId, name = "Unknown") {
       id: playerId,
       name,
       stats: {
-        played: 0,
         wins: 0,
         draws: 0,
         losses: 0,
@@ -80,12 +82,12 @@ function ensurePlayer(outPlayers, playerId, name = "Unknown") {
         assists: 0,
         ogs: 0,
         cleanSheets: 0,
-        gkCleanSheets: 0, // NEW: only counts when GK explicitly set and in clean sheet list
+        gkCleanSheets: 0, // only counts when GK explicitly set and in clean sheet list
         otfs: 0,
         subs: 0,
         caps: 0,
         caps2026: 0,
-        motm: 0, // NEW
+        motm: 0,
       },
       meta: {},
     };
@@ -179,10 +181,13 @@ async function main() {
       pinkDefs: asArray(f[FIELDS.PINK_DEFS]),
       blueDefs: asArray(f[FIELDS.BLUE_DEFS]),
       otfs: asArray(f[FIELDS.OTFS]),
-      motm: asArray(f[FIELDS.MOTM]), // NEW (can be 0, 1, or multiple)
+      motm: asArray(f[FIELDS.MOTM]),
       notes: f[FIELDS.NOTES] || null,
       pinkGoals: asNumber(f[FIELDS.PINK_GOALS]),
       blueGoals: asNumber(f[FIELDS.BLUE_GOALS]),
+
+      // NEW: explicit match flag (default true if unset/missing)
+      countsForStats: f[FIELDS.COUNTS_FOR_STATS] ?? true,
     };
   });
 
@@ -193,28 +198,38 @@ async function main() {
   // ----------------------------
   const YEAR = 2026;
 
-  // NEW: defensive partnerships & units
+  // Defensive partnerships & units (only for stat matches)
   const defensivePartnershipCounts = {}; // key "a|b" -> count (clean sheets only)
   const defensivePartnershipsGA = {}; // key "a|b" -> { matches, goalsAgainst }
   const defensiveUnitsGA = {}; // key "id1|id2|id3" -> { matches, goalsAgainst }
 
+  let matchesInYear = 0;
+  let matchesCountForStatsInYear = 0;
+  let matchesNonStatInYear = 0;
+
   for (const m of matches) {
     if (!m.date || !inYear(m.date, YEAR)) continue;
+    matchesInYear++;
 
     const pink = new Set(m.pink);
     const blue = new Set(m.blue);
 
-    // appearances + caps2026
+    // ALWAYS: appearances (2026) — even non-stat matches affect caps/subs
     pink.forEach((pid) => {
-      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.played++;
-      ensurePlayer(outPlayers, pid).stats.caps2026++;
+      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.caps2026++;
     });
     blue.forEach((pid) => {
-      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.played++;
-      ensurePlayer(outPlayers, pid).stats.caps2026++;
+      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.caps2026++;
     });
 
-    // W/D/L
+    // If this match does NOT count for stats, stop here.
+    if (!m.countsForStats) {
+      matchesNonStatInYear++;
+      continue;
+    }
+    matchesCountForStatsInYear++;
+
+    // W/D/L (stat matches only)
     if (m.winningTeam === "DRAW") {
       pink.forEach((pid) => ensurePlayer(outPlayers, pid).stats.draws++);
       blue.forEach((pid) => ensurePlayer(outPlayers, pid).stats.draws++);
@@ -226,7 +241,7 @@ async function main() {
       pink.forEach((pid) => ensurePlayer(outPlayers, pid).stats.losses++);
     }
 
-    // Clean sheets / OTFs are explicitly listed in Matches table fields
+    // Clean sheets / OTFs (stat matches only)
     m.cleanPink.forEach((pid) =>
       ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.cleanSheets++
     );
@@ -234,7 +249,7 @@ async function main() {
       ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.cleanSheets++
     );
 
-    // GK clean sheets: only when GK is explicitly set AND included in clean sheet list
+    // GK clean sheets (stat matches only)
     if (m.pinkGK && m.cleanPink.includes(m.pinkGK)) {
       ensurePlayer(outPlayers, m.pinkGK, playersById[m.pinkGK]?.name).stats.gkCleanSheets++;
     }
@@ -242,26 +257,28 @@ async function main() {
       ensurePlayer(outPlayers, m.blueGK, playersById[m.blueGK]?.name).stats.gkCleanSheets++;
     }
 
-    // ----------------------------
-    // Defensive partnerships (clean sheets) + GA-based defensive stats
-    // Uses explicit match role fields: Blue Defenders / Pink Defenders, plus optional GK.
-    // ----------------------------
+    // Defensive stats (stat matches only)
     const blueGA = m.pinkGoals; // goals conceded by Blue
     const pinkGA = m.blueGoals; // goals conceded by Pink
 
-    // CS partnerships: defenders who are in the team's clean sheet list
+    // CS partnerships:
+    // "defensive partnership" = EXACTLY TWO defenders on that team credited with the clean sheet.
     const csBlueDefs = m.blueDefs.filter((id) => m.cleanBlue.includes(id));
     const csPinkDefs = m.pinkDefs.filter((id) => m.cleanPink.includes(id));
 
-    addPairs(csBlueDefs, (a, b) => {
-      const key = `${a}|${b}`;
-      defensivePartnershipCounts[key] = (defensivePartnershipCounts[key] || 0) + 1;
-    });
+    if (csBlueDefs.length === 2) {
+      addPairs(csBlueDefs, (a, b) => {
+        const key = `${a}|${b}`;
+        defensivePartnershipCounts[key] = (defensivePartnershipCounts[key] || 0) + 1;
+      });
+    }
 
-    addPairs(csPinkDefs, (a, b) => {
-      const key = `${a}|${b}`;
-      defensivePartnershipCounts[key] = (defensivePartnershipCounts[key] || 0) + 1;
-    });
+    if (csPinkDefs.length === 2) {
+      addPairs(csPinkDefs, (a, b) => {
+        const key = `${a}|${b}`;
+        defensivePartnershipCounts[key] = (defensivePartnershipCounts[key] || 0) + 1;
+      });
+    }
 
     // GA partnerships: all defender pairs who played; attribute team GA
     addPairs(m.blueDefs, (a, b) => {
@@ -296,11 +313,13 @@ async function main() {
 
     addUnit(blueUnit, blueGA);
     addUnit(pinkUnit, pinkGA);
+
+    // OTFs (stat matches only)
     m.otfs.forEach((pid) =>
       ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.otfs++
     );
 
-    // MOTM (can be multiple)
+    // MOTM (stat matches only; can be multiple)
     m.motm.forEach((pid) =>
       ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.motm++
     );
@@ -308,9 +327,10 @@ async function main() {
 
   // ----------------------------
   // Goals → player totals + event list + partnerships
+  // (stat matches only)
   // ----------------------------
-  const goalEvents = []; // NEW: event-level output
-  const partnershipMap = {}; // NEW: scorer+assist pair counts
+  const goalEvents = [];
+  const partnershipMap = {};
 
   for (const r of goalsRaw) {
     const f = r.fields || {};
@@ -324,7 +344,9 @@ async function main() {
     const m = matchById[matchId];
     if (!m || !m.date || !inYear(m.date, YEAR)) continue;
 
-    // store event row so FE can link it later
+    // IMPORTANT: exclude goals from non-stat matches
+    if (!m.countsForStats) continue;
+
     goalEvents.push({
       id: r.id,
       matchId,
@@ -333,12 +355,10 @@ async function main() {
       isOwnGoal,
     });
 
-    // update scorer totals
     const scorer = ensurePlayer(outPlayers, scorerId, playersById[scorerId]?.name);
     if (isOwnGoal) scorer.stats.ogs++;
     else scorer.stats.goals++;
 
-    // update assister totals + partnership
     if (assistId) {
       ensurePlayer(outPlayers, assistId, playersById[assistId]?.name).stats.assists++;
 
@@ -363,7 +383,9 @@ async function main() {
     const subsAdded = p ? p.subsAdded : 0;
 
     o.stats.caps = startingCaps + o.stats.caps2026;
+
     // Subs derived as: starting_subs + subs_added - caps_2026
+    // (Your rule allows negatives; keep as-is.)
     o.stats.subs = startingSubs + subsAdded - o.stats.caps2026;
   }
 
@@ -405,16 +427,21 @@ async function main() {
 
   writeJsonPretty(outPath, {
     players: outPlayers,
-    goals: goalEvents, // NEW
-    partnerships, // NEW
-    defensivePartnerships, // NEW: CS partnerships (DEF+DEF sharing a CS)
-    defensivePartnershipsGoalsAgainst, // NEW: GA partnerships (DEF+DEF)
-    defensiveUnitsGoalsAgainst, // NEW: GA units (DEF + optional GK)
+    goals: goalEvents,
+    partnerships,
+    defensivePartnerships,
+    defensivePartnershipsGoalsAgainst,
+    defensiveUnitsGoalsAgainst,
     meta: {
       generatedAt: new Date().toISOString(),
-      matchesProcessed: matches.length,
-      goalsProcessed: goalsRaw.length,
       year: YEAR,
+
+      // clearer meta: how many matches actually influenced what
+      matchesInYear,
+      matchesCountForStatsInYear,
+      matchesNonStatInYear,
+
+      goalsIncluded: goalEvents.length,
     },
   });
 

@@ -42,12 +42,14 @@ async function loadAggregated() {
       const s = p?.stats ?? {};
       const meta = p?.meta ?? {};
 
-      const played = s.played ?? 0;
       const goals = s.goals ?? 0;
       const assists = s.assists ?? 0;
       const ogs = s.ogs ?? 0;
       const cleanSheets = s.cleanSheets ?? 0;
       const motm = s.motm ?? 0;
+     const caps = s.caps ?? 0;
+      const caps2026 = s.caps2026 ?? 0;
+      const subs = s.subs ?? 0;
 
       const position = meta.position ?? "—";
 
@@ -56,13 +58,14 @@ async function loadAggregated() {
       el.innerHTML = `
         <h2>${escapeHtml(name)}</h2>
         <div class="meta">
-          Pos: ${escapeHtml(position)} ·
-          Played: ${played} ·
-          Goals: ${goals} ·
-          Assists: ${assists} ·
-          OGs: ${ogs} ·
-          CS: ${cleanSheets} ·
-          MOTM: ${motm}
+            Pos: ${escapeHtml(position)} ·
+            Caps: ${caps} (${caps2026} in 2026) ·
+            Subs: ${subs} ·
+            Goals: ${goals} ·
+            Assists: ${assists} ·
+            OGs: ${ogs} ·
+            CS: ${cleanSheets} ·
+            MOTM: ${motm}
         </div>
       `;
       cards.appendChild(el);

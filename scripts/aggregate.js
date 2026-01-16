@@ -1,4 +1,3 @@
-// scripts/aggregate.js
 const fs = require("fs");
 const path = require("path");
 const { fetchAllRecords, getConfig } = require("./fetchAirtable");
@@ -24,6 +23,7 @@ const FIELDS = {
   POSITION: "Position",
   DOB: "Date of Birth",
   PROFILE_PHOTO: "Profile Photo",
+  EXCLUDED: "Excluded", // NEW
 
   // Matches
   MATCH_NAME: "Name",
@@ -245,6 +245,7 @@ async function main() {
       position: f[FIELDS.POSITION] || null,
       dob: f[FIELDS.DOB] || null,
       profilePhoto: f[FIELDS.PROFILE_PHOTO] || null,
+      excluded: Boolean(f[FIELDS.EXCLUDED]), // NEW (missing/falsey => false)
     };
   }
 
@@ -260,6 +261,7 @@ async function main() {
       position: p.position,
       dob: p.dob,
       profilePhoto: p.profilePhoto,
+      excluded: p.excluded, // NEW
     };
   });
 

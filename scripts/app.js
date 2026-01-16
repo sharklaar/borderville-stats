@@ -406,15 +406,11 @@ function photoPathFromName(name) {
 }
 
 function ovrToValueMillions(ovr) {
-  // Clamp to 1–100 just in case
   const o = Math.max(1, Math.min(100, Number(ovr) || 1));
-
-  const min = 50;
-  const max = 160;
-
-  // Linear scale: 1 => 50, 100 => 160
+  const min = 4.5;
+  const max = 15.0;
   const t = (o - 1) / 99;
-  return Math.round(min + t * (max - min));
+  return (min + t * (max - min)).toFixed(1);
 }
 
 loadAggregated();

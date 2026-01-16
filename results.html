@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Borderville Stats – Results</title>
+ <link rel="stylesheet" href="./css/styles.css" />
+
+  <!-- Page-specific styling kept here so we don't destabilise your card CSS -->
+  <style>
+    .results-wrap{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 16px 48px;
+    }
+
+    .results-header{
+      text-align: centre;
+      margin: 10px 0 18px;
+      opacity: 0.9;
+    }
+
+    .results-list{
+      display: grid;
+      gap: 16px;
+    }
+
+    .match-card{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      backdrop-filter: blur(8px);
+    }
+
+    .match-top{
+      display: grid;
+      gap: 10px;
+      align-items: centre;
+    }
+
+    .match-meta{
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    .badge{
+      display: inline-flex;
+      align-items: centre;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.18);
+      font-size: 12px;
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    .scoreline{
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: centre;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .team{
+      display: flex;
+      align-items: centre;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .team-name{
+      font-weight: 800;
+      font-size: 18px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .team-pill{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+      opacity: 0.95;
+    }
+
+    .pill-pink{ background: rgba(255,105,180,0.95); }
+    .pill-blue{ background: rgba(80,170,255,0.95); }
+
+    .score{
+      display: flex;
+      align-items: centre;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      font-size: 30px;
+      line-height: 1;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    .dash{
+      opacity: 0.65;
+      font-size: 24px;
+      font-weight: 800;
+      transform: translateY(-1px);
+    }
+
+    .match-body{
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .section{
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.16);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .section h3{
+      margin: 0 0 8px;
+      font-size: 13px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    .two-col{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .kv{
+      display: grid;
+      gap: 6px;
+      font-size: 14px;
+      opacity: 0.95;
+    }
+
+    .kv .k{ opacity: 0.75; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .kv .v{ font-weight: 700; }
+
+    .list{
+      margin: 0;
+      padding-left: 16px;
+      display: grid;
+      gap: 4px;
+      font-size: 14px;
+    }
+
+    .muted{ opacity: 0.7; }
+
+    .notes{
+      white-space: pre-wrap;
+      font-size: 14px;
+      line-height: 1.35;
+      opacity: 0.95;
+    }
+
+    @media (max-width: 900px){
+      .match-body{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px){
+      .team-name{ font-size: 16px; }
+      .score{ font-size: 26px; }
+      .match-meta{ flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar Nav -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="topbar__brand" href="index.html">Borderville Stats</a>
+
+      <button class="topbar__toggle" aria-expanded="false" aria-controls="topbarLinks">
+        Menu
+      </button>
+
+      <nav id="topbarLinks" class="topbar__links">
+        <a href="index.html">Players</a>
+        <a href="results.html" aria-current="page">Results</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="results-wrap">
+    <div class="results-header">
+      <div style="font-size: 22px; font-weight: 900; letter-spacing: 0.3px;">Results</div>
+      <div class="muted" style="margin-top: 6px;">Newest → oldest. Pink is always home.</div>
+    </div>
+
+    <div id="resultsList" class="results-list"></div>
+  </main>
+
+  <script src="./scripts/results.js" defer></script>
+</body>
+</html>

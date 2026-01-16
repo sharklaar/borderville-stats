@@ -763,3 +763,16 @@ body {
   opacity: 0.8;
   line-height: 1;
 }
+
+/* -----------------------------
+   TEMP: Remove translucent stats panel
+   (layout unchanged)
+------------------------------ */
+
+.stats-columns {
+  background: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}

@@ -717,3 +717,49 @@ body {
 .ovr-tooltip.hidden {
   display: none;
 }
+
+/* -----------------------------
+   OVR + Position stack
+------------------------------ */
+
+.rating-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* change to center if you prefer */
+}
+
+.rating-block .rating {
+  line-height: 1;
+}
+
+.rating-block .pos {
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: inherit;       /* inherits OVR colour */
+  opacity: 0.8;         /* slightly de-emphasised */
+}
+/* Keep OVR block height the same as before (so nothing shifts down) */
+.rating-block {
+  position: relative;
+  display: inline-block; /* prevents it behaving like a tall flex column */
+}
+
+/* Position label under the rating without affecting layout */
+.rating-block .pos {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 0.2rem;
+
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: inherit;  /* matches OVR colour */
+  opacity: 0.8;
+  line-height: 1;
+}

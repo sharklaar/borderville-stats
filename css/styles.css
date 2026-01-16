@@ -196,7 +196,7 @@ body {
   position: relative;
   width: 320px;
   aspect-ratio: 3 / 4;
-  background: url("../images/card-background.png") center/contain no-repeat;
+  background: url("../images/card-background.jpeg") center/contain no-repeat;
   border-radius: 0;
   overflow: visible;
   box-shadow: 0 14px 40px rgba(0,0,0,0.35);

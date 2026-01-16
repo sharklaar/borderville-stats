@@ -39,129 +39,14 @@ body {
   padding: 12px 16px 40px;
 }
 
+/* Controls / filter UI */
 .controls {
   display: flex;
-  justify-content: center;
-  margin: 12px 0 18px;
-}
-
-.status {
-  padding: 10px 14px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  border-radius: 999px;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 14px;
-}
-
-/* Placeholder card styling */
-.card {
-  border: 1px solid var(--border);
-  background: linear-gradient(to bottom, var(--card), var(--card-2));
-  border-radius: 16px;
-  padding: 14px;
-}
-
-.card h2 {
-  margin: 0 0 6px;
-  font-size: 1.1rem;
-}
-
-.card .meta {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.smallprint {
-  margin-top: 18px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.player-card {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-
-  padding: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 14px;
-  background: #fff;
-}
-
-.player-photo {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex: 0 0 56px;
-
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: rgba(0, 0, 0, 0.04);
-}
-
-.player-card__body {
-  min-width: 0; /* stops long names breaking layout */
-}
-
-.player-name {
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.player-meta {
-  margin-top: 2px;
-  font-size: 0.9rem;
-  opacity: 0.75;
-}
-
-.meta {
-  list-style: none;
-  padding: 0;
-  margin: 8px 0 0 0;
-}
-
-.meta li {
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-.meta li strong {
-  font-weight: 600;
-}
-
-.player-filter {
-  margin: 16px 0 20px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.player-filter label {
-  font-weight: 600;
-}
-
-.player-filter input {
-  flex: 1;
-  max-width: 420px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-}
-
-.controls {
-  display: flex;
+  justify-content: center; /* from earlier block (still effective) */
   gap: 12px;
   align-items: center;
   flex-wrap: wrap;
-  margin: 14px 0 18px;
+  margin: 14px 0 18px;     /* later wins over 12px 0 18px */
 }
 
 .controls input,
@@ -184,6 +69,7 @@ body {
   flex: 0 0 auto;
   min-width: 220px;
   cursor: pointer;
+  padding-right: 34px; /* arrow spacing */
 }
 
 /* Focus styling */
@@ -194,21 +80,20 @@ body {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
 }
 
-/* Slightly nicer select arrow spacing */
-.controls select {
-  padding-right: 34px;
+.status {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 600;
 }
 
-/* --- Card becomes a badge canvas --- */
-.card {
-  position: relative;
-  width: 320px;               /* tweak for taste */
-  aspect-ratio: 3 / 4;        /* FIFA-ish */
-  background: url("../images/card-background.png") center/contain no-repeat;
-  border-radius: 0;           /* let the PNG define shape */
-  overflow: visible;          /* important: PNG has transparent edges */
-  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
-  padding: 0;
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 14px;
 }
 
 /* Make your existing grid play nicely with fixed-size cards */
@@ -219,18 +104,118 @@ body {
   align-items: start;
 }
 
-/* Inner overlay layer */
+/* Placeholder card styling (kept, but note .card below is the final winner for most pages) */
+.card h2 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+
+.card .meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.smallprint {
+  margin-top: 18px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Player list card styling */
+.player-card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.player-card__body {
+  min-width: 0; /* stops long names breaking layout */
+}
+
+.player-name {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.player-meta {
+  margin-top: 2px;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+/* Generic meta list */
+.meta {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.meta li {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.meta li strong {
+  font-weight: 600;
+}
+
+/* (Legacy) player-filter block */
+.player-filter {
+  margin: 16px 0 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.player-filter label {
+  font-weight: 600;
+}
+
+.player-filter input {
+  flex: 1;
+  max-width: 420px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* --- Card becomes a badge canvas --- */
+/* IMPORTANT: this block is the merged result of your 3 separate `.card` blocks,
+   preserving the same computed styles. */
+.card {
+  /* from earliest `.card` placeholder */
+  border: 1px solid var(--border);
+
+  /* final intended badge canvas */
+  position: relative;
+  width: 320px;
+  aspect-ratio: 3 / 4;
+  background: url("../images/card-background.png") center/contain no-repeat;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+  padding: 0;
+}
+
+/* Inner overlay layer (merged; later values win where conflicting) */
 .card .overlay {
   position: absolute;
   inset: 0;
-  padding: 18px 20px 18px;   /* was bigger */
+  padding: 22px 22px 26px; /* later wins */
   display: grid;
-  grid-template-rows: auto auto auto auto; /* top, portrait, name, stats */
-  gap: 8px;                   /* tighter */
+  grid-template-rows: auto 1fr auto auto; /* later wins */
+  gap: 10px; /* later wins */
   pointer-events: none;
+  color: rgba(10, 8, 20, 0.95);
 }
 
-/* Top line: rating + position (or whatever you want there later) */
+/* --- Legacy “topline / photo-wrap / namebar / stats” styles (kept for compatibility) --- */
 .card .topline {
   display: flex;
   align-items: baseline;
@@ -250,7 +235,6 @@ body {
   opacity: 0.9;
 }
 
-/* Player photo placement */
 .card .photo-wrap {
   display: flex;
   align-items: start;
@@ -267,7 +251,6 @@ body {
   background: rgba(255,255,255,0.15);
 }
 
-/* Name banner */
 .card .namebar {
   margin-top: 14px;
   text-align: center;
@@ -281,7 +264,6 @@ body {
   line-height: 1.1;
 }
 
-/* Stats block */
 .card .stats {
   margin-top: 12px;
   background: rgba(255,255,255,0.72);
@@ -307,7 +289,6 @@ body {
   letter-spacing: 0.3px;
 }
 
-/* Bottom “form strip” placeholder (you’ll fill later) */
 .card .bottom {
   display: flex;
   justify-content: center;
@@ -318,33 +299,7 @@ body {
   font-size: 13px;
 }
 
-.card {
-  position: relative;
-  width: 320px;
-  aspect-ratio: 3 / 4;
-  background: url("../images/card-background.png") center/contain no-repeat;
-  border-radius: 0;
-  overflow: visible;
-  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
-}
-
 /* Everything that appears "printed" on the card */
-.card .overlay {
-  position: absolute;
-  inset: 0;
-
-  /* This is the magic: keep content inside the badge contour */
-  padding: 22px 22px 26px;
-
-  display: grid;
-  grid-template-rows: auto 1fr auto auto;
-  gap: 10px;
-
-  pointer-events: none;
-  color: rgba(10, 8, 20, 0.95);
-}
-
-/* Top: rating + position "printed" onto the card */
 .card-top {
   display: flex;
   justify-content: space-between;
@@ -352,13 +307,12 @@ body {
   padding: 4px 2px 0;
 }
 
+/* Rating (note: there’s also `.card .rating` above; both are preserved as per original file) */
 .rating {
   font-size: 44px;
   font-weight: 900;
   letter-spacing: -1px;
-
   color: rgba(255,255,255,0.95);
-
   text-shadow:
     0 2px 6px rgba(0,0,0,0.45),
     0 0 18px rgba(255,255,255,0.25);
@@ -380,19 +334,26 @@ body {
   margin-top: 2px;
 }
 
+/* player-photo (merged: keeps properties that still “win” because later blocks don’t override them) */
 .player-photo {
+  /* from list-card photo */
+  height: 56px;
+  flex: 0 0 56px;
+
+  /* later card-photo wins for these */
   width: 44%;
   aspect-ratio: 1 / 1;
   border-radius: 999px;
   object-fit: cover;
 
+  /* later wins, but earlier values remain where not overridden */
   background: none;
   border: none;
 
   box-shadow: 0 10px 22px rgba(0,0,0,0.35);
 }
 
-/* Name plate: tighter, looks like part of card */
+/* Name plate */
 .nameplate {
   display: flex;
   justify-content: center;
@@ -416,7 +377,7 @@ body {
   text-shadow: 0 10px 26px rgba(0,0,0,0.45);
 }
 
-/* Stats plate: lives on the card, not floating off it */
+/* Stats plate (legacy) */
 .statsplate {
   margin-top: 2px;
 
@@ -453,7 +414,6 @@ body {
   letter-spacing: -0.2px;
 }
 
-/* Form label at very bottom inside badge */
 .formplate {
   display: flex;
   justify-content: center;
@@ -470,10 +430,10 @@ body {
 /* FIFA-style stat columns */
 .stats-columns {
   margin-top: 4px;
-  padding: 10px 12px;          /* smaller */
+  padding: 10px 12px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;                   /* smaller gap between columns */
+  gap: 10px;
 
   background: rgba(255,255,255,0.60);
   backdrop-filter: blur(6px);
@@ -486,7 +446,7 @@ body {
 .stat-col {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px; /* final winner */
 }
 
 .stat-item {
@@ -497,7 +457,7 @@ body {
 }
 
 .stat-item .value {
-  font-size: 24px;
+  font-size: 22px; /* final winner */
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.5px;
@@ -505,24 +465,14 @@ body {
 }
 
 .stat-item .label {
-  margin-top: 2px;
-  font-size: 11px;
+  margin-top: 1px; /* final winner */
+  font-size: 10px; /* final winner */
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 0.9px; /* final winner */
   opacity: 0.75;
 }
 
-.stat-col { gap: 8px; }         /* was 10px+ */
-.stat-item .value {
-  font-size: 22px;              /* was 24 */
-  line-height: 1;
-}
-.stat-item .label {
-  font-size: 10px;              /* was 11 */
-  letter-spacing: 0.9px;
-  margin-top: 1px;
-}
-
+/* Form strip */
 .form-strip {
   display: flex;
   gap: 6px;
@@ -542,28 +492,26 @@ body {
   font-size: 11px;
   line-height: 1;
   user-select: none;
-
-  /* subtle “card UI” look */
   box-shadow: 0 1px 2px rgba(0,0,0,0.35);
 }
 
 /* Colours */
 .form-badge.is-w {
-  background: #7CFF7C;  /* green */
+  background: #7CFF7C;
   color: #0b2b0b;
 }
 
 .form-badge.is-d {
-  background: #C8C8C8;  /* grey */
+  background: #C8C8C8;
   color: #1a1a1a;
 }
 
 .form-badge.is-l {
-  background: #FF4A4A;  /* red */
+  background: #FF4A4A;
   color: #2b0b0b;
 }
 
-/* X state: white with black X */
+/* X state */
 .form-badge.is-x {
   background: #ffffff;
   color: #000000;
@@ -571,35 +519,13 @@ body {
   box-shadow: none;
 }
 
-/* Text */
 .form-label {
   transform: translateY(0.5px);
 }
 
-/* Captain band */
-.form-badge.is-captain .captain-band {
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  width: 14px;
-  height: 14px;
-  border-radius: 3px;
-  display: grid;
-  place-items: center;
-  font-size: 9px;
-  font-weight: 900;
-
-  /* dark band like your reference */
-  background: rgba(0,0,0,0.85);
-  color: #fff;
-
-  /* tiny “fold” vibe */
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
-}
-
-/* MOM star edges via clip-path */
+/* MOM star via clip-path */
 .form-badge.is-motm {
-  border-radius: 0; /* clip-path will define shape */
+  border-radius: 0;
   clip-path: polygon(
     50% 0%,
     62% 16%,
@@ -622,20 +548,16 @@ body {
     20% 10%,
     38% 16%
   );
-}
-
-/* Optional: make MOM badges pop slightly */
-.form-badge.is-motm {
   box-shadow: 0 2px 3px rgba(0,0,0,0.45);
 }
 
-/* If both captain + MOM, keep band readable */
-.form-badge.is-motm.is-captain .captain-band {
-  top: -3px;
-  left: -3px;
+/* Captain outline */
+.form-badge.is-captain {
+  outline: 2px solid rgba(255,255,255,0.75);
+  outline-offset: -2px;
 }
 
-/* Captain band: centred “equator” sash */
+/* Captain band (final winner = centred “equator” sash) */
 .form-badge.is-captain .captain-band {
   position: absolute;
   left: -2px;
@@ -659,24 +581,19 @@ body {
 
   box-shadow: 0 1px 2px rgba(0,0,0,0.45);
   pointer-events: none;
+  z-index: 2;
 }
 
 /* Make sure text stays legible over the band */
 .form-badge.is-captain .form-label {
   position: relative;
   z-index: 1;
-}
-.form-badge.is-captain .captain-band {
-  z-index: 2;
-}
-
-.form-badge.is-captain {
-  outline: 2px solid rgba(255,255,255,0.75);
-  outline-offset: -2px;
-}
-
-.form-badge.is-captain .form-label {
   text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* If both captain + MOM, keep band readable */
+.form-badge.is-motm.is-captain .captain-band {
+  top: 50%;
 }
 
 /* Subtle “OVR pop” on render */
@@ -719,35 +636,20 @@ body {
 }
 
 /* -----------------------------
-   OVR + Position stack
+   OVR + Position stack (merged; final behaviour = absolute-pos label)
 ------------------------------ */
 
 .rating-block {
-  display: flex;
+  position: relative;
+  display: inline-block;
   flex-direction: column;
-  align-items: flex-start; /* change to center if you prefer */
+  align-items: flex-start;
 }
 
 .rating-block .rating {
   line-height: 1;
 }
 
-.rating-block .pos {
-  margin-top: 0.2rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: inherit;       /* inherits OVR colour */
-  opacity: 0.8;         /* slightly de-emphasised */
-}
-/* Keep OVR block height the same as before (so nothing shifts down) */
-.rating-block {
-  position: relative;
-  display: inline-block; /* prevents it behaving like a tall flex column */
-}
-
-/* Position label under the rating without affecting layout */
 .rating-block .pos {
   position: absolute;
   left: 0;
@@ -759,7 +661,7 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 
-  color: inherit;  /* matches OVR colour */
+  color: inherit;
   opacity: 0.8;
   line-height: 1;
 }

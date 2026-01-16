@@ -316,9 +316,12 @@ function renderPlayers(players, cardsEl) {
     el.innerHTML = `
       <div class="overlay">
         <div class="card-top">
-          <div class="rating-block">
-            <div class="rating">£${value}m</div>
-          </div>
+<div class="rating-block">
+  <div class="mv-label">Market Value</div>
+  <div class="mv-value">
+    <span class="mv-currency">£</span>${value}<span class="mv-suffix">m</span>
+  </div>
+</div>
         </div>
 
         <div class="portrait">

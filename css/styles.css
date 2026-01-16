@@ -369,7 +369,7 @@ body  { font-family: inherit; }
 /* player-photo (merged: keeps properties that still “win” because later blocks don’t override them) */
 .player-photo {
   /* from list-card photo */
-  height: 56px;
+  height: 70px;
   flex: 0 0 56px;
 
   /* later card-photo wins for these */
@@ -391,16 +391,9 @@ body  { font-family: inherit; }
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2px;
 
-  padding: 7px 12px;
+  padding: 0px 12px;
   border-radius: 14px;
-
-  background: rgba(255,255,255,0.20);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
-  border: 1px solid rgba(255,255,255,0.25);
 }
 
 .nameplate .name {
@@ -412,7 +405,7 @@ body  { font-family: inherit; }
 }
 
 .player-position{
-  font-size: 20px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1;
   color: rgba(120, 255, 160, 0.95);
@@ -471,8 +464,8 @@ body  { font-family: inherit; }
 
 /* FIFA-style stat columns */
 .stats-columns {
-  margin-top: 4px;
-  padding: 10px 12px;
+  margin-top: 0px;
+  padding: 5px 12px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
@@ -688,15 +681,12 @@ body  { font-family: inherit; }
   gap: 6px;
 }
 
-.rating-block .rating {
-  line-height: 1;
-}
 
-
-.rating-block .pos{
-  position: static;     /* was absolute */
-  margin-top: 0;        /* was 0.2rem */
-  line-height: 1;
+/* Value pill content (pill itself is baked into the JPEG) */
+.rating-block{
+  margin-left: 2px;   /* tiny nudge into the pill */
+  margin-top: 4px;
+  gap: 4px;
 }
 
 /* -----------------------------
@@ -821,4 +811,77 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
 }
 
 /* Shave a couple px where it visually matters */
-.portrait{ margin-top: 0; }                /* was 2px */
+.portrait{ margin-top: 47px; }                /* was 2px */
+
+/* Put Market Value text INTO the baked pill (and stop it affecting layout) */
+.card-top{
+  position: relative;
+}
+
+/* Pill area is top-left in the artwork */
+.rating-block{
+  position: absolute;
+  top: 10px;     /* tweak these 2 numbers to land perfectly */
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  /* prevent accidental wrapping into the artwork title */
+  max-width: 170px;
+}
+
+/* Label */
+.rating-block .mv-label{
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(20, 10, 30, 0.85);
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+/* Big digits */
+.rating-block .mv-value{
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 0.95;
+  color: rgba(20, 10, 30, 0.95);
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+/* small £ */
+.rating-block .mv-currency{
+  font-size: 15px;
+  font-weight: 900;
+  position: relative;
+  top: 0px;
+  margin-right: 2px;
+}
+
+/* small m */
+.rating-block .mv-suffix{
+  font-size: 18px;
+  font-weight: 900;
+  margin-left: 2px;
+  opacity: 0.9;
+}
+
+/* Anchor card-top to the true top-left of the artwork */
+.card .card-top{
+  position: absolute;
+  top: 45px;
+  left: 25px;
+  right: 0;
+  padding: 0;          /* remove the extra nudge */
+}
+
+/* Move the pill block back out of the overlay padding */
+.card .rating-block{
+  position: absolute;
+  top: -19px;          /* negate .overlay padding */
+  left: -23px;         /* negate .overlay padding */
+}

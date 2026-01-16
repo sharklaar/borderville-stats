@@ -78,6 +78,12 @@ function inYear(dateObj, year) {
   return dateObj && dateObj.getUTCFullYear() === year;
 }
 
+function toISODateOnly(dateObj) {
+  if (!dateObj) return null;
+  // Keep it stable + human: YYYY-MM-DD (no timezone weirdness in UI)
+  return dateObj.toISOString().slice(0, 10);
+}
+
 function ensurePlayer(outPlayers, playerId, name = "Unknown") {
   if (!outPlayers[playerId]) {
     outPlayers[playerId] = {
@@ -646,9 +652,48 @@ async function main() {
     })
     .sort((a, b) => (a.gaPerMatch ?? 999) - (b.gaPerMatch ?? 999));
 
+
+  // ----------------------------
+  // Match results output (for Results page)
+  // Include all dated matches (stat + non-stat); FE can filter by countsForStats/year.
+  // Pink is always "home" by definition in the UI.
+  // ----------------------------
+  const outMatches = matches
+    .filter((m) => m.date) // only dated matches
+    .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0)) // newest first
+    .map((m) => ({
+      id: m.id,
+      name: m.name,
+      date: toISODateOnly(m.date),
+
+      // Teams / participants
+      playersPink: m.pink,
+      playersBlue: m.blue,
+
+      // Score (no halves, no event times)
+      pinkGoals: m.pinkGoals,
+      blueGoals: m.blueGoals,
+
+      // Outcomes / awards
+      winningTeam: m.winningTeam, // "PINK" | "BLUE" | "DRAW" | null
+      motmIds: m.motm,            // can be multiple
+      captainPinkId: m.captainPink,
+      captainBlueId: m.captainBlue,
+
+      // Notable events
+      otfIds: m.otfs,
+
+      // Free text notes (for goal/save contenders etc.)
+      notes: m.notes,
+
+      // Flag
+      countsForStats: m.countsForStats,
+    }));
+
   writeJsonPretty(outPath, {
     players: outPlayers,
     goals: goalEvents,
+    matches: outMatches,
     partnerships,
     defensivePartnerships,
     defensivePartnershipsGoalsAgainst,

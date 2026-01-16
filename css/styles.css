@@ -226,7 +226,7 @@ body {
 }
 
 .card .rating {
-  font-size: 42px;
+  font-size: 23px;
   line-height: 1;
 }
 
@@ -639,30 +639,21 @@ body {
    OVR + Position stack (merged; final behaviour = absolute-pos label)
 ------------------------------ */
 
-.rating-block {
-  position: relative;
-  display: inline-block;
+.rating-block{
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 6px;
 }
 
 .rating-block .rating {
   line-height: 1;
 }
 
-.rating-block .pos {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  margin-top: 0.2rem;
 
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-
-  color: inherit;
-  opacity: 0.8;
+.rating-block .pos{
+  position: static;     /* was absolute */
+  margin-top: 0;        /* was 0.2rem */
   line-height: 1;
 }
 
@@ -678,3 +669,114 @@ body {
   box-shadow: none !important;
   border: none !important;
 }
+
+.nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); }
+.nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; }
+.nav__brand { font-weight: 700; text-decoration: none; }
+.nav__links { display: flex; gap: 12px; }
+.nav__toggle { display: none; }
+
+@media (max-width: 720px) {
+  .nav__toggle { display: inline-flex; }
+  .nav__links { display: none; flex-direction: column; gap: 8px; padding-top: 8px; }
+  .nav__links.is-open { display: flex; }
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(5, 10, 20, 0.6);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.topbar__inner {
+  max-width: 1200px;      /* match your layout width if you have one */
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.topbar__brand {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.topbar__links {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.topbar__links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.topbar__links a:hover {
+  color: rgba(255,255,255,0.95);
+  text-decoration: underline;
+}
+
+.topbar__links a[aria-current="page"] {
+  color: rgba(255,255,255,0.95);
+  text-decoration: underline;
+}
+
+.topbar__toggle {
+  display: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.85);
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .topbar__toggle { display: inline-flex; }
+
+  .topbar__links {
+    display: none;
+    position: absolute;
+    right: 16px;
+    top: 48px;
+    background: rgba(5, 10, 20, 0.95);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 10px;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 140px;
+  }
+
+  .topbar__links.is-open { display: flex; }
+
+  /* Ensure the absolute menu has a positioning context */
+  .topbar__inner { position: relative; }
+}
+
+/* Prevent first row of content sitting under the sticky topbar */
+body { scroll-padding-top: 60px; } /* helps anchor links etc */
+
+.site-header,
+.container {
+  padding-top: 18px; /* adjust if your topbar height changes */
+}
+
+/* Tighten card vertical rhythm: stop portrait row stretching */
+.card .overlay{
+  grid-template-rows: auto auto auto auto; /* was: auto 1fr auto auto */
+  gap: 10px;                                /* was 10px */
+  padding: 20px 22px 22px;                 /* was 22px 22px 26px */
+}
+
+/* Shave a couple px where it visually matters */
+.portrait{ margin-top: 0; }                /* was 2px */

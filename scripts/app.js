@@ -22,7 +22,7 @@ function parseFormCode(code) {
     last === "D" ? "d" :
     last === "L" ? "l" : "x";
 
-  // Your decision: show C instead of W/D/L when captain
+  // show C instead of W/D/L when captain
   const label = captain ? "C" : last;
 
   return { result, captain, motm, label };
@@ -54,6 +54,92 @@ function renderFormStrip(formCodes = []) {
 }
 
 // -----------------------------
+// Tooltip (attach to CARD, not rating)
+// -----------------------------
+function initCardTooltip() {
+  const cardsEl = document.getElementById("cards");
+  const tooltip = document.getElementById("tooltip");
+  if (!cardsEl || !tooltip) return;
+
+  const show = (text) => {
+    tooltip.textContent = text || "";
+    tooltip.classList.remove("hidden");
+  };
+
+  const hide = () => {
+    tooltip.classList.add("hidden");
+    tooltip.textContent = "";
+  };
+
+  const move = (evt) => {
+    // Small offset so we don’t sit under the cursor
+    const offset = 14;
+    tooltip.style.left = `${evt.clientX + offset}px`;
+    tooltip.style.top = `${evt.clientY + offset}px`;
+  };
+
+  cardsEl.addEventListener("mousemove", (evt) => {
+    if (tooltip.classList.contains("hidden")) return;
+    move(evt);
+  });
+
+  cardsEl.addEventListener("mouseover", (evt) => {
+    const card = evt.target.closest(".card");
+    if (!card || !cardsEl.contains(card)) return;
+
+    const text = card.getAttribute("data-tooltip");
+    if (!text) return;
+
+    show(text);
+    move(evt);
+  });
+
+  cardsEl.addEventListener("mouseout", (evt) => {
+    const card = evt.target.closest(".card");
+    // If we’ve left the cards area entirely, hide
+    if (!card) hide();
+  });
+
+  // Safety: hide when mouse leaves the whole grid
+  cardsEl.addEventListener("mouseleave", hide);
+}
+
+function buildTooltipText(player) {
+  const s = player?.stats ?? {};
+  const meta = player?.meta ?? {};
+
+  const name = player?.name ?? "Unknown";
+  const position = meta.position ?? "—";
+
+  const ovr = s.ovr ?? 0;
+  const ovrCombined = s.ovrCombined ?? null;
+  const value = ovrToValueMillions(ovr);
+
+  // If you later add richer breakdown fields to aggregated.json,
+  // you can surface them here without changing tooltip plumbing.
+  const lines = [];
+  lines.push(name);
+  lines.push(`POS: ${position}`);
+  lines.push(`VALUE: £${value}m`);
+  lines.push(`OVR: ${ovr}${ovrCombined != null ? ` (combined: ${Number(ovrCombined).toFixed(2)})` : ""}`);
+
+  // Optional: show a couple of key stats for context (keeps tooltip useful even if no breakdown exists)
+  const goals = s.goals ?? 0;
+  const assists = s.assists ?? 0;
+  const motm = s.motm ?? 0;
+  lines.push(`G/A/MOTM: ${goals}/${assists}/${motm}`);
+
+  // If your data ever includes a preformatted breakdown string, prefer it:
+  // e.g. s.ovrTooltip = "Pace: 12\nShooting: 9\n..."
+  if (typeof s.ovrTooltip === "string" && s.ovrTooltip.trim()) {
+    lines.push("");
+    lines.push(s.ovrTooltip.trim());
+  }
+
+  return lines.join("\n");
+}
+
+// -----------------------------
 // Data load
 // -----------------------------
 async function loadAggregated() {
@@ -67,7 +153,6 @@ async function loadAggregated() {
   try {
     status.textContent = "Fetching aggregated stats…";
 
-    // keep no-store, but you can add ?v=... later if you want cache-busting
     const res = await fetch("./data/aggregated.json", { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
@@ -79,7 +164,7 @@ async function loadAggregated() {
       : "unknown";
 
     const playersObj = payload?.players ?? {};
-    ALL_PLAYERS = Object.values(playersObj);
+    ALL_PLAYERS = Object.values(playersObj).filter(p => !p?.meta?.excluded);
 
     // Wire up name filter
     if (nameInput) {
@@ -96,6 +181,9 @@ async function loadAggregated() {
         applyFiltersAndRender(cards, status);
       });
     }
+
+    // Tooltip handlers (once)
+    initCardTooltip();
 
     applyFiltersAndRender(cards, status);
   } catch (err) {
@@ -122,7 +210,6 @@ function applyFiltersAndRender(cardsEl, statusEl) {
 
   // 2) Stat filter / sort
   if (mode === "ovr") {
-    // ✅ OVR mode: sort by combined score (float) desc, then sensible tie-breaks
     list.sort((a, b) => {
       const ac = getOvrCombined(a);
       const bc = getOvrCombined(b);
@@ -146,20 +233,18 @@ function applyFiltersAndRender(cardsEl, statusEl) {
 
       const aOtfs = a?.stats?.otfs ?? 0;
       const bOtfs = b?.stats?.otfs ?? 0;
-      if (aOtfs !== bOtfs) return aOtfs - bOtfs; // comedy tie-break: fewer OTF wins
+      if (aOtfs !== bOtfs) return aOtfs - bOtfs; // fewer OTF wins
 
       const an = (a?.name ?? "").toLowerCase();
       const bn = (b?.name ?? "").toLowerCase();
       return an.localeCompare(bn);
     });
   } else if (mode !== "all") {
-    // Existing stat filters: only show players with stat > 0, sorted high→low
     const statKey = mode;
     list = list
       .filter((p) => (p?.stats?.[statKey] ?? 0) > 0)
       .sort((a, b) => (b?.stats?.[statKey] ?? 0) - (a?.stats?.[statKey] ?? 0));
   } else {
-    // Default “all players” view: keep it OVR-sorted as well (matches your current behaviour)
     list.sort((a, b) => {
       const ac = getOvrCombined(a);
       const bc = getOvrCombined(b);
@@ -216,18 +301,23 @@ function renderPlayers(players, cardsEl) {
     const caps = s.caps ?? 0;
     const subs = s.subs ?? 0;
 
-    const ovr = s.ovr ?? 50; // displayed rating
+    const ovr = s.ovr ?? 50;
+    const value = ovrToValueMillions(ovr);
+
     const position = meta.position ?? "—";
     const photoSrc = photoPathFromName(name) || fallbackSrc;
 
     const el = document.createElement("div");
     el.className = "card";
 
+    // Tooltip data lives on the card
+    el.setAttribute("data-tooltip", buildTooltipText(p));
+
     el.innerHTML = `
       <div class="overlay">
         <div class="card-top">
           <div class="rating-block">
-            <div class="rating">${ovr}</div>
+            <div class="rating">£${value}m</div>
             <div class="pos">${escapeHtml(position)}</div>
           </div>
         </div>
@@ -313,6 +403,18 @@ function photoPathFromName(name) {
   if (!name || typeof name !== "string") return null;
   const safe = name.trim().replace(/\s+/g, "_");
   return `./images/playerPhotos/${encodeURIComponent(safe)}.png`;
+}
+
+function ovrToValueMillions(ovr) {
+  // Clamp to 1–100 just in case
+  const o = Math.max(1, Math.min(100, Number(ovr) || 1));
+
+  const min = 50;
+  const max = 160;
+
+  // Linear scale: 1 => 50, 100 => 160
+  const t = (o - 1) / 99;
+  return Math.round(min + t * (max - min));
 }
 
 loadAggregated();

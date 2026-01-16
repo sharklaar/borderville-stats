@@ -348,7 +348,7 @@ function renderPlayers(players, cardsEl) {
             </div>
             <div class="stat-item">
               <div class="value">${assists}</div>
-              <div class="label">AST</div>
+              <div class="label">ASSISTS</div>
             </div>
             <div class="stat-item">
               <div class="value">${motm}</div>
@@ -363,15 +363,15 @@ function renderPlayers(players, cardsEl) {
           <div class="stat-col">
             <div class="stat-item">
               <div class="value">${cleanSheets}</div>
-              <div class="label">CS</div>
+              <div class="label">CLEAN SHEETS</div>
             </div>
             <div class="stat-item">
               <div class="value">${otfs}</div>
-              <div class="label">OTF</div>
+              <div class="label">OTFs</div>
             </div>
             <div class="stat-item">
               <div class="value">${ogs}</div>
-              <div class="label">OGS</div>
+              <div class="label">OGs</div>
             </div>
             <div class="stat-item">
               <div class="value">${subs}</div>

@@ -318,7 +318,6 @@ function renderPlayers(players, cardsEl) {
         <div class="card-top">
           <div class="rating-block">
             <div class="rating">£${value}m</div>
-            <div class="pos">${escapeHtml(position)}</div>
           </div>
         </div>
 
@@ -335,6 +334,7 @@ function renderPlayers(players, cardsEl) {
 
         <div class="nameplate">
           <div class="name">${escapeHtml(name)}</div>
+          <div class="player-position">${escapeHtml(positionFull(position))}</div>
         </div>
 
         <div class="stats-columns">
@@ -412,5 +412,15 @@ function ovrToValueMillions(ovr) {
   const t = (o - 1) / 99;
   return (min + t * (max - min)).toFixed(1);
 }
+
+function positionFull(pos) {
+  const p = String(pos || "").toUpperCase();
+  if (p === "GK") return "Goalkeeper";
+  if (p === "DEF") return "Defender";
+  if (p === "MID") return "Midfielder";
+  if (p === "FWD") return "Forward";
+  return pos || "";
+}
+
 
 loadAggregated();

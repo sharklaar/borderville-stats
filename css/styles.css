@@ -18,6 +18,38 @@ body {
   color: var(--text);
 }
 
+@font-face{
+  font-family: "Radikal";
+  src: url("../Fonts/Radikal-Thin.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Radikal";
+  src: url("../Fonts/Radikal-W01-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Radikal";
+  src: url("../Fonts/Radikal-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Radikal";
+  src: url("../Fonts/Radikal-Black-Italic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root { font-family: "Radikal", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+body  { font-family: inherit; }
+
 .site-header {
   padding: 28px 16px 10px;
   text-align: center;
@@ -356,8 +388,10 @@ body {
 /* Name plate */
 .nameplate {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2px;
 
   padding: 7px 12px;
   border-radius: 14px;
@@ -375,6 +409,14 @@ body {
   text-align: center;
   color: rgba(255,255,255,0.96);
   text-shadow: 0 10px 26px rgba(0,0,0,0.45);
+}
+
+.player-position{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(120, 255, 160, 0.95);
+  text-shadow: 0 10px 26px rgba(0,0,0,0.35);
 }
 
 /* Stats plate (legacy) */

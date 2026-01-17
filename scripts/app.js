@@ -184,6 +184,7 @@ async function loadAggregated() {
 
     // Tooltip handlers (once)
     initCardTooltip();
+    initTopbarMenu();
 
     applyFiltersAndRender(cards, status);
   } catch (err) {
@@ -423,6 +424,40 @@ function positionFull(pos) {
   if (p === "MID") return "Midfielder";
   if (p === "FWD") return "Forward";
   return pos || "";
+}
+
+function initTopbarMenu() {
+  const btn = document.querySelector(".topbar__toggle");
+  const links = document.getElementById("topbarLinks"); // aria-controls points here
+
+  if (!btn || !links) return;
+
+  const close = () => {
+    links.classList.remove("is-open");
+    btn.setAttribute("aria-expanded", "false");
+  };
+
+  const toggle = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const open = links.classList.toggle("is-open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  };
+
+  btn.addEventListener("click", toggle, { passive: false });
+
+  // Tap outside closes
+  document.addEventListener("click", (e) => {
+    if (!links.classList.contains("is-open")) return;
+    if (btn.contains(e.target) || links.contains(e.target)) return;
+    close();
+  });
+
+  // If you rotate / resize back to desktop, force it open-state off
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 720) close();
+  });
 }
 
 

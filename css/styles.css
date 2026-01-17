@@ -1062,3 +1062,30 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
 .stat-col:last-child  .stat-item:nth-child(4){
   padding: 7px 10px 6px !important;
 }
+
+/* ===== Mobile menu click fix ===== */
+
+/* Put topbar on its own stacking context and above everything */
+.topbar{
+  z-index: 999 !important;
+  position: sticky;
+  isolation: isolate;            /* prevents weird stacking with children */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  pointer-events: auto;
+}
+
+/* Ensure the button itself can receive taps */
+.topbar__toggle{
+  position: relative;
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+}
+
+/* If legacy .nav still exists, stop it blocking taps */
+.nav{
+  pointer-events: none !important;
+}
+.nav *{
+  pointer-events: none !important;
+}

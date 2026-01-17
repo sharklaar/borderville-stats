@@ -1,0 +1,197 @@
+/* =========================================================
+   BASE (shared across pages)
+   Extracted from styles.css
+   ========================================================= */
+
+/* Theme tokens */
+:root {
+  --bg: #0b1020;
+  --card: rgba(255,255,255,0.06);
+  --card-2: rgba(255,255,255,0.09);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.65);
+  --border: rgba(255,255,255,0.14);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 800px at 20% 0%, rgba(255,255,255,0.08), transparent 60%),
+              radial-gradient(900px 600px at 90% 10%, rgba(255,255,255,0.06), transparent 55%),
+              var(--bg);
+  color: var(--text);
+}
+
+/* Fonts */
+@font-face{
+  font-family: "Radikal";
+  src: url("../Fonts/Radikal-Thin.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Radikal";
+  src: url("../Fonts/Radikal-W01-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Radikal";
+  src: url("../Fonts/Radikal-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Radikal";
+  src: url("../Fonts/Radikal-Black-Italic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root { font-family: "Radikal", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+body  { font-family: inherit; }
+
+/* Header (if used) */
+.site-header {
+  padding: 28px 16px 10px;
+  text-align: center;
+}
+
+.site-header h1 {
+  margin: 0 0 6px;
+  font-size: 1.8rem;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Common layout */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 16px 40px;
+}
+
+.smallprint {
+  margin-top: 18px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Generic meta list */
+.meta {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.meta li {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.meta li strong {
+  font-weight: 600;
+}
+
+/* =========================================================
+   TOPBAR NAV (shared)
+   ========================================================= */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(5, 10, 20, 0.6);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.topbar__inner {
+  max-width: 1200px;      /* match your layout width if you have one */
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.topbar__brand {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.topbar__links {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.topbar__links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.topbar__links a:hover {
+  color: rgba(255,255,255,0.95);
+  text-decoration: underline;
+}
+
+.topbar__links a[aria-current="page"] {
+  color: rgba(255,255,255,0.95);
+  text-decoration: underline;
+}
+
+.topbar__toggle {
+  display: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.85);
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .topbar__toggle { display: inline-flex; }
+
+  .topbar__links {
+    display: none;
+    position: absolute;
+    right: 16px;
+    top: 48px;
+    background: rgba(5, 10, 20, 0.95);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 10px;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 140px;
+  }
+
+  .topbar__links.is-open { display: flex; }
+
+  /* Ensure the absolute menu has a positioning context */
+  .topbar__inner { position: relative; }
+}
+
+/* Prevent first row of content sitting under the sticky topbar */
+body { scroll-padding-top: 60px; } /* helps anchor links etc */
+
+.site-header,
+.container {
+  padding-top: 18px; /* adjust if your topbar height changes */
+}

@@ -1,0 +1,343 @@
+/* =========================================================
+   PLAYERS PAGE ONLY
+   Player grid, cards, pills, form, OVR, filters
+   ========================================================= */
+
+/* -----------------------------------------
+   Controls / filter UI
+----------------------------------------- */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 14px 0 18px;
+}
+
+.controls input,
+.controls select {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #fff;
+  font-size: 14px;
+  line-height: 40px;
+}
+
+.controls input {
+  flex: 1 1 260px;
+  min-width: 220px;
+}
+
+.controls select {
+  min-width: 220px;
+  cursor: pointer;
+  padding-right: 34px;
+}
+
+.controls input:focus,
+.controls select:focus {
+  outline: none;
+  border-color: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.status {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* -----------------------------------------
+   Player grid
+----------------------------------------- */
+#cards.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+/* -----------------------------------------
+   Card canvas
+----------------------------------------- */
+.card {
+  position: relative;
+  width: 320px;
+  aspect-ratio: 3 / 4;
+  background: url("../images/card-background.jpeg") center/contain no-repeat;
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Overlay */
+.card .overlay {
+  position: absolute;
+  inset: 0;
+  padding: 18px 12px 14px;
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  gap: 6px;
+  pointer-events: none;
+  color: rgba(10, 8, 20, 0.95);
+}
+
+/* -----------------------------------------
+   Top-left value pill
+----------------------------------------- */
+.card-top {
+  position: absolute;
+  top: 45px;
+  left: 25px;
+  right: 0;
+}
+
+.rating-block {
+  position: absolute;
+  top: -19px;
+  left: -23px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 170px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.rating-block::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -120px;
+  width: 210px;
+  height: 50px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.82));
+  box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+  border: 1px solid rgba(0,0,0,0.1);
+  z-index: -1;
+}
+
+.mv-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(20, 10, 30, 0.85);
+}
+
+.mv-value {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 0.95;
+  color: rgba(20, 10, 30, 0.95);
+}
+
+.mv-currency {
+  font-size: 15px;
+  font-weight: 900;
+  margin-right: 2px;
+}
+
+.mv-suffix {
+  font-size: 18px;
+  font-weight: 900;
+  margin-left: 2px;
+}
+
+/* -----------------------------------------
+   Portrait
+----------------------------------------- */
+.portrait {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.player-photo {
+  width: 38%;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  object-fit: cover;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+}
+
+/* -----------------------------------------
+   Name / position pill
+----------------------------------------- */
+.nameplate {
+  position: relative;
+  padding: 6px 14px;
+  border-radius: 999px;
+  text-align: center;
+}
+
+.nameplate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(122, 92, 255, 0.66),
+    rgba(122, 92, 255, 0.38)
+  );
+  box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+  z-index: -1;
+}
+
+.nameplate .name {
+  font-size: 18px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.96);
+}
+
+.player-position {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(120,255,160,0.95);
+  margin-top: 2px;
+}
+
+/* -----------------------------------------
+   Stats pills
+----------------------------------------- */
+.stats-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.stat-col {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-item {
+  padding: 6px 10px 5px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.82));
+  box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+  border: 1px solid rgba(255,255,255,0.45);
+  text-align: center;
+}
+
+.stat-item .value {
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+  color: #0b0b16;
+}
+
+.stat-item .label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+  opacity: 0.75;
+}
+
+/* CAPS / SUBS green pills */
+.stat-col:first-child .stat-item:nth-child(4),
+.stat-col:last-child  .stat-item:nth-child(4) {
+  background: linear-gradient(90deg, rgba(0,214,255,0.78), rgba(74,255,178,0.95));
+}
+
+/* -----------------------------------------
+   Form strip
+----------------------------------------- */
+.form-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+}
+
+.form-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(122,92,255,0.62),
+    rgba(122,92,255,0.38)
+  );
+  box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+  z-index: -1;
+}
+
+.form-strip {
+  display: flex;
+  gap: 6px;
+}
+
+.form-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* Badge colours */
+.form-badge.is-w { background: #7CFF7C; color: #0b2b0b; }
+.form-badge.is-d { background: #C8C8C8; color: #1a1a1a; }
+.form-badge.is-l { background: #FF4A4A; color: #2b0b0b; }
+.form-badge.is-x { background: #fff; color: #000; border: 1px solid rgba(0,0,0,0.35); }
+
+/* MOTM star */
+.form-badge.is-motm {
+  clip-path: polygon(
+    50% 0%, 62% 16%, 80% 10%, 78% 30%, 96% 35%, 82% 50%,
+    96% 65%, 78% 70%, 80% 90%, 62% 84%, 50% 100%, 38% 84%,
+    20% 90%, 22% 70%, 4% 65%, 18% 50%, 4% 35%, 22% 30%,
+    20% 10%, 38% 16%
+  );
+}
+
+/* Captain band */
+.form-badge.is-captain {
+  outline: 2px solid rgba(255,255,255,0.75);
+  outline-offset: -2px;
+}
+
+/* -----------------------------------------
+   OVR tooltip
+----------------------------------------- */
+.rating.ovr-pop {
+  animation: ovrPop 220ms ease-out;
+}
+
+@keyframes ovrPop {
+  0%   { transform: scale(0.92); }
+  70%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.ovr-tooltip {
+  position: fixed;
+  z-index: 9999;
+  max-width: 260px;
+  padding: 8px 10px;
+  font-size: 12px;
+  background: rgba(15,20,30,0.95);
+  color: #fff;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.ovr-tooltip.hidden {
+  display: none;
+}

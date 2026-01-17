@@ -126,8 +126,9 @@ function buildTooltipText(player) {
   // Optional: show a couple of key stats for context (keeps tooltip useful even if no breakdown exists)
   const goals = s.goals ?? 0;
   const assists = s.assists ?? 0;
-  const motm = s.motm ?? 0;
-  lines.push(`G/A/MOTM: ${goals}/${assists}/${motm}`);
+const motmAll = s.motm ?? 0;
+const motm2026 = s.motm2026 ?? 0;
+lines.push(`G/A/MOTM: ${goals}/${assists}/${motm2026} (${motmAll})`);
 
   // If your data ever includes a preformatted breakdown string, prefer it:
   // e.g. s.ovrTooltip = "Pace: 12\nShooting: 9\n..."
@@ -240,12 +241,21 @@ function applyFiltersAndRender(cardsEl, statusEl) {
       const bn = (b?.name ?? "").toLowerCase();
       return an.localeCompare(bn);
     });
-  } else if (mode !== "all") {
-    const statKey = mode;
-    list = list
-      .filter((p) => (p?.stats?.[statKey] ?? 0) > 0)
-      .sort((a, b) => (b?.stats?.[statKey] ?? 0) - (a?.stats?.[statKey] ?? 0));
-  } else {
+   } else if (mode !== "all") {
+  const getStat = (p) => {
+    const s = p?.stats ?? {};
+    if (mode === "motm2026") return s.motm2026 ?? 0;
+    if (mode === "motm") return s.motm ?? 0;
+    if (mode === "caps2026") return s.caps2026 ?? 0;
+    if (mode === "caps") return s.caps ?? 0;
+    return s[mode] ?? 0; // goals, assists, ogs, cleanSheets, otfs, subs, etc.
+  };
+
+  list = list
+    .filter((p) => getStat(p) > 0)
+    .sort((a, b) => getStat(b) - getStat(a));
+}
+ else {
     list.sort((a, b) => {
       const ac = getOvrCombined(a);
       const bc = getOvrCombined(b);
@@ -298,8 +308,11 @@ function renderPlayers(players, cardsEl) {
     const ogs = s.ogs ?? 0;
     const cleanSheets = s.cleanSheets ?? 0;
     const otfs = s.otfs ?? 0;
-    const motm = s.motm ?? 0;
-    const caps = s.caps ?? 0;
+   const motmAll = s.motm ?? 0;
+    const motm2026 = s.motm2026 ?? 0;
+
+    const capsAll = s.caps ?? 0;
+    const caps2026 = s.caps2026 ?? 0;
     const subs = s.subs ?? 0;
 
     const ovr = s.ovr ?? 50;
@@ -351,14 +364,16 @@ function renderPlayers(players, cardsEl) {
               <div class="value">${assists}</div>
               <div class="label">ASSISTS</div>
             </div>
-            <div class="stat-item">
-              <div class="value">${motm}</div>
-              <div class="label">MOTM</div>
-            </div>
-            <div class="stat-item">
-              <div class="value">${caps}</div>
-              <div class="label">CAPS</div>
-            </div>
+      <div class="stat-item">
+  <div class="value">${motm2026} <span class="stat-paren">(${motmAll})</span></div>
+  <div class="label">MOTMs (2026 / ALL)</div>
+</div>
+
+<div class="stat-item">
+  <div class="value">${caps2026} <span class="stat-paren">(${capsAll})</span></div>
+  <div class="label">CAPS (2026 / ALL)</div>
+</div>
+
           </div>
 
           <div class="stat-col">

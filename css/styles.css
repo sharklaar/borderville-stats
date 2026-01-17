@@ -1089,3 +1089,9 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
 .nav *{
   pointer-events: none !important;
 }
+
+.stat-paren{
+  font-size: 0.7em;
+  opacity: 0.75;
+  font-weight: 800;
+}

@@ -230,7 +230,7 @@ body  { font-family: inherit; }
   aspect-ratio: 3 / 4;
   background: url("../images/card-background.jpeg") center/contain no-repeat;
   border-radius: 0;
-  overflow: visible;
+  overflow: hidden;
   box-shadow: 0 14px 40px rgba(0,0,0,0.35);
   padding: 0;
 }
@@ -464,11 +464,11 @@ body  { font-family: inherit; }
 
 /* FIFA-style stat columns */
 .stats-columns {
-  margin-top: 0px;
+  margin-top: 6px;
   padding: 5px 12px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 6px;
 
   background: rgba(255,255,255,0.60);
   backdrop-filter: blur(6px);
@@ -481,7 +481,7 @@ body  { font-family: inherit; }
 .stat-col {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* final winner */
+  gap: 4px; /* final winner */
 }
 
 .stat-item {
@@ -492,7 +492,7 @@ body  { font-family: inherit; }
 }
 
 .stat-item .value {
-  font-size: 22px; /* final winner */
+  font-size: 17px; /* final winner */
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.5px;
@@ -806,12 +806,15 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
 /* Tighten card vertical rhythm: stop portrait row stretching */
 .card .overlay{
   grid-template-rows: auto auto auto auto; /* was: auto 1fr auto auto */
-  gap: 10px;                                /* was 10px */
+  gap: 6px;                                /* was 10px */
   padding: 20px 22px 22px;                 /* was 22px 22px 26px */
 }
 
 /* Shave a couple px where it visually matters */
-.portrait{ margin-top: 47px; }                /* was 2px */
+.portrait{
+   margin-top: 10px; 
+  margin-bottom: 6px;
+  }                /* was 2px */
 
 /* Put Market Value text INTO the baked pill (and stop it affecting layout) */
 .card-top{
@@ -884,4 +887,178 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
   position: absolute;
   top: -19px;          /* negate .overlay padding */
   left: -23px;         /* negate .overlay padding */
+}
+
+/* =========================================================
+   CARD PILL SYSTEM (CSS-only)
+   Paste at END of styles.css so it wins
+   ========================================================= */
+
+:root{
+  --pill-white: rgba(255,255,255,0.96);
+  --pill-white-2: rgba(255,255,255,0.82);
+  --pill-stroke: rgba(255,255,255,0.55);
+
+  --pill-green-a: rgba(74, 255, 178, 0.95);
+  --pill-green-b: rgba(0, 214, 255, 0.78);
+
+  --pill-purple-a: rgba(122, 92, 255, 0.62);
+  --pill-purple-b: rgba(122, 92, 255, 0.38);
+
+  --pill-shadow: 0 10px 26px rgba(0,0,0,0.22);
+  --pill-shadow-soft: 0 8px 18px rgba(0,0,0,0.16);
+}
+
+/* Ensure overlay can host pseudo elements */
+.card .overlay{ 
+  position: absolute; 
+ padding: 18px 12px 14px !important;       /* a bit tighter */
+}
+.nameplate,
+.form-row,
+.rating-block,
+.stat-item{ position: relative; }
+
+/* -----------------------------------------
+   1) VALUE: white "half-pill" behind Market Value block
+   (sits behind the text; extends off the left edge)
+----------------------------------------- */
+.rating-block{
+  pointer-events: none; /* already effectively non-interactive */
+  z-index: 3;
+    margin: 0 !important;
+  padding: 0 0 0 10px; /* text inset into pill */
+}
+
+.rating-block::before{
+  content:"";
+  position:absolute;
+    top: -8px !important;
+  left: -120px !important;            /* pushes pill off-card to mimic “half pill” */
+  width: 210px !important;
+  height: 50px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, var(--pill-white), var(--pill-white-2));
+  box-shadow: var(--pill-shadow-soft);
+  border: 1px solid rgba(0,0,0,0.10);
+  /* optional: soften it a touch */
+  filter: saturate(1.02);
+  z-index: -1;
+}
+
+/* Keep your value text dark + crisp on white */
+.rating-block .mv-label,
+.rating-block .mv-value{
+  color: rgba(20, 10, 30, 0.95);
+  text-shadow: none;
+}
+
+/* -----------------------------------------
+   2) NAME/POS: purple fade pill behind nameplate
+----------------------------------------- */
+.nameplate{
+  padding: 6px 14px 6px !important; 
+  border-radius: 999px;
+  z-index: 2;
+}
+
+.nameplate::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(122, 92, 255, 0.66),
+    rgba(122, 92, 255, 0.38)
+  );
+  box-shadow: var(--pill-shadow);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
+/* Text stays as you already have it */
+.nameplate .name{ 
+  color: rgba(255,255,255,0.96); 
+   line-height: 1.1;
+}
+.player-position{ 
+  color: rgba(120, 255, 160, 0.95); 
+    margin-top: 2px;
+  line-height: 1.05;
+}
+
+/* -----------------------------------------
+   3) STATS: individual white pills behind each stat-item
+   plus green gradient pills for CAPS + SUBS
+----------------------------------------- */
+.stats-columns{
+  background: none !important;
+  border: none !important;
+  padding: 6px 10px; /* a tiny bit of structure so pills don’t collide */
+  margin-top: 2px !important; 
+}
+
+.stat-item{
+  padding: 6px 10px 5px !important; 
+  border-radius: 16px;
+  box-shadow: var(--pill-shadow-soft);
+  border: 1px solid rgba(255,255,255,0.45);
+  background: linear-gradient(180deg, var(--pill-white), var(--pill-white-2));
+}
+
+/* Make stat text sit nicely */
+.stat-item .value{ 
+  color: rgba(10, 8, 22, 0.98); 
+  line-height: 0.9;
+}
+.stat-item .label{ 
+  color: rgba(10, 8, 22, 0.72); 
+  line-height: 1;
+  margin-top: 1px !important;
+  font-size: 0.6rem !important;
+}
+
+/* Green pills: left column 4th = CAPS, right column 4th = SUBS
+   (because your JS renders them in fixed order) */
+.stat-col:first-child .stat-item:nth-child(4),
+.stat-col:last-child  .stat-item:nth-child(4){
+  background: linear-gradient(90deg, var(--pill-green-b), var(--pill-green-a));
+  border: 1px solid rgba(255,255,255,0.22);
+}
+
+/* -----------------------------------------
+   4) FORM: purple fade long pill behind the form strip
+----------------------------------------- */
+.form-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 12px; /* space inside the long pill */
+  border-radius: 999px;
+  z-index: 2;
+}
+
+.form-row::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--pill-purple-a), var(--pill-purple-b));
+  box-shadow: var(--pill-shadow);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
+/* Keep form badges readable; allow hover tooltips etc */
+.form-strip,
+.form-badge{ pointer-events: auto; } /* overrides overlay pointer-events behaviour if needed */
+
+.stat-col:first-child .stat-item:nth-child(4),
+.stat-col:last-child  .stat-item:nth-child(4){
+  padding: 7px 10px 6px !important;
 }

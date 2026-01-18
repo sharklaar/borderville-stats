@@ -53,6 +53,13 @@ function renderFormStrip(formCodes = []) {
   `;
 }
 
+function playerSearchHaystack(p) {
+  const name = (p?.name ?? "").toLowerCase();
+  const nick = (p?.meta?.nicknames ?? p?.nicknames ?? "").toLowerCase();
+  // We don't need to split — includes() works fine on comma-separated text.
+  return `${name} ${nick}`.trim();
+}
+
 // -----------------------------
 // Tooltip (attach to CARD, not rating)
 // -----------------------------
@@ -201,10 +208,17 @@ function applyFiltersAndRender(cardsEl, statusEl) {
   const q = UI_STATE.nameQuery;
   const mode = UI_STATE.statFilter;
 
-  // 1) Name filter
-  let list = !q
-    ? ALL_PLAYERS.slice()
-    : ALL_PLAYERS.filter((p) => (p?.name ?? "").toLowerCase().includes(q));
+ // 1) Name + Nicknames filter (nicknames are not displayed)
+const getSearchHaystack = (p) => {
+  const name = (p?.name ?? "").toLowerCase();
+  // Prefer meta.nicknames if you store it there; fall back to p.nicknames
+  const nick = (p?.meta?.nicknames ?? p?.nicknames ?? "").toLowerCase();
+  return `${name} ${nick}`.trim();
+};
+
+let list = !q
+  ? ALL_PLAYERS.slice()
+  : ALL_PLAYERS.filter((p) => getSearchHaystack(p).includes(q));
 
   // Helpers for OVR sorting (precise first, then displayed)
   const getOvrCombined = (p) => (p?.stats?.ovrCombined ?? p?.stats?.ovr ?? -Infinity);

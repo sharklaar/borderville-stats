@@ -24,6 +24,7 @@ const FIELDS = {
   DOB: "Date of Birth",
   PROFILE_PHOTO: "Profile Photo",
   EXCLUDED: "Excluded", // NEW
+  NICKNAMES: "Nicknames",
 
   // Matches
   MATCH_NAME: "Name",
@@ -42,6 +43,7 @@ const FIELDS = {
   PINK_GOALS: "Pink Goals",
   BLUE_GOALS: "Blue Goals",
   MOTM: "Player of the Match",
+  HONOURABLE_MENTIONS:" Honourable Mentions",
 
   // match flag
   COUNTS_FOR_STATS: "Counts for stats",
@@ -251,6 +253,7 @@ async function main() {
       position: f[FIELDS.POSITION] || null,
       dob: f[FIELDS.DOB] || null,
       profilePhoto: f[FIELDS.PROFILE_PHOTO] || null,
+      nicknames: f[FIELDS.NICKNAMES] || "",
       excluded: Boolean(f[FIELDS.EXCLUDED]), // NEW (missing/falsey => false)
     };
   }
@@ -268,6 +271,7 @@ async function main() {
       dob: p.dob,
       profilePhoto: p.profilePhoto,
       excluded: p.excluded, // NEW
+      nicknames: p.nicknames,
     };
   });
 

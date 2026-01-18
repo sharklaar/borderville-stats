@@ -1140,8 +1140,8 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
 /* Club badge on player card */
 .club-badge{
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 7px;
 
   height: 100px;
   width: auto;
@@ -1195,8 +1195,8 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
 
 .club-badge {
   position: absolute;
-  top: -6px;
-  right: 14px;
+  top: 5px;
+  right: 7px;
   height: 92px;      /* tweak as needed */
   width: auto;
   filter: drop-shadow(0 10px 18px rgba(0,0,0,0.25));

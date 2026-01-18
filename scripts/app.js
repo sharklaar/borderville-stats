@@ -344,6 +344,13 @@ function renderPlayers(players, cardsEl) {
 
     el.innerHTML = `
       <div class="overlay">
+          <img
+      class="club-badge"
+      src="./images/bv-logo.png"
+      alt="Borderville FC"
+      loading="lazy"
+      decoding="async"
+    />
         <div class="card-top">
 <div class="rating-block">
   <div class="mv-label">Market Value</div>

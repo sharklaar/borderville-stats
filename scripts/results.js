@@ -179,7 +179,7 @@ function renderMatchCard(match, derived, playersById) {
           <div>${escapeHTML(dateStr)}${match.name ? ` · <span class="muted">${escapeHTML(match.name)}</span>` : ""}</div>
           <div style="display:flex; gap:8px; align-items:center;">
             ${isNonStat ? `<span class="badge">Non-stat match</span>` : ``}
-            <span class="badge">Pink home</span>
+            <span class="badge">Borderville</span>
           </div>
         </div>
 

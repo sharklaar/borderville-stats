@@ -43,7 +43,7 @@ const FIELDS = {
   PINK_GOALS: "Pink Goals",
   BLUE_GOALS: "Blue Goals",
   MOTM: "Player of the Match",
-  HONOURABLE_MENTIONS:" Honourable Mentions",
+  HONOURABLE_MENTIONS: "Honourable Mentions",
 
   // match flag
   COUNTS_FOR_STATS: "Counts for stats",
@@ -101,6 +101,7 @@ function ensurePlayer(outPlayers, playerId, name = "Unknown") {
         cleanSheets: 0,
         gkCleanSheets: 0, // only counts when GK explicitly set and in clean sheet list
         otfs: 0,
+        honourableMentions: 0,
 
         // NEW: season defensive-ish stat
         conceded2026: 0,
@@ -300,6 +301,7 @@ async function main() {
 
       otfs: asArray(f[FIELDS.OTFS]),
       motm: asArray(f[FIELDS.MOTM]),
+      honourableMentions: asArray(f[FIELDS.HONOURABLE_MENTIONS]),  
 
       captainPink: asSingleId(f[FIELDS.CAPTAIN_PINK]),
       captainBlue: asSingleId(f[FIELDS.CAPTAIN_BLUE]),
@@ -307,7 +309,7 @@ async function main() {
       notes: f[FIELDS.NOTES] || null,
       pinkGoals: asNumber(f[FIELDS.PINK_GOALS]),
       blueGoals: asNumber(f[FIELDS.BLUE_GOALS]),
-
+ 
       // default true if unset
       countsForStats: f[FIELDS.COUNTS_FOR_STATS] ?? true,
     };
@@ -397,6 +399,10 @@ async function main() {
     if (m.captainBlue && m.motm.includes(m.captainBlue)) {
       ensurePlayer(outPlayers, m.captainBlue).stats.motmCaptain2026 += 1;
     }
+
+    m.honourableMentions.forEach((pid) => {
+      ensurePlayer(outPlayers, pid).stats.honourableMentions++;
+    });
 
     // Clean sheets (stat matches only)
     m.cleanPink.forEach((pid) =>
@@ -681,6 +687,7 @@ async function main() {
       // Outcomes / awards
       winningTeam: m.winningTeam, // "PINK" | "BLUE" | "DRAW" | null
       motmIds: m.motm,            // can be multiple
+      honourableMentionIds: m.honourableMentions,
       captainPinkId: m.captainPink,
       captainBlueId: m.captainBlue,
 

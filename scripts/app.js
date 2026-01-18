@@ -351,6 +351,12 @@ function renderPlayers(players, cardsEl) {
       loading="lazy"
       decoding="async"
     />
+    <div class="card-header">
+  <div class="card-header__title">Borderville FC</div>
+  <div class="card-header__subtitle">2026 Season</div>
+
+</div>
+
         <div class="card-top">
 <div class="rating-block">
   <div class="mv-label">Market Value</div>

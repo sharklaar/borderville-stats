@@ -106,6 +106,8 @@ function renderMatchCard(match, derived, playersById) {
   const blueScore = Number(match.blueGoals ?? 0);
 
   const motmNames = namesFromIds(match.motmIds || [], playersById);
+  const hmNames = namesFromIds(match.honourableMentionIds || [], playersById);
+
   const captainPink = match.captainPinkId ? (playersById[match.captainPinkId]?.name || "Unknown") : null;
   const captainBlue = match.captainBlueId ? (playersById[match.captainBlueId]?.name || "Unknown") : null;
 
@@ -167,6 +169,8 @@ function renderMatchCard(match, derived, playersById) {
 
   const motmLine = motmNames.length ? motmNames.join(", ") : "—";
   const otfLine = otfNames.length ? otfNames.join(", ") : "—";
+  const hmLine = hmNames.length ? hmNames.join(", ") : "—";
+
 
   return `
     <article class="match-card">
@@ -210,6 +214,11 @@ function renderMatchCard(match, derived, playersById) {
           <div class="kv">
             <div class="k">MOTM</div>
             <div class="v">⭐ ${escapeHTML(motmLine)}</div>
+          </div>
+
+        <div class="kv" style="margin-top:10px;">
+            <div class="k">Honourable Mentions</div>
+            <div class="v">👏 ${escapeHTML(hmLine)}</div>
           </div>
 
           <div class="kv" style="margin-top:10px;">

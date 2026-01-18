@@ -223,7 +223,7 @@ function renderMatchCard(match, derived, playersById) {
 
           <div class="kv" style="margin-top:10px;">
             <div class="k">Captains</div>
-            <div class="v">🧢 Pink: ${escapeHTML(captainPink || "—")}<br/>🧢 Blue: ${escapeHTML(captainBlue || "—")}</div>
+            <div class="v">👚 Pink: ${escapeHTML(captainPink || "—")}<br/>👕 Blue: ${escapeHTML(captainBlue || "—")}</div>
           </div>
 
           <div class="kv" style="margin-top:10px;">

@@ -28,7 +28,7 @@ function parseFormCode(code) {
   return { result, captain, motm, label };
 }
 
-function renderFormStrip(formCodes = []) {
+function renderFormStrip(formCodes = [], team) {
   const codes = formCodes.slice(0, 10);
   while (codes.length < 10) codes.push("X");
 
@@ -40,6 +40,7 @@ function renderFormStrip(formCodes = []) {
           "form-badge",
           `is-${f.result}`,
           f.captain ? "is-captain" : "",
+          f.captain && team ? `is-${team.toLowerCase()}` : "",
           f.motm ? "is-motm" : ""
         ].filter(Boolean).join(" ");
 
@@ -316,7 +317,7 @@ function renderPlayers(players, cardsEl) {
     const name = p?.name ?? "Unknown";
     const s = p?.stats ?? {};
     const meta = p?.meta ?? {};
-
+    const team = p?.team;
     const goals = s.goals ?? 0;
     const assists = s.assists ?? 0;
     const ogs = s.ogs ?? 0;
@@ -411,7 +412,7 @@ function renderPlayers(players, cardsEl) {
         </div>
 
         <div class="form-row">
-          ${renderFormStrip(s.form)}
+          ${renderFormStrip(s.form, team)}
         </div>
       </div>
     `;

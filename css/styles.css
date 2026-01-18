@@ -626,6 +626,17 @@ body  { font-family: inherit; }
   text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
 
+/* Captain band colours by team */
+.form-badge.is-captain.is-pink .captain-band {
+  background: linear-gradient(90deg, #ff6fae, #ff3b86);
+  color: #2b0016;
+}
+
+.form-badge.is-captain.is-blue .captain-band {
+  background: linear-gradient(90deg, #4aa3ff, #1e6fff);
+  color: #001a33;
+}
+
 /* If both captain + MOM, keep band readable */
 .form-badge.is-motm.is-captain .captain-band {
   top: 50%;

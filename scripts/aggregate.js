@@ -1,10 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { fetchAllRecords, getConfig } = require("./fetchAirtable");
-const {
-  computeCombined,
-  normaliseTo100,
-} = require("./calculateOverallScore");
+const { computeCombined, normaliseTo100 } = require("./calculateOverallScore");
 
 const TABLES = {
   PLAYERS: "tbl58HHS5mKXWlAby",
@@ -82,7 +79,6 @@ function inYear(dateObj, year) {
 
 function toISODateOnly(dateObj) {
   if (!dateObj) return null;
-  // Keep it stable + human: YYYY-MM-DD (no timezone weirdness in UI)
   return dateObj.toISOString().slice(0, 10);
 }
 
@@ -101,12 +97,15 @@ function ensurePlayer(outPlayers, playerId, name = "Unknown") {
         cleanSheets: 0,
         gkCleanSheets: 0, // only counts when GK explicitly set and in clean sheet list
         otfs: 0,
+
+        // HM totals (stat matches only)
         honourableMentions: 0,
 
-        // NEW: season defensive-ish stat
+        // Season defensive-ish stats (stat matches only)
         conceded2026: 0,
+        concededExactlyOneMatches2026: 0, // NEW: match-count where DEF/GK team conceded exactly 1
 
-        // NEW: captain outcome stats (stat matches only)
+        // captain outcome stats (stat matches only)
         winningCaptain2026: 0,
         motmCaptain2026: 0,
 
@@ -116,8 +115,8 @@ function ensurePlayer(outPlayers, playerId, name = "Unknown") {
         caps: 0,
         caps2026: 0,
 
-        motm: 0,      // baseline legacy MOTM injected when loading Players
-        motm2026: 0,  // stat matches in-year
+        motm: 0, // baseline legacy MOTM injected when loading Players
+        motm2026: 0, // stat matches in-year
 
         // captain totals (kept for completeness, not used directly by OVR)
         captain: 0,
@@ -127,10 +126,10 @@ function ensurePlayer(outPlayers, playerId, name = "Unknown") {
         playedLast10: 0,
 
         // OVR outputs
-        ovr: 0,             // 0..100 integer
-        ovrRawSeason: 0,    // float (debug)
-        ovrPenalty: 0,      // float (debug)
-        ovrCombined: 0,     // float (debug / tie-break)
+        ovr: 0, // 0..100 integer
+        ovrRawSeason: 0, // float (debug)
+        ovrPenalty: 0, // float (debug)
+        ovrCombined: 0, // float (debug / tie-break)
 
         form: [], // last 10 match codes, most recent first
       },
@@ -202,7 +201,6 @@ function formCodeForPlayerInMatch(playerId, m) {
   const isWin = !isDraw && m.winningTeam === team;
   const isLoss = !isDraw && m.winningTeam !== team;
 
-  // Enforce: cannot be MOM if on losing team
   if (isMotm && isLoss) {
     throw new Error(
       `Invalid MOTM: player ${playerId} is MOTM in a loss (match ${m.id})`
@@ -218,12 +216,11 @@ function formCodeForPlayerInMatch(playerId, m) {
 
   if (isWin) {
     if (isMotm && isCaptain) return "MCW";
-    if (isMotm) return "MW"; // MOM not captain -> MW (as requested)
+    if (isMotm) return "MW";
     if (isCaptain) return "CW";
     return "W";
   }
 
-  // Loss
   if (isCaptain) return "CL";
   return "L";
 }
@@ -255,7 +252,7 @@ async function main() {
       dob: f[FIELDS.DOB] || null,
       profilePhoto: f[FIELDS.PROFILE_PHOTO] || null,
       nicknames: f[FIELDS.NICKNAMES] || "",
-      excluded: Boolean(f[FIELDS.EXCLUDED]), // NEW (missing/falsey => false)
+      excluded: Boolean(f[FIELDS.EXCLUDED]),
     };
   }
 
@@ -263,7 +260,6 @@ async function main() {
   Object.values(playersById).forEach((p) => {
     const o = ensurePlayer(outPlayers, p.id, p.name);
 
-    // Baseline MOTM totals from legacy seasons
     o.stats.motm = p.startingMotm || 0;
     o.stats.motm2026 = 0;
 
@@ -271,7 +267,7 @@ async function main() {
       position: p.position,
       dob: p.dob,
       profilePhoto: p.profilePhoto,
-      excluded: p.excluded, // NEW
+      excluded: p.excluded,
       nicknames: p.nicknames,
     };
   });
@@ -301,7 +297,7 @@ async function main() {
 
       otfs: asArray(f[FIELDS.OTFS]),
       motm: asArray(f[FIELDS.MOTM]),
-      honourableMentions: asArray(f[FIELDS.HONOURABLE_MENTIONS]),  
+      honourableMentions: asArray(f[FIELDS.HONOURABLE_MENTIONS]),
 
       captainPink: asSingleId(f[FIELDS.CAPTAIN_PINK]),
       captainBlue: asSingleId(f[FIELDS.CAPTAIN_BLUE]),
@@ -309,8 +305,7 @@ async function main() {
       notes: f[FIELDS.NOTES] || null,
       pinkGoals: asNumber(f[FIELDS.PINK_GOALS]),
       blueGoals: asNumber(f[FIELDS.BLUE_GOALS]),
- 
-      // default true if unset
+
       countsForStats: f[FIELDS.COUNTS_FOR_STATS] ?? true,
     };
   });
@@ -322,10 +317,9 @@ async function main() {
   // ----------------------------
   const YEAR = 2026;
 
-  // Defensive partnerships & units (only for stat matches)
-  const defensivePartnershipCounts = {}; // key "a|b" -> count (clean sheets only)
-  const defensivePartnershipsGA = {}; // key "a|b" -> { matches, goalsAgainst }
-  const defensiveUnitsGA = {}; // key "id1|id2|id3" -> { matches, goalsAgainst }
+  const defensivePartnershipCounts = {};
+  const defensivePartnershipsGA = {};
+  const defensiveUnitsGA = {};
 
   let matchesInYear = 0;
   let matchesCountForStatsInYear = 0;
@@ -339,14 +333,9 @@ async function main() {
     const blue = new Set(m.blue);
 
     // ALWAYS: appearances (2026) — even non-stat matches affect caps/subs
-    pink.forEach((pid) => {
-      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.caps2026++;
-    });
-    blue.forEach((pid) => {
-      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.caps2026++;
-    });
+    pink.forEach((pid) => ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.caps2026++);
+    blue.forEach((pid) => ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.caps2026++);
 
-    // If this match does NOT count for stats, stop here.
     if (!m.countsForStats) {
       matchesNonStatInYear++;
       continue;
@@ -376,14 +365,8 @@ async function main() {
     }
 
     // Conceded goals per player (season 2026, stat matches only)
-    // - Pink conceded Blue Goals
-    // - Blue conceded Pink Goals
-    pink.forEach((pid) => {
-      ensurePlayer(outPlayers, pid).stats.conceded2026 += m.blueGoals;
-    });
-    blue.forEach((pid) => {
-      ensurePlayer(outPlayers, pid).stats.conceded2026 += m.pinkGoals;
-    });
+    pink.forEach((pid) => { ensurePlayer(outPlayers, pid).stats.conceded2026 += m.blueGoals; });
+    blue.forEach((pid) => { ensurePlayer(outPlayers, pid).stats.conceded2026 += m.pinkGoals; });
 
     // Winning captain (stat matches only)
     if (m.winningTeam === "PINK" && m.captainPink) {
@@ -392,7 +375,7 @@ async function main() {
       ensurePlayer(outPlayers, m.captainBlue).stats.winningCaptain2026 += 1;
     }
 
-    // MOTM + Captain (stat matches only; can be multiple MOTM)
+    // MOTM + Captain (stat matches only)
     if (m.captainPink && m.motm.includes(m.captainPink)) {
       ensurePlayer(outPlayers, m.captainPink).stats.motmCaptain2026 += 1;
     }
@@ -400,17 +383,14 @@ async function main() {
       ensurePlayer(outPlayers, m.captainBlue).stats.motmCaptain2026 += 1;
     }
 
+    // Honourable Mentions (stat matches only)
     m.honourableMentions.forEach((pid) => {
       ensurePlayer(outPlayers, pid).stats.honourableMentions++;
     });
 
     // Clean sheets (stat matches only)
-    m.cleanPink.forEach((pid) =>
-      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.cleanSheets++
-    );
-    m.cleanBlue.forEach((pid) =>
-      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.cleanSheets++
-    );
+    m.cleanPink.forEach((pid) => ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.cleanSheets++);
+    m.cleanBlue.forEach((pid) => ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.cleanSheets++);
 
     // GK clean sheets (stat matches only)
     if (m.pinkGK && m.cleanPink.includes(m.pinkGK)) {
@@ -424,8 +404,30 @@ async function main() {
     const blueGA = m.pinkGoals; // goals conceded by Blue
     const pinkGA = m.blueGoals; // goals conceded by Pink
 
-    // CS partnerships:
-    // "defensive partnership" = EXACTLY TWO defenders on that team credited with the clean sheet.
+    // ✅ NEW: "conceded exactly 1" uplift — DEF/GK ONLY
+    // Blue DEF+GK
+    if (blueGA === 1) {
+      const ids = new Set([
+        ...asArray(m.blueDefs),
+        m.blueGK
+      ].filter(Boolean));
+      ids.forEach((pid) => {
+        ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
+      });
+    }
+
+    // Pink DEF+GK
+    if (pinkGA === 1) {
+      const ids = new Set([
+        ...asArray(m.pinkDefs),
+        m.pinkGK
+      ].filter(Boolean));
+      ids.forEach((pid) => {
+        ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
+      });
+    }
+
+    // CS partnerships (exactly two defenders on that team credited with the clean sheet)
     const csBlueDefs = m.blueDefs.filter((id) => m.cleanBlue.includes(id));
     const csPinkDefs = m.pinkDefs.filter((id) => m.cleanPink.includes(id));
 
@@ -460,7 +462,7 @@ async function main() {
       defensivePartnershipsGA[key] = cur;
     });
 
-    // Defensive unit GA: DEF + optional GK (if GK blank, unit is DEF-only)
+    // Defensive unit GA: DEF + optional GK
     const blueUnit = m.blueGK ? [...m.blueDefs, m.blueGK] : [...m.blueDefs];
     const pinkUnit = m.pinkGK ? [...m.pinkDefs, m.pinkGK] : [...m.pinkDefs];
 
@@ -478,9 +480,7 @@ async function main() {
     addUnit(pinkUnit, pinkGA);
 
     // OTFs (stat matches only)
-    m.otfs.forEach((pid) =>
-      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.otfs++
-    );
+    m.otfs.forEach((pid) => ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.otfs++);
 
     // MOTM (stat matches only; can be multiple)
     m.motm.forEach((pid) => {
@@ -490,8 +490,7 @@ async function main() {
   }
 
   // ----------------------------
-  // Goals → player totals + event list + partnerships
-  // (stat matches only)
+  // Goals → player totals + event list + partnerships (stat matches only)
   // ----------------------------
   const goalEvents = [];
   const partnershipMap = {};
@@ -507,17 +506,9 @@ async function main() {
 
     const m = matchById[matchId];
     if (!m || !m.date || !inYear(m.date, YEAR)) continue;
-
-    // IMPORTANT: exclude goals from non-stat matches
     if (!m.countsForStats) continue;
 
-    goalEvents.push({
-      id: r.id,
-      matchId,
-      scorerId,
-      assistId,
-      isOwnGoal,
-    });
+    goalEvents.push({ id: r.id, matchId, scorerId, assistId, isOwnGoal });
 
     const scorer = ensurePlayer(outPlayers, scorerId, playersById[scorerId]?.name);
     if (isOwnGoal) scorer.stats.ogs++;
@@ -527,9 +518,7 @@ async function main() {
       ensurePlayer(outPlayers, assistId, playersById[assistId]?.name).stats.assists++;
 
       const key = pairKey(scorerId, assistId);
-      if (!partnershipMap[key]) {
-        partnershipMap[key] = { count: 0, countExclOG: 0 };
-      }
+      if (!partnershipMap[key]) partnershipMap[key] = { count: 0, countExclOG: 0 };
       partnershipMap[key].count++;
       if (!isOwnGoal) partnershipMap[key].countExclOG++;
     }
@@ -548,15 +537,12 @@ async function main() {
 
     o.stats.caps = startingCaps + o.stats.caps2026;
 
-    // Subs derived as: starting_subs + subs_added - caps_2026
-    // (Your rule allows negatives; keep as-is.)
+    // Subs derived as: starting_subs + subs_added - caps_2026 (can go negative)
     o.stats.subs = startingSubs + subsAdded - o.stats.caps2026;
   }
 
   // ----------------------------
   // FORM arrays (last 10 stat matches in-year; most recent first)
-  // If fewer than 10 matches exist, pad the OLDEST slots with X (append).
-  // Also derive playedLast10 from these codes (count non-X).
   // ----------------------------
   const formMatches = matches
     .filter((m) => m.date && inYear(m.date, YEAR) && m.countsForStats)
@@ -567,15 +553,11 @@ async function main() {
     const codes = formMatches.map((m) => formCodeForPlayerInMatch(pid, m));
     while (codes.length < 10) codes.push("X");
     p.stats.form = codes;
-
-    // playedLast10 = number of non-X codes
     p.stats.playedLast10 = codes.reduce((acc, c) => acc + (c === "X" ? 0 : 1), 0);
   }
 
   // ----------------------------
   // OVR (overall score)
-  // Season-based stats + recent inactivity penalty (last 10 only)
-  // then normalise to 0..100 across all players.
   // ----------------------------
   const matchesSeason = matchesCountForStatsInYear;
   const combinedByPlayerId = {};
@@ -584,7 +566,6 @@ async function main() {
     const s = p.stats;
 
     const inputs = {
-      // Season (2026) totals:
       playedSeason: s.caps2026,
       wins: s.wins,
       draws: s.draws,
@@ -592,20 +573,18 @@ async function main() {
       assists: s.assists,
       cleanSheets: s.cleanSheets,
       conceded: s.conceded2026,
+      concededExactlyOneMatches: s.concededExactlyOneMatches2026,
       ogs: s.ogs,
       otfs: s.otfs,
       motm: s.motm2026,
       motmCaptain: s.motmCaptain2026,
       winningCaptain: s.winningCaptain2026,
+      honourableMentions: s.honourableMentions,
 
-      // Recent (last 10) attendance:
       playedLast10: s.playedLast10,
-
-      // Context:
       matchesSeason,
 
-      // Policy:
-      attendanceImmunity: 0.20, // 20% (your latest decision)
+      attendanceImmunity: 0.20,
       penaltyMax: 12,
     };
 
@@ -639,13 +618,7 @@ async function main() {
     .map(([key, v]) => {
       const [playerId1, playerId2] = key.split("|");
       const gaPerMatch = v.matches ? v.goalsAgainst / v.matches : null;
-      return {
-        playerId1,
-        playerId2,
-        matches: v.matches,
-        goalsAgainst: v.goalsAgainst,
-        gaPerMatch,
-      };
+      return { playerId1, playerId2, matches: v.matches, goalsAgainst: v.goalsAgainst, gaPerMatch };
     })
     .sort((a, b) => (a.gaPerMatch ?? 999) - (b.gaPerMatch ?? 999));
 
@@ -653,51 +626,28 @@ async function main() {
     .map(([key, v]) => {
       const playerIds = key.split("|");
       const gaPerMatch = v.matches ? v.goalsAgainst / v.matches : null;
-      return {
-        playerIds,
-        matches: v.matches,
-        goalsAgainst: v.goalsAgainst,
-        gaPerMatch,
-      };
+      return { playerIds, matches: v.matches, goalsAgainst: v.goalsAgainst, gaPerMatch };
     })
     .sort((a, b) => (a.gaPerMatch ?? 999) - (b.gaPerMatch ?? 999));
 
-
-  // ----------------------------
-  // Match results output (for Results page)
-  // Include all dated matches (stat + non-stat); FE can filter by countsForStats/year.
-  // Pink is always "home" by definition in the UI.
-  // ----------------------------
   const outMatches = matches
-    .filter((m) => m.date) // only dated matches
-    .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0)) // newest first
+    .filter((m) => m.date)
+    .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0))
     .map((m) => ({
       id: m.id,
       name: m.name,
       date: toISODateOnly(m.date),
-
-      // Teams / participants
       playersPink: m.pink,
       playersBlue: m.blue,
-
-      // Score (no halves, no event times)
       pinkGoals: m.pinkGoals,
       blueGoals: m.blueGoals,
-
-      // Outcomes / awards
-      winningTeam: m.winningTeam, // "PINK" | "BLUE" | "DRAW" | null
-      motmIds: m.motm,            // can be multiple
+      winningTeam: m.winningTeam,
+      motmIds: m.motm,
       honourableMentionIds: m.honourableMentions,
       captainPinkId: m.captainPink,
       captainBlueId: m.captainBlue,
-
-      // Notable events
       otfIds: m.otfs,
-
-      // Free text notes (for goal/save contenders etc.)
       notes: m.notes,
-
-      // Flag
       countsForStats: m.countsForStats,
     }));
 
@@ -712,12 +662,9 @@ async function main() {
     meta: {
       generatedAt: new Date().toISOString(),
       year: YEAR,
-
-      // clearer meta: how many matches actually influenced what
       matchesInYear,
       matchesCountForStatsInYear,
       matchesNonStatInYear,
-
       goalsIncluded: goalEvents.length,
     },
   });

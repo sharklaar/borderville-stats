@@ -17,11 +17,17 @@ function computeSeasonRaw({
   assists,
   cleanSheets,
   conceded,
+
+  // NEW: count of matches where DEF/GK conceded exactly 1
+  // (aggregate.js passes this as `concededExactlyOneMatches`)
+  concededExactlyOneMatches,
+
   ogs,
   otfs,
   motm,
   motmCaptain,     // captain + MOTM in same match
   winningCaptain,  // captain + WIN
+  honourableMentions
 }) {
   if (!playedSeason || playedSeason <= 0) return 0;
 
@@ -37,9 +43,14 @@ function computeSeasonRaw({
     GOAL: 2.0,             // medium-low
     ASSIST: 2.0,           // same as goal (per your change)
     CLEAN_SHEET: 7.0,      // high because rare
+
+    // NEW: defensive uplift when conceding exactly 1 (DEF/GK only, enforced in aggregate.js)
+    CONCEDED_EXACTLY_ONE_MATCH: 2.0,
+
     CONCEDED: -0.35,       // moderate negative
     OG: -2.5,              // stings more than a goal helps
     OTF: -0.15,            // tiny (barely moves needle)
+    HON_MENTION: 0.15      // very tiny
   };
 
   return (
@@ -50,9 +61,11 @@ function computeSeasonRaw({
     (W.GOAL * goals) +
     (W.ASSIST * assists) +
     (W.CLEAN_SHEET * cleanSheets) +
+    (W.CONCEDED_EXACTLY_ONE_MATCH * (concededExactlyOneMatches ?? 0)) +
     (W.CONCEDED * conceded) +
     (W.OG * ogs) +
-    (W.OTF * otfs)
+    (W.OTF * otfs) +
+    (W.HON_MENTION * (honourableMentions ?? 0))
   );
 }
 

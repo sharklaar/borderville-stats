@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎩 Hat Distribution Audit</title>
+  <link rel="icon" href="./images/favicon.png" type="image/png">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 16px; }
+    h1 { margin: 0 0 6px; }
+    .sub { opacity: 0.8; margin: 0 0 16px; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 10px 0 14px; }
+    input { padding: 8px 10px; border: 1px solid #ccc; border-radius: 10px; min-width: 280px; }
+    button { padding: 8px 10px; border: 1px solid #ccc; border-radius: 10px; cursor: pointer; }
+    .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; border: 1px solid #ddd; font-size: 12px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { padding: 10px 8px; border-bottom: 1px solid #eee; text-align: left; white-space: nowrap; }
+    th { cursor: pointer; user-select: none; }
+    th .dir { opacity: 0.6; margin-left: 6px; }
+    .right { text-align: right; }
+    .muted { opacity: 0.65; }
+    .tiny { font-size: 12px; opacity: 0.7; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>🎩 Captain Distribution Audit</h1>
+  <p class="sub">Hello Jon. How's the shin?</p>
+
+  <div class="row">
+    <input id="search" placeholder="Filter by name…" />
+    <button id="refresh">Refresh</button>
+    <span class="pill" id="meta">Loading…</span>
+  </div>
+
+  <div class="tiny">Source: <code>./data/aggregatedFuckingDataMate.json</code> • Stat matches only (<code>countsForFuckingStats=true</code>)</div>
+  <div id="error" style="color:#b00020; display:none; margin-top:10px;"></div>
+
+  <table id="tbl" style="display:none;">
+    <thead>
+      <tr>
+        <th data-key="name">Player<span class="dir" id="dir-name"></span></th>
+        <th data-key="days" class="right">Days since captain<span class="dir" id="dir-days"></span></th>
+        <th data-key="lastDate">Last captained<span class="dir" id="dir-lastDate"></span></th>
+        <th data-key="count" class="right">Times captain (2026 stat)<span class="dir" id="dir-count"></span></th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+<script>
+(() => {
+  const DATA_URL = "./data/aggregated.json";
+
+  const els = {
+    search: document.getElementById("search"),
+    refresh: document.getElementById("refresh"),
+    meta: document.getElementById("meta"),
+    error: document.getElementById("error"),
+    tbl: document.getElementById("tbl"),
+    tbody: document.getElementById("tbody"),
+  };
+
+  let rows = [];
+  let sortKey = "days";
+  let sortDir = "desc";
+
+  function showError(msg) {
+    els.error.style.display = "block";
+    els.error.textContent = msg;
+    els.tbl.style.display = "none";
+    els.meta.textContent = "Error";
+  }
+
+  function parseDateYYYYMMDD(s) {
+    // Treat as local-midnight date; good enough for "days since".
+    if (!s || typeof s !== "string") return null;
+    const d = new Date(s + "T00:00:00");
+    return Number.isNaN(d.getTime()) ? null : d;
+  }
+
+  function daysBetween(a, b) {
+    const ms = b.getTime() - a.getTime();
+    return Math.floor(ms / (1000 * 60 * 60 * 24));
+  }
+
+  async function loadData() {
+    els.meta.textContent = "Loading…";
+    els.error.style.display = "none";
+    const res = await fetch(DATA_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Failed to fetch ${DATA_URL} (${res.status})`);
+    return res.json();
+  }
+
+  function computeRows(data) {
+  const playersObj = data.players || {};
+  const matches = (data.matches || [])
+    .filter(m => m.countsForStats !== false)
+    .slice()
+    .sort((a, b) => {
+      // newest first (YYYY-MM-DD strings sort lexicographically)
+      return b.date.localeCompare(a.date);
+    });
+
+  if (matches.length === 0) {
+    throw new Error("No stat matches found in aggregated.json.");
+  }
+
+  // Track per player: matchesSince + count
+  const captainInfo = new Map(); // id -> { matchesSince, count }
+
+  matches.forEach((m, index) => {
+    const capIds = [m.captainPinkId, m.captainBlueId].filter(Boolean);
+
+    capIds.forEach(pid => {
+      const cur = captainInfo.get(pid) || {
+        matchesSince: null,
+        count: 0,
+      };
+
+      cur.count += 1;
+
+      // First time we see them (working from newest → oldest)
+      if (cur.matchesSince === null) {
+        cur.matchesSince = index;
+      }
+
+      captainInfo.set(pid, cur);
+    });
+  });
+
+  return Object.values(playersObj)
+    .filter(p => !p?.meta?.excluded)
+    .map(p => {
+      const rec = captainInfo.get(p.id);
+
+      return {
+        id: p.id,
+        name: p.name || "(Unnamed)",
+        days: rec ? rec.matchesSince : Number.POSITIVE_INFINITY, // keep key name for sorting
+        lastDate: rec ? `${rec.matchesSince} match(es) ago` : "Never",
+        count: rec?.count || 0,
+      };
+    });
+}
+
+
+  function renderSortIndicators() {
+    document.querySelectorAll("th .dir").forEach(el => el.textContent = "");
+    const el = document.getElementById(`dir-${sortKey}`);
+    if (el) el.textContent = sortDir === "asc" ? "▲" : "▼";
+  }
+
+  function applyFilterAndSort() {
+    const q = (els.search.value || "").trim().toLowerCase();
+    let filtered = rows;
+
+    if (q) filtered = rows.filter(r => r.name.toLowerCase().includes(q));
+
+    filtered.sort((a, b) => {
+      const dir = sortDir === "asc" ? 1 : -1;
+
+      if (sortKey === "name") return a.name.localeCompare(b.name, "en-GB") * dir;
+
+      const av = (a[sortKey] === Number.POSITIVE_INFINITY) ? Number.MAX_SAFE_INTEGER : a[sortKey];
+      const bv = (b[sortKey] === Number.POSITIVE_INFINITY) ? Number.MAX_SAFE_INTEGER : b[sortKey];
+
+      if (av < bv) return -1 * dir;
+      if (av > bv) return 1 * dir;
+
+      return a.name.localeCompare(b.name, "en-GB");
+    });
+
+    render(filtered);
+    renderSortIndicators();
+  }
+
+  function render(list) {
+    els.tbody.innerHTML = "";
+    for (const r of list) {
+      const tr = document.createElement("tr");
+
+      const tdName = document.createElement("td");
+      tdName.textContent = r.name;
+      tr.appendChild(tdName);
+
+      const tdDays = document.createElement("td");
+      tdDays.className = "right";
+      tdDays.textContent = (r.days === Number.POSITIVE_INFINITY) ? "∞" : String(r.days);
+      tr.appendChild(tdDays);
+
+      const tdLast = document.createElement("td");
+      tdLast.textContent = r.lastDate;
+      if (r.lastDate === "Never") tdLast.className = "muted";
+      tr.appendChild(tdLast);
+
+      const tdCount = document.createElement("td");
+      tdCount.className = "right";
+      tdCount.textContent = String(r.count);
+      tr.appendChild(tdCount);
+
+      els.tbody.appendChild(tr);
+    }
+
+    els.tbl.style.display = "";
+    els.meta.textContent = `${list.length} players`;
+  }
+
+  async function init() {
+    try {
+      const data = await loadData();
+      rows = computeRows(data);
+      applyFilterAndSort();
+    } catch (e) {
+      showError(e.message || String(e));
+    }
+  }
+
+  els.search.addEventListener("input", applyFilterAndSort);
+  els.refresh.addEventListener("click", init);
+
+  document.querySelectorAll("th[data-key]").forEach(th => {
+    th.addEventListener("click", () => {
+      const key = th.getAttribute("data-key");
+      if (!key) return;
+
+      if (sortKey === key) {
+        sortDir = (sortDir === "asc") ? "desc" : "asc";
+      } else {
+        sortKey = key;
+        sortDir = (key === "name") ? "asc" : "desc";
+      }
+      applyFilterAndSort();
+    });
+  });
+
+  init();
+})();
+</script>
+</body>
+</html>

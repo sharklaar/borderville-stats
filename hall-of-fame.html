@@ -209,17 +209,12 @@ function awardSortKey(awardName){
   return [p, k];
 }
 
-    function slugifyPhotoFromName(name){
-      // Your rule: ./images/playerPhotos/first_last.png (lowercase underscore)
-      // Strip punctuation, collapse spaces, convert hyphens to underscores too.
-      return name
-        .trim()
-        .toLowerCase()
-        .replace(/['’\.]/g, "")
-        .replace(/-/g, " ")
-        .replace(/\s+/g, "_")
-        .replace(/[^a-z0-9_]/g, "")
-        .replace(/_+/g, "_");
+    function photoPathFromName(name) {
+      if (!name || typeof name !== "string") return null;
+      // Case-sensitive hosting (GitHub Pages) means filename casing must match.
+      // Repo convention: First_Last.png (capital initials), so preserve casing and just underscore spaces.
+      const safe = name.trim().replace(/\s+/g, "_");
+      return `./images/playerPhotos/${encodeURIComponent(safe)}.png`;
     }
 
     function isProbablyPlayerId(val){
@@ -233,11 +228,8 @@ function awardSortKey(awardName){
 
       const img = document.createElement("img");
       img.className = "winner__photo";
-      img.alt = name;
-
-      const slug = slugifyPhotoFromName(name);
-      img.src = `./images/playerPhotos/${slug}.png`;
-      img.onerror = () => {
+      img.alt = name;      img.src = photoPathFromName(name);
+img.onerror = () => {
         img.onerror = null;
         img.src = "./images/playerPhotos/No_Photo.png";
         img.classList.add("winner__photo--fallback");
@@ -358,15 +350,6 @@ function awardSortKey(awardName){
       });
     })();
   })();
-  
-  
-    function photoPathFromName(name) {
-      if (!name || typeof name !== "string") return null;
-      // IMPORTANT: Case-sensitive hosting (GitHub Pages) means filename casing must match.
-      // Your repo uses First_Last.png (capital initials), so we preserve the name’s casing.
-      const safe = name.trim().replace(/\s+/g, "_");
-      return `./images/playerPhotos/${encodeURIComponent(safe)}.png`;
-    }
 </script>
 </body>
 </html>

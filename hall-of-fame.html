@@ -359,6 +359,14 @@ function awardSortKey(awardName){
     })();
   })();
   
-  </script>
+  
+    function photoPathFromName(name) {
+      if (!name || typeof name !== "string") return null;
+      // IMPORTANT: Case-sensitive hosting (GitHub Pages) means filename casing must match.
+      // Your repo uses First_Last.png (capital initials), so we preserve the name’s casing.
+      const safe = name.trim().replace(/\s+/g, "_");
+      return `./images/playerPhotos/${encodeURIComponent(safe)}.png`;
+    }
+</script>
 </body>
 </html>

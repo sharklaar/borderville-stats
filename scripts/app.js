@@ -156,6 +156,9 @@ async function loadAggregated() {
   const cards = document.getElementById("cards");
   const lastUpdated = document.getElementById("lastUpdated");
 
+  // Guard: this script is included on multiple pages
+  if (!status || !cards || !lastUpdated) return;
+
   const nameInput = document.getElementById("playerFilterInput");
   const statSelect = document.getElementById("statFilter");
 
@@ -193,7 +196,6 @@ async function loadAggregated() {
 
     // Tooltip handlers (once)
     initCardTooltip();
-    initTopbarMenu();
 
     applyFiltersAndRender(cards, status);
   } catch (err) {
@@ -504,4 +506,18 @@ function initTopbarMenu() {
 }
 
 
-loadAggregated();
+// -----------------------------
+// Boot (runs on every page)
+// -----------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  // Menu works on every page
+  initTopbarMenu();
+
+  // Only load aggregated data on pages that have the required UI
+  const status = document.getElementById("status");
+  const cards = document.getElementById("cards");
+  const lastUpdated = document.getElementById("lastUpdated");
+  if (status && cards && lastUpdated) {
+    loadAggregated();
+  }
+});

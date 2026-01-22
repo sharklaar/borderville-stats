@@ -265,12 +265,18 @@ let list = !q
     if (mode === "motm") return s.motm ?? 0;
     if (mode === "caps2026") return s.caps2026 ?? 0;
     if (mode === "caps") return s.caps ?? 0;
-    return s[mode] ?? 0; // goals, assists, ogs, cleanSheets, otfs, subs, etc.
+    return s[mode] ?? 0;
   };
 
-  list = list
-    .filter((p) => getStat(p) > 0)
-    .sort((a, b) => getStat(b) - getStat(a));
+  if (mode === "subs") {
+    // Include negatives, sort high → low
+    list = list.sort((a, b) => getStat(b) - getStat(a));
+  } else {
+    // Normal behaviour for goals, assists, etc.
+    list = list
+      .filter((p) => getStat(p) > 0)
+      .sort((a, b) => getStat(b) - getStat(a));
+  }
 }
  else {
     list.sort((a, b) => {

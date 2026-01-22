@@ -162,6 +162,7 @@ body  { font-family: inherit; }
   gap: 18px;
   align-items: start;
   justify-items: center;
+  gap: 22px 18px; /* row gap, column gap */
 }
 
 /* Placeholder card styling (kept, but note .card below is the final winner for most pages) */
@@ -1290,3 +1291,29 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
   }
 }
 
+@media (hover: hover) {
+  .card {
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 48px rgba(0,0,0,0.45);
+  }
+}
+
+.stat-item .value {
+  opacity: 1;
+}
+
+.stat-item .value:has(:not(:empty)):where(:not(:contains("0"))) {
+  opacity: 1;
+}
+
+.stat-item .value {
+  opacity: 0.85;
+}
+
+.stat-item .value:not(:contains("0")) {
+  opacity: 1;
+}

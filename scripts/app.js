@@ -91,22 +91,24 @@ function initCardTooltip() {
     move(evt);
   });
 
-  cardsEl.addEventListener("mouseover", (evt) => {
-    const card = evt.target.closest(".card");
-    if (!card || !cardsEl.contains(card)) return;
+cardsEl.addEventListener("pointermove", (evt) => {
+  // Find the topmost real element under the pointer
+  const under = document.elementFromPoint(evt.clientX, evt.clientY);
+  const target = under && under.closest ? under.closest(".rating-block") : null;
 
-    const text = card.getAttribute("data-tooltip");
-    if (!text) return;
+  if (!target || !cardsEl.contains(target)) {
+    // If we moved off the value area, hide
+    if (!tooltip.classList.contains("hidden")) hide();
+    return;
+  }
 
-    show(text);
-    move(evt);
-  });
+  const text = target.getAttribute("data-tooltip");
+  if (!text) return;
 
-  cardsEl.addEventListener("mouseout", (evt) => {
-    const card = evt.target.closest(".card");
-    // If we’ve left the cards area entirely, hide
-    if (!card) hide();
-  });
+  show(text);
+  move(evt);
+});
+
 
   // Safety: hide when mouse leaves the whole grid
   cardsEl.addEventListener("mouseleave", hide);
@@ -148,6 +150,159 @@ lines.push(`G/A/MOTM: ${goals}/${assists}/${motm2026} (${motmAll})`);
   return lines.join("\n");
 }
 
+function buildValueTooltipText(player, meta) {
+  const s = (player && player.stats) ? player.stats : {};
+
+  // --- helpers ---
+  const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+  const num = (v) => (Number.isFinite(Number(v)) ? Number(v) : 0);
+
+  const fmtSigned = (v, dp = 2) => {
+    const n = Number(v) || 0;
+    const sign = n > 0 ? "+" : "";
+    return `${sign}${n.toFixed(dp)}`;
+  };
+
+  // --- market value mapping (matches your ovrToValueMillions) ---
+  const ovr = clamp(num(s.ovr) || 1, 1, 100);
+  const minValue = 4.5;
+  const maxValue = 15.0;
+  const valueRange = maxValue - minValue;           // 10.5
+  const t = (ovr - 1) / 99;
+  const valueM = minValue + t * valueRange;
+
+  // Because mapping is linear, we can express "base" + "OVR uplift"
+  const ovrUpliftM = valueM - minValue;
+
+  // --- replicate calculateOverallScore.js season scoring (RAW, pre-normalisation) ---
+  const playedSeason = num(s.caps2026); // used as playedSeason in backend
+  const wins = num(s.wins);
+  const draws = num(s.draws);
+  const goals = num(s.goals);
+  const assists = num(s.assists);
+  const cleanSheets = num(s.cleanSheets);
+  const conceded = num(s.conceded2026);
+
+  const concededExactlyOneMatches = num(s.concededExactlyOneMatches2026);
+
+  const ogs = num(s.ogs);
+  const otfs = num(s.otfs);
+  const motm = num(s.motm2026);
+  const motmCaptain = num(s.motmCaptain2026);
+  const winningCaptain = num(s.winningCaptain2026);
+  const honourableMentions = num(s.honourableMentions);
+
+  const W = {
+    PPG: 25,
+    MOTM: 8,
+    MOTM_CAP_BONUS: 3,
+    WINNING_CAP: 4.0,
+    GOAL: 2.0,
+    ASSIST: 2.0,
+    CLEAN_SHEET: 7.0,
+    CONCEDED_EXACTLY_ONE_MATCH: 2.0,
+    CONCEDED: -0.35,
+    OG: -2.5,
+    OTF: -0.15,
+    HON_MENTION: 0.15
+  };
+
+  const ppg = (playedSeason > 0) ? ((wins + 0.5 * draws) / playedSeason) : 0;
+
+  const contrib = {
+    ppg: W.PPG * ppg,
+    motm: W.MOTM * motm,
+    motmCap: W.MOTM_CAP_BONUS * motmCaptain,
+    winCap: W.WINNING_CAP * winningCaptain,
+    goals: W.GOAL * goals,
+    assists: W.ASSIST * assists,
+    cleanSheets: W.CLEAN_SHEET * cleanSheets,
+    defUplift: W.CONCEDED_EXACTLY_ONE_MATCH * concededExactlyOneMatches,
+    conceded: W.CONCEDED * conceded,
+    ogs: W.OG * ogs,
+    otfs: W.OTF * otfs,
+    hon: W.HON_MENTION * honourableMentions
+  };
+
+  const rawSeason =
+    contrib.ppg +
+    contrib.motm +
+    contrib.motmCap +
+    contrib.winCap +
+    contrib.goals +
+    contrib.assists +
+    contrib.cleanSheets +
+    contrib.defUplift +
+    contrib.conceded +
+    contrib.ogs +
+    contrib.otfs +
+    contrib.hon;
+
+  // --- replicate recent inactivity penalty (matches calculateOverallScore.js) ---
+  const playedLast10 = num(s.playedLast10);
+  const matchesSeason =
+    num(meta && (meta.matchesCountForStatsInYear ?? meta.matchesInYear ?? meta.matchesInYear ?? 0));
+
+  const computeRecentPenalty = ({
+    playedLast10,
+    playedSeason,
+    matchesSeason,
+    attendanceImmunity = 0.20,
+    penaltyMax = 12,
+  }) => {
+    if (!matchesSeason || matchesSeason <= 0) return 0;
+
+    const attendanceRate = playedSeason / matchesSeason;
+    if (attendanceRate >= attendanceImmunity) return 0;
+
+    if (playedLast10 > 2) return 0;
+
+    const inactivity = clamp((2 - playedLast10) / 2, 0, 1);
+    return inactivity * penaltyMax;
+  };
+
+  const penalty = computeRecentPenalty({
+    playedLast10,
+    playedSeason,
+    matchesSeason,
+    attendanceImmunity: 0.20,
+    penaltyMax: 12,
+  });
+
+  const combined = rawSeason - penalty;
+
+  // --- build tooltip text ---
+  const lines = [];
+
+  lines.push(`Market Value: £${valueM.toFixed(1)}m`);
+  lines.push(`• Base: £${minValue.toFixed(1)}m`);
+  lines.push(`• OVR (${ovr}) uplift: +£${ovrUpliftM.toFixed(1)}m`);
+  lines.push("");
+
+  lines.push("Raw score (pre-normalisation):");
+  lines.push(`• PPG: ${fmtSigned(contrib.ppg)}  (ppg ${ppg.toFixed(2)})`);
+  lines.push(`• Goals: ${fmtSigned(contrib.goals)}  (${goals})`);
+  lines.push(`• Assists: ${fmtSigned(contrib.assists)}  (${assists})`);
+  lines.push(`• Clean sheets: ${fmtSigned(contrib.cleanSheets)}  (${cleanSheets})`);
+  lines.push(`• MOTM: ${fmtSigned(contrib.motm)}  (${motm})`);
+  lines.push(`• Captain (win): ${fmtSigned(contrib.winCap)}  (${winningCaptain})`);
+  lines.push(`• Captain+MOTM bonus: ${fmtSigned(contrib.motmCap)}  (${motmCaptain})`);
+  lines.push(`• Honourable mentions: ${fmtSigned(contrib.hon)}  (${honourableMentions})`);
+  lines.push(`• Defensive uplift (concede 1): ${fmtSigned(contrib.defUplift)}  (${concededExactlyOneMatches})`);
+  lines.push(`• Conceded: ${fmtSigned(contrib.conceded)}  (${conceded})`);
+  lines.push(`• OGs: ${fmtSigned(contrib.ogs)}  (${ogs})`);
+  lines.push(`• OTFs: ${fmtSigned(contrib.otfs)}  (${otfs})`);
+  lines.push(`= Raw season: ${rawSeason.toFixed(2)}`);
+
+  if (penalty > 0) {
+    lines.push(`• Inactivity penalty: -${penalty.toFixed(2)}  (playedLast10 ${playedLast10}, season ${playedSeason}/${matchesSeason})`);
+    lines.push(`= Combined: ${combined.toFixed(2)}`);
+  }
+
+  return lines.join("\n");
+}
+
+
 // -----------------------------
 // Data load
 // -----------------------------
@@ -182,7 +337,7 @@ async function loadAggregated() {
     if (nameInput) {
       nameInput.addEventListener("input", () => {
         UI_STATE.nameQuery = (nameInput.value ?? "").trim().toLowerCase();
-        applyFiltersAndRender(cards, status);
+        applyFiltersAndRender(cards, status, payload.meta);
       });
     }
 
@@ -190,14 +345,14 @@ async function loadAggregated() {
     if (statSelect) {
       statSelect.addEventListener("change", () => {
         UI_STATE.statFilter = statSelect.value || "all";
-        applyFiltersAndRender(cards, status);
+        applyFiltersAndRender(cards, status, payload.meta);
       });
     }
 
     // Tooltip handlers (once)
     initCardTooltip();
 
-    applyFiltersAndRender(cards, status);
+    applyFiltersAndRender(cards, status, payload.meta);
   } catch (err) {
     console.error(err);
     status.textContent = "Failed to load aggregated stats (check console).";
@@ -207,7 +362,7 @@ async function loadAggregated() {
 // -----------------------------
 // Sorting / filtering
 // -----------------------------
-function applyFiltersAndRender(cardsEl, statusEl) {
+function applyFiltersAndRender(cardsEl, statusEl, meta) {
   const q = UI_STATE.nameQuery;
   const mode = UI_STATE.statFilter;
 
@@ -304,7 +459,7 @@ let list = !q
 
   // Render
   cardsEl.innerHTML = "";
-  renderPlayers(list, cardsEl);
+  renderPlayers(list, cardsEl, meta);
 
   // Status text
   const base = `Showing ${list.length} of ${ALL_PLAYERS.length} players`;
@@ -318,13 +473,13 @@ let list = !q
 // -----------------------------
 // Card render
 // -----------------------------
-function renderPlayers(players, cardsEl) {
+function renderPlayers(players, cardsEl, datasetMeta) {
   const fallbackSrc = "./images/playerPhotos/No_Photo.png";
 
   for (const p of players) {
     const name = p?.name ?? "Unknown";
     const s = p?.stats ?? {};
-    const meta = p?.meta ?? {};
+    const playerMeta = p?.meta ?? {};
     const team = p?.team;
     const goals = s.goals ?? 0;
     const assists = s.assists ?? 0;
@@ -341,14 +496,11 @@ function renderPlayers(players, cardsEl) {
     const ovr = s.ovr ?? 50;
     const value = ovrToValueMillions(ovr);
 
-    const position = meta.position ?? "—";
+    const position = playerMeta.position ?? "—";
     const photoSrc = photoPathFromName(name) || fallbackSrc;
 
     const el = document.createElement("div");
     el.className = "card";
-
-    // Tooltip data lives on the card
-    el.setAttribute("data-tooltip", buildTooltipText(p));
 
     el.innerHTML = `
       <div class="overlay">
@@ -366,7 +518,7 @@ function renderPlayers(players, cardsEl) {
 </div>
 
         <div class="card-top">
-<div class="rating-block">
+<div class="rating-block" data-tooltip="${escapeHtml(buildValueTooltipText(p, datasetMeta))}">
   <div class="mv-label">Market Value</div>
   <div class="mv-value">
     <span class="mv-currency">£</span>${value}<span class="mv-suffix">m</span>

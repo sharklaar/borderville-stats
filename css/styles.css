@@ -1317,3 +1317,9 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
 .stat-item .value:not(:contains("0")) {
   opacity: 1;
 }
+
+.rating-block { 
+  pointer-events: auto !important; 
+}
+
+.rating-block { cursor: help; }

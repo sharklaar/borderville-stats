@@ -261,6 +261,7 @@ body  { font-family: inherit; }
   overflow: hidden;
   box-shadow: 0 14px 40px rgba(0,0,0,0.35);
   padding: 0;
+  border-radius: 20px;
 }
 
 /* Inner overlay layer (merged; later values win where conflicting) */

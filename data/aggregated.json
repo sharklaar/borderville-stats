@@ -805,9 +805,9 @@
       "id": "recG662mRw9nTfmcU",
       "name": "Sean Knight",
       "stats": {
-        "wins": 2,
+        "wins": 1,
         "draws": 1,
-        "losses": 0,
+        "losses": 1,
         "goals": 0,
         "assists": 1,
         "ogs": 0,
@@ -815,7 +815,7 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 0,
-        "conceded2026": 2,
+        "conceded2026": 4,
         "concededExactlyOneMatches2026": 2,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
@@ -827,12 +827,12 @@
         "captain": 1,
         "captain2026": 1,
         "playedLast10": 3,
-        "ovr": 91,
-        "ovrRawSeason": 33.13333333333333,
+        "ovr": 73,
+        "ovrRawSeason": 24.1,
         "ovrPenalty": 0,
-        "ovrCombined": 33.13333333333333,
+        "ovrCombined": 24.1,
         "form": [
-          "W",
+          "L",
           "W",
           "CD",
           "X",
@@ -2785,9 +2785,9 @@
       "id": "recnZCa2uj1fenN4y",
       "name": "Sam Gregory-Smith",
       "stats": {
-        "wins": 1,
+        "wins": 2,
         "draws": 1,
-        "losses": 1,
+        "losses": 0,
         "goals": 0,
         "assists": 0,
         "ogs": 0,
@@ -2795,7 +2795,7 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 0,
-        "conceded2026": 4,
+        "conceded2026": 2,
         "concededExactlyOneMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
@@ -2807,12 +2807,12 @@
         "captain": 0,
         "captain2026": 0,
         "playedLast10": 3,
-        "ovr": 63,
-        "ovrRawSeason": 19.1,
+        "ovr": 81,
+        "ovrRawSeason": 28.133333333333336,
         "ovrPenalty": 0,
-        "ovrCombined": 19.1,
+        "ovrCombined": 28.133333333333336,
         "form": [
-          "L",
+          "W",
           "W",
           "MD",
           "X",
@@ -3234,7 +3234,7 @@
         "rec1NVl8RI5HIZxU0",
         "rec3m0f9cBSdbwGS0",
         "recNuFhkMZr8OAjbH",
-        "recG662mRw9nTfmcU"
+        "recnZCa2uj1fenN4y"
       ],
       "playersBlue": [
         "rechz0vtrzI4YNLt6",
@@ -3245,7 +3245,7 @@
         "reckGJ6z8g1KEeMY1",
         "recZauOLb3ET9m9Ix",
         "rect8nIhrhsGH3mPK",
-        "recnZCa2uj1fenN4y"
+        "recG662mRw9nTfmcU"
       ],
       "pinkGoals": 3,
       "blueGoals": 1,
@@ -3496,7 +3496,7 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-01-23T01:03:12.904Z",
+    "generatedAt": "2026-01-23T01:08:49.163Z",
     "year": 2026,
     "matchesInYear": 3,
     "matchesCountForStatsInYear": 3,

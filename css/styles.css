@@ -1323,3 +1323,119 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
 }
 
 .rating-block { cursor: help; }
+
+/* =========================================================
+   CARD FLIP (paste at very end so it wins)
+   ========================================================= */
+
+.card{
+  perspective: 1200px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* The rotating wrapper */
+.card-inner{
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 520ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* Two faces */
+.card-face{
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Front stays as-is */
+.card-front{
+  transform: rotateY(0deg);
+}
+
+/* Back is rotated */
+.card-back{
+  transform: rotateY(180deg);
+}
+
+/* When flipped, rotate the inner wrapper */
+.card.is-flipped .card-inner{
+  transform: rotateY(180deg);
+}
+
+/* Make sure your overlay still fills the front face */
+.card-front .overlay{
+  position: absolute;
+  inset: 0;
+}
+
+/* Back styling */
+.card-back{
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.card-back__inner{
+  position: absolute;
+  inset: 0;
+  padding: 18px 18px 16px;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 12px;
+
+  /* readable back surface */
+  background: linear-gradient(160deg, rgba(10,16,32,0.92), rgba(10,16,32,0.72));
+  color: rgba(255,255,255,0.92);
+}
+
+.card-back__title{
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.card-back__subtitle{
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0.8;
+}
+
+.card-back__grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.card-back__stat{
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 10px 10px;
+}
+
+.card-back__stat .k{
+  font-size: 11px;
+  font-weight: 800;
+  opacity: 0.75;
+}
+
+.card-back__stat .v{
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+}
+
+.card-back__hint{
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0.75;
+  text-align: center;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .card-inner{ transition: none; }
+}

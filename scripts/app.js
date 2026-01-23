@@ -94,6 +94,13 @@ function initCardTooltip() {
 cardsEl.addEventListener("pointermove", (evt) => {
   // Find the topmost real element under the pointer
   const under = document.elementFromPoint(evt.clientX, evt.clientY);
+  const maybeCard = under && under.closest ? under.closest(".card") : null;
+
+  if (maybeCard && maybeCard.classList.contains("is-flipped")) {
+    if (!tooltip.classList.contains("hidden")) hide();
+    return;
+  }
+
   const target = under && under.closest ? under.closest(".rating-block") : null;
 
   if (!target || !cardsEl.contains(target)) {
@@ -113,6 +120,47 @@ cardsEl.addEventListener("pointermove", (evt) => {
   // Safety: hide when mouse leaves the whole grid
   cardsEl.addEventListener("mouseleave", hide);
 }
+
+// -----------------------------
+// Card flip (click to flip)
+// -----------------------------
+function initCardFlip() {
+  const cardsEl = document.getElementById("cards");
+  const tooltip = document.getElementById("tooltip");
+  if (!cardsEl) return;
+
+  const hideTooltip = () => {
+    if (!tooltip) return;
+    tooltip.classList.add("hidden");
+    tooltip.textContent = "";
+  };
+
+  const toggleFlip = (card) => {
+    if (!card) return;
+    card.classList.toggle("is-flipped");
+    // If you flip, kill any tooltip that might be floating
+    hideTooltip();
+  };
+
+  // Click anywhere on a card flips it
+  cardsEl.addEventListener("click", (e) => {
+    const card = e.target.closest?.(".card");
+    if (!card || !cardsEl.contains(card)) return;
+    toggleFlip(card);
+  });
+
+  // Keyboard accessibility (Enter/Space)
+  cardsEl.addEventListener("keydown", (e) => {
+    const card = e.target.closest?.(".card");
+    if (!card || !cardsEl.contains(card)) return;
+
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggleFlip(card);
+    }
+  });
+}
+
 
 function buildTooltipText(player) {
   const s = player?.stats ?? {};
@@ -351,6 +399,7 @@ async function loadAggregated() {
 
     // Tooltip handlers (once)
     initCardTooltip();
+    initCardFlip();
 
     applyFiltersAndRender(cards, status, payload.meta);
   } catch (err) {
@@ -503,27 +552,30 @@ function renderPlayers(players, cardsEl, datasetMeta) {
     el.className = "card";
 
     el.innerHTML = `
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
       <div class="overlay">
-          <img
-      class="club-badge"
-      src="./images/bv-logo.png"
-      alt="Borderville FC"
-      loading="lazy"
-      decoding="async"
-    />
-    <div class="card-header">
-  <div class="card-header__title">Borderville FC</div>
-  <div class="card-header__subtitle">2026 Season</div>
+        <img
+          class="club-badge"
+          src="./images/bv-logo.png"
+          alt="Borderville FC"
+          loading="lazy"
+          decoding="async"
+        />
 
-</div>
+        <div class="card-header">
+          <div class="card-header__title">Borderville FC</div>
+          <div class="card-header__subtitle">2026 Season</div>
+        </div>
 
         <div class="card-top">
-<div class="rating-block" data-tooltip="${escapeHtml(buildValueTooltipText(p, datasetMeta))}">
-  <div class="mv-label">Market Value</div>
-  <div class="mv-value">
-    <span class="mv-currency">£</span>${value}<span class="mv-suffix">m</span>
-  </div>
-</div>
+          <div class="rating-block" data-tooltip="${escapeHtml(buildValueTooltipText(p, datasetMeta))}">
+            <div class="mv-label">Market Value</div>
+            <div class="mv-value">
+              <span class="mv-currency">£</span>${value}<span class="mv-suffix">m</span>
+            </div>
+          </div>
         </div>
 
         <div class="portrait">
@@ -552,16 +604,14 @@ function renderPlayers(players, cardsEl, datasetMeta) {
               <div class="value">${assists}</div>
               <div class="label">ASSISTS</div>
             </div>
-      <div class="stat-item">
-  <div class="value">${motm2026} <span class="stat-paren">(${motmAll})</span></div>
-  <div class="label">MOTMs (2026 / ALL)</div>
-</div>
-
-<div class="stat-item">
-  <div class="value">${caps2026} <span class="stat-paren">(${capsAll})</span></div>
-  <div class="label">CAPS (2026 / ALL)</div>
-</div>
-
+            <div class="stat-item">
+              <div class="value">${motm2026} <span class="stat-paren">(${motmAll})</span></div>
+              <div class="label">MOTMs (2026 / ALL)</div>
+            </div>
+            <div class="stat-item">
+              <div class="value">${caps2026} <span class="stat-paren">(${capsAll})</span></div>
+              <div class="label">CAPS (2026 / ALL)</div>
+            </div>
           </div>
 
           <div class="stat-col">
@@ -588,7 +638,46 @@ function renderPlayers(players, cardsEl, datasetMeta) {
           ${renderFormStrip(s.form, team)}
         </div>
       </div>
-    `;
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <div class="card-back__inner">
+        <div class="card-back__title">${escapeHtml(name)}</div>
+        <div class="card-back__subtitle">${escapeHtml(positionFull(position))} • £${value}m</div>
+
+        <div class="card-back__grid">
+          <div class="card-back__stat">
+            <div class="k">OVR</div>
+            <div class="v">${ovr}</div>
+          </div>
+          <div class="card-back__stat">
+            <div class="k">G/A</div>
+            <div class="v">${goals}/${assists}</div>
+          </div>
+          <div class="card-back__stat">
+            <div class="k">MOTM (26/All)</div>
+            <div class="v">${motm2026}/${motmAll}</div>
+          </div>
+          <div class="card-back__stat">
+            <div class="k">Caps (26/All)</div>
+            <div class="v">${caps2026}/${capsAll}</div>
+          </div>
+          <div class="card-back__stat">
+            <div class="k">CS / OTF</div>
+            <div class="v">${cleanSheets}/${otfs}</div>
+          </div>
+          <div class="card-back__stat">
+            <div class="k">OG / Subs</div>
+            <div class="v">${ogs}/${subs}</div>
+          </div>
+        </div>
+
+        <div class="card-back__hint">Click again to flip back</div>
+      </div>
+    </div>
+  </div>
+`;
 
     cardsEl.appendChild(el);
   }

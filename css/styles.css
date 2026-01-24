@@ -1412,7 +1412,7 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.06);
   border-radius: 14px;
-  padding: 10px 10px;
+  padding: 4px 10px;
 }
 
 .card-back__stat .k{
@@ -1423,7 +1423,7 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
 
 .card-back__stat .v{
   margin-top: 6px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 900;
   letter-spacing: -0.2px;
 }
@@ -1550,4 +1550,10 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
 /* Optional: a tiny bit of separation before awards */
 .card-back__body .awards{
   margin-top: 10px;
+}
+
+.awards-toggle{
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
 }

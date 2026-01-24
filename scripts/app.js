@@ -276,7 +276,7 @@ function renderAwardsChips(playerId) {
   const remaining = Math.max(0, list.length - shown.length);
 
   const moreBtn = remaining > 0
-    ? `<button class="award-more" type="button" data-remaining="${remaining}">+${remaining} more</button>`
+    ? `<button class="award-more" type="button" data-remaining="${remaining}" aria-expanded="false">+${remaining} more</button>`
     : "";
 
   const hidden = remaining > 0
@@ -287,14 +287,20 @@ function renderAwardsChips(playerId) {
        </div>`
     : "";
 
+  const toggleRow = moreBtn
+    ? `<div class="awards-toggle">${moreBtn}</div>`
+    : "";
+
   return `
     <div class="awards">
       <div class="awards-title">Previous awards</div>
-      <div class="awards-chips">
+
+      <div class="awards-chips awards-chips--shown">
         ${shown.map(renderAwardChip).join("")}
-        ${moreBtn}
       </div>
+
       ${hidden}
+      ${toggleRow}
     </div>
   `;
 }
@@ -869,7 +875,6 @@ function renderPlayers(players, cardsEl, datasetMeta) {
           ${awardsHtml}
         </div>
 
-<div class="card-back__hint">Click to flip back</div>
       </div>
     </div>
 

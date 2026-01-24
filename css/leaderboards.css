@@ -1,0 +1,118 @@
+/* Page-only styling: keep it small and predictable. */
+
+.lb-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 14px;
+  align-items: start;
+  margin-top: 10px;
+}
+
+.lb-card{
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 14px 14px;
+  backdrop-filter: blur(6px);
+}
+
+.lb-card--warn{
+  border-color: rgba(255, 80, 80, 0.22);
+}
+
+.lb-card__header{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.lb-card h2{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.lb-card__hint{
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0.72;
+}
+
+.lb-list{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lb-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 10px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.lb-row--empty{
+  opacity: 0.7;
+}
+
+.lb-left{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.lb-rank{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.lb-name{
+  font-weight: 900;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lb-plus{
+  opacity: 0.7;
+  font-weight: 900;
+}
+
+.lb-value{
+  font-variant-numeric: tabular-nums;
+  font-weight: 900;
+}
+
+.lb-neg{
+  font-weight: 900;
+  color: rgba(255, 120, 120, 0.95);
+}
+
+.lb-toggle{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.82);
+}
+
+.lb-toggle input{
+  width: 18px;
+  height: 18px;
+}

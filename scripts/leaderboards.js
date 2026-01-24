@@ -28,6 +28,7 @@ function playerName(playersById, playerId) {
 }
 
 function renderEmpty(targetEl, text = "Nothing to show yet.") {
+  if (!targetEl) return;
   targetEl.innerHTML = `
     <div class="lb-row lb-row--empty">
       <div class="lb-name">${escapeHtml(text)}</div>
@@ -36,7 +37,8 @@ function renderEmpty(targetEl, text = "Nothing to show yet.") {
 }
 
 function renderRows(targetEl, rowsHtml) {
-  if (!rowsHtml.length) {
+  if (!targetEl) return;
+  if (!rowsHtml || !rowsHtml.length) {
     renderEmpty(targetEl);
     return;
   }
@@ -123,19 +125,28 @@ function buildDefensivePartnerships(defensivePartnerships, playersById) {
   });
 }
 
+/**
+ * Returns:
+ *  - rows: HTML rows for the naughty list
+ *  - totalArrears: number (in £) assuming £4 per owed game
+ */
 function buildNegativeSubs(playersById) {
-  const items = Object.values(playersById).map((p) => {
+  const debtors = Object.values(playersById).map((p) => {
     const subs = asNumber(p?.stats?.subs, 0);
     return { id: p.id, name: p.name || "Unknown", subs };
   }).filter(x => x.subs < 0);
 
-  items.sort((a, b) => a.subs - b.subs || a.name.localeCompare(b.name)); // most negative first
+  const totalArrears = debtors.reduce((sum, x) => sum + (Math.abs(x.subs) * 4), 0);
 
-  return items.map((x, idx) => {
+  debtors.sort((a, b) => a.subs - b.subs || a.name.localeCompare(b.name)); // most negative first
+
+  const rows = debtors.map((x, idx) => {
     const left = escapeHtml(x.name);
     const right = `<span class="lb-neg">${escapeHtml(String(x.subs))}</span>`;
     return rowHtmlRanked(idx + 1, left, right);
   });
+
+  return { rows, totalArrears };
 }
 
 async function main() {
@@ -151,7 +162,6 @@ async function main() {
   } catch (err) {
     setStatus("Failed to load aggregated.json");
     console.error(err);
-    // Render empties so layout is stable
     ["lbGoals","lbAssists","lbCleanSheets","lbStrikePartners","lbDefensivePartners","lbNegativeSubs"]
       .forEach(id => renderEmpty($(id), "Data load failed."));
     return;
@@ -159,7 +169,10 @@ async function main() {
 
   const playersById = data.players || {};
   const meta = data.meta || {};
-  $("lastUpdated").textContent = meta.generatedAt ? new Date(meta.generatedAt).toLocaleString() : "unknown";
+  const lastUpdatedEl = $("lastUpdated");
+  if (lastUpdatedEl) {
+    lastUpdatedEl.textContent = meta.generatedAt ? new Date(meta.generatedAt).toLocaleString() : "unknown";
+  }
   setStatus("Loaded");
 
   // Top 5s
@@ -177,18 +190,22 @@ async function main() {
 
   // Strike partners (always excluding OGs)
   const spRows = buildStrikePartners(data.partnerships, playersById);
-  renderRows($("lbStrikePartners"), spRows.length ? spRows : []);
-  if (!spRows.length) renderEmpty($("lbStrikePartners"), "No partnerships yet.");
+  if (spRows.length) renderRows($("lbStrikePartners"), spRows);
+  else renderEmpty($("lbStrikePartners"), "No partnerships yet.");
 
   // Defensive partnerships
   const defRows = buildDefensivePartnerships(data.defensivePartnerships, playersById);
-  renderRows($("lbDefensivePartners"), defRows.length ? defRows : []);
-  if (!defRows.length) renderEmpty($("lbDefensivePartners"), "No defensive partnerships yet.");
+  if (defRows.length) renderRows($("lbDefensivePartners"), defRows);
+  else renderEmpty($("lbDefensivePartners"), "No defensive partnerships yet.");
 
-  // Naughty list
-  const negRows = buildNegativeSubs(playersById);
-  renderRows($("lbNegativeSubs"), negRows.length ? negRows : []);
-  if (!negRows.length) renderEmpty($("lbNegativeSubs"), "No one owes money. Suspicious.");
+  // Naughty list + arrears subtitle
+  const { rows: negRows, totalArrears } = buildNegativeSubs(playersById);
+
+  const arrearsEl = $("totalArrears");
+  if (arrearsEl) arrearsEl.textContent = `£${totalArrears}`;
+
+  if (negRows.length) renderRows($("lbNegativeSubs"), negRows);
+  else renderEmpty($("lbNegativeSubs"), "No one owes money. Suspicious.");
 }
 
 main();

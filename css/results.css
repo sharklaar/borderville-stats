@@ -1,0 +1,47 @@
+/* =========================
+   Results page helpers
+   Extracted from results.js
+   ========================= */
+
+/* Shared layout helpers */
+.results-flex {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.results-grid {
+  display: grid;
+  gap: 12px;
+}
+
+/* Two-column lists (Goals / Assists) */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Muted label spacing */
+.results-label {
+  margin-bottom: 6px;
+}
+
+/* Team alignment in scoreline */
+.team-left {
+  justify-content: flex-start;
+}
+
+.team-right {
+  justify-content: flex-end;
+}
+
+/* Key–value spacing blocks */
+.kv-spaced {
+  margin-top: 10px;
+}
+
+/* Error / empty states */
+.results-empty {
+  padding: 14px;
+}

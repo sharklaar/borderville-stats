@@ -1557,3 +1557,105 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
   display: flex;
   justify-content: flex-start;
 }
+
+/* =========================
+   Season summary (top of players page)
+   ========================= */
+.season-summary{
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 14px 14px;
+  backdrop-filter: blur(6px);
+  margin: 8px 0 12px;
+}
+
+.season-summary__title{
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.season-summary__subtitle{
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0.72;
+  margin-bottom: 10px;
+}
+
+.season-summary__grid{
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* Tablet: 3 per row */
+@media (max-width: 1024px){
+  .season-summary__grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Mobile: 2 per row */
+@media (max-width: 640px){
+  .season-summary__grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.season-summary__item{
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.14);
+  border-radius: 14px;
+  padding: 10px 10px;
+}
+
+.season-summary__item .k{
+  font-size: 11px;
+  font-weight: 800;
+  opacity: 0.72;
+}
+
+.season-summary__item .n{
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+}
+
+@media (max-width: 720px){
+  .season-summary__grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Season summary layout: full width, status underneath */
+.season-summary-wrap{
+  display: block;
+  width: 100%;
+  margin: 8px 0 12px;
+}
+
+.season-status-row{
+  display: flex;
+  justify-content: flex-end;  /* status pill to the right */
+  margin-top: 10px;
+}
+
+/* Desktop: keep the subtitle on one line */
+@media (min-width: 721px){
+  .season-summary__subtitle{
+    white-space: nowrap;
+  }
+}
+
+/* Mobile: allow wrapping (two lines etc.) */
+@media (max-width: 720px){
+  .season-summary__subtitle{
+    white-space: normal;
+  }
+
+  .season-status-row{
+    justify-content: flex-start; /* optional: feels nicer on mobile */
+  }
+}

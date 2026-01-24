@@ -185,8 +185,13 @@ function initAwardsToggle() {
     const awardsWrap = btn.closest(".awards");
     if (!awardsWrap) return;
 
-    const expanded = awardsWrap.classList.toggle("awards-expanded");
+    const hidden = awardsWrap.querySelector(".awards-hidden");
     const remaining = Number(btn.getAttribute("data-remaining") || "0");
+
+    const expanded = awardsWrap.classList.toggle("awards-expanded");
+
+    // Be robust even if CSS gets overridden
+    if (hidden) hidden.style.display = expanded ? "block" : "none";
 
     btn.textContent = expanded ? "Show less" : `+${remaining} more`;
   });
@@ -270,26 +275,26 @@ function renderAwardsChips(playerId) {
   const shown = list.slice(0, maxCollapsed);
   const remaining = Math.max(0, list.length - shown.length);
 
-  const moreBtn = remaining > 0
-    ? `<button class="award-more" type="button" data-remaining="${remaining}">+${remaining} more</button>`
+  const hiddenHtml = remaining > 0
+    ? `<div class="awards-hidden" style="display:none;">${list.slice(maxCollapsed).map(renderAwardChip).join("")}</div>`
     : "";
 
-  const hidden = remaining > 0
-    ? `<div class="awards-hidden">
-         <div class="awards-chips awards-chips--hidden">
-           ${list.slice(maxCollapsed).map(renderAwardChip).join("")}
-         </div>
-       </div>`
+  const toggleBtn = remaining > 0
+    ? `
+      <div class="awards-toggle">
+        <button class="award-more" type="button" data-remaining="${remaining}">+${remaining} more</button>
+      </div>
+    `
     : "";
 
   return `
     <div class="awards">
       <div class="awards-title">Previous awards</div>
-      <div class="awards-chips">
+      <div class="awards-chips awards-chips--shown">
         ${shown.map(renderAwardChip).join("")}
-        ${moreBtn}
       </div>
-      ${hidden}
+      ${hiddenHtml}
+      ${toggleBtn}
     </div>
   `;
 }
@@ -483,203 +488,6 @@ function buildValueTooltipText(player, meta) {
   return lines.join("\n");
 }
 
-
-
-// -----------------------------
-// Season summary (headline stats)
-// -----------------------------
-function computeSeasonSummary(payload) {
-  const players = Object.values(payload?.players ?? {}).filter(p => !p?.meta?.excluded);
-  const sum = (getter) => players.reduce((acc, p) => acc + (Number(getter(p)) || 0), 0);
-
-  const gamesPlayed =
-    payload?.meta?.matchesCountForStatsInYear ??
-    payload?.meta?.matchesInYear ??
-    payload?.meta?.matchesPlayed ??
-    payload?.meta?.totalMatches ??
-    null;
-
-  const totalOtfs  = sum(p => p?.stats?.otfs);
-  const totalOgs   = sum(p => p?.stats?.ogs);
-
-  // "Total goals" here means goals on the scoreboard (so include OGs).
-  const totalGoals = sum(p => p?.stats?.goals) + totalOgs;
-
-  const goalScorers = players.filter(p => (Number(p?.stats?.goals) || 0) > 0).length;
-
-  // Games with a clean sheet (match-level). Prefer explicit match events if available.
-  let cleanSheetGames = null;
-
-  // Option 1: payload.cleanSheets events array [{matchId, playerIds:[...]}]
-  if (Array.isArray(payload?.cleanSheets)) {
-    const ids = new Set(payload.cleanSheets.map(e => e?.matchId).filter(Boolean));
-    cleanSheetGames = ids.size;
-  }
-
-  // Option 2: payload.matches array
-  if (cleanSheetGames == null && Array.isArray(payload?.matches)) {
-    const extractScores = (m) => {
-      // Common numeric field names
-      const candidates = [
-        ["scoreBlue", "scorePink"],
-        ["goalsBlue", "goalsPink"],
-        ["blueGoals", "pinkGoals"],
-        ["blueScore", "pinkScore"],
-        ["teamBlueGoals", "teamPinkGoals"],
-        ["homeGoals", "awayGoals"],
-        ["goalsHome", "goalsAway"],
-      ];
-
-      for (const [kb, kp] of candidates) {
-        const b = Number(m?.[kb]);
-        const p = Number(m?.[kp]);
-        if (Number.isFinite(b) && Number.isFinite(p)) return { blue: b, pink: p };
-      }
-
-      // Sometimes a single string like "1-0" or "0–0"
-      const s = m?.score ?? m?.result ?? m?.scoreline ?? null;
-      if (typeof s === "string") {
-        const mm = s.trim().match(/(\d+)\s*[-–:]\s*(\d+)/);
-        if (mm) return { blue: Number(mm[1]), pink: Number(mm[2]) };
-      }
-
-      return null;
-    };
-
-    // 2a) If match has an explicit clean sheet list/flag, use that
-    let explicitCount = 0;
-    let hasExplicitSignal = false;
-
-    for (const m of payload.matches) {
-      const cs =
-        m?.cleanSheets ??
-        m?.cleanSheetPlayerIds ??
-        m?.cleanSheetPlayers ??
-        m?.cleanSheet ??
-        null;
-
-      const hasCs =
-        Array.isArray(cs) ? cs.length > 0 :
-        typeof cs === "number" ? cs > 0 :
-        typeof cs === "boolean" ? cs :
-        cs != null ? true : false;
-
-      if (cs != null) hasExplicitSignal = true;
-      if (hasCs) explicitCount++;
-    }
-
-    if (hasExplicitSignal) {
-      cleanSheetGames = explicitCount;
-    } else {
-      // 2b) Fallback: infer from scoreline (either team scored 0)
-      let inferred = 0;
-      let parsed = 0;
-
-      for (const m of payload.matches) {
-        const sc = extractScores(m);
-        if (!sc) continue;
-        parsed++;
-        if (sc.blue === 0 || sc.pink === 0) inferred++;
-      }
-
-      if (parsed > 0) cleanSheetGames = inferred;
-    }
-  }
-
-  // Option 3: some meta might already carry it
-  if (cleanSheetGames == null) {
-    cleanSheetGames =
-      payload?.meta?.cleanSheetGames ??
-      payload?.meta?.matchesWithCleanSheet ??
-      null;
-  }
-
-  return {
-    gamesPlayed,
-    totalGoals,
-    totalOtfs,
-    totalOgs,
-    goalScorers,
-    cleanSheetGames
-  };
-}
-
-function renderSeasonSummaryHtml(s) {
-  const v = (x) => (x == null ? "—" : escapeHtml(String(x)));
-  const subtitleBits = [];
-  if (s?.gamesPlayed != null) subtitleBits.push(`${s.gamesPlayed} games`);
-  if (s?.cleanSheetGames != null) subtitleBits.push(`${s.cleanSheetGames} clean sheet games`);
-
-  const subtitle = subtitleBits.length ? subtitleBits.join(" • ") : "";
-
-  return `
-    <div class="season-summary">
-      <div class="season-summary__title">2026 Season summary</div>
-      ${subtitle ? `<div class="season-summary__subtitle">${escapeHtml(subtitle)}</div>` : ""}
-      <div class="season-summary__grid">
-        <div class="season-summary__item"><div class="k">Games played</div><div class="n">${v(s?.gamesPlayed)}</div></div>
-        <div class="season-summary__item"><div class="k">Total goals</div><div class="n">${v(s?.totalGoals)}</div></div>
-        <div class="season-summary__item"><div class="k">Total OTFs</div><div class="n">${v(s?.totalOtfs)}</div></div>
-        <div class="season-summary__item"><div class="k">Total OGs</div><div class="n">${v(s?.totalOgs)}</div></div>
-        <div class="season-summary__item"><div class="k">Goal scorers</div><div class="n">${v(s?.goalScorers)}</div></div>
-        <div class="season-summary__item"><div class="k">Clean sheet games</div><div class="n">${v(s?.cleanSheetGames)}</div></div>
-      </div>
-    </div>
-  `;
-}
-
-function upsertSeasonSummary(summary) {
-  const statusEl = document.getElementById("status");
-  if (!statusEl) return;
-
-  // We want:
-  // [Season summary full width]
-  // [Status pill underneath]
-  // [Controls row below]
-  const controlsEl = document.querySelector(".controls");
-  const container = controlsEl?.parentNode || statusEl.parentNode;
-
-  // A wrapper that sits ABOVE the controls block
-  let wrap = document.getElementById("seasonSummaryWrap");
-  if (!wrap) {
-    wrap = document.createElement("div");
-    wrap.id = "seasonSummaryWrap";
-    wrap.className = "season-summary-wrap";
-
-    // Insert before controls if possible, otherwise before status
-    if (controlsEl && container) {
-      container.insertBefore(wrap, controlsEl);
-    } else if (container) {
-      container.insertBefore(wrap, statusEl);
-    }
-  }
-
-  // Summary element
-  let el = document.getElementById("seasonSummary");
-  if (!el) {
-    el = document.createElement("div");
-    el.id = "seasonSummary";
-    wrap.appendChild(el);
-  }
-
-  el.innerHTML = renderSeasonSummaryHtml(summary);
-
-  // Ensure status sits *under* the summary, not alongside it
-  let statusRow = document.getElementById("seasonStatusRow");
-  if (!statusRow) {
-    statusRow = document.createElement("div");
-    statusRow.id = "seasonStatusRow";
-    statusRow.className = "season-status-row";
-    wrap.appendChild(statusRow);
-  }
-
-  // Move the existing status element into the row (keeps existing behaviour)
-  if (statusEl.parentNode !== statusRow) {
-    statusRow.appendChild(statusEl);
-  }
-}
-
-
 // -----------------------------
 // Data load
 // -----------------------------
@@ -717,9 +525,6 @@ const payload = await resAgg.json();
 
 // Build awards map (safe even if hofPayload null)
 AWARDS_BY_PLAYER_ID = buildAwardsByPlayerId(ALL_PLAYERS, hofPayload);
-
-    SEASON_SUMMARY = computeSeasonSummary(payload);
-    upsertSeasonSummary(SEASON_SUMMARY);
 
     // Wire up name filter
     if (nameInput) {
@@ -1017,6 +822,8 @@ function renderPlayers(players, cardsEl, datasetMeta) {
         <div class="card-back__subtitle">
           ${escapeHtml(positionFull(position))} • ${games} games • ${minutesPlayed} mins
         </div>
+      <div class="card-back__body">
+        
 
         <div class="card-back__grid">
           <div class="card-back__stat">
@@ -1057,8 +864,8 @@ function renderPlayers(players, cardsEl, datasetMeta) {
           `
           }
         </div>
-${awardsHtml}
-        <div class="card-back__hint">Click to flip back</div>
+        ${awardsHtml}
+      </div>
       </div>
     </div>
 

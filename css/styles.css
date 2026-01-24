@@ -1486,3 +1486,68 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
   font-weight: 800;
   opacity: 0.65;
 }
+
+.awards-hidden { display: none; margin-top: 8px; }
+.awards-expanded .awards-hidden { display: block; }
+
+.award-more{
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.92);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.awards-expanded .awards-hidden{
+  max-height: 96px;      /* tune */
+  overflow: auto;
+  padding-right: 4px;    /* prevents scrollbar overlapping chips */
+}
+
+/* --- Awards: collapse + expand --- */
+.awards-hidden{
+  display: none;
+  margin-top: 8px;
+}
+
+.awards-expanded .awards-hidden{
+  display: block;
+}
+
+/* Optional but recommended: stop awards taking over the whole card */
+.awards-expanded .awards-hidden{
+  max-height: 96px;      /* tune this */
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.award-more{
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.92);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.awards-expanded .awards-hidden{
+  max-height: 96px;  /* tweak */
+  overflow: auto;
+  padding-right: 4px;
+}
+
+/* Make the middle of the back card scrollable so awards expansion can't get clipped */
+.card-back__body{
+  overflow: auto;
+  padding-right: 4px; /* avoids scrollbar sitting on content */
+}
+
+/* Optional: a tiny bit of separation before awards */
+.card-back__body .awards{
+  margin-top: 10px;
+}

@@ -145,9 +145,12 @@ function initCardFlip() {
 
   // Click anywhere on a card flips it
   cardsEl.addEventListener("click", (e) => {
-    const card = e.target.closest?.(".card");
-    if (!card || !cardsEl.contains(card)) return;
-    toggleFlip(card);
+// If the click was on an interactive control inside the card, don't flip.
+if (e.target.closest?.(".award-more")) return;
+
+const card = e.target.closest?.(".card");
+if (!card || !cardsEl.contains(card)) return;
+toggleFlip(card);
   });
 
   // Keyboard accessibility (Enter/Space)
@@ -159,6 +162,38 @@ function initCardFlip() {
       e.preventDefault();
       toggleFlip(card);
     }
+  });
+}
+
+
+// -----------------------------
+// Awards toggle (show +X more)
+// -----------------------------
+function initAwardsToggle() {
+  const cardsEl = document.getElementById("cards");
+  if (!cardsEl) return;
+
+  cardsEl.addEventListener("click", (e) => {
+    const btn = e.target.closest?.(".award-more");
+    if (!btn) return;
+
+    // Prevent the card flip click handler
+    e.preventDefault();
+    e.stopPropagation();
+
+    const awardsWrap = btn.closest(".awards");
+    if (!awardsWrap) return;
+
+    const hidden = awardsWrap.querySelector(".awards-hidden");
+
+    const expanded = awardsWrap.classList.toggle("awards-expanded");
+
+    // Make it work even if CSS is missing/overridden
+    if (hidden) hidden.style.display = expanded ? "block" : "none";
+
+    const remaining = Number(btn.getAttribute("data-remaining") || "0");
+    btn.textContent = expanded ? "Show less" : `+${remaining} more`;
+    btn.setAttribute("aria-expanded", expanded ? "true" : "false");
   });
 }
 
@@ -223,28 +258,46 @@ function buildAwardsByPlayerId(players, hallOfFamePayload) {
   return byId;
 }
 
+function renderAwardChip(x) {
+  return `
+    <span class="award-chip" title="${escapeHtml(String(x.award))} (${escapeHtml(String(x.year))})">
+      <span class="award-year">${escapeHtml(String(x.year))}</span>
+      <span class="award-name">${escapeHtml(String(x.award))}</span>
+    </span>
+  `;
+}
+
 function renderAwardsChips(playerId) {
   const list = AWARDS_BY_PLAYER_ID[playerId] ?? [];
   if (!list.length) return `<div class="awards-empty">No previous awards</div>`;
 
-  // show latest 6 to avoid turning the back into a scroll-fest
-  const top = list.slice(0, 6);
+  const maxCollapsed = 4;
+  const shown = list.slice(0, maxCollapsed);
+  const remaining = Math.max(0, list.length - shown.length);
+
+  const moreBtn = remaining > 0
+    ? `<button class="award-more" type="button" data-remaining="${remaining}">+${remaining} more</button>`
+    : "";
+
+  const hidden = remaining > 0
+    ? `<div class="awards-hidden" style="display:none;">
+         <div class="awards-chips awards-chips--hidden">
+           ${list.slice(maxCollapsed).map(renderAwardChip).join("")}
+         </div>
+       </div>`
+    : "";
 
   return `
     <div class="awards">
       <div class="awards-title">Previous awards</div>
       <div class="awards-chips">
-        ${top.map(x => `
-          <span class="award-chip" title="${escapeHtml(String(x.award))} (${escapeHtml(String(x.year))})">
-            <span class="award-year">${escapeHtml(String(x.year))}</span>
-            <span class="award-name">${escapeHtml(String(x.award))}</span>
-          </span>
-        `).join("")}
+        ${shown.map(renderAwardChip).join("")}
+        ${moreBtn}
       </div>
+      ${hidden}
     </div>
   `;
 }
-
 
 
 function buildTooltipText(player) {
@@ -493,6 +546,7 @@ AWARDS_BY_PLAYER_ID = buildAwardsByPlayerId(ALL_PLAYERS, hofPayload);
     // Tooltip handlers (once)
     initCardTooltip();
     initCardFlip();
+    initAwardsToggle();
 
     applyFiltersAndRender(cards, status, payload.meta);
   } catch (err) {
@@ -769,6 +823,8 @@ function renderPlayers(players, cardsEl, datasetMeta) {
         <div class="card-back__subtitle">
           ${escapeHtml(positionFull(position))} • ${games} games • ${minutesPlayed} mins
         </div>
+        <div class="card-back__body">
+
 
         <div class="card-back__grid">
           <div class="card-back__stat">
@@ -809,8 +865,11 @@ function renderPlayers(players, cardsEl, datasetMeta) {
           `
           }
         </div>
-${awardsHtml}
-        <div class="card-back__hint">Click to flip back</div>
+
+          ${awardsHtml}
+        </div>
+
+<div class="card-back__hint">Click to flip back</div>
       </div>
     </div>
 

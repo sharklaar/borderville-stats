@@ -258,12 +258,66 @@ function buildAwardsByPlayerId(players, hallOfFamePayload) {
   return byId;
 }
 
-function renderAwardChip(x) {
+function awardIconType(awardName) {
+  const a = String(awardName || "").toLowerCase();
+
+  // Keep it simple: boot / glove / star (as requested)
+  if (a.includes("golden boot")) return "boot";
+  if (a.includes("golden glove")) return "glove";
+
+  // Everything else is a "star" (player awards, goals, assists, MOTM etc.)
+  return "star";
+}
+
+function awardIconGlyph(type) {
+  // Using emoji as lightweight, cross-platform "icons"
+  if (type === "boot") return "🥾";
+  if (type === "glove") return "🧤";
+  return "⭐";
+}
+
+function renderAwardChip(x, opts = {}) {
+  const showYear = Boolean(opts.showYear);
+  const type = awardIconType(x.award);
+  const glyph = awardIconGlyph(type);
+
   return `
-    <span class="award-chip" title="${escapeHtml(String(x.award))} (${escapeHtml(String(x.year))})">
-      <span class="award-year">${escapeHtml(String(x.year))}</span>
+    <span class="award-chip award-chip--${type}" title="${escapeHtml(String(x.award))}${showYear ? ` (${escapeHtml(String(x.year))})` : ""}">
+      <span class="award-icon" aria-hidden="true">${glyph}</span>
+      ${showYear ? `<span class="award-year">${escapeHtml(String(x.year))}</span>` : ""}
       <span class="award-name">${escapeHtml(String(x.award))}</span>
     </span>
+  `;
+}
+
+function groupAwardsByYear(list = []) {
+  const buckets = new Map(); // year -> items[]
+  for (const x of list) {
+    const y = Number(x?.year) || 0;
+    if (!buckets.has(y)) buckets.set(y, []);
+    buckets.get(y).push(x);
+  }
+
+  // years desc
+  const years = Array.from(buckets.keys()).sort((a, b) => b - a);
+
+  return years.map((year) => ({
+    year,
+    items: (buckets.get(year) || []).slice().sort((a, b) => String(a.award).localeCompare(String(b.award)))
+  }));
+}
+
+function renderAwardsGroup(group, opts = {}) {
+  const year = group.year;
+  const items = group.items || [];
+
+  return `
+    <div class="awards-year-group">
+      <div class="awards-year-heading">${escapeHtml(String(year))}</div>
+      <div class="awards-chips">
+        ${items.map((x) => renderAwardChip(x, { showYear: false })).join("")}
+      </div>
+    </div>
   `;
 }
 
@@ -271,12 +325,17 @@ function renderAwardsChips(playerId) {
   const list = AWARDS_BY_PLAYER_ID[playerId] ?? [];
   if (!list.length) return `<div class="awards-empty">No previous awards</div>`;
 
+  // Keep your "top N + show more" behaviour, but group within each section.
   const maxCollapsed = 4;
   const shown = list.slice(0, maxCollapsed);
-  const remaining = Math.max(0, list.length - shown.length);
+  const hidden = list.slice(maxCollapsed);
+  const remaining = hidden.length;
+
+  const shownGrouped = groupAwardsByYear(shown).map((g) => renderAwardsGroup(g)).join("");
+  const hiddenGrouped = groupAwardsByYear(hidden).map((g) => renderAwardsGroup(g)).join("");
 
   const hiddenHtml = remaining > 0
-    ? `<div class="awards-hidden" style="display:none;">${list.slice(maxCollapsed).map(renderAwardChip).join("")}</div>`
+    ? `<div class="awards-hidden" style="display:none;">${hiddenGrouped}</div>`
     : "";
 
   const toggleBtn = remaining > 0
@@ -290,8 +349,8 @@ function renderAwardsChips(playerId) {
   return `
     <div class="awards">
       <div class="awards-title">Previous awards</div>
-      <div class="awards-chips awards-chips--shown">
-        ${shown.map(renderAwardChip).join("")}
+      <div class="awards-groups awards-groups--shown">
+        ${shownGrouped}
       </div>
       ${hiddenHtml}
       ${toggleBtn}

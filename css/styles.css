@@ -1452,6 +1452,61 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
   margin-bottom: 8px;
 }
 
+/* --- Awards grouping by year --- */
+.awards-groups{
+  display: grid;
+  gap: 10px;
+}
+
+.awards-year-group{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.12);
+  border-radius: 14px;
+  padding: 10px 10px;
+}
+
+.awards-year-heading{
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+  opacity: 0.75;
+  margin-bottom: 8px;
+}
+
+/* --- Award icons (boot / glove / star) --- */
+.award-chip{
+  gap: 8px; /* keep */
+}
+
+.award-icon{
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  line-height: 1;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+
+/* Subtle flavour differences by type */
+.award-chip--boot .award-icon{
+  background: rgba(255, 210, 120, 0.18);
+  border-color: rgba(255, 210, 120, 0.22);
+}
+
+.award-chip--glove .award-icon{
+  background: rgba(120, 220, 255, 0.18);
+  border-color: rgba(120, 220, 255, 0.22);
+}
+
+.award-chip--star .award-icon{
+  background: rgba(205, 170, 255, 0.18);
+  border-color: rgba(205, 170, 255, 0.22);
+}
+
 .awards-chips{
   display: flex;
   flex-wrap: wrap;

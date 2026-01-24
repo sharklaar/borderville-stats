@@ -130,16 +130,11 @@
 
   function renderSeasonSummaryHtml(s) {
     const v = (x) => (x == null ? "—" : escapeHtml(String(x)));
-    const subtitleBits = [];
-    if (s?.gamesPlayed != null) subtitleBits.push(`${s.gamesPlayed} games`);
-    if (s?.cleanSheetGames != null) subtitleBits.push(`${s.cleanSheetGames} clean sheet games`);
-    const subtitle = subtitleBits.length ? subtitleBits.join(" • ") : "";
 
     return `
       <div class="season-summary-wrap">
         <div class="season-summary">
           <div class="season-summary__title">2026 Season summary</div>
-          ${subtitle ? `<div class="season-summary__subtitle">${escapeHtml(subtitle)}</div>` : ""}
           <div class="season-summary__grid">
             <div class="season-summary__item"><div class="k">Games played</div><div class="n">${v(s?.gamesPlayed)}</div></div>
             <div class="season-summary__item"><div class="k">Total goals</div><div class="n">${v(s?.totalGoals)}</div></div>

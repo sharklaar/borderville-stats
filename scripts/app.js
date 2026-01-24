@@ -548,8 +548,35 @@ function renderPlayers(players, cardsEl, datasetMeta) {
     const position = playerMeta.position ?? "—";
     const photoSrc = photoPathFromName(name) || fallbackSrc;
 
+    const MATCH_MINS = 63;
+
+    const games = Number(caps2026) || 0; // "games played in 2026"
+    const minutesPlayed = games * MATCH_MINS;
+
+    const conceded2026 = Number(s.conceded2026 ?? 0); // already used in buildValueTooltipText
+    const isDefOrGk = ["DEF", "GK"].includes(String(position).toUpperCase());
+
+    const perGame = (n) => (games > 0 ? (n / games) : null);
+    const minsPer = (n) => (n > 0 ? (minutesPlayed / n) : null);
+
+    const fmtRate = (n) => (n == null ? "—" : n.toFixed(2));
+    const fmtMins = (n) => (n == null ? "—" : Math.round(n).toString());
+
+    const goalsPerGame = perGame(goals);
+    const minsPerGoal = minsPer(goals);
+
+    const assistsPerGame = perGame(assists);
+    const minsPerAssist = minsPer(assists);
+
+    const concededPerGame = isDefOrGk ? perGame(conceded2026) : null;
+    const minsPerConceded = isDefOrGk ? minsPer(conceded2026) : null;
+
+
     const el = document.createElement("div");
     el.className = "card";
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    el.setAttribute("aria-label", `Flip card for ${name}`);
 
     el.innerHTML = `
   <div class="card-inner">
@@ -644,38 +671,54 @@ function renderPlayers(players, cardsEl, datasetMeta) {
     <div class="card-face card-back">
       <div class="card-back__inner">
         <div class="card-back__title">${escapeHtml(name)}</div>
-        <div class="card-back__subtitle">${escapeHtml(positionFull(position))} • £${value}m</div>
+        <div class="card-back__subtitle">
+          ${escapeHtml(positionFull(position))} • ${games} games • ${minutesPlayed} mins
+        </div>
 
         <div class="card-back__grid">
           <div class="card-back__stat">
-            <div class="k">OVR</div>
-            <div class="v">${ovr}</div>
+            <div class="k">Goals / game</div>
+            <div class="v">${fmtRate(goalsPerGame)}</div>
           </div>
           <div class="card-back__stat">
-            <div class="k">G/A</div>
-            <div class="v">${goals}/${assists}</div>
+            <div class="k">Mins / goal</div>
+            <div class="v">${fmtMins(minsPerGoal)}</div>
+          </div>
+
+          <div class="card-back__stat">
+            <div class="k">Assists / game</div>
+            <div class="v">${fmtRate(assistsPerGame)}</div>
           </div>
           <div class="card-back__stat">
-            <div class="k">MOTM (26/All)</div>
-            <div class="v">${motm2026}/${motmAll}</div>
+            <div class="k">Mins / assist</div>
+            <div class="v">${fmtMins(minsPerAssist)}</div>
+          </div>
+
+          ${
+            isDefOrGk
+              ? `
+          <div class="card-back__stat">
+            <div class="k">Conceded / game</div>
+            <div class="v">${fmtRate(concededPerGame)}</div>
           </div>
           <div class="card-back__stat">
-            <div class="k">Caps (26/All)</div>
-            <div class="v">${caps2026}/${capsAll}</div>
+            <div class="k">Mins / conceded</div>
+            <div class="v">${fmtMins(minsPerConceded)}</div>
           </div>
-          <div class="card-back__stat">
-            <div class="k">CS / OTF</div>
-            <div class="v">${cleanSheets}/${otfs}</div>
+          `
+              : `
+          <div class="card-back__stat card-back__stat--wide">
+            <div class="k">Defensive stats</div>
+            <div class="v">—</div>
           </div>
-          <div class="card-back__stat">
-            <div class="k">OG / Subs</div>
-            <div class="v">${ogs}/${subs}</div>
-          </div>
+          `
+          }
         </div>
 
-        <div class="card-back__hint">Click again to flip back</div>
+        <div class="card-back__hint">Click to flip back</div>
       </div>
     </div>
+
   </div>
 `;
 

@@ -1,4 +1,5 @@
 let ALL_PLAYERS = [];
+let AWARDS_BY_PLAYER_ID = {}; // { [playerId]: [{year, award}] }
 
 const UI_STATE = {
   nameQuery: "",
@@ -160,6 +161,90 @@ function initCardFlip() {
     }
   });
 }
+
+function normName(s) {
+  return String(s || "")
+    .toLowerCase()
+    .replace(/['’]/g, "")     // kill apostrophes
+    .replace(/\s+/g, " ")     // collapse spaces
+    .trim();
+}
+
+function buildAwardsByPlayerId(players, hallOfFamePayload) {
+  const byId = {};
+
+  // 1) Build lookup(s) from names/nicknames -> playerId
+  const nameToId = new Map();
+
+  for (const p of players) {
+    const id = p?.id;
+    const fullName = p?.name ?? "";
+    if (!id || !fullName) continue;
+
+    nameToId.set(normName(fullName), id);
+
+    // also index nicknames if present (comma separated)
+    const nickRaw = p?.meta?.nicknames ?? p?.nicknames ?? "";
+    const nickList = String(nickRaw)
+      .split(",")
+      .map(s => normName(s))
+      .filter(Boolean);
+
+    for (const n of nickList) nameToId.set(n, id);
+  }
+
+  // 2) Walk HoF years/awards and assign to playerIds
+  const years = hallOfFamePayload?.years ?? [];
+  for (const y of years) {
+    const year = y?.year;
+    const awards = y?.awards ?? [];
+
+    for (const a of awards) {
+      const award = a?.award ?? "";
+      const winners = a?.winners ?? [];
+
+      for (const w of winners) {
+        const winnerKey = normName(w);
+        const pid = nameToId.get(winnerKey);
+
+        if (!pid) continue; // unresolved winners just won't show (fine for now)
+
+        if (!byId[pid]) byId[pid] = [];
+        byId[pid].push({ year, award });
+      }
+    }
+  }
+
+  // 3) Sort awards newest -> oldest per player
+  for (const pid of Object.keys(byId)) {
+    byId[pid].sort((a, b) => (b.year ?? 0) - (a.year ?? 0) || String(a.award).localeCompare(String(b.award)));
+  }
+
+  return byId;
+}
+
+function renderAwardsChips(playerId) {
+  const list = AWARDS_BY_PLAYER_ID[playerId] ?? [];
+  if (!list.length) return `<div class="awards-empty">No previous awards</div>`;
+
+  // show latest 6 to avoid turning the back into a scroll-fest
+  const top = list.slice(0, 6);
+
+  return `
+    <div class="awards">
+      <div class="awards-title">Previous awards</div>
+      <div class="awards-chips">
+        ${top.map(x => `
+          <span class="award-chip" title="${escapeHtml(String(x.award))} (${escapeHtml(String(x.year))})">
+            <span class="award-year">${escapeHtml(String(x.year))}</span>
+            <span class="award-name">${escapeHtml(String(x.award))}</span>
+          </span>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
 
 
 function buildTooltipText(player) {
@@ -368,10 +453,15 @@ async function loadAggregated() {
   try {
     status.textContent = "Fetching aggregated stats…";
 
-    const res = await fetch("./data/aggregated.json", { cache: "no-store" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+   const [resAgg, resHof] = await Promise.all([
+  fetch("./data/aggregated.json", { cache: "no-store" }),
+  fetch("./data/hall-of-fame.json", { cache: "no-store" })
+]);
+   if (!resAgg.ok) throw new Error(`aggregated.json HTTP ${resAgg.status}`);
 
-    const payload = await res.json();
+   const hofPayload = resHof.ok ? await resHof.json() : null;
+
+const payload = await resAgg.json();
 
     const generatedAt = payload?.meta?.generatedAt ?? null;
     lastUpdated.textContent = generatedAt
@@ -379,7 +469,10 @@ async function loadAggregated() {
       : "unknown";
 
     const playersObj = payload?.players ?? {};
-    ALL_PLAYERS = Object.values(playersObj).filter(p => !p?.meta?.excluded);
+    ALL_PLAYERS = Object.values(payload?.players ?? {}).filter(p => !p?.meta?.excluded);
+
+// Build awards map (safe even if hofPayload null)
+AWARDS_BY_PLAYER_ID = buildAwardsByPlayerId(ALL_PLAYERS, hofPayload);
 
     // Wire up name filter
     if (nameInput) {
@@ -571,6 +664,8 @@ function renderPlayers(players, cardsEl, datasetMeta) {
     const concededPerGame = isDefOrGk ? perGame(conceded2026) : null;
     const minsPerConceded = isDefOrGk ? minsPer(conceded2026) : null;
 
+    const playerId = p?.id;
+    const awardsHtml = playerId ? renderAwardsChips(playerId) : "";
 
     const el = document.createElement("div");
     el.className = "card";
@@ -714,7 +809,7 @@ function renderPlayers(players, cardsEl, datasetMeta) {
           `
           }
         </div>
-
+${awardsHtml}
         <div class="card-back__hint">Click to flip back</div>
       </div>
     </div>

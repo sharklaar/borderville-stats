@@ -1439,3 +1439,50 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
 @media (prefers-reduced-motion: reduce){
   .card-inner{ transition: none; }
 }
+
+/* --- Awards chips on card back --- */
+.awards{
+  margin-top: 6px;
+}
+
+.awards-title{
+  font-size: 12px;
+  font-weight: 900;
+  opacity: 0.85;
+  margin-bottom: 8px;
+}
+
+.awards-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.award-chip{
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.award-year{
+  opacity: 0.8;
+  font-weight: 900;
+}
+
+.award-name{
+  opacity: 0.95;
+}
+
+.awards-empty{
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0.65;
+}

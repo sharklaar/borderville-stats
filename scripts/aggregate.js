@@ -155,8 +155,9 @@ function writeJsonPretty(filepath, obj) {
   fs.writeFileSync(filepath, JSON.stringify(obj, null, 2), "utf8");
 }
 
-function pairKey(scorerId, assistId) {
-  return `${scorerId}::${assistId}`;
+function pairKey(a, b) {
+  const [x, y] = [a, b].sort();
+  return `${x}::${y}`;
 }
 
 function mapToSortedPairs(map) {

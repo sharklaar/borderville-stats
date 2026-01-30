@@ -64,6 +64,126 @@ function playerSearchHaystack(p) {
 }
 
 // -----------------------------
+// Upcoming birthdays (next N days)
+// -----------------------------
+function safeDateAtLocalMidnight(d) {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+}
+
+function isLeapYear(y) {
+  return (y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0);
+}
+
+function parseDobYmd(dobStr) {
+  // Expect "YYYY-MM-DD" from Airtable
+  if (!dobStr || typeof dobStr !== "string") return null;
+  const m = dobStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return null;
+  const month = Number(m[2]); // 1..12
+  const day = Number(m[3]);   // 1..31
+  if (!month || !day) return null;
+  return { month, day };
+}
+
+function nextBirthdayDateFromDob(dobStr, now = new Date()) {
+  const md = parseDobYmd(dobStr);
+  if (!md) return null;
+
+  const year = now.getFullYear();
+  const today = safeDateAtLocalMidnight(now);
+
+  const makeCandidate = (y) => {
+    // Handle Feb 29 on non-leap years: treat as Feb 28 for display purposes
+    if (md.month === 2 && md.day === 29 && !isLeapYear(y)) {
+      return new Date(y, 1, 28);
+    }
+    return new Date(y, md.month - 1, md.day);
+  };
+
+  let candidate = makeCandidate(year);
+  if (candidate < today) candidate = makeCandidate(year + 1);
+
+  return candidate;
+}
+
+function diffDays(fromDate, toDate) {
+  // Both should be local-midnight dates
+  const ms = toDate.getTime() - fromDate.getTime();
+  return Math.floor(ms / (24 * 60 * 60 * 1000));
+}
+
+function getUpcomingBirthdays(players, daysAhead = 7) {
+  const now = new Date();
+  const today = safeDateAtLocalMidnight(now);
+
+  const list = [];
+
+  for (const p of players || []) {
+    const dobStr = p?.meta?.dob ?? null;
+    if (!dobStr) continue;
+
+    const next = nextBirthdayDateFromDob(dobStr, now);
+    if (!next) continue;
+
+    const d = diffDays(today, safeDateAtLocalMidnight(next));
+    // "next 7 days" = include today, so 0..6
+    if (d >= 0 && d < daysAhead) {
+      list.push({
+        playerId: p?.id ?? null,
+        name: p?.name ?? "Unknown",
+        date: next,
+        daysAway: d,
+      });
+    }
+  }
+
+  list.sort((a, b) => a.date.getTime() - b.date.getTime() || String(a.name).localeCompare(String(b.name)));
+  return list;
+}
+
+function ensureUpcomingBirthdaysContainer(statusEl) {
+  if (!statusEl) return null;
+
+  let el = document.getElementById("upcomingBirthdays");
+  if (el) return el;
+
+  el = document.createElement("div");
+  el.id = "upcomingBirthdays";
+  el.className = "upcoming-bdays";
+
+  // inject immediately after the status block
+  statusEl.insertAdjacentElement("afterend", el);
+  return el;
+}
+
+function renderUpcomingBirthdays(players, statusEl) {
+  const container = ensureUpcomingBirthdaysContainer(statusEl);
+  if (!container) return;
+
+  const upcoming = getUpcomingBirthdays(players, 7);
+  if (!upcoming.length) {
+    container.innerHTML = "";
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="upcoming-bdays__title">Upcoming birthdays (next 7 days)</div>
+    <div class="upcoming-bdays__list">
+      ${upcoming.map((x) => {
+        const weekday = x.date.toLocaleDateString("en-GB", { weekday: "long" });
+        const dayMonth = x.date.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+        return `
+          <div class="upcoming-bdays__item">
+            <span class="upcoming-bdays__name">${escapeHtml(x.name)}</span>
+            <span class="upcoming-bdays__when">${escapeHtml(weekday)} • ${escapeHtml(dayMonth)}</span>
+          </div>
+        `;
+      }).join("")}
+    </div>
+  `;
+}
+
+// -----------------------------
 // Tooltip (attach to CARD, not rating)
 // -----------------------------
 function initCardTooltip() {
@@ -93,31 +213,30 @@ function initCardTooltip() {
     move(evt);
   });
 
-cardsEl.addEventListener("pointermove", (evt) => {
-  // Find the topmost real element under the pointer
-  const under = document.elementFromPoint(evt.clientX, evt.clientY);
-  const maybeCard = under && under.closest ? under.closest(".card") : null;
+  cardsEl.addEventListener("pointermove", (evt) => {
+    // Find the topmost real element under the pointer
+    const under = document.elementFromPoint(evt.clientX, evt.clientY);
+    const maybeCard = under && under.closest ? under.closest(".card") : null;
 
-  if (maybeCard && maybeCard.classList.contains("is-flipped")) {
-    if (!tooltip.classList.contains("hidden")) hide();
-    return;
-  }
+    if (maybeCard && maybeCard.classList.contains("is-flipped")) {
+      if (!tooltip.classList.contains("hidden")) hide();
+      return;
+    }
 
-  const target = under && under.closest ? under.closest(".rating-block") : null;
+    const target = under && under.closest ? under.closest(".rating-block") : null;
 
-  if (!target || !cardsEl.contains(target)) {
-    // If we moved off the value area, hide
-    if (!tooltip.classList.contains("hidden")) hide();
-    return;
-  }
+    if (!target || !cardsEl.contains(target)) {
+      // If we moved off the value area, hide
+      if (!tooltip.classList.contains("hidden")) hide();
+      return;
+    }
 
-  const text = target.getAttribute("data-tooltip");
-  if (!text) return;
+    const text = target.getAttribute("data-tooltip");
+    if (!text) return;
 
-  show(text);
-  move(evt);
-});
-
+    show(text);
+    move(evt);
+  });
 
   // Safety: hide when mouse leaves the whole grid
   cardsEl.addEventListener("mouseleave", hide);
@@ -146,12 +265,12 @@ function initCardFlip() {
 
   // Click anywhere on a card flips it
   cardsEl.addEventListener("click", (e) => {
-// If the click was on an interactive control inside the card, don't flip.
-if (e.target.closest?.(".award-more")) return;
+    // If the click was on an interactive control inside the card, don't flip.
+    if (e.target.closest?.(".award-more")) return;
 
-const card = e.target.closest?.(".card");
-if (!card || !cardsEl.contains(card)) return;
-toggleFlip(card);
+    const card = e.target.closest?.(".card");
+    if (!card || !cardsEl.contains(card)) return;
+    toggleFlip(card);
   });
 
   // Keyboard accessibility (Enter/Space)
@@ -165,7 +284,6 @@ toggleFlip(card);
     }
   });
 }
-
 
 // -----------------------------
 // Awards toggle (show +X more)
@@ -358,7 +476,6 @@ function renderAwardsChips(playerId) {
   `;
 }
 
-
 function buildTooltipText(player) {
   const s = player?.stats ?? {};
   const meta = player?.meta ?? {};
@@ -370,23 +487,18 @@ function buildTooltipText(player) {
   const ovrCombined = s.ovrCombined ?? null;
   const value = ovrToValueMillions(ovr);
 
-  // If you later add richer breakdown fields to aggregated.json,
-  // you can surface them here without changing tooltip plumbing.
   const lines = [];
   lines.push(name);
   lines.push(`POS: ${position}`);
   lines.push(`VALUE: £${value}m`);
   lines.push(`OVR: ${ovr}${ovrCombined != null ? ` (combined: ${Number(ovrCombined).toFixed(2)})` : ""}`);
 
-  // Optional: show a couple of key stats for context (keeps tooltip useful even if no breakdown exists)
   const goals = s.goals ?? 0;
   const assists = s.assists ?? 0;
-const motmAll = s.motm ?? 0;
-const motm2026 = s.motm2026 ?? 0;
-lines.push(`G/A/MOTM: ${goals}/${assists}/${motm2026} (${motmAll})`);
+  const motmAll = s.motm ?? 0;
+  const motm2026 = s.motm2026 ?? 0;
+  lines.push(`G/A/MOTM: ${goals}/${assists}/${motm2026} (${motmAll})`);
 
-  // If your data ever includes a preformatted breakdown string, prefer it:
-  // e.g. s.ovrTooltip = "Pace: 12\nShooting: 9\n..."
   if (typeof s.ovrTooltip === "string" && s.ovrTooltip.trim()) {
     lines.push("");
     lines.push(s.ovrTooltip.trim());
@@ -564,26 +676,28 @@ async function loadAggregated() {
   try {
     status.textContent = "Fetching aggregated stats…";
 
-   const [resAgg, resHof] = await Promise.all([
-  fetch("./data/aggregated.json", { cache: "no-store" }),
-  fetch("./data/hall-of-fame.json", { cache: "no-store" })
-]);
-   if (!resAgg.ok) throw new Error(`aggregated.json HTTP ${resAgg.status}`);
+    const [resAgg, resHof] = await Promise.all([
+      fetch("./data/aggregated.json", { cache: "no-store" }),
+      fetch("./data/hall-of-fame.json", { cache: "no-store" })
+    ]);
+    if (!resAgg.ok) throw new Error(`aggregated.json HTTP ${resAgg.status}`);
 
-   const hofPayload = resHof.ok ? await resHof.json() : null;
+    const hofPayload = resHof.ok ? await resHof.json() : null;
 
-const payload = await resAgg.json();
+    const payload = await resAgg.json();
 
     const generatedAt = payload?.meta?.generatedAt ?? null;
     lastUpdated.textContent = generatedAt
       ? new Date(generatedAt).toLocaleString("en-GB")
       : "unknown";
 
-    const playersObj = payload?.players ?? {};
     ALL_PLAYERS = Object.values(payload?.players ?? {}).filter(p => !p?.meta?.excluded);
 
-// Build awards map (safe even if hofPayload null)
-AWARDS_BY_PLAYER_ID = buildAwardsByPlayerId(ALL_PLAYERS, hofPayload);
+    // Build awards map (safe even if hofPayload null)
+    AWARDS_BY_PLAYER_ID = buildAwardsByPlayerId(ALL_PLAYERS, hofPayload);
+
+    // ✅ NEW: render upcoming birthdays block (next 7 days)
+    renderUpcomingBirthdays(ALL_PLAYERS, status);
 
     // Wire up name filter
     if (nameInput) {
@@ -620,17 +734,17 @@ function applyFiltersAndRender(cardsEl, statusEl, meta) {
   const q = UI_STATE.nameQuery;
   const mode = UI_STATE.statFilter;
 
- // 1) Name + Nicknames filter (nicknames are not displayed)
-const getSearchHaystack = (p) => {
-  const name = (p?.name ?? "").toLowerCase();
-  // Prefer meta.nicknames if you store it there; fall back to p.nicknames
-  const nick = (p?.meta?.nicknames ?? p?.nicknames ?? "").toLowerCase();
-  return `${name} ${nick}`.trim();
-};
+  // 1) Name + Nicknames filter (nicknames are not displayed)
+  const getSearchHaystack = (p) => {
+    const name = (p?.name ?? "").toLowerCase();
+    // Prefer meta.nicknames if you store it there; fall back to p.nicknames
+    const nick = (p?.meta?.nicknames ?? p?.nicknames ?? "").toLowerCase();
+    return `${name} ${nick}`.trim();
+  };
 
-let list = !q
-  ? ALL_PLAYERS.slice()
-  : ALL_PLAYERS.filter((p) => getSearchHaystack(p).includes(q));
+  let list = !q
+    ? ALL_PLAYERS.slice()
+    : ALL_PLAYERS.filter((p) => getSearchHaystack(p).includes(q));
 
   // Helpers for OVR sorting (precise first, then displayed)
   const getOvrCombined = (p) => (p?.stats?.ovrCombined ?? p?.stats?.ovr ?? -Infinity);
@@ -667,27 +781,26 @@ let list = !q
       const bn = (b?.name ?? "").toLowerCase();
       return an.localeCompare(bn);
     });
-   } else if (mode !== "all") {
-  const getStat = (p) => {
-    const s = p?.stats ?? {};
-    if (mode === "motm2026") return s.motm2026 ?? 0;
-    if (mode === "motm") return s.motm ?? 0;
-    if (mode === "caps2026") return s.caps2026 ?? 0;
-    if (mode === "caps") return s.caps ?? 0;
-    return s[mode] ?? 0;
-  };
+  } else if (mode !== "all") {
+    const getStat = (p) => {
+      const s = p?.stats ?? {};
+      if (mode === "motm2026") return s.motm2026 ?? 0;
+      if (mode === "motm") return s.motm ?? 0;
+      if (mode === "caps2026") return s.caps2026 ?? 0;
+      if (mode === "caps") return s.caps ?? 0;
+      return s[mode] ?? 0;
+    };
 
-  if (mode === "subs") {
-    // Include negatives, sort high → low
-    list = list.sort((a, b) => getStat(b) - getStat(a));
+    if (mode === "subs") {
+      // Include negatives, sort high → low
+      list = list.sort((a, b) => getStat(b) - getStat(a));
+    } else {
+      // Normal behaviour for goals, assists, etc.
+      list = list
+        .filter((p) => getStat(p) > 0)
+        .sort((a, b) => getStat(b) - getStat(a));
+    }
   } else {
-    // Normal behaviour for goals, assists, etc.
-    list = list
-      .filter((p) => getStat(p) > 0)
-      .sort((a, b) => getStat(b) - getStat(a));
-  }
-}
- else {
     list.sort((a, b) => {
       const ac = getOvrCombined(a);
       const bc = getOvrCombined(b);
@@ -740,7 +853,7 @@ function renderPlayers(players, cardsEl, datasetMeta) {
     const ogs = s.ogs ?? 0;
     const cleanSheets = s.cleanSheets ?? 0;
     const otfs = s.otfs ?? 0;
-   const motmAll = s.motm ?? 0;
+    const motmAll = s.motm ?? 0;
     const motm2026 = s.motm2026 ?? 0;
 
     const capsAll = s.caps ?? 0;
@@ -882,7 +995,6 @@ function renderPlayers(players, cardsEl, datasetMeta) {
           ${escapeHtml(positionFull(position))} • ${games} games • ${minutesPlayed} mins
         </div>
       <div class="card-back__body">
-        
 
         <div class="card-back__grid">
           <div class="card-back__stat">
@@ -1003,7 +1115,6 @@ function initTopbarMenu() {
     if (window.innerWidth > 720) close();
   });
 }
-
 
 // -----------------------------
 // Boot (runs on every page)

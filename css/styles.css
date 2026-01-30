@@ -1714,3 +1714,43 @@ body { scroll-padding-top: 60px; } /* helps anchor links etc */
     justify-content: flex-start; /* optional: feels nicer on mobile */
   }
 }
+
+/* -----------------------------
+   Upcoming birthdays
+------------------------------ */
+
+.upcoming-bdays {
+  margin: 12px 0 18px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.upcoming-bdays__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+
+.upcoming-bdays__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.upcoming-bdays__item {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  font-size: 0.85rem;
+}
+
+.upcoming-bdays__name {
+  font-weight: 600;
+}
+
+.upcoming-bdays__when {
+  opacity: 0.75;
+}
+

@@ -819,7 +819,7 @@
         "concededExactlyOneMatches2026": 2,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -10,
+        "subs": 5,
         "caps": 104,
         "caps2026": 4,
         "motm": 5,
@@ -3668,7 +3668,7 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-02-01T20:24:28.784Z",
+    "generatedAt": "2026-02-01T20:57:30.781Z",
     "year": 2026,
     "matchesInYear": 4,
     "matchesCountForStatsInYear": 4,

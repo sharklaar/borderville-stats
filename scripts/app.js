@@ -918,10 +918,10 @@ function renderPlayers(players, cardsEl, datasetMeta) {
 
         <div class="card-top">
           <div class="rating-block" data-tooltip="${escapeHtml(buildValueTooltipText(p, datasetMeta))}">
-            <div class="mv-label">Market Value</div>
-            <div class="mv-value">
-              <span class="mv-currency">£</span>${value}<span class="mv-suffix">m</span>
-            </div>
+         <div class="mv-label">Market Value</div>
+<div class="mv-value">
+  <span class="mv-currency">${name === "Rob Mosley" ? "€" : "£"}</span>${value}<span class="mv-suffix">m</span>
+</div>
           </div>
         </div>
 

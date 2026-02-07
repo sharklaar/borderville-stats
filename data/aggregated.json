@@ -4154,11 +4154,7 @@
     }
   ],
   "meta": {
-<<<<<<< HEAD
-    "generatedAt": "2026-02-07T13:58:23.961Z",
-=======
-    "generatedAt": "2026-02-07T15:24:50.428Z",
->>>>>>> df7f91e (fixing subs styling)
+    "generatedAt": "2026-02-07T15:45:28.750Z",
     "year": 2026,
     "matchesInYear": 5,
     "matchesCountForStatsInYear": 5,

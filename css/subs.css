@@ -1,0 +1,238 @@
+/* Subs page styling – keep it minimal + consistent with existing site */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.panel {
+  background: rgba(10, 14, 24, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 20px;
+  margin: 18px 0;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+}
+
+.panel__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.panel__title {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.panel__meta {
+  opacity: 0.75;
+  font-size: 0.9rem;
+}
+
+.panel__subtitle {
+  margin: 10px 0 16px;
+  opacity: 0.85;
+}
+
+.subs-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 12px 0 16px;
+}
+
+.subs-summary__item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.subs-summary__label {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 6px;
+}
+
+.subs-summary__value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.subs-table-wrap {
+  overflow: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.subs-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.subs-table thead th {
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 12px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.subs-table tbody td {
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  vertical-align: top;
+}
+
+.subs-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.subs-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.subs-table .t-right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ledger notes can be long; allow wrapping without destroying table layout */
+.subs-table td.notes {
+  white-space: normal;
+  min-width: 240px;
+  max-width: 520px;
+}
+
+.subs-note {
+  margin-top: 12px;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+/* Pills */
+.pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.pill--good {
+  border-color: rgba(93, 230, 141, 0.35);
+  background: rgba(93, 230, 141, 0.12);
+}
+
+.pill--bad {
+  border-color: rgba(255, 102, 102, 0.35);
+  background: rgba(255, 102, 102, 0.12);
+}
+
+.pill--neutral {
+  border-color: rgba(180, 180, 180, 0.25);
+  background: rgba(180, 180, 180, 0.08);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .subs-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .subs-table {
+    min-width: 560px;
+  }
+}
+/* =========================
+   Payments panel additions
+   ========================= */
+
+.subs-panel__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.subs-panel__meta {
+  font-size: 0.95rem;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+.subs-table-wrap {
+  overflow-x: auto;
+  border-radius: 16px;
+}
+
+.subs-table th.num,
+.subs-table td.num {
+  text-align: right;
+}
+
+.subs-empty {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.subs-empty code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+.subs-empty .muted {
+  margin-left: 6px;
+  opacity: 0.75;
+}
+
+/* Map the subs page HTML classes to the existing panel/container styling */
+.subs-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.subs-panel {
+  background: rgba(10, 14, 24, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 20px;
+  margin: 18px 0;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+}
+
+.subs-lede {
+  margin: 10px 0 12px;
+  opacity: 0.85;
+}
+
+.subs-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0 12px;
+}
+
+.subs-toggle {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  user-select: none;
+  opacity: 0.9;
+}

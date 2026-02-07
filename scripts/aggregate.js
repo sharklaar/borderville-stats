@@ -7,6 +7,7 @@ const TABLES = {
   PLAYERS: "tbl58HHS5mKXWlAby",
   GOALS: "tblOF43XjjpmpkY2Q",
   MATCHES: "tbl4EwCT6YXa1TyWs",
+  SUBS: "tblq8kusq5ZPQeJOE", // ✅ NEW (Subs transactions)
 };
 
 // If Airtable field names change, update these in one place:
@@ -16,7 +17,7 @@ const FIELDS = {
   STARTING_CAPS: "Starting Caps",
   STARTING_MOTM: "Starting MOMs",
   STARTING_SUBS: "Starting Subs",
-  SUBS_ADDED: "Subs Added",
+  SUBS_ADDED: "Subs Added", // NOTE: legacy field in Players (now derived from Subs table)
   POSITION: "Position",
   DOB: "Date of Birth",
   PROFILE_PHOTO: "Profile Photo",
@@ -54,6 +55,14 @@ const FIELDS = {
   GOAL_SCORER: "Scorer",
   GOAL_ASSIST: "Assist",
   GOAL_IS_OWN: "Is Own Goal",
+
+  // Subs (transactions) ✅ NEW
+  SUBS_PLAYER: "Player",
+  SUBS_DATE: "Date",
+  SUBS_AMOUNT_PAID: "Amount Paid",
+  SUBS_SUBS_ADDED: "Subs Added",
+  SUBS_NOTES: "Notes",
+  SUBS_ID: "Id",
 };
 
 const asArray = (v) => (Array.isArray(v) ? v : []);
@@ -230,11 +239,39 @@ async function main() {
   console.log("Starting aggregate.js…", process.cwd());
   const { token, baseId } = getConfig();
 
-  const [playersRaw, matchesRaw, goalsRaw] = await Promise.all([
+  const [playersRaw, matchesRaw, goalsRaw, subsRaw] = await Promise.all([
     fetchAllRecords({ baseId, tableId: TABLES.PLAYERS, token }),
     fetchAllRecords({ baseId, tableId: TABLES.MATCHES, token }),
     fetchAllRecords({ baseId, tableId: TABLES.GOALS, token }),
+    fetchAllRecords({ baseId, tableId: TABLES.SUBS, token }), // ✅ NEW
   ]);
+
+  // ----------------------------
+  // Subs (transactions) ✅ NEW
+  // ----------------------------
+  const subsAddedByPlayerId = {}; // playerId -> total Subs Added (credits)
+  const subsTransactions = []; // raw-ish list for treasurer page
+
+  for (const r of subsRaw) {
+    const f = r.fields || {};
+    const playerId = asSingleId(f[FIELDS.SUBS_PLAYER]);
+    if (!playerId) continue;
+
+    const subsAdded = asNumber(f[FIELDS.SUBS_SUBS_ADDED]);
+    subsAddedByPlayerId[playerId] =
+      (subsAddedByPlayerId[playerId] || 0) + subsAdded;
+
+    subsTransactions.push({
+      id: r.id,
+      createdTime: r.createdTime || null,
+      rowId: asNumber(f[FIELDS.SUBS_ID]),
+      playerId,
+      date: f[FIELDS.SUBS_DATE] || null,
+      amountPaid: asNumber(f[FIELDS.SUBS_AMOUNT_PAID]),
+      subsAdded,
+      notes: f[FIELDS.SUBS_NOTES] || "",
+    });
+  }
 
   // ----------------------------
   // Players
@@ -248,7 +285,8 @@ async function main() {
       startingCaps: asNumber(f[FIELDS.STARTING_CAPS]),
       startingMotm: asNumber(f[FIELDS.STARTING_MOTM]),
       startingSubs: asNumber(f[FIELDS.STARTING_SUBS]),
-      subsAdded: asNumber(f[FIELDS.SUBS_ADDED]),
+      // ✅ Changed: derive from Subs transactions table instead of Players field
+      subsAdded: subsAddedByPlayerId[r.id] || 0,
       position: f[FIELDS.POSITION] || null,
       dob: f[FIELDS.DOB] || null,
       profilePhoto: f[FIELDS.PROFILE_PHOTO] || null,
@@ -334,8 +372,12 @@ async function main() {
     const blue = new Set(m.blue);
 
     // ALWAYS: appearances (2026) — even non-stat matches affect caps/subs
-    pink.forEach((pid) => ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.caps2026++);
-    blue.forEach((pid) => ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.caps2026++);
+    pink.forEach((pid) =>
+      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.caps2026++
+    );
+    blue.forEach((pid) =>
+      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.caps2026++
+    );
 
     if (!m.countsForStats) {
       matchesNonStatInYear++;
@@ -345,12 +387,16 @@ async function main() {
 
     // Captain totals (stat matches only)
     if (m.captainPink) {
-      ensurePlayer(outPlayers, m.captainPink, playersById[m.captainPink]?.name).stats.captain++;
-      ensurePlayer(outPlayers, m.captainPink, playersById[m.captainPink]?.name).stats.captain2026++;
+      ensurePlayer(outPlayers, m.captainPink, playersById[m.captainPink]?.name)
+        .stats.captain++;
+      ensurePlayer(outPlayers, m.captainPink, playersById[m.captainPink]?.name)
+        .stats.captain2026++;
     }
     if (m.captainBlue) {
-      ensurePlayer(outPlayers, m.captainBlue, playersById[m.captainBlue]?.name).stats.captain++;
-      ensurePlayer(outPlayers, m.captainBlue, playersById[m.captainBlue]?.name).stats.captain2026++;
+      ensurePlayer(outPlayers, m.captainBlue, playersById[m.captainBlue]?.name)
+        .stats.captain++;
+      ensurePlayer(outPlayers, m.captainBlue, playersById[m.captainBlue]?.name)
+        .stats.captain2026++;
     }
 
     // W/D/L (stat matches only)
@@ -366,8 +412,12 @@ async function main() {
     }
 
     // Conceded goals per player (season 2026, stat matches only)
-    pink.forEach((pid) => { ensurePlayer(outPlayers, pid).stats.conceded2026 += m.blueGoals; });
-    blue.forEach((pid) => { ensurePlayer(outPlayers, pid).stats.conceded2026 += m.pinkGoals; });
+    pink.forEach((pid) => {
+      ensurePlayer(outPlayers, pid).stats.conceded2026 += m.blueGoals;
+    });
+    blue.forEach((pid) => {
+      ensurePlayer(outPlayers, pid).stats.conceded2026 += m.pinkGoals;
+    });
 
     // Winning captain (stat matches only)
     if (m.winningTeam === "PINK" && m.captainPink) {
@@ -390,15 +440,21 @@ async function main() {
     });
 
     // Clean sheets (stat matches only)
-    m.cleanPink.forEach((pid) => ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.cleanSheets++);
-    m.cleanBlue.forEach((pid) => ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.cleanSheets++);
+    m.cleanPink.forEach((pid) =>
+      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.cleanSheets++
+    );
+    m.cleanBlue.forEach((pid) =>
+      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.cleanSheets++
+    );
 
     // GK clean sheets (stat matches only)
     if (m.pinkGK && m.cleanPink.includes(m.pinkGK)) {
-      ensurePlayer(outPlayers, m.pinkGK, playersById[m.pinkGK]?.name).stats.gkCleanSheets++;
+      ensurePlayer(outPlayers, m.pinkGK, playersById[m.pinkGK]?.name).stats
+        .gkCleanSheets++;
     }
     if (m.blueGK && m.cleanBlue.includes(m.blueGK)) {
-      ensurePlayer(outPlayers, m.blueGK, playersById[m.blueGK]?.name).stats.gkCleanSheets++;
+      ensurePlayer(outPlayers, m.blueGK, playersById[m.blueGK]?.name).stats
+        .gkCleanSheets++;
     }
 
     // Defensive stats (stat matches only)
@@ -408,10 +464,7 @@ async function main() {
     // ✅ NEW: "conceded exactly 1" uplift — DEF/GK ONLY
     // Blue DEF+GK
     if (blueGA === 1) {
-      const ids = new Set([
-        ...asArray(m.blueDefs),
-        m.blueGK
-      ].filter(Boolean));
+      const ids = new Set([...asArray(m.blueDefs), m.blueGK].filter(Boolean));
       ids.forEach((pid) => {
         ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
       });
@@ -419,10 +472,7 @@ async function main() {
 
     // Pink DEF+GK
     if (pinkGA === 1) {
-      const ids = new Set([
-        ...asArray(m.pinkDefs),
-        m.pinkGK
-      ].filter(Boolean));
+      const ids = new Set([...asArray(m.pinkDefs), m.pinkGK].filter(Boolean));
       ids.forEach((pid) => {
         ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
       });
@@ -435,21 +485,26 @@ async function main() {
     if (csBlueDefs.length === 2) {
       addPairs(csBlueDefs, (a, b) => {
         const key = `${a}|${b}`;
-        defensivePartnershipCounts[key] = (defensivePartnershipCounts[key] || 0) + 1;
+        defensivePartnershipCounts[key] =
+          (defensivePartnershipCounts[key] || 0) + 1;
       });
     }
 
     if (csPinkDefs.length === 2) {
       addPairs(csPinkDefs, (a, b) => {
         const key = `${a}|${b}`;
-        defensivePartnershipCounts[key] = (defensivePartnershipCounts[key] || 0) + 1;
+        defensivePartnershipCounts[key] =
+          (defensivePartnershipCounts[key] || 0) + 1;
       });
     }
 
     // GA partnerships: all defender pairs who played; attribute team GA
     addPairs(m.blueDefs, (a, b) => {
       const key = `${a}|${b}`;
-      const cur = defensivePartnershipsGA[key] || { matches: 0, goalsAgainst: 0 };
+      const cur = defensivePartnershipsGA[key] || {
+        matches: 0,
+        goalsAgainst: 0,
+      };
       cur.matches += 1;
       cur.goalsAgainst += blueGA;
       defensivePartnershipsGA[key] = cur;
@@ -457,7 +512,10 @@ async function main() {
 
     addPairs(m.pinkDefs, (a, b) => {
       const key = `${a}|${b}`;
-      const cur = defensivePartnershipsGA[key] || { matches: 0, goalsAgainst: 0 };
+      const cur = defensivePartnershipsGA[key] || {
+        matches: 0,
+        goalsAgainst: 0,
+      };
       cur.matches += 1;
       cur.goalsAgainst += pinkGA;
       defensivePartnershipsGA[key] = cur;
@@ -481,7 +539,9 @@ async function main() {
     addUnit(pinkUnit, pinkGA);
 
     // OTFs (stat matches only)
-    m.otfs.forEach((pid) => ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.otfs++);
+    m.otfs.forEach((pid) =>
+      ensurePlayer(outPlayers, pid, playersById[pid]?.name).stats.otfs++
+    );
 
     // MOTM (stat matches only; can be multiple)
     m.motm.forEach((pid) => {
@@ -604,6 +664,42 @@ async function main() {
   }
 
   // ----------------------------
+  // Subs ledger (credits-only running balance) ✅ NEW
+  // ----------------------------
+  // This is *not* the same as player card balance (which subtracts caps2026).
+  // It's for the treasurer: startingSubs + cumulative(subsAdded).
+  const subsLedger = [];
+  const txSorted = [...subsTransactions].sort((a, b) => {
+    const ad = a.date || "";
+    const bd = b.date || "";
+    if (ad !== bd) return ad.localeCompare(bd); // ascending date
+    const act = a.createdTime || "";
+    const bct = b.createdTime || "";
+    if (act !== bct) return act.localeCompare(bct); // ascending createdTime
+    return (a.id || "").localeCompare(b.id || "");
+  });
+
+  const creditBalByPlayer = {};
+  for (const p of Object.values(playersById)) {
+    creditBalByPlayer[p.id] = p.startingSubs || 0;
+  }
+
+  for (const tx of txSorted) {
+    const p = playersById[tx.playerId];
+    const name = p ? p.name : "Unknown";
+    const prev = creditBalByPlayer[tx.playerId] ?? 0;
+    const next = prev + (tx.subsAdded || 0);
+    creditBalByPlayer[tx.playerId] = next;
+
+    subsLedger.push({
+      ...tx,
+      playerName: name,
+      previousBalance: prev,
+      updatedBalance: next,
+    });
+  }
+
+  // ----------------------------
   // Output
   // ----------------------------
   const outPath = path.join(process.cwd(), "data", "aggregated.json");
@@ -619,7 +715,13 @@ async function main() {
     .map(([key, v]) => {
       const [playerId1, playerId2] = key.split("|");
       const gaPerMatch = v.matches ? v.goalsAgainst / v.matches : null;
-      return { playerId1, playerId2, matches: v.matches, goalsAgainst: v.goalsAgainst, gaPerMatch };
+      return {
+        playerId1,
+        playerId2,
+        matches: v.matches,
+        goalsAgainst: v.goalsAgainst,
+        gaPerMatch,
+      };
     })
     .sort((a, b) => (a.gaPerMatch ?? 999) - (b.gaPerMatch ?? 999));
 
@@ -660,6 +762,11 @@ async function main() {
     defensivePartnerships,
     defensivePartnershipsGoalsAgainst,
     defensiveUnitsGoalsAgainst,
+
+    // ✅ NEW: Subs data for treasurer page
+    subsTransactions,
+    subsLedger,
+
     meta: {
       generatedAt: new Date().toISOString(),
       year: YEAR,
@@ -667,6 +774,7 @@ async function main() {
       matchesCountForStatsInYear,
       matchesNonStatInYear,
       goalsIncluded: goalEvents.length,
+      subsTransactionsIncluded: subsTransactions.length,
     },
   });
 

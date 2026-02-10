@@ -64,126 +64,6 @@ function playerSearchHaystack(p) {
 }
 
 // -----------------------------
-// Upcoming birthdays (next N days)
-// -----------------------------
-function safeDateAtLocalMidnight(d) {
-  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-}
-
-function isLeapYear(y) {
-  return (y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0);
-}
-
-function parseDobYmd(dobStr) {
-  // Expect "YYYY-MM-DD" from Airtable
-  if (!dobStr || typeof dobStr !== "string") return null;
-  const m = dobStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (!m) return null;
-  const month = Number(m[2]); // 1..12
-  const day = Number(m[3]);   // 1..31
-  if (!month || !day) return null;
-  return { month, day };
-}
-
-function nextBirthdayDateFromDob(dobStr, now = new Date()) {
-  const md = parseDobYmd(dobStr);
-  if (!md) return null;
-
-  const year = now.getFullYear();
-  const today = safeDateAtLocalMidnight(now);
-
-  const makeCandidate = (y) => {
-    // Handle Feb 29 on non-leap years: treat as Feb 28 for display purposes
-    if (md.month === 2 && md.day === 29 && !isLeapYear(y)) {
-      return new Date(y, 1, 28);
-    }
-    return new Date(y, md.month - 1, md.day);
-  };
-
-  let candidate = makeCandidate(year);
-  if (candidate < today) candidate = makeCandidate(year + 1);
-
-  return candidate;
-}
-
-function diffDays(fromDate, toDate) {
-  // Both should be local-midnight dates
-  const ms = toDate.getTime() - fromDate.getTime();
-  return Math.floor(ms / (24 * 60 * 60 * 1000));
-}
-
-function getUpcomingBirthdays(players, daysAhead = 7) {
-  const now = new Date();
-  const today = safeDateAtLocalMidnight(now);
-
-  const list = [];
-
-  for (const p of players || []) {
-    const dobStr = p?.meta?.dob ?? null;
-    if (!dobStr) continue;
-
-    const next = nextBirthdayDateFromDob(dobStr, now);
-    if (!next) continue;
-
-    const d = diffDays(today, safeDateAtLocalMidnight(next));
-    // "next 7 days" = include today, so 0..6
-    if (d >= 0 && d < daysAhead) {
-      list.push({
-        playerId: p?.id ?? null,
-        name: p?.name ?? "Unknown",
-        date: next,
-        daysAway: d,
-      });
-    }
-  }
-
-  list.sort((a, b) => a.date.getTime() - b.date.getTime() || String(a.name).localeCompare(String(b.name)));
-  return list;
-}
-
-function ensureUpcomingBirthdaysContainer(statusEl) {
-  if (!statusEl) return null;
-
-  let el = document.getElementById("upcomingBirthdays");
-  if (el) return el;
-
-  el = document.createElement("div");
-  el.id = "upcomingBirthdays";
-  el.className = "upcoming-bdays";
-
-  // inject immediately after the status block
-  statusEl.insertAdjacentElement("afterend", el);
-  return el;
-}
-
-function renderUpcomingBirthdays(players, statusEl) {
-  const container = ensureUpcomingBirthdaysContainer(statusEl);
-  if (!container) return;
-
-  const upcoming = getUpcomingBirthdays(players, 7);
-  if (!upcoming.length) {
-    container.innerHTML = "";
-    return;
-  }
-
-  container.innerHTML = `
-    <div class="upcoming-bdays__title">Upcoming birthdays (next 7 days)</div>
-    <div class="upcoming-bdays__list">
-      ${upcoming.map((x) => {
-        const weekday = x.date.toLocaleDateString("en-GB", { weekday: "long" });
-        const dayMonth = x.date.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
-        return `
-          <div class="upcoming-bdays__item">
-            <span class="upcoming-bdays__name">${escapeHtml(x.name)}</span>
-            <span class="upcoming-bdays__when">${escapeHtml(weekday)} • ${escapeHtml(dayMonth)}</span>
-          </div>
-        `;
-      }).join("")}
-    </div>
-  `;
-}
-
-// -----------------------------
 // Tooltip (attach to CARD, not rating)
 // -----------------------------
 function initCardTooltip() {
@@ -383,12 +263,11 @@ function awardIconType(awardName) {
   if (a.includes("golden boot")) return "boot";
   if (a.includes("golden glove")) return "glove";
 
-  // Everything else is a "star" (player awards, goals, assists, MOTM etc.)
+  // Everything else is a "star"
   return "star";
 }
 
 function awardIconGlyph(type) {
-  // Using emoji as lightweight, cross-platform "icons"
   if (type === "boot") return "🥾";
   if (type === "glove") return "🧤";
   return "⭐";
@@ -443,7 +322,6 @@ function renderAwardsChips(playerId) {
   const list = AWARDS_BY_PLAYER_ID[playerId] ?? [];
   if (!list.length) return `<div class="awards-empty">No previous awards</div>`;
 
-  // Keep your "top N + show more" behaviour, but group within each section.
   const maxCollapsed = 4;
   const shown = list.slice(0, maxCollapsed);
   const hidden = list.slice(maxCollapsed);
@@ -528,11 +406,10 @@ function buildValueTooltipText(player, meta) {
   const t = (ovr - 1) / 99;
   const valueM = minValue + t * valueRange;
 
-  // Because mapping is linear, we can express "base" + "OVR uplift"
   const ovrUpliftM = valueM - minValue;
 
   // --- replicate calculateOverallScore.js season scoring (RAW, pre-normalisation) ---
-  const playedSeason = num(s.caps2026); // used as playedSeason in backend
+  const playedSeason = num(s.caps2026);
   const wins = num(s.wins);
   const draws = num(s.draws);
   const goals = num(s.goals);
@@ -696,9 +573,6 @@ async function loadAggregated() {
     // Build awards map (safe even if hofPayload null)
     AWARDS_BY_PLAYER_ID = buildAwardsByPlayerId(ALL_PLAYERS, hofPayload);
 
-    // ✅ NEW: render upcoming birthdays block (next 7 days)
-    renderUpcomingBirthdays(ALL_PLAYERS, status);
-
     // Wire up name filter
     if (nameInput) {
       nameInput.addEventListener("input", () => {
@@ -737,7 +611,6 @@ function applyFiltersAndRender(cardsEl, statusEl, meta) {
   // 1) Name + Nicknames filter (nicknames are not displayed)
   const getSearchHaystack = (p) => {
     const name = (p?.name ?? "").toLowerCase();
-    // Prefer meta.nicknames if you store it there; fall back to p.nicknames
     const nick = (p?.meta?.nicknames ?? p?.nicknames ?? "").toLowerCase();
     return `${name} ${nick}`.trim();
   };
@@ -868,10 +741,10 @@ function renderPlayers(players, cardsEl, datasetMeta) {
 
     const MATCH_MINS = 63;
 
-    const games = Number(caps2026) || 0; // "games played in 2026"
+    const games = Number(caps2026) || 0;
     const minutesPlayed = games * MATCH_MINS;
 
-    const conceded2026 = Number(s.conceded2026 ?? 0); // already used in buildValueTooltipText
+    const conceded2026 = Number(s.conceded2026 ?? 0);
     const isDefOrGk = ["DEF", "GK"].includes(String(position).toUpperCase());
 
     const perGame = (n) => (games > 0 ? (n / games) : null);
@@ -918,10 +791,10 @@ function renderPlayers(players, cardsEl, datasetMeta) {
 
         <div class="card-top">
           <div class="rating-block" data-tooltip="${escapeHtml(buildValueTooltipText(p, datasetMeta))}">
-         <div class="mv-label">Market Value</div>
-<div class="mv-value">
-  <span class="mv-currency">${name === "Rob Mosley" ? "€" : "£"}</span>${value}<span class="mv-suffix">m</span>
-</div>
+            <div class="mv-label">Market Value</div>
+            <div class="mv-value">
+              <span class="mv-currency">${name === "Rob Mosley" ? "€" : "£"}</span>${value}<span class="mv-suffix">m</span>
+            </div>
           </div>
         </div>
 
@@ -994,49 +867,49 @@ function renderPlayers(players, cardsEl, datasetMeta) {
         <div class="card-back__subtitle">
           ${escapeHtml(positionFull(position))} • ${games} games • ${minutesPlayed} mins
         </div>
-      <div class="card-back__body">
+        <div class="card-back__body">
 
-        <div class="card-back__grid">
-          <div class="card-back__stat">
-            <div class="k">Goals / game</div>
-            <div class="v">${fmtRate(goalsPerGame)}</div>
-          </div>
-          <div class="card-back__stat">
-            <div class="k">Mins / goal</div>
-            <div class="v">${fmtMins(minsPerGoal)}</div>
-          </div>
+          <div class="card-back__grid">
+            <div class="card-back__stat">
+              <div class="k">Goals / game</div>
+              <div class="v">${fmtRate(goalsPerGame)}</div>
+            </div>
+            <div class="card-back__stat">
+              <div class="k">Mins / goal</div>
+              <div class="v">${fmtMins(minsPerGoal)}</div>
+            </div>
 
-          <div class="card-back__stat">
-            <div class="k">Assists / game</div>
-            <div class="v">${fmtRate(assistsPerGame)}</div>
-          </div>
-          <div class="card-back__stat">
-            <div class="k">Mins / assist</div>
-            <div class="v">${fmtMins(minsPerAssist)}</div>
-          </div>
+            <div class="card-back__stat">
+              <div class="k">Assists / game</div>
+              <div class="v">${fmtRate(assistsPerGame)}</div>
+            </div>
+            <div class="card-back__stat">
+              <div class="k">Mins / assist</div>
+              <div class="v">${fmtMins(minsPerAssist)}</div>
+            </div>
 
-          ${
-            isDefOrGk
-              ? `
-          <div class="card-back__stat">
-            <div class="k">Conceded / game</div>
-            <div class="v">${fmtRate(concededPerGame)}</div>
+            ${
+              isDefOrGk
+                ? `
+            <div class="card-back__stat">
+              <div class="k">Conceded / game</div>
+              <div class="v">${fmtRate(concededPerGame)}</div>
+            </div>
+            <div class="card-back__stat">
+              <div class="k">Mins / conceded</div>
+              <div class="v">${fmtMins(minsPerConceded)}</div>
+            </div>
+            `
+                : `
+            <div class="card-back__stat card-back__stat--wide">
+              <div class="k">Defensive stats</div>
+              <div class="v">—</div>
+            </div>
+            `
+            }
           </div>
-          <div class="card-back__stat">
-            <div class="k">Mins / conceded</div>
-            <div class="v">${fmtMins(minsPerConceded)}</div>
-          </div>
-          `
-              : `
-          <div class="card-back__stat card-back__stat--wide">
-            <div class="k">Defensive stats</div>
-            <div class="v">—</div>
-          </div>
-          `
-          }
+          ${awardsHtml}
         </div>
-        ${awardsHtml}
-      </div>
       </div>
     </div>
 

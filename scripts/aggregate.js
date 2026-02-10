@@ -20,7 +20,6 @@ const FIELDS = {
   SUBS_ADDED: "Subs Added", // NOTE: legacy field in Players (now derived from Subs table)
   POSITION: "Position",
   DOB: "Date of Birth",
-  PROFILE_PHOTO: "Profile Photo",
   EXCLUDED: "Excluded", // NEW
   NICKNAMES: "Nicknames",
 
@@ -235,6 +234,53 @@ function formCodeForPlayerInMatch(playerId, m) {
   return "L";
 }
 
+// ----------------------------
+// Upcoming birthdays (backend-only; emit safe meta list)
+// ----------------------------
+function isLeapYear(y) {
+  return (y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0);
+}
+
+function parseDobYmd(dobStr) {
+  // Expect "YYYY-MM-DD" from Airtable
+  if (!dobStr || typeof dobStr !== "string") return null;
+  const m = dobStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return null;
+  const month = Number(m[2]); // 1..12
+  const day = Number(m[3]); // 1..31
+  if (!month || !day) return null;
+  return { month, day };
+}
+
+function utcMidnight(d) {
+  return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+}
+
+function nextBirthdayUtcFromDob(dobStr, now = new Date()) {
+  const md = parseDobYmd(dobStr);
+  if (!md) return null;
+
+  const year = now.getUTCFullYear();
+  const today = utcMidnight(now);
+
+  const makeCandidate = (y) => {
+    // Feb 29 -> Feb 28 on non-leap years (display purposes)
+    if (md.month === 2 && md.day === 29 && !isLeapYear(y)) {
+      return new Date(Date.UTC(y, 1, 28));
+    }
+    return new Date(Date.UTC(y, md.month - 1, md.day));
+  };
+
+  let candidate = makeCandidate(year);
+  if (candidate < today) candidate = makeCandidate(year + 1);
+  return candidate;
+}
+
+function diffDaysUtc(fromDate, toDate) {
+  const ms = utcMidnight(toDate).getTime() - utcMidnight(fromDate).getTime();
+  return Math.floor(ms / (24 * 60 * 60 * 1000));
+}
+
 async function main() {
   console.log("Starting aggregate.js…", process.cwd());
   const { token, baseId } = getConfig();
@@ -285,11 +331,9 @@ async function main() {
       startingCaps: asNumber(f[FIELDS.STARTING_CAPS]),
       startingMotm: asNumber(f[FIELDS.STARTING_MOTM]),
       startingSubs: asNumber(f[FIELDS.STARTING_SUBS]),
-      // ✅ Changed: derive from Subs transactions table instead of Players field
+      // ✅ derive from Subs transactions table instead of Players field
       subsAdded: subsAddedByPlayerId[r.id] || 0,
       position: f[FIELDS.POSITION] || null,
-      dob: f[FIELDS.DOB] || null,
-      profilePhoto: f[FIELDS.PROFILE_PHOTO] || null,
       nicknames: f[FIELDS.NICKNAMES] || "",
       excluded: Boolean(f[FIELDS.EXCLUDED]),
     };
@@ -302,10 +346,9 @@ async function main() {
     o.stats.motm = p.startingMotm || 0;
     o.stats.motm2026 = 0;
 
+    // ✅ IMPORTANT: no DOB, no Airtable photo attachment blob
     o.meta = {
       position: p.position,
-      dob: p.dob,
-      profilePhoto: p.profilePhoto,
       excluded: p.excluded,
       nicknames: p.nicknames,
     };
@@ -461,8 +504,7 @@ async function main() {
     const blueGA = m.pinkGoals; // goals conceded by Blue
     const pinkGA = m.blueGoals; // goals conceded by Pink
 
-    // ✅ NEW: "conceded exactly 1" uplift — DEF/GK ONLY
-    // Blue DEF+GK
+    // ✅ "conceded exactly 1" uplift — DEF/GK ONLY
     if (blueGA === 1) {
       const ids = new Set([...asArray(m.blueDefs), m.blueGK].filter(Boolean));
       ids.forEach((pid) => {
@@ -470,7 +512,6 @@ async function main() {
       });
     }
 
-    // Pink DEF+GK
     if (pinkGA === 1) {
       const ids = new Set([...asArray(m.pinkDefs), m.pinkGK].filter(Boolean));
       ids.forEach((pid) => {
@@ -774,7 +815,7 @@ async function main() {
       matchesCountForStatsInYear,
       matchesNonStatInYear,
       goalsIncluded: goalEvents.length,
-      subsTransactionsIncluded: subsTransactions.length,
+      subsTransactionsIncluded: subsTransactions.length
     },
   });
 

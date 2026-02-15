@@ -116,3 +116,39 @@
   width: 18px;
   height: 18px;
 }
+
+/* Controls row (status + month filter) */
+.controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top: 8px;
+}
+
+.lb-filter{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.lb-filter__label{
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.lb-filter__select{
+  appearance: none;
+  background: rgba(20,24,34,0.65);   /* force dark */
+  border: 1px solid rgba(255,255,255,0.14);
+  color: #000000;                        /* force visible text */
+  padding: 8px 10px;
+  border-radius: 12px;
+  min-width: 170px;
+}
+
+.lb-filter__select:focus{
+  outline: none;
+  border-color: rgba(255,255,255,0.28);
+}

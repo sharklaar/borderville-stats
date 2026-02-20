@@ -1,0 +1,3805 @@
+<<<<<<< HEAD
+=======
+{
+  "players": {
+    "rec1D5rIDocnudash": {
+      "id": "rec1D5rIDocnudash",
+      "name": "Rob Aherne",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 2,
+        "caps": 33,
+        "caps2026": 0,
+        "motm": 4,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "FWD",
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "rec1NVl8RI5HIZxU0": {
+      "id": "rec1NVl8RI5HIZxU0",
+      "name": "Sam Sinclair",
+      "stats": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 1,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 1,
+        "honourableMentions": 0,
+        "conceded2026": 3,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -1,
+        "caps": 106,
+        "caps2026": 3,
+        "motm": 10,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 3,
+        "ovr": 52,
+        "ovrRawSeason": 11.299999999999999,
+        "ovrPenalty": 0,
+        "ovrCombined": 11.299999999999999,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "W",
+          "L",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "rec23xJX33WzPqZEm": {
+      "id": "rec23xJX33WzPqZEm",
+      "name": "Chris Croft",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -2,
+        "caps": 38,
+        "caps2026": 0,
+        "motm": 1,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "DEF",
+        "excluded": false,
+        "nicknames": "Crofty OG"
+      }
+    },
+    "rec3IB6CNEMmwNykE": {
+      "id": "rec3IB6CNEMmwNykE",
+      "name": "Mike Doyle",
+      "stats": {
+        "wins": 3,
+        "draws": 1,
+        "losses": 2,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 1,
+        "honourableMentions": 2,
+        "conceded2026": 13,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 2,
+        "caps": 182,
+        "caps2026": 6,
+        "motm": 9,
+        "motm2026": 1,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 6,
+        "ovr": 68,
+        "ovrRawSeason": 18.183333333333337,
+        "ovrPenalty": 0,
+        "ovrCombined": 18.183333333333337,
+        "form": [
+          "MW",
+          "D",
+          "L",
+          "W",
+          "W",
+          "L",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "rec3UUH5uaosSb1mQ": {
+      "id": "rec3UUH5uaosSb1mQ",
+      "name": "Nico Greenwood",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -1,
+        "caps": 2,
+        "caps2026": 0,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "rec3m0f9cBSdbwGS0": {
+      "id": "rec3m0f9cBSdbwGS0",
+      "name": "Jon Doughty",
+      "stats": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 4,
+        "goals": 3,
+        "assists": 4,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 19,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -4,
+        "caps": 144,
+        "caps2026": 7,
+        "motm": 11,
+        "motm2026": 1,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 7,
+        "ovr": 77,
+        "ovrRawSeason": 22.492857142857144,
+        "ovrPenalty": 0,
+        "ovrCombined": 22.492857142857144,
+        "form": [
+          "L",
+          "MD",
+          "L",
+          "L",
+          "W",
+          "CL",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "FWD",
+        "excluded": false,
+        "nicknames": "jd"
+      }
+    },
+    "rec714npZmMlLeu8Z": {
+      "id": "rec714npZmMlLeu8Z",
+      "name": "Tom Turner",
+      "stats": {
+        "wins": 0,
+        "draws": 1,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 1,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -4,
+        "caps": 78,
+        "caps2026": 1,
+        "motm": 5,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 1,
+        "ovr": 41,
+        "ovrRawSeason": 12.15,
+        "ovrPenalty": 6,
+        "ovrCombined": 6.15,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": "tt"
+      }
+    },
+    "rec7UewFBTISFASsD": {
+      "id": "rec7UewFBTISFASsD",
+      "name": "Dan Medd",
+      "stats": {
+        "wins": 3,
+        "draws": 0,
+        "losses": 1,
+        "goals": 0,
+        "assists": 1,
+        "ogs": 0,
+        "cleanSheets": 1,
+        "gkCleanSheets": 0,
+        "otfs": 1,
+        "honourableMentions": 0,
+        "conceded2026": 8,
+        "concededExactlyOneMatches2026": 1,
+        "winningCaptain2026": 1,
+        "motmCaptain2026": 0,
+        "subs": 4,
+        "caps": 117,
+        "caps2026": 4,
+        "motm": 4,
+        "motm2026": 0,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 4,
+        "ovr": 96,
+        "ovrRawSeason": 30.8,
+        "ovrPenalty": 0,
+        "ovrCombined": 30.8,
+        "form": [
+          "X",
+          "X",
+          "W",
+          "L",
+          "CW",
+          "W",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "DEF",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "rec8nYCRFDSNo6RhB": {
+      "id": "rec8nYCRFDSNo6RhB",
+      "name": "Oli Roberts",
+      "stats": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 2,
+        "goals": 1,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 2,
+        "conceded2026": 14,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -10,
+        "caps": 88,
+        "caps2026": 5,
+        "motm": 6,
+        "motm2026": 0,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 5,
+        "ovr": 49,
+        "ovrRawSeason": 9.900000000000002,
+        "ovrPenalty": 0,
+        "ovrCombined": 9.900000000000002,
+        "form": [
+          "X",
+          "CD",
+          "W",
+          "L",
+          "L",
+          "W",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recFWvyZmEZBmg89T": {
+      "id": "recFWvyZmEZBmg89T",
+      "name": "Rob Lynch",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 2,
+        "caps": 23,
+        "caps2026": 0,
+        "motm": 4,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recFXaQaQqUJcs1ce": {
+      "id": "recFXaQaQqUJcs1ce",
+      "name": "Prem",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 0,
+        "caps": 45,
+        "caps2026": 0,
+        "motm": 7,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recFqxDYKYAkKmV7Z": {
+      "id": "recFqxDYKYAkKmV7Z",
+      "name": "Dan Dring",
+      "stats": {
+        "wins": 2,
+        "draws": 2,
+        "losses": 2,
+        "goals": 2,
+        "assists": 7,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 1,
+        "honourableMentions": 1,
+        "conceded2026": 13,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 1,
+        "motmCaptain2026": 0,
+        "subs": 0,
+        "caps": 119,
+        "caps2026": 6,
+        "motm": 14,
+        "motm2026": 0,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 6,
+        "ovr": 94,
+        "ovrRawSeason": 29.95,
+        "ovrPenalty": 0,
+        "ovrCombined": 29.95,
+        "form": [
+          "CW",
+          "D",
+          "X",
+          "W",
+          "L",
+          "L",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recG662mRw9nTfmcU": {
+      "id": "recG662mRw9nTfmcU",
+      "name": "Sean Knight",
+      "stats": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 2,
+        "goals": 0,
+        "assists": 1,
+        "ogs": 0,
+        "cleanSheets": 1,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 13,
+        "concededExactlyOneMatches2026": 2,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 4,
+        "caps": 105,
+        "caps2026": 5,
+        "motm": 5,
+        "motm2026": 0,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 5,
+        "ovr": 68,
+        "ovrRawSeason": 18.45,
+        "ovrPenalty": 0,
+        "ovrCombined": 18.45,
+        "form": [
+          "X",
+          "D",
+          "X",
+          "L",
+          "L",
+          "W",
+          "CD",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "DEF",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recGxXGjtu3JSIvjT": {
+      "id": "recGxXGjtu3JSIvjT",
+      "name": "Chris Shaw",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 3,
+        "caps": 67,
+        "caps2026": 0,
+        "motm": 8,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "FWD",
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "recHLb3nQvXO4HDgo": {
+      "id": "recHLb3nQvXO4HDgo",
+      "name": "Ed Gladstone",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 2,
+        "caps": 35,
+        "caps2026": 0,
+        "motm": 1,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "recHMsjtFPTZv4fCO": {
+      "id": "recHMsjtFPTZv4fCO",
+      "name": "Marc Daffern",
+      "stats": {
+        "wins": 0,
+        "draws": 2,
+        "losses": 1,
+        "goals": 2,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 9,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 7,
+        "caps": 132,
+        "caps2026": 3,
+        "motm": 11,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 3,
+        "ovr": 47,
+        "ovrRawSeason": 9.183333333333332,
+        "ovrPenalty": 0,
+        "ovrCombined": 9.183333333333332,
+        "form": [
+          "L",
+          "D",
+          "X",
+          "X",
+          "X",
+          "X",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "FWD",
+        "excluded": false,
+        "nicknames": "shark, sharky"
+      }
+    },
+    "recI9vSrMe8IwElfr": {
+      "id": "recI9vSrMe8IwElfr",
+      "name": "Andrew Twell",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 2,
+        "caps": 67,
+        "caps2026": 0,
+        "motm": 8,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "DEF",
+        "excluded": false,
+        "nicknames": "Twelly"
+      }
+    },
+    "recL7iow87y4GtJyH": {
+      "id": "recL7iow87y4GtJyH",
+      "name": "Jason Ellery",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 0,
+        "caps": 20,
+        "caps2026": 0,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "recLP5rcl6v532RSu": {
+      "id": "recLP5rcl6v532RSu",
+      "name": "Simon Hearty",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 3,
+        "caps": 7,
+        "caps2026": 0,
+        "motm": 1,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "recNuFhkMZr8OAjbH": {
+      "id": "recNuFhkMZr8OAjbH",
+      "name": "Dan Edwards",
+      "stats": {
+        "wins": 4,
+        "draws": 2,
+        "losses": 0,
+        "goals": 5,
+        "assists": 3,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 1,
+        "honourableMentions": 1,
+        "conceded2026": 12,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 5,
+        "caps": 21,
+        "caps2026": 6,
+        "motm": 1,
+        "motm2026": 0,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 6,
+        "ovr": 100,
+        "ovrRawSeason": 32.63333333333334,
+        "ovrPenalty": 0,
+        "ovrCombined": 32.63333333333334,
+        "form": [
+          "W",
+          "CD",
+          "W",
+          "W",
+          "W",
+          "X",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recOaK1eD47XVmdN6": {
+      "id": "recOaK1eD47XVmdN6",
+      "name": "Craig Keenan",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -3,
+        "caps": 38,
+        "caps2026": 0,
+        "motm": 3,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "FWD",
+        "excluded": false,
+        "nicknames": "Keeno"
+      }
+    },
+    "recPcNNCwtBvyLeCT": {
+      "id": "recPcNNCwtBvyLeCT",
+      "name": "Matt Searle",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 3,
+        "caps": 2,
+        "caps2026": 0,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "recRcO4mfxPDLmdLr": {
+      "id": "recRcO4mfxPDLmdLr",
+      "name": "Richard Isaac",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 1,
+        "caps": 17,
+        "caps2026": 0,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "recTyiy2Eu2vZqKkx": {
+      "id": "recTyiy2Eu2vZqKkx",
+      "name": "Sam Jones",
+      "stats": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1,
+        "goals": 1,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 10,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 1,
+        "motmCaptain2026": 0,
+        "subs": -1,
+        "caps": 56,
+        "caps2026": 4,
+        "motm": 7,
+        "motm2026": 2,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 4,
+        "ovr": 96,
+        "ovrRawSeason": 31,
+        "ovrPenalty": 0,
+        "ovrCombined": 31,
+        "form": [
+          "X",
+          "MD",
+          "X",
+          "L",
+          "X",
+          "CW",
+          "MD",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recUGmjgQtorPIY0n": {
+      "id": "recUGmjgQtorPIY0n",
+      "name": "Nick Reedman",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 0,
+        "caps": 30,
+        "caps2026": 0,
+        "motm": 1,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "recUYD7aPDjBwKHmH": {
+      "id": "recUYD7aPDjBwKHmH",
+      "name": "Rich Darwin",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -2,
+        "caps": 43,
+        "caps2026": 0,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "FWD",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recWAkSiYbfh0kBR8": {
+      "id": "recWAkSiYbfh0kBR8",
+      "name": "Rich Dickinson",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -1,
+        "caps": 91,
+        "caps2026": 0,
+        "motm": 6,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "DEF",
+        "excluded": false,
+        "nicknames": "big rich"
+      }
+    },
+    "recXENjRMi0GTUi6y": {
+      "id": "recXENjRMi0GTUi6y",
+      "name": "Matt Glen",
+      "stats": {
+        "wins": 0,
+        "draws": 1,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 1,
+        "concededExactlyOneMatches2026": 1,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -4,
+        "caps": 99,
+        "caps2026": 1,
+        "motm": 9,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 1,
+        "ovr": 45,
+        "ovrRawSeason": 14.15,
+        "ovrPenalty": 6,
+        "ovrCombined": 8.15,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": "jagger, jaggs, jaggz"
+      }
+    },
+    "recXTe9BL2DEY9zFI": {
+      "id": "recXTe9BL2DEY9zFI",
+      "name": "Dan Binns",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 1,
+        "caps": 9,
+        "caps2026": 0,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "recYlJC6aocxnP0Ni": {
+      "id": "recYlJC6aocxnP0Ni",
+      "name": "Marc McLeod",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 0,
+        "caps": 1,
+        "caps2026": 0,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "recZIZ8WBcb1IyqoS": {
+      "id": "recZIZ8WBcb1IyqoS",
+      "name": "Mark Buttress",
+      "stats": {
+        "wins": 0,
+        "draws": 1,
+        "losses": 2,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 1,
+        "conceded2026": 9,
+        "concededExactlyOneMatches2026": 1,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -2,
+        "caps": 165,
+        "caps2026": 3,
+        "motm": 4,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 3,
+        "ovr": 34,
+        "ovrRawSeason": 3.166666666666666,
+        "ovrPenalty": 0,
+        "ovrCombined": 3.166666666666666,
+        "form": [
+          "L",
+          "D",
+          "X",
+          "X",
+          "X",
+          "L",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "DEF",
+        "excluded": false,
+        "nicknames": "butty"
+      }
+    },
+    "recZQatZMbQJXGsWy": {
+      "id": "recZQatZMbQJXGsWy",
+      "name": "Ross Dennison",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 3,
+        "caps": 131,
+        "caps2026": 0,
+        "motm": 3,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "DEF",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recZauOLb3ET9m9Ix": {
+      "id": "recZauOLb3ET9m9Ix",
+      "name": "Jimmy Powell",
+      "stats": {
+        "wins": 0,
+        "draws": 2,
+        "losses": 5,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 2,
+        "honourableMentions": 0,
+        "conceded2026": 21,
+        "concededExactlyOneMatches2026": 2,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -11,
+        "caps": 62,
+        "caps2026": 7,
+        "motm": 4,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 7,
+        "ovr": 27,
+        "ovrRawSeason": -0.07857142857142846,
+        "ovrPenalty": 0,
+        "ovrCombined": -0.07857142857142846,
+        "form": [
+          "L",
+          "D",
+          "L",
+          "L",
+          "L",
+          "L",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "DEF",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recahovWa9ryO8F10": {
+      "id": "recahovWa9ryO8F10",
+      "name": "Tom Hames",
+      "stats": {
+        "wins": 0,
+        "draws": 1,
+        "losses": 1,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 2,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -1,
+        "caps": 11,
+        "caps2026": 2,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 2,
+        "ovr": 39,
+        "ovrRawSeason": 5.55,
+        "ovrPenalty": 0,
+        "ovrCombined": 5.55,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "L",
+          "CD",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recfZUeAUzKcMAziC": {
+      "id": "recfZUeAUzKcMAziC",
+      "name": "James Swift",
+      "stats": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 3,
+        "goals": 1,
+        "assists": 1,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 1,
+        "conceded2026": 16,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -2,
+        "caps": 177,
+        "caps2026": 5,
+        "motm": 5,
+        "motm2026": 0,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 5,
+        "ovr": 40,
+        "ovrRawSeason": 6.050000000000001,
+        "ovrPenalty": 0,
+        "ovrCombined": 6.050000000000001,
+        "form": [
+          "L",
+          "D",
+          "W",
+          "CL",
+          "X",
+          "L",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": "Chairman"
+      }
+    },
+    "rechAJdN0YnZZo45n": {
+      "id": "rechAJdN0YnZZo45n",
+      "name": "Jon Tyrell",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 2,
+        "caps": 78,
+        "caps2026": 0,
+        "motm": 5,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "DEF",
+        "excluded": false,
+        "nicknames": "jt"
+      }
+    },
+    "rechPSwQq3TluwcPa": {
+      "id": "rechPSwQq3TluwcPa",
+      "name": "Chris Grace",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -6,
+        "caps": 22,
+        "caps2026": 0,
+        "motm": 2,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": "Uffington Chris"
+      }
+    },
+    "rechz0vtrzI4YNLt6": {
+      "id": "rechz0vtrzI4YNLt6",
+      "name": "Sam Wheat",
+      "stats": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 2,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 10,
+        "concededExactlyOneMatches2026": 1,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 1,
+        "caps": 15,
+        "caps2026": 4,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 4,
+        "ovr": 45,
+        "ovrRawSeason": 7.875,
+        "ovrPenalty": 0,
+        "ovrCombined": 7.875,
+        "form": [
+          "L",
+          "X",
+          "W",
+          "X",
+          "CL",
+          "X",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recj9rbJP1c0qJEYo": {
+      "id": "recj9rbJP1c0qJEYo",
+      "name": "Matt Tarrant",
+      "stats": {
+        "wins": 2,
+        "draws": 2,
+        "losses": 3,
+        "goals": 3,
+        "assists": 6,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 16,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 3,
+        "caps": 98,
+        "caps2026": 7,
+        "motm": 3,
+        "motm2026": 1,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 7,
+        "ovr": 97,
+        "ovrRawSeason": 31.114285714285714,
+        "ovrPenalty": 0,
+        "ovrCombined": 31.114285714285714,
+        "form": [
+          "W",
+          "D",
+          "CL",
+          "MW",
+          "L",
+          "L",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recjnn0QDEMpSHREB": {
+      "id": "recjnn0QDEMpSHREB",
+      "name": "Dean Cornish",
+      "stats": {
+        "wins": 3,
+        "draws": 2,
+        "losses": 2,
+        "goals": 5,
+        "assists": 6,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 16,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -1,
+        "caps": 101,
+        "caps2026": 7,
+        "motm": 6,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 7,
+        "ovr": 96,
+        "ovrRawSeason": 30.685714285714283,
+        "ovrPenalty": 0,
+        "ovrCombined": 30.685714285714283,
+        "form": [
+          "W",
+          "D",
+          "L",
+          "L",
+          "W",
+          "W",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "FWD",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "reck0a74qcYsRhJ0x": {
+      "id": "reck0a74qcYsRhJ0x",
+      "name": "Jon Roberts",
+      "stats": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 1,
+        "honourableMentions": 0,
+        "conceded2026": 8,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -2,
+        "caps": 10,
+        "caps2026": 3,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 3,
+        "ovr": 67,
+        "ovrRawSeason": 17.883333333333336,
+        "ovrPenalty": 0,
+        "ovrCombined": 17.883333333333336,
+        "form": [
+          "X",
+          "D",
+          "W",
+          "W",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "DEF",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "reckG9bP68ANrvc3p": {
+      "id": "reckG9bP68ANrvc3p",
+      "name": "Tim Laws",
+      "stats": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1,
+        "goals": 1,
+        "assists": 1,
+        "ogs": 1,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 1,
+        "honourableMentions": 0,
+        "conceded2026": 6,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 1,
+        "caps": 131,
+        "caps2026": 4,
+        "motm": 8,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 4,
+        "ovr": 60,
+        "ovrRawSeason": 14.874999999999998,
+        "ovrPenalty": 0,
+        "ovrCombined": 14.874999999999998,
+        "form": [
+          "X",
+          "X",
+          "W",
+          "X",
+          "L",
+          "W",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "reckGJ6z8g1KEeMY1": {
+      "id": "reckGJ6z8g1KEeMY1",
+      "name": "Rob Mosley",
+      "stats": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 1,
+        "goals": 3,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 6,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 1,
+        "motmCaptain2026": 1,
+        "subs": -2,
+        "caps": 23,
+        "caps2026": 3,
+        "motm": 2,
+        "motm2026": 1,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 3,
+        "ovr": 97,
+        "ovrRawSeason": 31.4,
+        "ovrPenalty": 0,
+        "ovrCombined": 31.4,
+        "form": [
+          "X",
+          "X",
+          "MCW",
+          "X",
+          "L",
+          "X",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "FWD",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recmvgvNKMltLjvmL": {
+      "id": "recmvgvNKMltLjvmL",
+      "name": "Mike Morgan",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 0,
+        "caps": 5,
+        "caps2026": 0,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "recnBQ5gajZdiyZt3": {
+      "id": "recnBQ5gajZdiyZt3",
+      "name": "Martin Younghusband",
+      "stats": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1,
+        "goals": 2,
+        "assists": 2,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 1,
+        "honourableMentions": 0,
+        "conceded2026": 10,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 3,
+        "caps": 121,
+        "caps2026": 4,
+        "motm": 13,
+        "motm2026": 1,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 4,
+        "ovr": 83,
+        "ovrRawSeason": 24.85,
+        "ovrPenalty": 0,
+        "ovrCombined": 24.85,
+        "form": [
+          "CL",
+          "D",
+          "X",
+          "X",
+          "MW",
+          "X",
+          "D",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "FWD",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "recnZCa2uj1fenN4y": {
+      "id": "recnZCa2uj1fenN4y",
+      "name": "Sam Gregory-Smith",
+      "stats": {
+        "wins": 3,
+        "draws": 2,
+        "losses": 1,
+        "goals": 2,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 1,
+        "honourableMentions": 0,
+        "conceded2026": 11,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 1,
+        "motmCaptain2026": 0,
+        "subs": -2,
+        "caps": 122,
+        "caps2026": 6,
+        "motm": 3,
+        "motm2026": 1,
+        "captain": 1,
+        "captain2026": 1,
+        "playedLast10": 6,
+        "ovr": 91,
+        "ovrRawSeason": 28.666666666666664,
+        "ovrPenalty": 0,
+        "ovrCombined": 28.666666666666664,
+        "form": [
+          "X",
+          "D",
+          "L",
+          "CW",
+          "W",
+          "W",
+          "MD",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": "sgs"
+      }
+    },
+    "recoHueuf4Rcd8AOl": {
+      "id": "recoHueuf4Rcd8AOl",
+      "name": "Andy Austin",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 4,
+        "caps": 2,
+        "caps2026": 0,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "rect8nIhrhsGH3mPK": {
+      "id": "rect8nIhrhsGH3mPK",
+      "name": "Mark Blake",
+      "stats": {
+        "wins": 3,
+        "draws": 1,
+        "losses": 2,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 1,
+        "gkCleanSheets": 1,
+        "otfs": 0,
+        "honourableMentions": 1,
+        "conceded2026": 14,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": -3,
+        "caps": 166,
+        "caps2026": 6,
+        "motm": 10,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 6,
+        "ovr": 65,
+        "ovrRawSeason": 16.833333333333336,
+        "ovrPenalty": 0,
+        "ovrCombined": 16.833333333333336,
+        "form": [
+          "W",
+          "D",
+          "L",
+          "W",
+          "L",
+          "W",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "GK",
+        "excluded": false,
+        "nicknames": "cat"
+      }
+    },
+    "rectMEzvhSvg8Azch": {
+      "id": "rectMEzvhSvg8Azch",
+      "name": "Will Stacey",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 5,
+        "caps": 57,
+        "caps2026": 0,
+        "motm": 2,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "GK",
+        "excluded": false,
+        "nicknames": ""
+      }
+    },
+    "rectldMYndNleNirv": {
+      "id": "rectldMYndNleNirv",
+      "name": "Chris Haylock",
+      "stats": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 0,
+        "honourableMentions": 0,
+        "conceded2026": 0,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 0,
+        "caps": 1,
+        "caps2026": 0,
+        "motm": 0,
+        "motm2026": 0,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
+        "form": [
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": null,
+        "excluded": true,
+        "nicknames": ""
+      }
+    },
+    "recx98b2sy6pbRyEt": {
+      "id": "recx98b2sy6pbRyEt",
+      "name": "Steve Croft",
+      "stats": {
+        "wins": 4,
+        "draws": 1,
+        "losses": 1,
+        "goals": 1,
+        "assists": 1,
+        "ogs": 0,
+        "cleanSheets": 0,
+        "gkCleanSheets": 0,
+        "otfs": 2,
+        "honourableMentions": 2,
+        "conceded2026": 12,
+        "concededExactlyOneMatches2026": 0,
+        "winningCaptain2026": 0,
+        "motmCaptain2026": 0,
+        "subs": 3,
+        "caps": 18,
+        "caps2026": 6,
+        "motm": 1,
+        "motm2026": 1,
+        "captain": 0,
+        "captain2026": 0,
+        "playedLast10": 6,
+        "ovr": 86,
+        "ovrRawSeason": 26.55,
+        "ovrPenalty": 0,
+        "ovrCombined": 26.55,
+        "form": [
+          "W",
+          "D",
+          "L",
+          "W",
+          "W",
+          "MW",
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      "meta": {
+        "position": "MID",
+        "excluded": false,
+        "nicknames": "crofty 2"
+      }
+    }
+  },
+  "goals": [
+    {
+      "id": "rec0UMV9pHxZYAQvd",
+      "matchId": "recLk8Siy87KHvR70",
+      "scorerId": "recHMsjtFPTZv4fCO",
+      "assistId": "recFqxDYKYAkKmV7Z",
+      "isOwnGoal": false
+    },
+    {
+      "id": "rec3kUjCXqpyim1lr",
+      "matchId": "recc0NI8pvu6nvR6B",
+      "scorerId": "reckGJ6z8g1KEeMY1",
+      "assistId": "rec7UewFBTISFASsD",
+      "isOwnGoal": false
+    },
+    {
+      "id": "rec6B7s8J4herZhTz",
+      "matchId": "recFjPXqbE47aCFtp",
+      "scorerId": "recjnn0QDEMpSHREB",
+      "assistId": "recFqxDYKYAkKmV7Z",
+      "isOwnGoal": false
+    },
+    {
+      "id": "rec6ROnXYntUbdjOK",
+      "matchId": "recLk8Siy87KHvR70",
+      "scorerId": "recNuFhkMZr8OAjbH",
+      "assistId": "recjnn0QDEMpSHREB",
+      "isOwnGoal": false
+    },
+    {
+      "id": "rec7TIwHtgcLXhSzx",
+      "matchId": "recqd0tIng0HQb8l3",
+      "scorerId": "recnBQ5gajZdiyZt3",
+      "assistId": "recNuFhkMZr8OAjbH",
+      "isOwnGoal": false
+    },
+    {
+      "id": "rec8rz2JF6rmFlHr0",
+      "matchId": "recc0NI8pvu6nvR6B",
+      "scorerId": "recjnn0QDEMpSHREB",
+      "assistId": "rec3m0f9cBSdbwGS0",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recCyzOkvok7ZWmHB",
+      "matchId": "recovRk2ejxAmPa4a",
+      "scorerId": "recj9rbJP1c0qJEYo",
+      "assistId": "recFqxDYKYAkKmV7Z",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recEPEcA4A4vAidnG",
+      "matchId": "recg3XA6gEEuMQ7aE",
+      "scorerId": "reckG9bP68ANrvc3p",
+      "assistId": "recFqxDYKYAkKmV7Z",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recFtqcEuzRtQKFEu",
+      "matchId": "recqd0tIng0HQb8l3",
+      "scorerId": "recNuFhkMZr8OAjbH",
+      "assistId": "rec3m0f9cBSdbwGS0",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recHJEJgkHQq5si3s",
+      "matchId": "recLk8Siy87KHvR70",
+      "scorerId": "recNuFhkMZr8OAjbH",
+      "assistId": "recnBQ5gajZdiyZt3",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recJ6Cn6m1y1jNzlf",
+      "matchId": "rec2LkAyFFE2pL9X7",
+      "scorerId": "recjnn0QDEMpSHREB",
+      "assistId": "recG662mRw9nTfmcU",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recK4PWIZl7rArG5i",
+      "matchId": "recc0NI8pvu6nvR6B",
+      "scorerId": "recj9rbJP1c0qJEYo",
+      "assistId": "recjnn0QDEMpSHREB",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recKUxxbiTN5atyp3",
+      "matchId": "recFjPXqbE47aCFtp",
+      "scorerId": "recx98b2sy6pbRyEt",
+      "assistId": "recjnn0QDEMpSHREB",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recMA3zVu4gZSyuT6",
+      "matchId": "recovRk2ejxAmPa4a",
+      "scorerId": "recnZCa2uj1fenN4y",
+      "assistId": "recj9rbJP1c0qJEYo",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recNQ8lOzIwjZ1j3f",
+      "matchId": "recovRk2ejxAmPa4a",
+      "scorerId": "recNuFhkMZr8OAjbH",
+      "assistId": "recFqxDYKYAkKmV7Z",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recQ8Zf93QRZpKSjR",
+      "matchId": "recovRk2ejxAmPa4a",
+      "scorerId": "rec3m0f9cBSdbwGS0",
+      "assistId": "recjnn0QDEMpSHREB",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recQRxivu2tbZrqAB",
+      "matchId": "recqd0tIng0HQb8l3",
+      "scorerId": "recj9rbJP1c0qJEYo",
+      "assistId": "recFqxDYKYAkKmV7Z",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recUQ7UMKYmFiGIjq",
+      "matchId": "recg3XA6gEEuMQ7aE",
+      "scorerId": "reckG9bP68ANrvc3p",
+      "assistId": "recnBQ5gajZdiyZt3",
+      "isOwnGoal": true
+    },
+    {
+      "id": "recVD8J153hR44sIn",
+      "matchId": "recLk8Siy87KHvR70",
+      "scorerId": "recjnn0QDEMpSHREB",
+      "assistId": "recj9rbJP1c0qJEYo",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recYyyNpG0aXWsHdH",
+      "matchId": "recLk8Siy87KHvR70",
+      "scorerId": "rec3m0f9cBSdbwGS0",
+      "assistId": "recfZUeAUzKcMAziC",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recckRIdHddDgZnQD",
+      "matchId": "recovRk2ejxAmPa4a",
+      "scorerId": "recTyiy2Eu2vZqKkx",
+      "assistId": "recjnn0QDEMpSHREB",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recfAoFZch2szmHJt",
+      "matchId": "recLk8Siy87KHvR70",
+      "scorerId": "recnZCa2uj1fenN4y",
+      "assistId": "recNuFhkMZr8OAjbH",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recfKpKORfuCikRE4",
+      "matchId": "recFjPXqbE47aCFtp",
+      "scorerId": "recfZUeAUzKcMAziC",
+      "assistId": "rec3m0f9cBSdbwGS0",
+      "isOwnGoal": false
+    },
+    {
+      "id": "rechRLU8unNQu1qKy",
+      "matchId": "recFjPXqbE47aCFtp",
+      "scorerId": "recjnn0QDEMpSHREB",
+      "assistId": "recj9rbJP1c0qJEYo",
+      "isOwnGoal": false
+    },
+    {
+      "id": "reclLysBBWKHIIayT",
+      "matchId": "recLk8Siy87KHvR70",
+      "scorerId": "rec3m0f9cBSdbwGS0",
+      "assistId": "recFqxDYKYAkKmV7Z",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recljuiXW58LNRAWD",
+      "matchId": "recLk8Siy87KHvR70",
+      "scorerId": "rec8nYCRFDSNo6RhB",
+      "assistId": "recx98b2sy6pbRyEt",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recmDWeBbg0Sw61dR",
+      "matchId": "recFjPXqbE47aCFtp",
+      "scorerId": "recHMsjtFPTZv4fCO",
+      "assistId": "rec3m0f9cBSdbwGS0",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recnPRGappdPT2dnt",
+      "matchId": "recc0NI8pvu6nvR6B",
+      "scorerId": "reckGJ6z8g1KEeMY1",
+      "assistId": "reckG9bP68ANrvc3p",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recpfeONMTr31UXR0",
+      "matchId": "recovRk2ejxAmPa4a",
+      "scorerId": "recNuFhkMZr8OAjbH",
+      "assistId": "recj9rbJP1c0qJEYo",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recqflnkCRSL4iFkZ",
+      "matchId": "recc0NI8pvu6nvR6B",
+      "scorerId": "reckGJ6z8g1KEeMY1",
+      "assistId": "recNuFhkMZr8OAjbH",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recu9RxBYDWO5RUkQ",
+      "matchId": "recqd0tIng0HQb8l3",
+      "scorerId": "recnBQ5gajZdiyZt3",
+      "assistId": "recjnn0QDEMpSHREB",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recvVYQrm71DPdC2C",
+      "matchId": "recFjPXqbE47aCFtp",
+      "scorerId": "recFqxDYKYAkKmV7Z",
+      "assistId": "recj9rbJP1c0qJEYo",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recvXzNvLTlAHXBnc",
+      "matchId": "recovRk2ejxAmPa4a",
+      "scorerId": "recFqxDYKYAkKmV7Z",
+      "assistId": "recj9rbJP1c0qJEYo",
+      "isOwnGoal": false
+    }
+  ],
+  "matches": [
+    {
+      "id": "recFjPXqbE47aCFtp",
+      "name": "2026-02-19",
+      "date": "2026-02-19",
+      "playersPink": [
+        "recnBQ5gajZdiyZt3",
+        "recHMsjtFPTZv4fCO",
+        "recZauOLb3ET9m9Ix",
+        "recZIZ8WBcb1IyqoS",
+        "recfZUeAUzKcMAziC",
+        "rec3m0f9cBSdbwGS0",
+        "rechz0vtrzI4YNLt6"
+      ],
+      "playersBlue": [
+        "rec3IB6CNEMmwNykE",
+        "recFqxDYKYAkKmV7Z",
+        "rect8nIhrhsGH3mPK",
+        "recNuFhkMZr8OAjbH",
+        "recjnn0QDEMpSHREB",
+        "recj9rbJP1c0qJEYo",
+        "recx98b2sy6pbRyEt"
+      ],
+      "pinkGoals": 2,
+      "blueGoals": 4,
+      "winningTeam": "BLUE",
+      "motmIds": [
+        "rec3IB6CNEMmwNykE"
+      ],
+      "honourableMentionIds": [
+        "rect8nIhrhsGH3mPK"
+      ],
+      "captainPinkId": "recnBQ5gajZdiyZt3",
+      "captainBlueId": "recFqxDYKYAkKmV7Z",
+      "otfIds": [
+        "recx98b2sy6pbRyEt"
+      ],
+      "notes": null,
+      "countsForStats": true
+    },
+    {
+      "id": "recLk8Siy87KHvR70",
+      "name": "2026-02-12",
+      "date": "2026-02-12",
+      "playersPink": [
+        "rec8nYCRFDSNo6RhB",
+        "recx98b2sy6pbRyEt",
+        "recHMsjtFPTZv4fCO",
+        "rec3m0f9cBSdbwGS0",
+        "reck0a74qcYsRhJ0x",
+        "recfZUeAUzKcMAziC",
+        "rec3IB6CNEMmwNykE",
+        "recZIZ8WBcb1IyqoS",
+        "recFqxDYKYAkKmV7Z"
+      ],
+      "playersBlue": [
+        "recNuFhkMZr8OAjbH",
+        "rect8nIhrhsGH3mPK",
+        "recTyiy2Eu2vZqKkx",
+        "recG662mRw9nTfmcU",
+        "recZauOLb3ET9m9Ix",
+        "recj9rbJP1c0qJEYo",
+        "recnZCa2uj1fenN4y",
+        "recjnn0QDEMpSHREB",
+        "recnBQ5gajZdiyZt3"
+      ],
+      "pinkGoals": 4,
+      "blueGoals": 4,
+      "winningTeam": "DRAW",
+      "motmIds": [
+        "recTyiy2Eu2vZqKkx",
+        "rec3m0f9cBSdbwGS0"
+      ],
+      "honourableMentionIds": [
+        "recfZUeAUzKcMAziC",
+        "recx98b2sy6pbRyEt",
+        "rec3IB6CNEMmwNykE"
+      ],
+      "captainPinkId": "rec8nYCRFDSNo6RhB",
+      "captainBlueId": "recNuFhkMZr8OAjbH",
+      "otfIds": [
+        "recnZCa2uj1fenN4y",
+        "recnBQ5gajZdiyZt3",
+        "reck0a74qcYsRhJ0x"
+      ],
+      "notes": "Dean called megs on Jon and failed hilariously. \n\nMike megged Dean in what appeared to be slow motion. \n\nDringy assisted Jon with an inch perfect ball from 3km away. Apparently. ",
+      "countsForStats": true
+    },
+    {
+      "id": "recc0NI8pvu6nvR6B",
+      "name": "2026-02-05",
+      "date": "2026-02-05",
+      "playersPink": [
+        "recj9rbJP1c0qJEYo",
+        "rect8nIhrhsGH3mPK",
+        "recjnn0QDEMpSHREB",
+        "rec3IB6CNEMmwNykE",
+        "recZauOLb3ET9m9Ix",
+        "recx98b2sy6pbRyEt",
+        "rec3m0f9cBSdbwGS0",
+        "recnZCa2uj1fenN4y"
+      ],
+      "playersBlue": [
+        "reckGJ6z8g1KEeMY1",
+        "rec8nYCRFDSNo6RhB",
+        "rec7UewFBTISFASsD",
+        "reck0a74qcYsRhJ0x",
+        "reckG9bP68ANrvc3p",
+        "recNuFhkMZr8OAjbH",
+        "recfZUeAUzKcMAziC",
+        "rechz0vtrzI4YNLt6"
+      ],
+      "pinkGoals": 2,
+      "blueGoals": 3,
+      "winningTeam": "BLUE",
+      "motmIds": [
+        "reckGJ6z8g1KEeMY1"
+      ],
+      "honourableMentionIds": [
+        "rec8nYCRFDSNo6RhB"
+      ],
+      "captainPinkId": "recj9rbJP1c0qJEYo",
+      "captainBlueId": "reckGJ6z8g1KEeMY1",
+      "otfIds": [
+        "recNuFhkMZr8OAjbH",
+        "recZauOLb3ET9m9Ix",
+        "reckG9bP68ANrvc3p",
+        "rec3IB6CNEMmwNykE"
+      ],
+      "notes": "Rob M with a hatty and MOM(C) on his last game before leaving for Franceland. Scenes. \n",
+      "countsForStats": true
+    },
+    {
+      "id": "recovRk2ejxAmPa4a",
+      "name": "2026-01-29",
+      "date": "2026-01-29",
+      "playersPink": [
+        "rec8nYCRFDSNo6RhB",
+        "recZauOLb3ET9m9Ix",
+        "rec7UewFBTISFASsD",
+        "recfZUeAUzKcMAziC",
+        "recTyiy2Eu2vZqKkx",
+        "recG662mRw9nTfmcU",
+        "rec3m0f9cBSdbwGS0",
+        "recjnn0QDEMpSHREB"
+      ],
+      "playersBlue": [
+        "rect8nIhrhsGH3mPK",
+        "recnZCa2uj1fenN4y",
+        "rec3IB6CNEMmwNykE",
+        "reck0a74qcYsRhJ0x",
+        "recx98b2sy6pbRyEt",
+        "recFqxDYKYAkKmV7Z",
+        "recj9rbJP1c0qJEYo",
+        "recNuFhkMZr8OAjbH"
+      ],
+      "pinkGoals": 2,
+      "blueGoals": 5,
+      "winningTeam": "BLUE",
+      "motmIds": [
+        "recj9rbJP1c0qJEYo"
+      ],
+      "honourableMentionIds": [
+        "recFqxDYKYAkKmV7Z",
+        "recx98b2sy6pbRyEt",
+        "rec3IB6CNEMmwNykE",
+        "recNuFhkMZr8OAjbH"
+      ],
+      "captainPinkId": "recfZUeAUzKcMAziC",
+      "captainBlueId": "recnZCa2uj1fenN4y",
+      "otfIds": [
+        "rec7UewFBTISFASsD"
+      ],
+      "notes": "Miss of the season for Dean. \n\nOli with potential save of the season",
+      "countsForStats": true
+    },
+    {
+      "id": "recqd0tIng0HQb8l3",
+      "name": "2026-01-22",
+      "date": "2026-01-22",
+      "playersPink": [
+        "rec7UewFBTISFASsD",
+        "recnBQ5gajZdiyZt3",
+        "recx98b2sy6pbRyEt",
+        "recjnn0QDEMpSHREB",
+        "rec3IB6CNEMmwNykE",
+        "rec1NVl8RI5HIZxU0",
+        "rec3m0f9cBSdbwGS0",
+        "recNuFhkMZr8OAjbH",
+        "recnZCa2uj1fenN4y"
+      ],
+      "playersBlue": [
+        "rechz0vtrzI4YNLt6",
+        "recFqxDYKYAkKmV7Z",
+        "rec8nYCRFDSNo6RhB",
+        "reckG9bP68ANrvc3p",
+        "recj9rbJP1c0qJEYo",
+        "reckGJ6z8g1KEeMY1",
+        "recZauOLb3ET9m9Ix",
+        "rect8nIhrhsGH3mPK",
+        "recG662mRw9nTfmcU"
+      ],
+      "pinkGoals": 3,
+      "blueGoals": 1,
+      "winningTeam": "PINK",
+      "motmIds": [
+        "recnBQ5gajZdiyZt3"
+      ],
+      "honourableMentionIds": [],
+      "captainPinkId": "rec7UewFBTISFASsD",
+      "captainBlueId": "rechz0vtrzI4YNLt6",
+      "otfIds": [
+        "recFqxDYKYAkKmV7Z"
+      ],
+      "notes": "Martin missed a shameful open goal\n",
+      "countsForStats": true
+    },
+    {
+      "id": "rec2LkAyFFE2pL9X7",
+      "name": "2026-01-15",
+      "date": "2026-01-15",
+      "playersPink": [
+        "recTyiy2Eu2vZqKkx",
+        "rec7UewFBTISFASsD",
+        "recnZCa2uj1fenN4y",
+        "rect8nIhrhsGH3mPK",
+        "recG662mRw9nTfmcU",
+        "recx98b2sy6pbRyEt",
+        "reckG9bP68ANrvc3p",
+        "rec8nYCRFDSNo6RhB",
+        "recjnn0QDEMpSHREB"
+      ],
+      "playersBlue": [
+        "rec3m0f9cBSdbwGS0",
+        "recZauOLb3ET9m9Ix",
+        "recFqxDYKYAkKmV7Z",
+        "recj9rbJP1c0qJEYo",
+        "rec3IB6CNEMmwNykE",
+        "rec1NVl8RI5HIZxU0",
+        "recahovWa9ryO8F10",
+        "recZIZ8WBcb1IyqoS",
+        "recfZUeAUzKcMAziC"
+      ],
+      "pinkGoals": 1,
+      "blueGoals": 0,
+      "winningTeam": "PINK",
+      "motmIds": [
+        "recx98b2sy6pbRyEt"
+      ],
+      "honourableMentionIds": [
+        "recZIZ8WBcb1IyqoS",
+        "rec8nYCRFDSNo6RhB"
+      ],
+      "captainPinkId": "recTyiy2Eu2vZqKkx",
+      "captainBlueId": "rec3m0f9cBSdbwGS0",
+      "otfIds": [
+        "recx98b2sy6pbRyEt",
+        "recZauOLb3ET9m9Ix",
+        "rec1NVl8RI5HIZxU0"
+      ],
+      "notes": null,
+      "countsForStats": true
+    },
+    {
+      "id": "recg3XA6gEEuMQ7aE",
+      "name": "2026-01-08",
+      "date": "2026-01-08",
+      "playersPink": [
+        "recahovWa9ryO8F10",
+        "rechz0vtrzI4YNLt6",
+        "recXENjRMi0GTUi6y",
+        "recTyiy2Eu2vZqKkx",
+        "recjnn0QDEMpSHREB",
+        "rec714npZmMlLeu8Z",
+        "recnBQ5gajZdiyZt3",
+        "recHMsjtFPTZv4fCO",
+        "rec3m0f9cBSdbwGS0"
+      ],
+      "playersBlue": [
+        "recG662mRw9nTfmcU",
+        "reckGJ6z8g1KEeMY1",
+        "recnZCa2uj1fenN4y",
+        "recj9rbJP1c0qJEYo",
+        "recFqxDYKYAkKmV7Z",
+        "rec1NVl8RI5HIZxU0",
+        "recNuFhkMZr8OAjbH",
+        "reckG9bP68ANrvc3p",
+        "recZauOLb3ET9m9Ix"
+      ],
+      "pinkGoals": 1,
+      "blueGoals": 1,
+      "winningTeam": "DRAW",
+      "motmIds": [
+        "recTyiy2Eu2vZqKkx",
+        "recnZCa2uj1fenN4y"
+      ],
+      "honourableMentionIds": [],
+      "captainPinkId": "recahovWa9ryO8F10",
+      "captainBlueId": "recG662mRw9nTfmcU",
+      "otfIds": [],
+      "notes": " Sam S with a jerzy dudek Champ league final 2005 vs shevchenko",
+      "countsForStats": true
+    }
+  ],
+  "partnerships": [
+    {
+      "scorerId": "recFqxDYKYAkKmV7Z",
+      "assistId": "recj9rbJP1c0qJEYo",
+      "count": 4,
+      "countExclOG": 4
+    },
+    {
+      "scorerId": "recj9rbJP1c0qJEYo",
+      "assistId": "recjnn0QDEMpSHREB",
+      "count": 3,
+      "countExclOG": 3
+    },
+    {
+      "scorerId": "recNuFhkMZr8OAjbH",
+      "assistId": "recnBQ5gajZdiyZt3",
+      "count": 2,
+      "countExclOG": 2
+    },
+    {
+      "scorerId": "rec3m0f9cBSdbwGS0",
+      "assistId": "recjnn0QDEMpSHREB",
+      "count": 2,
+      "countExclOG": 2
+    },
+    {
+      "scorerId": "rec3m0f9cBSdbwGS0",
+      "assistId": "recfZUeAUzKcMAziC",
+      "count": 2,
+      "countExclOG": 2
+    },
+    {
+      "scorerId": "recFqxDYKYAkKmV7Z",
+      "assistId": "recHMsjtFPTZv4fCO",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "rec7UewFBTISFASsD",
+      "assistId": "reckGJ6z8g1KEeMY1",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recFqxDYKYAkKmV7Z",
+      "assistId": "recjnn0QDEMpSHREB",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recNuFhkMZr8OAjbH",
+      "assistId": "recjnn0QDEMpSHREB",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recFqxDYKYAkKmV7Z",
+      "assistId": "reckG9bP68ANrvc3p",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "rec3m0f9cBSdbwGS0",
+      "assistId": "recNuFhkMZr8OAjbH",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recG662mRw9nTfmcU",
+      "assistId": "recjnn0QDEMpSHREB",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recjnn0QDEMpSHREB",
+      "assistId": "recx98b2sy6pbRyEt",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recj9rbJP1c0qJEYo",
+      "assistId": "recnZCa2uj1fenN4y",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recFqxDYKYAkKmV7Z",
+      "assistId": "recNuFhkMZr8OAjbH",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "reckG9bP68ANrvc3p",
+      "assistId": "recnBQ5gajZdiyZt3",
+      "count": 1,
+      "countExclOG": 0
+    },
+    {
+      "scorerId": "recTyiy2Eu2vZqKkx",
+      "assistId": "recjnn0QDEMpSHREB",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recNuFhkMZr8OAjbH",
+      "assistId": "recnZCa2uj1fenN4y",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "rec3m0f9cBSdbwGS0",
+      "assistId": "recFqxDYKYAkKmV7Z",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "rec8nYCRFDSNo6RhB",
+      "assistId": "recx98b2sy6pbRyEt",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "rec3m0f9cBSdbwGS0",
+      "assistId": "recHMsjtFPTZv4fCO",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "reckG9bP68ANrvc3p",
+      "assistId": "reckGJ6z8g1KEeMY1",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recNuFhkMZr8OAjbH",
+      "assistId": "recj9rbJP1c0qJEYo",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recNuFhkMZr8OAjbH",
+      "assistId": "reckGJ6z8g1KEeMY1",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recjnn0QDEMpSHREB",
+      "assistId": "recnBQ5gajZdiyZt3",
+      "count": 1,
+      "countExclOG": 1
+    }
+  ],
+  "defensivePartnerships": [
+    {
+      "playerId1": "rec7UewFBTISFASsD",
+      "playerId2": "recG662mRw9nTfmcU",
+      "count": 1
+    }
+  ],
+  "defensivePartnershipsGoalsAgainst": [
+    {
+      "playerId1": "rec7UewFBTISFASsD",
+      "playerId2": "recG662mRw9nTfmcU",
+      "matches": 2,
+      "goalsAgainst": 1,
+      "gaPerMatch": 0.5
+    },
+    {
+      "playerId1": "recZIZ8WBcb1IyqoS",
+      "playerId2": "recZauOLb3ET9m9Ix",
+      "matches": 1,
+      "goalsAgainst": 1,
+      "gaPerMatch": 1
+    },
+    {
+      "playerId1": "recXENjRMi0GTUi6y",
+      "playerId2": "rechz0vtrzI4YNLt6",
+      "matches": 1,
+      "goalsAgainst": 1,
+      "gaPerMatch": 1
+    },
+    {
+      "playerId1": "rec7UewFBTISFASsD",
+      "playerId2": "rechz0vtrzI4YNLt6",
+      "matches": 1,
+      "goalsAgainst": 2,
+      "gaPerMatch": 2
+    },
+    {
+      "playerId1": "reck0a74qcYsRhJ0x",
+      "playerId2": "recnZCa2uj1fenN4y",
+      "matches": 1,
+      "goalsAgainst": 2,
+      "gaPerMatch": 2
+    },
+    {
+      "playerId1": "rec3IB6CNEMmwNykE",
+      "playerId2": "recnZCa2uj1fenN4y",
+      "matches": 1,
+      "goalsAgainst": 2,
+      "gaPerMatch": 2
+    },
+    {
+      "playerId1": "rec3IB6CNEMmwNykE",
+      "playerId2": "reck0a74qcYsRhJ0x",
+      "matches": 1,
+      "goalsAgainst": 2,
+      "gaPerMatch": 2
+    },
+    {
+      "playerId1": "recG662mRw9nTfmcU",
+      "playerId2": "recZauOLb3ET9m9Ix",
+      "matches": 2,
+      "goalsAgainst": 5,
+      "gaPerMatch": 2.5
+    },
+    {
+      "playerId1": "rec3IB6CNEMmwNykE",
+      "playerId2": "recZauOLb3ET9m9Ix",
+      "matches": 1,
+      "goalsAgainst": 3,
+      "gaPerMatch": 3
+    },
+    {
+      "playerId1": "recZauOLb3ET9m9Ix",
+      "playerId2": "rechz0vtrzI4YNLt6",
+      "matches": 2,
+      "goalsAgainst": 7,
+      "gaPerMatch": 3.5
+    },
+    {
+      "playerId1": "rec3IB6CNEMmwNykE",
+      "playerId2": "recZIZ8WBcb1IyqoS",
+      "matches": 1,
+      "goalsAgainst": 4,
+      "gaPerMatch": 4
+    },
+    {
+      "playerId1": "rec7UewFBTISFASsD",
+      "playerId2": "recZauOLb3ET9m9Ix",
+      "matches": 1,
+      "goalsAgainst": 5,
+      "gaPerMatch": 5
+    }
+  ],
+  "defensiveUnitsGoalsAgainst": [
+    {
+      "playerIds": [
+        "rec7UewFBTISFASsD",
+        "recG662mRw9nTfmcU",
+        "rect8nIhrhsGH3mPK"
+      ],
+      "matches": 1,
+      "goalsAgainst": 0,
+      "gaPerMatch": 0
+    },
+    {
+      "playerIds": [
+        "recZIZ8WBcb1IyqoS",
+        "recZauOLb3ET9m9Ix"
+      ],
+      "matches": 1,
+      "goalsAgainst": 1,
+      "gaPerMatch": 1
+    },
+    {
+      "playerIds": [
+        "recG662mRw9nTfmcU",
+        "recZauOLb3ET9m9Ix"
+      ],
+      "matches": 1,
+      "goalsAgainst": 1,
+      "gaPerMatch": 1
+    },
+    {
+      "playerIds": [
+        "recXENjRMi0GTUi6y",
+        "rechz0vtrzI4YNLt6"
+      ],
+      "matches": 1,
+      "goalsAgainst": 1,
+      "gaPerMatch": 1
+    },
+    {
+      "playerIds": [
+        "rec7UewFBTISFASsD",
+        "recG662mRw9nTfmcU"
+      ],
+      "matches": 1,
+      "goalsAgainst": 1,
+      "gaPerMatch": 1
+    },
+    {
+      "playerIds": [
+        "rec3IB6CNEMmwNykE",
+        "rect8nIhrhsGH3mPK"
+      ],
+      "matches": 1,
+      "goalsAgainst": 2,
+      "gaPerMatch": 2
+    },
+    {
+      "playerIds": [
+        "rec7UewFBTISFASsD",
+        "rec8nYCRFDSNo6RhB",
+        "rechz0vtrzI4YNLt6"
+      ],
+      "matches": 1,
+      "goalsAgainst": 2,
+      "gaPerMatch": 2
+    },
+    {
+      "playerIds": [
+        "rec3IB6CNEMmwNykE",
+        "reck0a74qcYsRhJ0x",
+        "recnZCa2uj1fenN4y",
+        "rect8nIhrhsGH3mPK"
+      ],
+      "matches": 1,
+      "goalsAgainst": 2,
+      "gaPerMatch": 2
+    },
+    {
+      "playerIds": [
+        "rec3IB6CNEMmwNykE",
+        "recZauOLb3ET9m9Ix",
+        "rect8nIhrhsGH3mPK"
+      ],
+      "matches": 1,
+      "goalsAgainst": 3,
+      "gaPerMatch": 3
+    },
+    {
+      "playerIds": [
+        "recZauOLb3ET9m9Ix",
+        "rechz0vtrzI4YNLt6",
+        "rect8nIhrhsGH3mPK"
+      ],
+      "matches": 1,
+      "goalsAgainst": 3,
+      "gaPerMatch": 3
+    },
+    {
+      "playerIds": [
+        "recZauOLb3ET9m9Ix",
+        "rechz0vtrzI4YNLt6"
+      ],
+      "matches": 1,
+      "goalsAgainst": 4,
+      "gaPerMatch": 4
+    },
+    {
+      "playerIds": [
+        "recG662mRw9nTfmcU",
+        "recZauOLb3ET9m9Ix",
+        "rect8nIhrhsGH3mPK"
+      ],
+      "matches": 1,
+      "goalsAgainst": 4,
+      "gaPerMatch": 4
+    },
+    {
+      "playerIds": [
+        "rec3IB6CNEMmwNykE",
+        "recZIZ8WBcb1IyqoS"
+      ],
+      "matches": 1,
+      "goalsAgainst": 4,
+      "gaPerMatch": 4
+    },
+    {
+      "playerIds": [
+        "rec7UewFBTISFASsD",
+        "rec8nYCRFDSNo6RhB",
+        "recZauOLb3ET9m9Ix"
+      ],
+      "matches": 1,
+      "goalsAgainst": 5,
+      "gaPerMatch": 5
+    }
+  ],
+  "subsTransactions": [
+    {
+      "id": "rec2VOOc7lwt5n7Vb",
+      "createdTime": "2026-02-07T13:31:25.000Z",
+      "rowId": 7,
+      "playerId": "reckG9bP68ANrvc3p",
+      "date": "2026-01-26",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    },
+    {
+      "id": "recCJwBCN2iPsbDgq",
+      "createdTime": "2026-02-07T13:31:37.000Z",
+      "rowId": 8,
+      "playerId": "recjnn0QDEMpSHREB",
+      "date": "2026-01-26",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": ""
+    },
+    {
+      "id": "recDRlBjo2fFAnwLM",
+      "createdTime": "2026-02-07T13:35:57.000Z",
+      "rowId": 15,
+      "playerId": "recG662mRw9nTfmcU",
+      "date": "2026-02-01",
+      "amountPaid": 60,
+      "subsAdded": 15,
+      "notes": ""
+    },
+    {
+      "id": "recEDhSQ34nuMQqhn",
+      "createdTime": "2026-02-06T14:15:33.000Z",
+      "rowId": 1,
+      "playerId": "recHMsjtFPTZv4fCO",
+      "date": "2026-02-05",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "Added for work on stats page"
+    },
+    {
+      "id": "recEv3R8TZa5M36mi",
+      "createdTime": "2026-02-06T14:16:30.000Z",
+      "rowId": 2,
+      "playerId": "recHMsjtFPTZv4fCO",
+      "date": "2026-02-05",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    },
+    {
+      "id": "recIxCxkJpd7Q7BDP",
+      "createdTime": "2026-02-07T13:32:21.000Z",
+      "rowId": 10,
+      "playerId": "rechz0vtrzI4YNLt6",
+      "date": "2026-01-20",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    },
+    {
+      "id": "recJwXjUeY4sh6d77",
+      "createdTime": "2026-02-09T10:11:38.000Z",
+      "rowId": 16,
+      "playerId": "recNuFhkMZr8OAjbH",
+      "date": "2026-01-05",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": ""
+    },
+    {
+      "id": "recPXBlrJIlMaEh17",
+      "createdTime": "2026-02-07T13:31:55.000Z",
+      "rowId": 9,
+      "playerId": "rec3IB6CNEMmwNykE",
+      "date": "2026-01-26",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": ""
+    },
+    {
+      "id": "recVh1X9PVv9NB2s9",
+      "createdTime": "2026-02-07T13:33:19.000Z",
+      "rowId": 13,
+      "playerId": "recnBQ5gajZdiyZt3",
+      "date": "2026-01-15",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": ""
+    },
+    {
+      "id": "receebxn54dBkeltB",
+      "createdTime": "2026-02-07T13:28:44.000Z",
+      "rowId": 3,
+      "playerId": "recZIZ8WBcb1IyqoS",
+      "date": "2026-01-29",
+      "amountPaid": 24,
+      "subsAdded": 6,
+      "notes": "Added for work on stats domain\n"
+    },
+    {
+      "id": "recfTuK7yAbZMrn56",
+      "createdTime": "2026-02-07T13:30:40.000Z",
+      "rowId": 5,
+      "playerId": "rec7UewFBTISFASsD",
+      "date": "2026-01-27",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "\n\n"
+    },
+    {
+      "id": "reciznatchgWOiKgn",
+      "createdTime": "2026-02-07T13:33:01.000Z",
+      "rowId": 12,
+      "playerId": "recx98b2sy6pbRyEt",
+      "date": "2026-01-16",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    },
+    {
+      "id": "reckYIQtq1x5Rw1Ks",
+      "createdTime": "2026-02-07T13:32:45.000Z",
+      "rowId": 11,
+      "playerId": "recnZCa2uj1fenN4y",
+      "date": "2026-01-19",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    },
+    {
+      "id": "recshTWxeQwIXkln9",
+      "createdTime": "2026-02-07T13:33:40.000Z",
+      "rowId": 14,
+      "playerId": "rect8nIhrhsGH3mPK",
+      "date": "2026-01-05",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    },
+    {
+      "id": "recvx8AoIOmq3nCPu",
+      "createdTime": "2026-02-07T13:30:15.000Z",
+      "rowId": 4,
+      "playerId": "recfZUeAUzKcMAziC",
+      "date": "2026-01-28",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": ""
+    },
+    {
+      "id": "recx3sr6MucdXB7Lz",
+      "createdTime": "2026-02-07T13:30:59.000Z",
+      "rowId": 6,
+      "playerId": "recFqxDYKYAkKmV7Z",
+      "date": "2026-01-26",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    }
+  ],
+  "subsLedger": [
+    {
+      "id": "recshTWxeQwIXkln9",
+      "createdTime": "2026-02-07T13:33:40.000Z",
+      "rowId": 14,
+      "playerId": "rect8nIhrhsGH3mPK",
+      "date": "2026-01-05",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Mark Blake",
+      "previousBalance": -2,
+      "updatedBalance": 3
+    },
+    {
+      "id": "recJwXjUeY4sh6d77",
+      "createdTime": "2026-02-09T10:11:38.000Z",
+      "rowId": 16,
+      "playerId": "recNuFhkMZr8OAjbH",
+      "date": "2026-01-05",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "",
+      "playerName": "Dan Edwards",
+      "previousBalance": 1,
+      "updatedBalance": 11
+    },
+    {
+      "id": "recVh1X9PVv9NB2s9",
+      "createdTime": "2026-02-07T13:33:19.000Z",
+      "rowId": 13,
+      "playerId": "recnBQ5gajZdiyZt3",
+      "date": "2026-01-15",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "",
+      "playerName": "Martin Younghusband",
+      "previousBalance": -3,
+      "updatedBalance": 7
+    },
+    {
+      "id": "reciznatchgWOiKgn",
+      "createdTime": "2026-02-07T13:33:01.000Z",
+      "rowId": 12,
+      "playerId": "recx98b2sy6pbRyEt",
+      "date": "2026-01-16",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Steve Croft",
+      "previousBalance": 4,
+      "updatedBalance": 9
+    },
+    {
+      "id": "reckYIQtq1x5Rw1Ks",
+      "createdTime": "2026-02-07T13:32:45.000Z",
+      "rowId": 11,
+      "playerId": "recnZCa2uj1fenN4y",
+      "date": "2026-01-19",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Sam Gregory-Smith",
+      "previousBalance": -1,
+      "updatedBalance": 4
+    },
+    {
+      "id": "recIxCxkJpd7Q7BDP",
+      "createdTime": "2026-02-07T13:32:21.000Z",
+      "rowId": 10,
+      "playerId": "rechz0vtrzI4YNLt6",
+      "date": "2026-01-20",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Sam Wheat",
+      "previousBalance": 0,
+      "updatedBalance": 5
+    },
+    {
+      "id": "recx3sr6MucdXB7Lz",
+      "createdTime": "2026-02-07T13:30:59.000Z",
+      "rowId": 6,
+      "playerId": "recFqxDYKYAkKmV7Z",
+      "date": "2026-01-26",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Dan Dring",
+      "previousBalance": 1,
+      "updatedBalance": 6
+    },
+    {
+      "id": "rec2VOOc7lwt5n7Vb",
+      "createdTime": "2026-02-07T13:31:25.000Z",
+      "rowId": 7,
+      "playerId": "reckG9bP68ANrvc3p",
+      "date": "2026-01-26",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Tim Laws",
+      "previousBalance": 0,
+      "updatedBalance": 5
+    },
+    {
+      "id": "recCJwBCN2iPsbDgq",
+      "createdTime": "2026-02-07T13:31:37.000Z",
+      "rowId": 8,
+      "playerId": "recjnn0QDEMpSHREB",
+      "date": "2026-01-26",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "",
+      "playerName": "Dean Cornish",
+      "previousBalance": -4,
+      "updatedBalance": 6
+    },
+    {
+      "id": "recPXBlrJIlMaEh17",
+      "createdTime": "2026-02-07T13:31:55.000Z",
+      "rowId": 9,
+      "playerId": "rec3IB6CNEMmwNykE",
+      "date": "2026-01-26",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "",
+      "playerName": "Mike Doyle",
+      "previousBalance": -2,
+      "updatedBalance": 8
+    },
+    {
+      "id": "recfTuK7yAbZMrn56",
+      "createdTime": "2026-02-07T13:30:40.000Z",
+      "rowId": 5,
+      "playerId": "rec7UewFBTISFASsD",
+      "date": "2026-01-27",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "\n\n",
+      "playerName": "Dan Medd",
+      "previousBalance": -2,
+      "updatedBalance": 8
+    },
+    {
+      "id": "recvx8AoIOmq3nCPu",
+      "createdTime": "2026-02-07T13:30:15.000Z",
+      "rowId": 4,
+      "playerId": "recfZUeAUzKcMAziC",
+      "date": "2026-01-28",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "",
+      "playerName": "James Swift",
+      "previousBalance": -7,
+      "updatedBalance": 3
+    },
+    {
+      "id": "receebxn54dBkeltB",
+      "createdTime": "2026-02-07T13:28:44.000Z",
+      "rowId": 3,
+      "playerId": "recZIZ8WBcb1IyqoS",
+      "date": "2026-01-29",
+      "amountPaid": 24,
+      "subsAdded": 6,
+      "notes": "Added for work on stats domain\n",
+      "playerName": "Mark Buttress",
+      "previousBalance": -5,
+      "updatedBalance": 1
+    },
+    {
+      "id": "recDRlBjo2fFAnwLM",
+      "createdTime": "2026-02-07T13:35:57.000Z",
+      "rowId": 15,
+      "playerId": "recG662mRw9nTfmcU",
+      "date": "2026-02-01",
+      "amountPaid": 60,
+      "subsAdded": 15,
+      "notes": "",
+      "playerName": "Sean Knight",
+      "previousBalance": -6,
+      "updatedBalance": 9
+    },
+    {
+      "id": "recEDhSQ34nuMQqhn",
+      "createdTime": "2026-02-06T14:15:33.000Z",
+      "rowId": 1,
+      "playerId": "recHMsjtFPTZv4fCO",
+      "date": "2026-02-05",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "Added for work on stats page",
+      "playerName": "Marc Daffern",
+      "previousBalance": -5,
+      "updatedBalance": 5
+    },
+    {
+      "id": "recEv3R8TZa5M36mi",
+      "createdTime": "2026-02-06T14:16:30.000Z",
+      "rowId": 2,
+      "playerId": "recHMsjtFPTZv4fCO",
+      "date": "2026-02-05",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Marc Daffern",
+      "previousBalance": 5,
+      "updatedBalance": 10
+    }
+  ],
+  "meta": {
+    "generatedAt": "2026-02-20T00:41:52.523Z",
+    "year": 2026,
+    "matchesInYear": 7,
+    "matchesCountForStatsInYear": 7,
+    "matchesNonStatInYear": 0,
+    "goalsIncluded": 33,
+    "subsTransactionsIncluded": 16
+  }
+}
+>>>>>>> 080b02336f9d62d91bc220e103769b47d658f591

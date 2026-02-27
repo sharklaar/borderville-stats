@@ -222,34 +222,43 @@ function computeStrikePartners(goals, playersById, monthMatchIds) {
 }
 
 function computeDefensivePartners(matches, playersById, monthMatchIds) {
-  // Exactly TWO defenders (position==="DEF") sharing a clean sheet on the same team in a match.
+  // Defensive Partnership CS (DPCS):
+  // - Occurs when a TEAM has a clean sheet AND has >=2 defenders listed for that match.
+  // - If >2 defenders, all unordered combinations of 2 defenders each get +1.
+  // - Goalkeepers are excluded.
+  // - Do NOT infer defenders from Players.position; use Matches explicit fields:
+  //   blueDefs / pinkDefs + blueCS / pinkCS, excluding blueGKId / pinkGKId.
   const pairCounts = new Map();
+
+  const addPairs = (ids) => {
+    const list = Array.from(new Set(Array.isArray(ids) ? ids : [])).filter(Boolean);
+    if (list.length < 2) return;
+    for (let i = 0; i < list.length - 1; i++) {
+      for (let j = i + 1; j < list.length; j++) {
+        const a = list[i];
+        const b = list[j];
+        const id1 = a < b ? a : b;
+        const id2 = a < b ? b : a;
+        const key = `${id1}|${id2}`;
+        pairCounts.set(key, (pairCounts.get(key) || 0) + 1);
+      }
+    }
+  };
+
+  const csDefenders = (teamDefs, teamCS, gkId) => {
+    const defs = Array.isArray(teamDefs) ? teamDefs : [];
+    const cs = Array.isArray(teamCS) ? teamCS : [];
+    return defs.filter((pid) => cs.includes(pid) && pid !== gkId);
+  };
 
   (matches || []).forEach((m) => {
     if (!m || m.countsForStats !== true) return;
     if (!monthMatchIds.has(m.id)) return;
 
-    const pinkConceded = asNumber(m.blueGoals, 0);
-    const blueConceded = asNumber(m.pinkGoals, 0);
-
-    const maybeAddPairs = (playerIds) => {
-      const defs = (playerIds || []).filter((pid) => playerPos(playersById, pid) === "DEF");
-      if (defs.length < 2) return;
-
-      for (let i = 0; i < defs.length - 1; i++) {
-        for (let j = i + 1; j < defs.length; j++) {
-          const a = defs[i];
-          const b = defs[j];
-          const id1 = a < b ? a : b;
-          const id2 = a < b ? b : a;
-          const key = `${id1}|${id2}`;
-          pairCounts.set(key, (pairCounts.get(key) || 0) + 1);
-        }
-      }
-    };
-
-    if (pinkConceded === 0) maybeAddPairs(m.playersPink);
-    if (blueConceded === 0) maybeAddPairs(m.playersBlue);
+    // Pink clean sheet defenders
+    addPairs(csDefenders(m.pinkDefs, m.pinkCS, m.pinkGKId));
+    // Blue clean sheet defenders
+    addPairs(csDefenders(m.blueDefs, m.blueCS, m.blueGKId));
   });
 
   const items = Array.from(pairCounts.entries())

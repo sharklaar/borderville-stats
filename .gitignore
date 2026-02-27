@@ -1,6 +1,4 @@
 .env
 scripts/*.http
 .DS_Store
-data/aggregated.json
 node_modules/
-data/aggregated.json

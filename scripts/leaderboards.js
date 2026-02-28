@@ -163,12 +163,22 @@ function computeAssists(goals, matchIdSet) {
 }
 
 function computeCleanSheets(matches, playersById, monthMatchIds) {
-  // aggregated.json matches currently don’t include an explicit list of clean-sheet earners,
-  // so we infer CS from the match score:
-  // - If Pink conceded 0 (blueGoals === 0), Pink team gets a clean sheet
-  // - If Blue conceded 0 (pinkGoals === 0), Blue team gets a clean sheet
-  // We award to DEF + GK only (matches your existing stats patterns). :contentReference[oaicite:4]{index=4}
+  // Use explicit match clean-sheet lists from aggregated.json:
+  // - pinkCS / blueCS contain the players credited with the CS for that team in that match
+  // This correctly includes GKs (even if their meta.position isn't "GK"),
+  // and avoids any inference from player meta positions.
+
   const counts = {};
+
+  const inc = (pid) => {
+    if (!pid) return;
+    counts[pid] = (counts[pid] || 0) + 1;
+  };
+
+  const intersect = (a, b) => {
+    const setB = new Set(Array.isArray(b) ? b : []);
+    return (Array.isArray(a) ? a : []).filter((x) => setB.has(x));
+  };
 
   (matches || []).forEach((m) => {
     if (!m || m.countsForStats !== true) return;
@@ -178,17 +188,15 @@ function computeCleanSheets(matches, playersById, monthMatchIds) {
     const blueConceded = asNumber(m.pinkGoals, 0);
 
     if (pinkConceded === 0) {
-      (m.playersPink || []).forEach((pid) => {
-        const pos = playerPos(playersById, pid);
-        if (pos === "DEF" || pos === "GK") counts[pid] = (counts[pid] || 0) + 1;
-      });
+      // Safety: only count players who are actually in Pink team list
+      intersect(m.pinkCS, m.playersPink).forEach(inc);
+      // If you *trust* pinkCS completely, you can just do:
+      // (m.pinkCS || []).forEach(inc);
     }
 
     if (blueConceded === 0) {
-      (m.playersBlue || []).forEach((pid) => {
-        const pos = playerPos(playersById, pid);
-        if (pos === "DEF" || pos === "GK") counts[pid] = (counts[pid] || 0) + 1;
-      });
+      intersect(m.blueCS, m.playersBlue).forEach(inc);
+      // or: (m.blueCS || []).forEach(inc);
     }
   });
 

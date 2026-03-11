@@ -409,68 +409,63 @@ function buildValueTooltipText(player, meta) {
   const ovrUpliftM = valueM - minValue;
 
   // --- replicate calculateOverallScore.js season scoring (RAW, pre-normalisation) ---
+  const position = String(player?.meta?.position || "").trim().toUpperCase();
   const playedSeason = num(s.caps2026);
   const wins = num(s.wins);
-  const draws = num(s.draws);
   const goals = num(s.goals);
   const assists = num(s.assists);
   const cleanSheets = num(s.cleanSheets);
-  const conceded = num(s.conceded2026);
-
   const concededExactlyOneMatches = num(s.concededExactlyOneMatches2026);
-
+  const concededExactlyTwoMatches = num(s.concededExactlyTwoMatches2026);
   const ogs = num(s.ogs);
   const otfs = num(s.otfs);
   const motm = num(s.motm2026);
   const motmCaptain = num(s.motmCaptain2026);
-  const winningCaptain = num(s.winningCaptain2026);
-  const honourableMentions = num(s.honourableMentions);
+
+  const isDefensive = position === "DEF" || position === "GK";
+  const goalPoints = position === "GK" ? 10 : position === "DEF" ? 6 : 4;
 
   const W = {
-    PPG: 25,
-    MOTM: 8,
-    MOTM_CAP_BONUS: 3,
-    WINNING_CAP: 4.0,
-    GOAL: 2.0,
-    ASSIST: 2.0,
-    CLEAN_SHEET: 7.0,
-    CONCEDED_EXACTLY_ONE_MATCH: 2.0,
-    CONCEDED: -0.35,
-    OG: -2.5,
-    OTF: -0.15,
-    HON_MENTION: 0.15
+    APPEARANCE: 1,
+    WIN: 3,
+    DEFENSIVE_WIN_BONUS: isDefensive ? 2 : 0,
+    GOAL: goalPoints,
+    ASSIST: 3,
+    CLEAN_SHEET: isDefensive ? 6 : 0,
+    CONCEDED_EXACTLY_ONE_MATCH: isDefensive ? 3 : 0,
+    CONCEDED_EXACTLY_TWO_MATCH: isDefensive ? 2 : 0,
+    MOTM: 3,
+    MOTM_CAP_BONUS: 1,
+    OG: -2,
+    OTF: -1
   };
 
-  const ppg = (playedSeason > 0) ? ((wins + 0.5 * draws) / playedSeason) : 0;
-
   const contrib = {
-    ppg: W.PPG * ppg,
-    motm: W.MOTM * motm,
-    motmCap: W.MOTM_CAP_BONUS * motmCaptain,
-    winCap: W.WINNING_CAP * winningCaptain,
+    appearances: W.APPEARANCE * playedSeason,
+    wins: (W.WIN + W.DEFENSIVE_WIN_BONUS) * wins,
     goals: W.GOAL * goals,
     assists: W.ASSIST * assists,
     cleanSheets: W.CLEAN_SHEET * cleanSheets,
-    defUplift: W.CONCEDED_EXACTLY_ONE_MATCH * concededExactlyOneMatches,
-    conceded: W.CONCEDED * conceded,
+    defUpliftOne: W.CONCEDED_EXACTLY_ONE_MATCH * concededExactlyOneMatches,
+    defUpliftTwo: W.CONCEDED_EXACTLY_TWO_MATCH * concededExactlyTwoMatches,
+    motm: W.MOTM * motm,
+    motmCap: W.MOTM_CAP_BONUS * motmCaptain,
     ogs: W.OG * ogs,
-    otfs: W.OTF * otfs,
-    hon: W.HON_MENTION * honourableMentions
+    otfs: W.OTF * otfs
   };
 
   const rawSeason =
-    contrib.ppg +
-    contrib.motm +
-    contrib.motmCap +
-    contrib.winCap +
+    contrib.appearances +
+    contrib.wins +
     contrib.goals +
     contrib.assists +
     contrib.cleanSheets +
-    contrib.defUplift +
-    contrib.conceded +
+    contrib.defUpliftOne +
+    contrib.defUpliftTwo +
+    contrib.motm +
+    contrib.motmCap +
     contrib.ogs +
-    contrib.otfs +
-    contrib.hon;
+    contrib.otfs;
 
   // --- replicate recent inactivity penalty (matches calculateOverallScore.js) ---
   const playedLast10 = num(s.playedLast10);
@@ -514,16 +509,18 @@ function buildValueTooltipText(player, meta) {
   lines.push("");
 
   lines.push("Raw score (pre-normalisation):");
-  lines.push(`• PPG: ${fmtSigned(contrib.ppg)}  (ppg ${ppg.toFixed(2)})`);
-  lines.push(`• Goals: ${fmtSigned(contrib.goals)}  (${goals})`);
+  lines.push(`• Position: ${position || "—"}`);
+  lines.push(`• Appearances: ${fmtSigned(contrib.appearances)}  (${playedSeason})`);
+  lines.push(`• Wins: ${fmtSigned(contrib.wins)}  (${wins})`);
+  lines.push(`• Goals: ${fmtSigned(contrib.goals)}  (${goals} × ${W.GOAL})`);
   lines.push(`• Assists: ${fmtSigned(contrib.assists)}  (${assists})`);
-  lines.push(`• Clean sheets: ${fmtSigned(contrib.cleanSheets)}  (${cleanSheets})`);
+  if (isDefensive) {
+    lines.push(`• Clean sheets: ${fmtSigned(contrib.cleanSheets)}  (${cleanSheets})`);
+    lines.push(`• Concede exactly 1: ${fmtSigned(contrib.defUpliftOne)}  (${concededExactlyOneMatches})`);
+    lines.push(`• Concede exactly 2: ${fmtSigned(contrib.defUpliftTwo)}  (${concededExactlyTwoMatches})`);
+  }
   lines.push(`• MOTM: ${fmtSigned(contrib.motm)}  (${motm})`);
-  lines.push(`• Captain (win): ${fmtSigned(contrib.winCap)}  (${winningCaptain})`);
   lines.push(`• Captain+MOTM bonus: ${fmtSigned(contrib.motmCap)}  (${motmCaptain})`);
-  lines.push(`• Honourable mentions: ${fmtSigned(contrib.hon)}  (${honourableMentions})`);
-  lines.push(`• Defensive uplift (concede 1): ${fmtSigned(contrib.defUplift)}  (${concededExactlyOneMatches})`);
-  lines.push(`• Conceded: ${fmtSigned(contrib.conceded)}  (${conceded})`);
   lines.push(`• OGs: ${fmtSigned(contrib.ogs)}  (${ogs})`);
   lines.push(`• OTFs: ${fmtSigned(contrib.otfs)}  (${otfs})`);
   lines.push(`= Raw season: ${rawSeason.toFixed(2)}`);

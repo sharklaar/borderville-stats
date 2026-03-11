@@ -113,7 +113,8 @@ function ensurePlayer(outPlayers, playerId, name = "Unknown") {
 
         // Season defensive-ish stats (stat matches only)
         conceded2026: 0,
-        concededExactlyOneMatches2026: 0, // NEW: match-count where DEF/GK team conceded exactly 1
+        concededExactlyOneMatches2026: 0, // match-count where DEF/GK team conceded exactly 1
+        concededExactlyTwoMatches2026: 0, // match-count where DEF/GK team conceded exactly 2
 
         // captain outcome stats (stat matches only)
         winningCaptain2026: 0,
@@ -462,20 +463,22 @@ async function main() {
     const blueGA = m.pinkGoals; // goals conceded by Blue
     const pinkGA = m.blueGoals; // goals conceded by Pink
 
-    // ✅ NEW: "conceded exactly 1" uplift — DEF/GK ONLY
+    // "conceded exactly 1/2" bonuses — DEF/GK ONLY
     // Blue DEF+GK
-    if (blueGA === 1) {
+    if (blueGA === 1 || blueGA == 2) {
       const ids = new Set([...asArray(m.blueDefs), m.blueGK].filter(Boolean));
       ids.forEach((pid) => {
-        ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
+        if (blueGA === 1) ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
+        if (blueGA === 2) ensurePlayer(outPlayers, pid).stats.concededExactlyTwoMatches2026 += 1;
       });
     }
 
     // Pink DEF+GK
-    if (pinkGA === 1) {
+    if (pinkGA === 1 || pinkGA === 2) {
       const ids = new Set([...asArray(m.pinkDefs), m.pinkGK].filter(Boolean));
       ids.forEach((pid) => {
-        ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
+        if (pinkGA === 1) ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
+        if (pinkGA === 2) ensurePlayer(outPlayers, pid).stats.concededExactlyTwoMatches2026 += 1;
       });
     }
 
@@ -636,6 +639,7 @@ async function main() {
     const s = p.stats;
 
     const inputs = {
+      position: p.meta?.position || null,
       playedSeason: s.caps2026,
       wins: s.wins,
       draws: s.draws,
@@ -644,6 +648,7 @@ async function main() {
       cleanSheets: s.cleanSheets,
       conceded: s.conceded2026,
       concededExactlyOneMatches: s.concededExactlyOneMatches2026,
+      concededExactlyTwoMatches: s.concededExactlyTwoMatches2026,
       ogs: s.ogs,
       otfs: s.otfs,
       motm: s.motm2026,
@@ -681,7 +686,8 @@ for (const [pid, p] of Object.entries(outPlayers)) {
 
   const isDefensive =
     (s.cleanSheets > 0) ||
-    (s.concededExactlyOneMatches2026 > 0);
+    (s.concededExactlyOneMatches2026 > 0) ||
+    (s.concededExactlyTwoMatches2026 > 0);
 
   if (isDefensive) {
     defensiveScores[pid] = combinedByPlayerId[pid];

@@ -5,66 +5,72 @@ function clamp(n, min, max) {
   return Math.max(min, Math.min(max, n));
 }
 
+function normalisePosition(position) {
+  return String(position || "").trim().toUpperCase();
+}
+
+function isDefOrGk(position) {
+  const pos = normalisePosition(position);
+  return pos === "DEF" || pos === "GK";
+}
+
+function goalPointsForPosition(position) {
+  const pos = normalisePosition(position);
+  if (pos === "GK") return 10;
+  if (pos === "DEF") return 6;
+  return 4; // MID / FWD / unknown
+}
+
 /**
- * Season raw score (2026 only, stat matches only).
- * Intentionally "position-neutral".
- * Role gating happens in aggregate.js.
+ * Borderville season raw score (2026 only, stat matches only).
+ * Uses the agreed defender-friendly FPL-style model.
  */
 function computeSeasonRaw({
+  position,
   playedSeason,
   wins,
-  draws,
   goals,
   assists,
   cleanSheets,
-  conceded,
   concededExactlyOneMatches,
+  concededExactlyTwoMatches,
   ogs,
   otfs,
   motm,
-  motmCaptain,
-  winningCaptain,
-  honourableMentions
+  motmCaptain
 }) {
 
   if (!playedSeason || playedSeason <= 0) return 0;
 
-  const ppg = (wins + 0.5 * draws) / playedSeason;
+  const isDefensive = isDefOrGk(position);
 
   const W = {
-
-    PPG: 25,
-
-    MOTM: 8,
-    MOTM_CAP_BONUS: 3,
-    WINNING_CAP: 4,
-
-    GOAL: 2.0,
-    ASSIST: 2.0,
-
-    CLEAN_SHEET: 7.0,
-    CONCEDED_EXACTLY_ONE_MATCH: 2.0,
-
-    CONCEDED: -0.35,
-
-    OG: -2.5,
-    OTF: -0.15,
-    HON_MENTION: 0.15
+    APPEARANCE: 1,
+    GOAL: goalPointsForPosition(position),
+    ASSIST: 3,
+    CLEAN_SHEET: isDefensive ? 6 : 0,
+    CONCEDED_EXACTLY_ONE_MATCH: isDefensive ? 3 : 0,
+    CONCEDED_EXACTLY_TWO_MATCH: isDefensive ? 2 : 0,
+    WIN: 3,
+    DEFENSIVE_WIN_BONUS: isDefensive ? 2 : 0,
+    MOTM: 3,
+    MOTM_CAP_BONUS: 1,
+    OG: -2,
+    OTF: -1
   };
 
   return (
-    (W.PPG * ppg) +
-    (W.MOTM * motm) +
-    (W.MOTM_CAP_BONUS * motmCaptain) +
-    (W.WINNING_CAP * winningCaptain) +
+    (W.APPEARANCE * playedSeason) +
+    ((W.WIN + W.DEFENSIVE_WIN_BONUS) * wins) +
     (W.GOAL * goals) +
     (W.ASSIST * assists) +
     (W.CLEAN_SHEET * cleanSheets) +
     (W.CONCEDED_EXACTLY_ONE_MATCH * (concededExactlyOneMatches ?? 0)) +
-    (W.CONCEDED * conceded) +
+    (W.CONCEDED_EXACTLY_TWO_MATCH * (concededExactlyTwoMatches ?? 0)) +
+    (W.MOTM * motm) +
+    (W.MOTM_CAP_BONUS * motmCaptain) +
     (W.OG * ogs) +
-    (W.OTF * otfs) +
-    (W.HON_MENTION * (honourableMentions ?? 0))
+    (W.OTF * otfs)
   );
 }
 

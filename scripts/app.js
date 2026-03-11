@@ -620,41 +620,41 @@ function applyFiltersAndRender(cardsEl, statusEl, meta) {
     : ALL_PLAYERS.filter((p) => getSearchHaystack(p).includes(q));
 
   // Helpers for OVR sorting (precise first, then displayed)
-  const getOvrCombined = (p) => (p?.stats?.ovrCombined ?? p?.stats?.ovr ?? -Infinity);
-  const getOvr = (p) => (p?.stats?.ovr ?? 0);
+const getOvr = (p) => (p?.stats?.ovr ?? 0);
+const getOvrCombined = (p) => (p?.stats?.ovrCombined ?? -Infinity);
 
   // 2) Stat filter / sort
   if (mode === "ovr") {
-    list.sort((a, b) => {
-      const ac = getOvrCombined(a);
-      const bc = getOvrCombined(b);
-      if (bc !== ac) return bc - ac;
+  list.sort((a, b) => {
+    const ao = getOvr(a);
+    const bo = getOvr(b);
+    if (bo !== ao) return bo - ao;
 
-      const ao = getOvr(a);
-      const bo = getOvr(b);
-      if (bo !== ao) return bo - ao;
+    const ac = getOvrCombined(a);
+    const bc = getOvrCombined(b);
+    if (bc !== ac) return bc - ac;
 
-      const ag = a?.stats?.goals ?? 0;
-      const bg = b?.stats?.goals ?? 0;
-      if (bg !== ag) return bg - ag;
+    const ag = a?.stats?.goals ?? 0;
+    const bg = b?.stats?.goals ?? 0;
+    if (bg !== ag) return bg - ag;
 
-      const aa = a?.stats?.assists ?? 0;
-      const ba = b?.stats?.assists ?? 0;
-      if (ba !== aa) return ba - aa;
+    const aa = a?.stats?.assists ?? 0;
+    const ba = b?.stats?.assists ?? 0;
+    if (ba !== aa) return ba - aa;
 
-      const aCaps = a?.stats?.caps2026 ?? a?.stats?.caps ?? 0;
-      const bCaps = b?.stats?.caps2026 ?? b?.stats?.caps ?? 0;
-      if (bCaps !== aCaps) return bCaps - aCaps;
+    const aCaps = a?.stats?.caps2026 ?? a?.stats?.caps ?? 0;
+    const bCaps = b?.stats?.caps2026 ?? b?.stats?.caps ?? 0;
+    if (bCaps !== aCaps) return bCaps - aCaps;
 
-      const aOtfs = a?.stats?.otfs ?? 0;
-      const bOtfs = b?.stats?.otfs ?? 0;
-      if (aOtfs !== bOtfs) return aOtfs - bOtfs; // fewer OTF wins
+    const aOtfs = a?.stats?.otfs ?? 0;
+    const bOtfs = b?.stats?.otfs ?? 0;
+    if (aOtfs !== bOtfs) return aOtfs - bOtfs;
 
-      const an = (a?.name ?? "").toLowerCase();
-      const bn = (b?.name ?? "").toLowerCase();
-      return an.localeCompare(bn);
-    });
-  } else if (mode !== "all") {
+    const an = (a?.name ?? "").toLowerCase();
+    const bn = (b?.name ?? "").toLowerCase();
+    return an.localeCompare(bn);
+  });
+} else if (mode !== "all") {
     const getStat = (p) => {
       const s = p?.stats ?? {};
       if (mode === "motm2026") return s.motm2026 ?? 0;
@@ -674,28 +674,28 @@ function applyFiltersAndRender(cardsEl, statusEl, meta) {
         .sort((a, b) => getStat(b) - getStat(a));
     }
   } else {
-    list.sort((a, b) => {
-      const ac = getOvrCombined(a);
-      const bc = getOvrCombined(b);
-      if (bc !== ac) return bc - ac;
+  list.sort((a, b) => {
+    const ao = getOvr(a);
+    const bo = getOvr(b);
+    if (bo !== ao) return bo - ao;
 
-      const ao = getOvr(a);
-      const bo = getOvr(b);
-      if (bo !== ao) return bo - ao;
+    const ac = getOvrCombined(a);
+    const bc = getOvrCombined(b);
+    if (bc !== ac) return bc - ac;
 
-      const ag = a?.stats?.goals ?? 0;
-      const bg = b?.stats?.goals ?? 0;
-      if (bg !== ag) return bg - ag;
+    const ag = a?.stats?.goals ?? 0;
+    const bg = b?.stats?.goals ?? 0;
+    if (bg !== ag) return bg - ag;
 
-      const aa = a?.stats?.assists ?? 0;
-      const ba = b?.stats?.assists ?? 0;
-      if (ba !== aa) return ba - aa;
+    const aa = a?.stats?.assists ?? 0;
+    const ba = b?.stats?.assists ?? 0;
+    if (ba !== aa) return ba - aa;
 
-      const aCaps = a?.stats?.caps2026 ?? a?.stats?.caps ?? 0;
-      const bCaps = b?.stats?.caps2026 ?? b?.stats?.caps ?? 0;
-      return bCaps - aCaps;
-    });
-  }
+    const aCaps = a?.stats?.caps2026 ?? a?.stats?.caps ?? 0;
+    const bCaps = b?.stats?.caps2026 ?? b?.stats?.caps ?? 0;
+    return bCaps - aCaps;
+  });
+}
 
   // Render
   cardsEl.innerHTML = "";

@@ -7,7 +7,8 @@ function clamp(n, min, max) {
 
 /**
  * Season raw score (2026 only, stat matches only).
- * Intentionally "position-neutral" and later normalised to 0..100 across all players.
+ * Intentionally "position-neutral".
+ * Role gating happens in aggregate.js.
  */
 function computeSeasonRaw({
   playedSeason,
@@ -17,40 +18,38 @@ function computeSeasonRaw({
   assists,
   cleanSheets,
   conceded,
-
-  // NEW: count of matches where DEF/GK conceded exactly 1
-  // (aggregate.js passes this as `concededExactlyOneMatches`)
   concededExactlyOneMatches,
-
   ogs,
   otfs,
   motm,
-  motmCaptain,     // captain + MOTM in same match
-  winningCaptain,  // captain + WIN
+  motmCaptain,
+  winningCaptain,
   honourableMentions
 }) {
+
   if (!playedSeason || playedSeason <= 0) return 0;
 
-  // Win% in points-per-game terms: W=1, D=0.5, L=0
   const ppg = (wins + 0.5 * draws) / playedSeason;
 
-  // Weights (tune later if needed)
   const W = {
-    PPG: 25,               // medium
-    MOTM: 8,               // strong
-    MOTM_CAP_BONUS: 3,     // extra on top of MOTM
-    WINNING_CAP: 4.0,      // mid boost for winning captain only
-    GOAL: 2.0,             // medium-low
-    ASSIST: 2.0,           // same as goal (per your change)
-    CLEAN_SHEET: 7.0,      // high because rare
 
-    // NEW: defensive uplift when conceding exactly 1 (DEF/GK only, enforced in aggregate.js)
+    PPG: 25,
+
+    MOTM: 8,
+    MOTM_CAP_BONUS: 3,
+    WINNING_CAP: 4,
+
+    GOAL: 2.0,
+    ASSIST: 2.0,
+
+    CLEAN_SHEET: 7.0,
     CONCEDED_EXACTLY_ONE_MATCH: 2.0,
 
-    CONCEDED: -0.35,       // moderate negative
-    OG: -2.5,              // stings more than a goal helps
-    OTF: -0.15,            // tiny (barely moves needle)
-    HON_MENTION: 0.15      // very tiny
+    CONCEDED: -0.35,
+
+    OG: -2.5,
+    OTF: -0.15,
+    HON_MENTION: 0.15
   };
 
   return (
@@ -70,10 +69,7 @@ function computeSeasonRaw({
 }
 
 /**
- * Recent inactivity penalty:
- * - Only consider if playedLast10 <= 2
- * - IMMUNE if season attendance >= 20%
- * - Otherwise: 2 => 0, 1 => 0.5, 0 => 1 of penaltyMax
+ * Recent inactivity penalty
  */
 function computeRecentPenalty({
   playedLast10,
@@ -82,33 +78,40 @@ function computeRecentPenalty({
   attendanceImmunity = 0.20,
   penaltyMax = 12,
 }) {
+
   if (!matchesSeason || matchesSeason <= 0) return 0;
 
   const attendanceRate = playedSeason / matchesSeason;
+
   if (attendanceRate >= attendanceImmunity) return 0;
 
   if (playedLast10 > 2) return 0;
 
   const inactivity = clamp((2 - playedLast10) / 2, 0, 1);
+
   return inactivity * penaltyMax;
 }
 
 function computeCombined(inputs) {
+
   const rawSeason = computeSeasonRaw(inputs);
+
   const penalty = computeRecentPenalty(inputs);
+
   return {
     rawSeason,
     penalty,
-    combined: rawSeason - penalty,
+    combined: rawSeason - penalty
   };
 }
 
 /**
- * Normalise combined scores to 0..100 across all players.
- * Returns integers (rounded), plus leaves you with combined floats for tie-breaks.
+ * Standard normalisation
  */
-function normaliseTo100(combinedByPlayerId) {
-  const vals = Object.values(combinedByPlayerId);
+function normaliseTo100(scoreMap) {
+
+  const vals = Object.values(scoreMap);
+
   if (!vals.length) return {};
 
   const min = Math.min(...vals);
@@ -116,15 +119,17 @@ function normaliseTo100(combinedByPlayerId) {
 
   if (max === min) {
     const out = {};
-    for (const pid of Object.keys(combinedByPlayerId)) out[pid] = 50;
+    for (const pid of Object.keys(scoreMap)) out[pid] = 50;
     return out;
   }
 
   const out = {};
-  for (const [pid, v] of Object.entries(combinedByPlayerId)) {
+
+  for (const [pid, v] of Object.entries(scoreMap)) {
     const ovr = 100 * (v - min) / (max - min);
     out[pid] = Math.round(ovr);
   }
+
   return out;
 }
 
@@ -132,5 +137,5 @@ module.exports = {
   computeSeasonRaw,
   computeRecentPenalty,
   computeCombined,
-  normaliseTo100,
+  normaliseTo100
 };

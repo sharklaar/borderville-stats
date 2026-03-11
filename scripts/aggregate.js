@@ -667,10 +667,44 @@ async function main() {
     combinedByPlayerId[pid] = combined;
   }
 
-  const ovrMap = normaliseTo100(combinedByPlayerId);
-  for (const [pid, p] of Object.entries(outPlayers)) {
-    p.stats.ovr = ovrMap[pid] ?? 50;
+// -------------------------------------
+// Split players into DEFENSIVE / OUTFIELD
+// based on actual defensive contributions
+// -------------------------------------
+
+const defensiveScores = {};
+const outfieldScores = {};
+
+for (const [pid, p] of Object.entries(outPlayers)) {
+
+  const s = p.stats;
+
+  const isDefensive =
+    (s.cleanSheets > 0) ||
+    (s.concededExactlyOneMatches2026 > 0);
+
+  if (isDefensive) {
+    defensiveScores[pid] = combinedByPlayerId[pid];
+  } else {
+    outfieldScores[pid] = combinedByPlayerId[pid];
   }
+}
+
+// normalise each bucket separately
+const defensiveOVR = normaliseTo100(defensiveScores);
+const outfieldOVR = normaliseTo100(outfieldScores);
+
+// merge back
+for (const [pid, p] of Object.entries(outPlayers)) {
+
+  if (defensiveOVR[pid] !== undefined) {
+    p.stats.ovr = defensiveOVR[pid];
+  } else if (outfieldOVR[pid] !== undefined) {
+    p.stats.ovr = outfieldOVR[pid];
+  } else {
+    p.stats.ovr = 50;
+  }
+}
 
   // ----------------------------
   // Subs ledger (credits-only running balance) ✅ NEW

@@ -20,7 +20,12 @@ const FPL_WEIGHTS = {
 function safeArray(v) { return Array.isArray(v) ? v : []; }
 function normaliseNameQuery(v) { return String(v || '').trim().toLowerCase(); }
 function getInitials(name = '?') {
-  return String(name).split(' ').filter(Boolean).slice(0,2).map(p => p[0]?.toUpperCase() || '').join('') || '?';
+  return String(name)
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map(p => p[0]?.toUpperCase() || '')
+    .join('') || '?';
 }
 function displayPosition(player) {
   const p = String(player?.meta?.position || '').toUpperCase().trim();
@@ -35,9 +40,13 @@ function posClass(pos) {
   return '';
 }
 function profilePhotoUrl(player) {
-  const name = String(player?.name || '').trim().toLowerCase();
+  const name = String(player?.name || '').trim();
   if (!name) return '';
-  const file = name.replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+  const file = name
+    .split(/[^A-Za-z0-9]+/)
+    .filter(Boolean)
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join('_');
   return `./images/playerPhotos/${file}.png`;
 }
 function playerMatchesQuery(row, q) {
@@ -107,7 +116,7 @@ function buildFplTable(data) {
     const pinkGoals = Number(match.pinkGoals || 0);
     const blueGoals = Number(match.blueGoals || 0);
     const winningTeam = match.winningTeam || (pinkGoals > blueGoals ? 'PINK' : blueGoals > pinkGoals ? 'BLUE' : 'DRAW');
-    const captainIds = new Set([match.captainPinkId, match.captainBlueId, ...(safeArray(match.captainIds))].filter(Boolean));
+    const captainIds = new Set([match.captainPinkId, match.captainBlueId, ...safeArray(match.captainIds)].filter(Boolean));
 
     for (const pid of allPlayers) {
       const row = byId[pid];
@@ -190,16 +199,25 @@ function buildFplTable(data) {
 function renderSummary(rows) {
   const el = document.getElementById('fplSummary');
   if (!el) return;
-  const top = rows[0];
-  const totalPlayers = rows.length;
-  const totalPoints = rows.reduce((sum, row) => sum + row.total, 0);
-  const totalGoals = rows.reduce((sum, row) => sum + row.goals, 0);
-  const totalWins = rows.reduce((sum, row) => sum + row.wins, 0);
-  el.innerHTML = `
-    <article class="fpl-summary-card"><span class="fpl-summary-card__label">Top scorer</span><div class="fpl-summary-card__value">${top ? top.total : 0}</div><div class="fpl-summary-card__sub">${top ? top.player.name : 'No players'}</div></article>
-    <article class="fpl-summary-card"><span class="fpl-summary-card__label">Tracked players</span><div class="fpl-summary-card__value">${totalPlayers}</div><div class="fpl-summary-card__sub">Eligible Borderville players</div></article>
-    <article class="fpl-summary-card"><span class="fpl-summary-card__label">League points</span><div class="fpl-summary-card__value">${totalPoints}</div><div class="fpl-summary-card__sub">Across all eligible players</div></article>
-    <article class="fpl-summary-card"><span class="fpl-summary-card__label">Goals / wins</span><div class="fpl-summary-card__value">${totalGoals} / ${totalWins}</div><div class="fpl-summary-card__sub">Scoring + team results</div></article>`;
+
+  const topOverall = rows[0] || null;
+  const topDef = rows.find(row => ['DEF', 'GK'].includes(displayPosition(row.player))) || null;
+  const topMid = rows.find(row => displayPosition(row.player) === 'MID') || null;
+  const topFwd = rows.find(row => displayPosition(row.player) === 'FWD') || null;
+
+  const card = (label, row) => `
+    <article class="fpl-summary-card">
+      <span class="fpl-summary-card__label">${label}</span>
+      <div class="fpl-summary-card__value">${row ? row.total : 0}</div>
+      <div class="fpl-summary-card__sub">${row ? row.player.name : 'No eligible player'}</div>
+    </article>`;
+
+  el.innerHTML = [
+    card('Top scorer', topOverall),
+    card('Top defender (inc. GK)', topDef),
+    card('Top midfielder', topMid),
+    card('Top forward', topFwd),
+  ].join('');
 }
 
 function renderTable(rows) {
@@ -255,7 +273,7 @@ function wireControls() {
       const btn = e.target.closest('button[data-pos]');
       if (!btn) return;
       FPL_STATE.position = btn.dataset.pos || 'ALL';
-      filters.querySelectorAll('button[data-pos]').forEach(b => b.classList.toggle('is-active', b === btn));
+      [...filters.querySelectorAll('button[data-pos]')].forEach(b => b.classList.toggle('is-active', b === btn));
       renderTable(FPL_STATE.rows);
     });
   }
@@ -263,22 +281,49 @@ function wireControls() {
 
 async function init() {
   const status = document.getElementById('fplStatus');
+
   try {
     const res = await fetch('./data/aggregated.json', { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
     const data = await res.json();
-    FPL_STATE.rows = buildFplTable(data);
-    renderSummary(FPL_STATE.rows);
-    renderTable(FPL_STATE.rows);
+    const hasRoleFields = safeArray(data?.matches).some(
+      m => m && ('pinkDefs' in m || 'blueDefs' in m || 'pinkDefIds' in m || 'blueDefIds' in m || 'pinkGKId' in m || 'blueGKId' in m || 'pinkGkId' in m || 'blueGkId' in m)
+    );
+    if (!hasRoleFields) {
+      throw new Error('aggregated.json does not yet include FPL role fields. Re-run the updated aggregate.js first.');
+    }
+
+    const rows = buildFplTable(data);
+    FPL_STATE.rows = rows;
+    renderSummary(rows);
+    renderTable(rows);
     wireControls();
-    if (status) status.textContent = `Loaded ${FPL_STATE.rows.length} players`;
+
+    if (status) status.textContent = `FPL View ready · ${rows.length} players`;
+
     const lastUpdated = document.getElementById('lastUpdated');
-    if (lastUpdated) lastUpdated.textContent = data?.meta?.generatedAt || 'unknown';
+    if (lastUpdated) {
+      lastUpdated.textContent = data?.meta?.generatedAt
+        ? new Date(data.meta.generatedAt).toLocaleString()
+        : 'unknown';
+    }
+
+    const menuBtn = document.querySelector('.topbar__toggle');
+    const links = document.getElementById('topbarLinks');
+    if (menuBtn && links) {
+      menuBtn.addEventListener('click', () => {
+        const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!expanded));
+        links.classList.toggle('is-open');
+      });
+    }
   } catch (err) {
-    if (status) status.textContent = `Could not load FPL data: ${err.message}`;
+    console.error(err);
+    if (status) status.textContent = `Unable to load FPL View: ${err.message}`;
     const body = document.getElementById('fplTableBody');
-    if (body) body.innerHTML = '<tr><td colspan="13" class="fpl-empty">Could not load data.</td></tr>';
+    if (body) body.innerHTML = `<tr><td colspan="13" class="fpl-empty">${err.message}</td></tr>`;
   }
 }
 
-document.addEventListener('DOMContentLoaded', init);
+init();

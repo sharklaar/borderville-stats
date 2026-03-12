@@ -142,6 +142,11 @@ function ensurePlayer(outPlayers, playerId, name = "Unknown") {
         ovrPenalty: 0, // float (debug)
         ovrCombined: 0, // float (debug / tie-break)
 
+        // Role-aware fantasy breakdown (actual match role, not listed position)
+        fantasyRoleApps: { GK: 0, DEF: 0, OTHER: 0 },
+        fantasyRoleWins: { GK: 0, DEF: 0, OTHER: 0 },
+        fantasyRoleGoals: { GK: 0, DEF: 0, OTHER: 0 },
+
         form: [], // last 10 match codes, most recent first
       },
       meta: {},
@@ -178,6 +183,29 @@ function mapToSortedPairs(map) {
       return { scorerId, assistId, ...v };
     })
     .sort((a, b) => b.count - a.count);
+}
+
+function buildRoleMaps(match) {
+  const pink = new Set(asArray(match.pink));
+  const blue = new Set(asArray(match.blue));
+  const pinkDefs = new Set(asArray(match.pinkDefs));
+  const blueDefs = new Set(asArray(match.blueDefs));
+  const pinkGk = match.pinkGK || null;
+  const blueGk = match.blueGK || null;
+
+  function getTeam(pid) {
+    if (pink.has(pid)) return "PINK";
+    if (blue.has(pid)) return "BLUE";
+    return null;
+  }
+
+  function getRole(pid) {
+    if (pid === pinkGk || pid === blueGk) return "GK";
+    if (pinkDefs.has(pid) || blueDefs.has(pid)) return "DEF";
+    return getTeam(pid) ? "OTHER" : null;
+  }
+
+  return { getTeam, getRole };
 }
 
 /**
@@ -413,6 +441,25 @@ async function main() {
       pink.forEach((pid) => ensurePlayer(outPlayers, pid).stats.losses++);
     }
 
+    // Role-aware fantasy appearances / wins (actual match role)
+    const { getTeam, getRole } = buildRoleMaps(m);
+    [...pink, ...blue].forEach((pid) => {
+      const role = getRole(pid);
+      const team = getTeam(pid);
+      if (!role || !team) return;
+
+      const stats = ensurePlayer(outPlayers, pid).stats;
+      stats.fantasyRoleApps[role] = (stats.fantasyRoleApps[role] || 0) + 1;
+
+      const isWin =
+        (m.winningTeam === "PINK" && team === "PINK") ||
+        (m.winningTeam === "BLUE" && team === "BLUE");
+
+      if (isWin) {
+        stats.fantasyRoleWins[role] = (stats.fantasyRoleWins[role] || 0) + 1;
+      }
+    });
+
     // Conceded goals per player (season 2026, stat matches only)
     pink.forEach((pid) => {
       ensurePlayer(outPlayers, pid).stats.conceded2026 += m.blueGoals;
@@ -463,22 +510,36 @@ async function main() {
     const blueGA = m.pinkGoals; // goals conceded by Blue
     const pinkGA = m.blueGoals; // goals conceded by Pink
 
-    // "conceded exactly 1/2" bonuses — DEF/GK ONLY
+    // ✅ NEW: "conceded exactly 1" uplift — DEF/GK ONLY
     // Blue DEF+GK
-    if (blueGA === 1 || blueGA == 2) {
+    if (blueGA === 1) {
       const ids = new Set([...asArray(m.blueDefs), m.blueGK].filter(Boolean));
       ids.forEach((pid) => {
-        if (blueGA === 1) ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
-        if (blueGA === 2) ensurePlayer(outPlayers, pid).stats.concededExactlyTwoMatches2026 += 1;
+        ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
       });
     }
 
     // Pink DEF+GK
-    if (pinkGA === 1 || pinkGA === 2) {
+    if (pinkGA === 1) {
       const ids = new Set([...asArray(m.pinkDefs), m.pinkGK].filter(Boolean));
       ids.forEach((pid) => {
-        if (pinkGA === 1) ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
-        if (pinkGA === 2) ensurePlayer(outPlayers, pid).stats.concededExactlyTwoMatches2026 += 1;
+        ensurePlayer(outPlayers, pid).stats.concededExactlyOneMatches2026 += 1;
+      });
+    }
+
+    // Blue DEF+GK: conceded exactly 2
+    if (blueGA === 2) {
+      const ids = new Set([...asArray(m.blueDefs), m.blueGK].filter(Boolean));
+      ids.forEach((pid) => {
+        ensurePlayer(outPlayers, pid).stats.concededExactlyTwoMatches2026 += 1;
+      });
+    }
+
+    // Pink DEF+GK: conceded exactly 2
+    if (pinkGA === 2) {
+      const ids = new Set([...asArray(m.pinkDefs), m.pinkGK].filter(Boolean));
+      ids.forEach((pid) => {
+        ensurePlayer(outPlayers, pid).stats.concededExactlyTwoMatches2026 += 1;
       });
     }
 
@@ -584,8 +645,13 @@ async function main() {
     goalEvents.push({ id: r.id, matchId, scorerId, assistId, isOwnGoal });
 
     const scorer = ensurePlayer(outPlayers, scorerId, playersById[scorerId]?.name);
-    if (isOwnGoal) scorer.stats.ogs++;
-    else scorer.stats.goals++;
+    if (isOwnGoal) {
+      scorer.stats.ogs++;
+    } else {
+      scorer.stats.goals++;
+      const role = buildRoleMaps(m).getRole(scorerId) || "OTHER";
+      scorer.stats.fantasyRoleGoals[role] = (scorer.stats.fantasyRoleGoals[role] || 0) + 1;
+    }
 
     if (assistId) {
       ensurePlayer(outPlayers, assistId, playersById[assistId]?.name).stats.assists++;
@@ -636,14 +702,10 @@ async function main() {
   const combinedByPlayerId = {};
 
   for (const [pid, p] of Object.entries(outPlayers)) {
-    const s = p.stats;
-
-    const inputs = {
-      position: p.meta?.position || null,
-      playedSeason: s.caps2026,
-      wins: s.wins,
-      draws: s.draws,
-      goals: s.goals,
+    const s = p.stats;    const inputs = {
+      roleApps: s.fantasyRoleApps,
+      roleWins: s.fantasyRoleWins,
+      roleGoals: s.fantasyRoleGoals,
       assists: s.assists,
       cleanSheets: s.cleanSheets,
       conceded: s.conceded2026,
@@ -653,12 +715,8 @@ async function main() {
       otfs: s.otfs,
       motm: s.motm2026,
       motmCaptain: s.motmCaptain2026,
-      winningCaptain: s.winningCaptain2026,
-      honourableMentions: s.honourableMentions,
-
       playedLast10: s.playedLast10,
       matchesSeason,
-
       attendanceImmunity: 0.20,
       penaltyMax: 12,
     };

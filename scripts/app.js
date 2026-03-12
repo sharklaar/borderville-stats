@@ -7,6 +7,41 @@ const UI_STATE = {
   statFilter: "all", // all | ovr | goals | ogs | cleanSheets | otfs | motm
 };
 
+function num(v) {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : 0;
+}
+
+function getRawFplPoints(player) {
+  return num(player?.stats?.ovrRawSeason);
+}
+
+function getCombinedFplPoints(player) {
+  return num(player?.stats?.ovrCombined);
+}
+
+function getAllPlayerRawPointValues() {
+  return (ALL_PLAYERS || []).map(getRawFplPoints);
+}
+
+function rawPointsToValueMillions(rawPoints) {
+  const minValue = 4.5;
+  const maxValue = 15.0;
+  const values = getAllPlayerRawPointValues();
+  if (!values.length) return minValue.toFixed(1);
+
+  const minPoints = Math.min(...values);
+  const maxPoints = Math.max(...values);
+  const raw = num(rawPoints);
+
+  if (maxPoints <= minPoints) return ((minValue + maxValue) / 2).toFixed(1);
+
+  const t = (raw - minPoints) / (maxPoints - minPoints);
+  const clamped = Math.max(0, Math.min(1, t));
+  const value = minValue + clamped * (maxValue - minValue);
+  return value.toFixed(1);
+}
+
 // -----------------------------
 // Form helpers
 // -----------------------------
@@ -357,75 +392,82 @@ function renderAwardsChips(playerId) {
 function buildTooltipText(player) {
   const s = player?.stats ?? {};
   const meta = player?.meta ?? {};
-
   const name = player?.name ?? "Unknown";
   const position = meta.position ?? "—";
-
-  const points = getFantasyPoints(player);
-  const value = pointsToValueMillions(points);
+  const rawPoints = getRawFplPoints(player);
+  const combinedPoints = getCombinedFplPoints(player);
+  const value = rawPointsToValueMillions(rawPoints);
 
   const lines = [];
   lines.push(name);
   lines.push(`POS: ${position}`);
   lines.push(`VALUE: £${value}m`);
-  lines.push(`FANTASY PTS: ${points}`);
-
-  const goals = s.goals ?? 0;
-  const assists = s.assists ?? 0;
-  const motmAll = s.motm ?? 0;
-  const motm2026 = s.motm2026 ?? 0;
-  lines.push(`G/A/MOTM: ${goals}/${assists}/${motm2026} (${motmAll})`);
-
+  lines.push(`FPL PTS: ${rawPoints}${combinedPoints !== rawPoints ? ` (combined: ${Number(combinedPoints).toFixed(2)})` : ""}`);
+  lines.push(`G/A/MOTM: ${s.goals ?? 0}/${s.assists ?? 0}/${s.motm2026 ?? 0} (${s.motm ?? 0})`);
   return lines.join("\n");
 }
 
 function buildValueTooltipText(player, meta) {
-  const s = (player && player.stats) ? player.stats : {};
+  const s = player?.stats ?? {};
+  const fmtSigned = (v) => {
+    const n = num(v);
+    return `${n > 0 ? "+" : ""}${n.toFixed(2)}`;
+  };
 
-  const num = (v) => (Number.isFinite(Number(v)) ? Number(v) : 0);
-  const position = String(player?.meta?.position ?? meta?.position ?? "").toUpperCase();
-  const isDefOrGk = position === "DEF" || position === "GK";
+  const roleApps = s.fantasyRoleApps ?? {};
+  const roleWins = s.fantasyRoleWins ?? {};
+  const roleGoals = s.fantasyRoleGoals ?? {};
 
-  const points = getFantasyPoints(player);
-  const valueM = Number(pointsToValueMillions(points));
+  const appsGK = num(roleApps.GK);
+  const appsDEF = num(roleApps.DEF);
+  const appsOTHER = num(roleApps.OTHER);
+  const winsGK = num(roleWins.GK);
+  const winsDEF = num(roleWins.DEF);
+  const winsOTHER = num(roleWins.OTHER);
+  const goalsGK = num(roleGoals.GK);
+  const goalsDEF = num(roleGoals.DEF);
+  const goalsOTHER = num(roleGoals.OTHER);
 
-  const playedSeason = num(s.caps2026);
-  const wins = num(s.wins);
-  const goals = num(s.goals);
   const assists = num(s.assists);
   const cleanSheets = num(s.cleanSheets);
-  const concededExactlyOneMatches = num(s.concededExactlyOneMatches2026);
-  const concededExactlyTwoMatches = num(s.concededExactlyTwoMatches2026);
+  const concede1 = num(s.concededExactlyOneMatches2026);
+  const concede2 = num(s.concededExactlyTwoMatches2026);
+  const motm = num(s.motm2026);
+  const captainMotm = num(s.motmCaptain2026);
   const ogs = num(s.ogs);
   const otfs = num(s.otfs);
-  const motm = num(s.motm2026);
-  const motmCaptain = num(s.motmCaptain2026);
-
-  const goalPoints = position === "GK" ? 10 : position === "DEF" ? 6 : 4;
-  const winPoints = wins * (isDefOrGk ? 5 : 3);
-  const cleanSheetPoints = isDefOrGk ? cleanSheets * 6 : 0;
-  const concededOnePoints = isDefOrGk ? concededExactlyOneMatches * 3 : 0;
-  const concededTwoPoints = isDefOrGk ? concededExactlyTwoMatches * 2 : 0;
+  const rawSeason = getRawFplPoints(player);
+  const combined = getCombinedFplPoints(player);
+  const valueM = rawPointsToValueMillions(rawSeason);
+  const playedLast10 = num(s.playedLast10);
+  const matchesSeason = num(meta?.matchesCountForStatsInYear ?? meta?.matchesInYear ?? 0);
+  const penalty = Math.max(0, rawSeason - combined);
+  const totalApps = appsGK + appsDEF + appsOTHER;
 
   const lines = [];
-  lines.push(`Market Value: £${valueM.toFixed(1)}m`);
-  lines.push(`Fantasy points: ${points}`);
+  lines.push(`Market Value: £${valueM}m`);
+  lines.push(`• Based on raw FPL points: ${rawSeason.toFixed(2)}`);
   lines.push("");
-  lines.push("Scoring breakdown:");
-  lines.push(`• Apps: ${playedSeason} × 1 = ${playedSeason}`);
-  lines.push(`• Wins: ${wins} × ${isDefOrGk ? 5 : 3} = ${winPoints}`);
-  lines.push(`• Goals: ${goals} × ${goalPoints} = ${goals * goalPoints}`);
-  lines.push(`• Assists: ${assists} × 3 = ${assists * 3}`);
-  if (isDefOrGk) {
-    lines.push(`• Clean sheets: ${cleanSheets} × 6 = ${cleanSheetPoints}`);
-    lines.push(`• Conceded 1: ${concededExactlyOneMatches} × 3 = ${concededOnePoints}`);
-    lines.push(`• Conceded 2: ${concededExactlyTwoMatches} × 2 = ${concededTwoPoints}`);
+  lines.push("FPL scoring breakdown:");
+  lines.push(`• Appearances: ${fmtSigned(totalApps)}  (${totalApps} × 1)`);
+  lines.push(`• DEF/GK wins: ${fmtSigned((winsGK + winsDEF) * 5)}  (${winsGK + winsDEF} × 5)`);
+  lines.push(`• Outfield wins: ${fmtSigned(winsOTHER * 3)}  (${winsOTHER} × 3)`);
+  lines.push(`• GK goals: ${fmtSigned(goalsGK * 10)}  (${goalsGK} × 10)`);
+  lines.push(`• DEF goals: ${fmtSigned(goalsDEF * 6)}  (${goalsDEF} × 6)`);
+  lines.push(`• Outfield goals: ${fmtSigned(goalsOTHER * 4)}  (${goalsOTHER} × 4)`);
+  lines.push(`• Assists: ${fmtSigned(assists * 3)}  (${assists} × 3)`);
+  lines.push(`• Clean sheets: ${fmtSigned(cleanSheets * 6)}  (${cleanSheets} × 6)`);
+  lines.push(`• Concede exactly 1: ${fmtSigned(concede1 * 3)}  (${concede1} × 3)`);
+  lines.push(`• Concede exactly 2: ${fmtSigned(concede2 * 2)}  (${concede2} × 2)`);
+  lines.push(`• MOTM: ${fmtSigned(motm * 3)}  (${motm} × 3)`);
+  lines.push(`• Captain MOTM bonus: ${fmtSigned(captainMotm)}  (${captainMotm} × 1)`);
+  lines.push(`• OTFs: ${fmtSigned(otfs * -1)}  (${otfs} × -1)`);
+  lines.push(`• OGs: ${fmtSigned(ogs * -2)}  (${ogs} × -2)`);
+  lines.push(`= Raw FPL points: ${rawSeason.toFixed(2)}`);
+  if (penalty > 0) {
+    lines.push(`• Inactivity penalty: -${penalty.toFixed(2)}  (playedLast10 ${playedLast10}, season ${totalApps}/${matchesSeason})`);
+    lines.push(`= Combined: ${combined.toFixed(2)}`);
   }
-  lines.push(`• MOTM: ${motm} × 3 = ${motm * 3}`);
-  lines.push(`• Captain MOTM bonus: ${motmCaptain} × 1 = ${motmCaptain}`);
-  lines.push(`• OTF: ${otfs} × -1 = ${-otfs}`);
-  lines.push(`• OG: ${ogs} × -2 = ${-(ogs * 2)}`);
-
   return lines.join("\n");
 }
 
@@ -512,15 +554,20 @@ function applyFiltersAndRender(cardsEl, statusEl, meta) {
     ? ALL_PLAYERS.slice()
     : ALL_PLAYERS.filter((p) => getSearchHaystack(p).includes(q));
 
-  // Helpers for FPL-points/value sorting
-const getPoints = (p) => (p?.stats?.ovrRawSeason ?? 0);
+  // Helpers for FPL points sorting
+const getRawPoints = (p) => getRawFplPoints(p);
+const getCombinedPoints = (p) => getCombinedFplPoints(p);
 
   // 2) Stat filter / sort
   if (mode === "ovr") {
   list.sort((a, b) => {
-    const ap = getPoints(a);
-    const bp = getPoints(b);
-    if (bp !== ap) return bp - ap;
+    const ar = getRawPoints(a);
+    const br = getRawPoints(b);
+    if (br !== ar) return br - ar;
+
+    const ac = getCombinedPoints(a);
+    const bc = getCombinedPoints(b);
+    if (bc !== ac) return bc - ac;
 
     const ag = a?.stats?.goals ?? 0;
     const bg = b?.stats?.goals ?? 0;
@@ -533,10 +580,6 @@ const getPoints = (p) => (p?.stats?.ovrRawSeason ?? 0);
     const aCaps = a?.stats?.caps2026 ?? a?.stats?.caps ?? 0;
     const bCaps = b?.stats?.caps2026 ?? b?.stats?.caps ?? 0;
     if (bCaps !== aCaps) return bCaps - aCaps;
-
-    const aOtfs = a?.stats?.otfs ?? 0;
-    const bOtfs = b?.stats?.otfs ?? 0;
-    if (aOtfs !== bOtfs) return aOtfs - bOtfs;
 
     const an = (a?.name ?? "").toLowerCase();
     const bn = (b?.name ?? "").toLowerCase();
@@ -563,9 +606,13 @@ const getPoints = (p) => (p?.stats?.ovrRawSeason ?? 0);
     }
   } else {
   list.sort((a, b) => {
-    const ap = getPoints(a);
-    const bp = getPoints(b);
-    if (bp !== ap) return bp - ap;
+    const ar = getRawPoints(a);
+    const br = getRawPoints(b);
+    if (br !== ar) return br - ar;
+
+    const ac = getCombinedPoints(a);
+    const bc = getCombinedPoints(b);
+    if (bc !== ac) return bc - ac;
 
     const ag = a?.stats?.goals ?? 0;
     const bg = b?.stats?.goals ?? 0;
@@ -617,8 +664,8 @@ function renderPlayers(players, cardsEl, datasetMeta) {
     const caps2026 = s.caps2026 ?? 0;
     const subs = s.subs ?? 0;
 
-    const points = getFantasyPoints(p);
-    const value = pointsToValueMillions(points);
+    const rawPoints = getRawFplPoints(p);
+    const value = rawPointsToValueMillions(rawPoints);
 
     const position = playerMeta.position ?? "—";
     const photoSrc = photoPathFromName(name) || fallbackSrc;
@@ -822,18 +869,8 @@ function photoPathFromName(name) {
   return `./images/playerPhotos/${encodeURIComponent(safe)}.png`;
 }
 
-function getFantasyPoints(player) {
-  return Math.max(0, Number(player?.stats?.ovrRawSeason) || 0);
-}
-
-function pointsToValueMillions(points) {
-  const min = 4.5;
-  const max = 15.0;
-  const safePoints = Math.max(0, Number(points) || 0);
-  const pool = Array.isArray(ALL_PLAYERS) ? ALL_PLAYERS : [];
-  const maxPoints = Math.max(1, ...pool.map(getFantasyPoints));
-  const t = Math.max(0, Math.min(1, safePoints / maxPoints));
-  return (min + t * (max - min)).toFixed(1);
+function ovrToValueMillions(ovr) {
+  return rawPointsToValueMillions(ovr);
 }
 
 function positionFull(pos) {

@@ -5,31 +5,19 @@ function clamp(n, min, max) {
   return Math.max(min, Math.min(max, n));
 }
 
-function normalisePosition(position) {
-  return String(position || "").trim().toUpperCase();
-}
-
-function isDefOrGk(position) {
-  const pos = normalisePosition(position);
-  return pos === "DEF" || pos === "GK";
-}
-
-function goalPointsForPosition(position) {
-  const pos = normalisePosition(position);
-  if (pos === "GK") return 10;
-  if (pos === "DEF") return 6;
-  return 4; // MID / FWD / unknown
+function asNumber(v) {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : 0;
 }
 
 /**
  * Borderville season raw score (2026 only, stat matches only).
- * Uses the agreed defender-friendly FPL-style model.
+ * Uses actual match roles rather than listed player position.
  */
 function computeSeasonRaw({
-  position,
-  playedSeason,
-  wins,
-  goals,
+  roleApps,
+  roleWins,
+  roleGoals,
   assists,
   cleanSheets,
   concededExactlyOneMatches,
@@ -40,37 +28,36 @@ function computeSeasonRaw({
   motmCaptain
 }) {
 
-  if (!playedSeason || playedSeason <= 0) return 0;
+  const appsGK = asNumber(roleApps?.GK);
+  const appsDEF = asNumber(roleApps?.DEF);
+  const appsOTHER = asNumber(roleApps?.OTHER);
+  const playedSeason = appsGK + appsDEF + appsOTHER;
 
-  const isDefensive = isDefOrGk(position);
+  if (playedSeason <= 0) return 0;
 
-  const W = {
-    APPEARANCE: 1,
-    GOAL: goalPointsForPosition(position),
-    ASSIST: 3,
-    CLEAN_SHEET: isDefensive ? 6 : 0,
-    CONCEDED_EXACTLY_ONE_MATCH: isDefensive ? 3 : 0,
-    CONCEDED_EXACTLY_TWO_MATCH: isDefensive ? 2 : 0,
-    WIN: 3,
-    DEFENSIVE_WIN_BONUS: isDefensive ? 2 : 0,
-    MOTM: 3,
-    MOTM_CAP_BONUS: 1,
-    OG: -2,
-    OTF: -1
-  };
+  const winsGK = asNumber(roleWins?.GK);
+  const winsDEF = asNumber(roleWins?.DEF);
+  const winsOTHER = asNumber(roleWins?.OTHER);
+
+  const goalsGK = asNumber(roleGoals?.GK);
+  const goalsDEF = asNumber(roleGoals?.DEF);
+  const goalsOTHER = asNumber(roleGoals?.OTHER);
 
   return (
-    (W.APPEARANCE * playedSeason) +
-    ((W.WIN + W.DEFENSIVE_WIN_BONUS) * wins) +
-    (W.GOAL * goals) +
-    (W.ASSIST * assists) +
-    (W.CLEAN_SHEET * cleanSheets) +
-    (W.CONCEDED_EXACTLY_ONE_MATCH * (concededExactlyOneMatches ?? 0)) +
-    (W.CONCEDED_EXACTLY_TWO_MATCH * (concededExactlyTwoMatches ?? 0)) +
-    (W.MOTM * motm) +
-    (W.MOTM_CAP_BONUS * motmCaptain) +
-    (W.OG * ogs) +
-    (W.OTF * otfs)
+    playedSeason +
+    ((winsGK + winsDEF) * 5) +
+    (winsOTHER * 3) +
+    (goalsGK * 10) +
+    (goalsDEF * 6) +
+    (goalsOTHER * 4) +
+    (asNumber(assists) * 3) +
+    (asNumber(cleanSheets) * 6) +
+    (asNumber(concededExactlyOneMatches) * 3) +
+    (asNumber(concededExactlyTwoMatches) * 2) +
+    (asNumber(motm) * 3) +
+    asNumber(motmCaptain) +
+    (asNumber(ogs) * -2) +
+    (asNumber(otfs) * -1)
   );
 }
 
@@ -101,8 +88,15 @@ function computeRecentPenalty({
 function computeCombined(inputs) {
 
   const rawSeason = computeSeasonRaw(inputs);
+  const playedSeason =
+    asNumber(inputs?.roleApps?.GK) +
+    asNumber(inputs?.roleApps?.DEF) +
+    asNumber(inputs?.roleApps?.OTHER);
 
-  const penalty = computeRecentPenalty(inputs);
+  const penalty = computeRecentPenalty({
+    ...inputs,
+    playedSeason,
+  });
 
   return {
     rawSeason,

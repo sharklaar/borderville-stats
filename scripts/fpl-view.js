@@ -184,7 +184,7 @@ function buildFplTable(data) {
         }
       }
 
-      if (!isOwnGoal && assistId && byId[assistId] && !byId[assistId].player?.meta?.excluded) {
+      if (assistId && byId[assistId] && !byId[assistId].player?.meta?.excluded) {
         byId[assistId].assists += 1;
         byId[assistId].total += FPL_WEIGHTS.ASSIST;
       }

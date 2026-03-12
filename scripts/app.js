@@ -361,15 +361,14 @@ function buildTooltipText(player) {
   const name = player?.name ?? "Unknown";
   const position = meta.position ?? "—";
 
-  const ovr = s.ovr ?? 0;
-  const ovrCombined = s.ovrCombined ?? null;
-  const value = ovrToValueMillions(ovr);
+  const points = getFantasyPoints(player);
+  const value = pointsToValueMillions(points);
 
   const lines = [];
   lines.push(name);
   lines.push(`POS: ${position}`);
   lines.push(`VALUE: £${value}m`);
-  lines.push(`OVR: ${ovr}${ovrCombined != null ? ` (combined: ${Number(ovrCombined).toFixed(2)})` : ""}`);
+  lines.push(`FANTASY PTS: ${points}`);
 
   const goals = s.goals ?? 0;
   const assists = s.assists ?? 0;
@@ -377,39 +376,19 @@ function buildTooltipText(player) {
   const motm2026 = s.motm2026 ?? 0;
   lines.push(`G/A/MOTM: ${goals}/${assists}/${motm2026} (${motmAll})`);
 
-  if (typeof s.ovrTooltip === "string" && s.ovrTooltip.trim()) {
-    lines.push("");
-    lines.push(s.ovrTooltip.trim());
-  }
-
   return lines.join("\n");
 }
 
 function buildValueTooltipText(player, meta) {
   const s = (player && player.stats) ? player.stats : {};
 
-  // --- helpers ---
-  const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
   const num = (v) => (Number.isFinite(Number(v)) ? Number(v) : 0);
+  const position = String(player?.meta?.position ?? meta?.position ?? "").toUpperCase();
+  const isDefOrGk = position === "DEF" || position === "GK";
 
-  const fmtSigned = (v, dp = 2) => {
-    const n = Number(v) || 0;
-    const sign = n > 0 ? "+" : "";
-    return `${sign}${n.toFixed(dp)}`;
-  };
+  const points = getFantasyPoints(player);
+  const valueM = Number(pointsToValueMillions(points));
 
-  // --- market value mapping (matches your ovrToValueMillions) ---
-  const ovr = clamp(num(s.ovr) || 1, 1, 100);
-  const minValue = 4.5;
-  const maxValue = 15.0;
-  const valueRange = maxValue - minValue;           // 10.5
-  const t = (ovr - 1) / 99;
-  const valueM = minValue + t * valueRange;
-
-  const ovrUpliftM = valueM - minValue;
-
-  // --- replicate calculateOverallScore.js season scoring (RAW, pre-normalisation) ---
-  const position = String(player?.meta?.position || "").trim().toUpperCase();
   const playedSeason = num(s.caps2026);
   const wins = num(s.wins);
   const goals = num(s.goals);
@@ -422,113 +401,30 @@ function buildValueTooltipText(player, meta) {
   const motm = num(s.motm2026);
   const motmCaptain = num(s.motmCaptain2026);
 
-  const isDefensive = position === "DEF" || position === "GK";
   const goalPoints = position === "GK" ? 10 : position === "DEF" ? 6 : 4;
+  const winPoints = wins * (isDefOrGk ? 5 : 3);
+  const cleanSheetPoints = isDefOrGk ? cleanSheets * 6 : 0;
+  const concededOnePoints = isDefOrGk ? concededExactlyOneMatches * 3 : 0;
+  const concededTwoPoints = isDefOrGk ? concededExactlyTwoMatches * 2 : 0;
 
-  const W = {
-    APPEARANCE: 1,
-    WIN: 3,
-    DEFENSIVE_WIN_BONUS: isDefensive ? 2 : 0,
-    GOAL: goalPoints,
-    ASSIST: 3,
-    CLEAN_SHEET: isDefensive ? 6 : 0,
-    CONCEDED_EXACTLY_ONE_MATCH: isDefensive ? 3 : 0,
-    CONCEDED_EXACTLY_TWO_MATCH: isDefensive ? 2 : 0,
-    MOTM: 3,
-    MOTM_CAP_BONUS: 1,
-    OG: -2,
-    OTF: -1
-  };
-
-  const contrib = {
-    appearances: W.APPEARANCE * playedSeason,
-    wins: (W.WIN + W.DEFENSIVE_WIN_BONUS) * wins,
-    goals: W.GOAL * goals,
-    assists: W.ASSIST * assists,
-    cleanSheets: W.CLEAN_SHEET * cleanSheets,
-    defUpliftOne: W.CONCEDED_EXACTLY_ONE_MATCH * concededExactlyOneMatches,
-    defUpliftTwo: W.CONCEDED_EXACTLY_TWO_MATCH * concededExactlyTwoMatches,
-    motm: W.MOTM * motm,
-    motmCap: W.MOTM_CAP_BONUS * motmCaptain,
-    ogs: W.OG * ogs,
-    otfs: W.OTF * otfs
-  };
-
-  const rawSeason =
-    contrib.appearances +
-    contrib.wins +
-    contrib.goals +
-    contrib.assists +
-    contrib.cleanSheets +
-    contrib.defUpliftOne +
-    contrib.defUpliftTwo +
-    contrib.motm +
-    contrib.motmCap +
-    contrib.ogs +
-    contrib.otfs;
-
-  // --- replicate recent inactivity penalty (matches calculateOverallScore.js) ---
-  const playedLast10 = num(s.playedLast10);
-  const matchesSeason =
-    num(meta && (meta.matchesCountForStatsInYear ?? meta.matchesInYear ?? meta.matchesInYear ?? 0));
-
-  const computeRecentPenalty = ({
-    playedLast10,
-    playedSeason,
-    matchesSeason,
-    attendanceImmunity = 0.20,
-    penaltyMax = 12,
-  }) => {
-    if (!matchesSeason || matchesSeason <= 0) return 0;
-
-    const attendanceRate = playedSeason / matchesSeason;
-    if (attendanceRate >= attendanceImmunity) return 0;
-
-    if (playedLast10 > 2) return 0;
-
-    const inactivity = clamp((2 - playedLast10) / 2, 0, 1);
-    return inactivity * penaltyMax;
-  };
-
-  const penalty = computeRecentPenalty({
-    playedLast10,
-    playedSeason,
-    matchesSeason,
-    attendanceImmunity: 0.20,
-    penaltyMax: 12,
-  });
-
-  const combined = rawSeason - penalty;
-
-  // --- build tooltip text ---
   const lines = [];
-
   lines.push(`Market Value: £${valueM.toFixed(1)}m`);
-  lines.push(`• Base: £${minValue.toFixed(1)}m`);
-  lines.push(`• OVR (${ovr}) uplift: +£${ovrUpliftM.toFixed(1)}m`);
+  lines.push(`Fantasy points: ${points}`);
   lines.push("");
-
-  lines.push("Raw score (pre-normalisation):");
-  lines.push(`• Position: ${position || "—"}`);
-  lines.push(`• Appearances: ${fmtSigned(contrib.appearances)}  (${playedSeason})`);
-  lines.push(`• Wins: ${fmtSigned(contrib.wins)}  (${wins})`);
-  lines.push(`• Goals: ${fmtSigned(contrib.goals)}  (${goals} × ${W.GOAL})`);
-  lines.push(`• Assists: ${fmtSigned(contrib.assists)}  (${assists})`);
-  if (isDefensive) {
-    lines.push(`• Clean sheets: ${fmtSigned(contrib.cleanSheets)}  (${cleanSheets})`);
-    lines.push(`• Concede exactly 1: ${fmtSigned(contrib.defUpliftOne)}  (${concededExactlyOneMatches})`);
-    lines.push(`• Concede exactly 2: ${fmtSigned(contrib.defUpliftTwo)}  (${concededExactlyTwoMatches})`);
+  lines.push("Scoring breakdown:");
+  lines.push(`• Apps: ${playedSeason} × 1 = ${playedSeason}`);
+  lines.push(`• Wins: ${wins} × ${isDefOrGk ? 5 : 3} = ${winPoints}`);
+  lines.push(`• Goals: ${goals} × ${goalPoints} = ${goals * goalPoints}`);
+  lines.push(`• Assists: ${assists} × 3 = ${assists * 3}`);
+  if (isDefOrGk) {
+    lines.push(`• Clean sheets: ${cleanSheets} × 6 = ${cleanSheetPoints}`);
+    lines.push(`• Conceded 1: ${concededExactlyOneMatches} × 3 = ${concededOnePoints}`);
+    lines.push(`• Conceded 2: ${concededExactlyTwoMatches} × 2 = ${concededTwoPoints}`);
   }
-  lines.push(`• MOTM: ${fmtSigned(contrib.motm)}  (${motm})`);
-  lines.push(`• Captain+MOTM bonus: ${fmtSigned(contrib.motmCap)}  (${motmCaptain})`);
-  lines.push(`• OGs: ${fmtSigned(contrib.ogs)}  (${ogs})`);
-  lines.push(`• OTFs: ${fmtSigned(contrib.otfs)}  (${otfs})`);
-  lines.push(`= Raw season: ${rawSeason.toFixed(2)}`);
-
-  if (penalty > 0) {
-    lines.push(`• Inactivity penalty: -${penalty.toFixed(2)}  (playedLast10 ${playedLast10}, season ${playedSeason}/${matchesSeason})`);
-    lines.push(`= Combined: ${combined.toFixed(2)}`);
-  }
+  lines.push(`• MOTM: ${motm} × 3 = ${motm * 3}`);
+  lines.push(`• Captain MOTM bonus: ${motmCaptain} × 1 = ${motmCaptain}`);
+  lines.push(`• OTF: ${otfs} × -1 = ${-otfs}`);
+  lines.push(`• OG: ${ogs} × -2 = ${-(ogs * 2)}`);
 
   return lines.join("\n");
 }
@@ -616,20 +512,15 @@ function applyFiltersAndRender(cardsEl, statusEl, meta) {
     ? ALL_PLAYERS.slice()
     : ALL_PLAYERS.filter((p) => getSearchHaystack(p).includes(q));
 
-  // Helpers for OVR sorting (precise first, then displayed)
-const getOvr = (p) => (p?.stats?.ovr ?? 0);
-const getOvrCombined = (p) => (p?.stats?.ovrCombined ?? -Infinity);
+  // Helpers for FPL-points/value sorting
+const getPoints = (p) => (p?.stats?.ovrRawSeason ?? 0);
 
   // 2) Stat filter / sort
   if (mode === "ovr") {
   list.sort((a, b) => {
-    const ao = getOvr(a);
-    const bo = getOvr(b);
-    if (bo !== ao) return bo - ao;
-
-    const ac = getOvrCombined(a);
-    const bc = getOvrCombined(b);
-    if (bc !== ac) return bc - ac;
+    const ap = getPoints(a);
+    const bp = getPoints(b);
+    if (bp !== ap) return bp - ap;
 
     const ag = a?.stats?.goals ?? 0;
     const bg = b?.stats?.goals ?? 0;
@@ -672,13 +563,9 @@ const getOvrCombined = (p) => (p?.stats?.ovrCombined ?? -Infinity);
     }
   } else {
   list.sort((a, b) => {
-    const ao = getOvr(a);
-    const bo = getOvr(b);
-    if (bo !== ao) return bo - ao;
-
-    const ac = getOvrCombined(a);
-    const bc = getOvrCombined(b);
-    if (bc !== ac) return bc - ac;
+    const ap = getPoints(a);
+    const bp = getPoints(b);
+    if (bp !== ap) return bp - ap;
 
     const ag = a?.stats?.goals ?? 0;
     const bg = b?.stats?.goals ?? 0;
@@ -702,7 +589,7 @@ const getOvrCombined = (p) => (p?.stats?.ovrCombined ?? -Infinity);
   const base = `Showing ${list.length} of ${ALL_PLAYERS.length} players`;
   const bits = [];
   if (q) bits.push(`name: "${q}"`);
-  if (mode === "ovr") bits.push(`sorted: OVR`);
+  if (mode === "ovr") bits.push(`sorted: value / FPL points`);
   else if (mode !== "all") bits.push(`filter: ${mode} > 0`);
   statusEl.textContent = bits.length ? `${base} (${bits.join(", ")})` : base;
 }
@@ -730,8 +617,8 @@ function renderPlayers(players, cardsEl, datasetMeta) {
     const caps2026 = s.caps2026 ?? 0;
     const subs = s.subs ?? 0;
 
-    const ovr = s.ovr ?? 50;
-    const value = ovrToValueMillions(ovr);
+    const points = getFantasyPoints(p);
+    const value = pointsToValueMillions(points);
 
     const position = playerMeta.position ?? "—";
     const photoSrc = photoPathFromName(name) || fallbackSrc;
@@ -935,11 +822,17 @@ function photoPathFromName(name) {
   return `./images/playerPhotos/${encodeURIComponent(safe)}.png`;
 }
 
-function ovrToValueMillions(ovr) {
-  const o = Math.max(1, Math.min(100, Number(ovr) || 1));
+function getFantasyPoints(player) {
+  return Math.max(0, Number(player?.stats?.ovrRawSeason) || 0);
+}
+
+function pointsToValueMillions(points) {
   const min = 4.5;
   const max = 15.0;
-  const t = (o - 1) / 99;
+  const safePoints = Math.max(0, Number(points) || 0);
+  const pool = Array.isArray(ALL_PLAYERS) ? ALL_PLAYERS : [];
+  const maxPoints = Math.max(1, ...pool.map(getFantasyPoints));
+  const t = Math.max(0, Math.min(1, safePoints / maxPoints));
   return (min + t * (max - min)).toFixed(1);
 }
 

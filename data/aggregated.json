@@ -3325,7 +3325,7 @@
         "ogs": 0,
         "cleanSheets": 0,
         "gkCleanSheets": 0,
-        "otfs": 1,
+        "otfs": 2,
         "honourableMentions": 0,
         "conceded2026": 17,
         "concededExactlyOneMatches2026": 0,
@@ -3340,10 +3340,10 @@
         "captain": 1,
         "captain2026": 1,
         "playedLast10": 5,
-        "ovr": 41,
-        "ovrRawSeason": 20,
+        "ovr": 39,
+        "ovrRawSeason": 19,
         "ovrPenalty": 0,
-        "ovrCombined": 20,
+        "ovrCombined": 19,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 1,
@@ -4671,7 +4671,9 @@
       "honourableMentionIds": [],
       "captainPinkId": "rechPSwQq3TluwcPa",
       "captainBlueId": "reck0a74qcYsRhJ0x",
-      "otfIds": [],
+      "otfIds": [
+        "reck0a74qcYsRhJ0x"
+      ],
       "notes": null,
       "countsForStats": true
     },
@@ -6390,7 +6392,7 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-03-26T23:42:31.830Z",
+    "generatedAt": "2026-03-26T23:49:24.363Z",
     "year": 2026,
     "matchesInYear": 12,
     "matchesCountForStatsInYear": 12,

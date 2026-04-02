@@ -328,8 +328,8 @@
         "ovrCombined": 39,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 9,
-          "OTHER": 3
+          "DEF": 10,
+          "OTHER": 2
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -475,7 +475,7 @@
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 1,
         "motmCaptain2026": 1,
-        "subs": -10,
+        "subs": 5,
         "caps": 150,
         "caps2026": 13,
         "motm": 12,
@@ -757,7 +757,7 @@
         "concededExactlyTwoMatches2026": 1,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -15,
+        "subs": 0,
         "caps": 93,
         "caps2026": 10,
         "motm": 6,
@@ -1093,8 +1093,8 @@
         "ovrCombined": 27,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 4,
-          "OTHER": 3
+          "DEF": 5,
+          "OTHER": 2
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -1964,7 +1964,7 @@
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": -5,
+        "subs": 0,
         "caps": 60,
         "caps2026": 8,
         "motm": 7,
@@ -2487,7 +2487,7 @@
         "concededExactlyTwoMatches2026": 3,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": -7,
+        "subs": -2,
         "caps": 170,
         "caps2026": 8,
         "motm": 4,
@@ -2501,8 +2501,8 @@
         "ovrCombined": 35,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 6,
-          "OTHER": 2
+          "DEF": 7,
+          "OTHER": 1
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -2675,7 +2675,7 @@
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -6,
+        "subs": 9,
         "caps": 67,
         "caps2026": 12,
         "motm": 4,
@@ -2809,7 +2809,7 @@
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -8,
+        "subs": 2,
         "caps": 183,
         "caps2026": 11,
         "motm": 5,
@@ -2970,7 +2970,7 @@
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -9,
+        "subs": 1,
         "caps": 25,
         "caps2026": 3,
         "motm": 2,
@@ -3037,7 +3037,7 @@
         "concededExactlyTwoMatches2026": 4,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -4,
+        "subs": 6,
         "caps": 20,
         "caps2026": 9,
         "motm": 0,
@@ -3735,8 +3735,8 @@
         "ovrCombined": 62,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 2,
-          "OTHER": 9
+          "DEF": 3,
+          "OTHER": 8
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -3949,7 +3949,7 @@
         "concededExactlyTwoMatches2026": 4,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -2,
+        "subs": 3,
         "caps": 170,
         "caps2026": 10,
         "motm": 10,
@@ -4758,8 +4758,14 @@
         "rec7UewFBTISFASsD",
         "rec8nYCRFDSNo6RhB"
       ],
-      "pinkDefs": [],
-      "blueDefs": [],
+      "pinkDefs": [
+        "recG662mRw9nTfmcU",
+        "recnZCa2uj1fenN4y"
+      ],
+      "blueDefs": [
+        "recZIZ8WBcb1IyqoS",
+        "rec3IB6CNEMmwNykE"
+      ],
       "pinkGKId": "rect8nIhrhsGH3mPK",
       "blueGKId": null,
       "pinkCS": [],
@@ -4778,7 +4784,7 @@
       "captainPinkId": "rect8nIhrhsGH3mPK",
       "captainBlueId": "recZQatZMbQJXGsWy",
       "otfIds": [],
-      "notes": "Ross wins best looking captain*\n\n*Ross was surveyed and 100% of Ross agreed\n\nBV donated £75 to charities nominated by JT and Butty. Go BV",
+      "notes": "Ross wins best looking captain*\n\nBV donated £75 to charities nominated by JT and Butty. Go BV\n\n*Ross was surveyed and 100% of Ross agreed",
       "countsForStats": true
     },
     {
@@ -5810,8 +5816,22 @@
       "gaPerMatch": 3
     },
     {
+      "playerId1": "recG662mRw9nTfmcU",
+      "playerId2": "recnZCa2uj1fenN4y",
+      "matches": 1,
+      "goalsAgainst": 3,
+      "gaPerMatch": 3
+    },
+    {
       "playerId1": "recZauOLb3ET9m9Ix",
       "playerId2": "rechz0vtrzI4YNLt6",
+      "matches": 2,
+      "goalsAgainst": 7,
+      "gaPerMatch": 3.5
+    },
+    {
+      "playerId1": "rec3IB6CNEMmwNykE",
+      "playerId2": "recZIZ8WBcb1IyqoS",
       "matches": 2,
       "goalsAgainst": 7,
       "gaPerMatch": 3.5
@@ -5833,13 +5853,6 @@
     {
       "playerId1": "recZQatZMbQJXGsWy",
       "playerId2": "recnZCa2uj1fenN4y",
-      "matches": 1,
-      "goalsAgainst": 4,
-      "gaPerMatch": 4
-    },
-    {
-      "playerId1": "rec3IB6CNEMmwNykE",
-      "playerId2": "recZIZ8WBcb1IyqoS",
       "matches": 1,
       "goalsAgainst": 4,
       "gaPerMatch": 4
@@ -5987,6 +6000,16 @@
     },
     {
       "playerIds": [
+        "recG662mRw9nTfmcU",
+        "recnZCa2uj1fenN4y",
+        "rect8nIhrhsGH3mPK"
+      ],
+      "matches": 1,
+      "goalsAgainst": 3,
+      "gaPerMatch": 3
+    },
+    {
+      "playerIds": [
         "rec3IB6CNEMmwNykE",
         "recZauOLb3ET9m9Ix",
         "rect8nIhrhsGH3mPK"
@@ -6004,6 +6027,15 @@
       "matches": 1,
       "goalsAgainst": 3,
       "gaPerMatch": 3
+    },
+    {
+      "playerIds": [
+        "rec3IB6CNEMmwNykE",
+        "recZIZ8WBcb1IyqoS"
+      ],
+      "matches": 2,
+      "goalsAgainst": 7,
+      "gaPerMatch": 3.5
     },
     {
       "playerIds": [
@@ -6030,15 +6062,6 @@
         "recG662mRw9nTfmcU",
         "recZauOLb3ET9m9Ix",
         "rect8nIhrhsGH3mPK"
-      ],
-      "matches": 1,
-      "goalsAgainst": 4,
-      "gaPerMatch": 4
-    },
-    {
-      "playerIds": [
-        "rec3IB6CNEMmwNykE",
-        "recZIZ8WBcb1IyqoS"
       ],
       "matches": 1,
       "goalsAgainst": 4,
@@ -6076,11 +6099,31 @@
   ],
   "subsTransactions": [
     {
+      "id": "rec17dgQKPxyyoacR",
+      "createdTime": "2026-04-02T22:50:41.000Z",
+      "rowId": 27,
+      "playerId": "rechz0vtrzI4YNLt6",
+      "date": "2026-03-10",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    },
+    {
       "id": "rec2VOOc7lwt5n7Vb",
       "createdTime": "2026-02-07T13:31:25.000Z",
       "rowId": 7,
       "playerId": "reckG9bP68ANrvc3p",
       "date": "2026-01-26",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    },
+    {
+      "id": "rec2chxSASFlut9qH",
+      "createdTime": "2026-04-02T22:49:14.000Z",
+      "rowId": 24,
+      "playerId": "rechz0vtrzI4YNLt6",
+      "date": "2026-03-04",
       "amountPaid": 20,
       "subsAdded": 5,
       "notes": ""
@@ -6136,6 +6179,16 @@
       "notes": ""
     },
     {
+      "id": "recIAv3ZxoFUabYHa",
+      "createdTime": "2026-04-02T22:53:11.000Z",
+      "rowId": 32,
+      "playerId": "recZauOLb3ET9m9Ix",
+      "date": "2026-03-31",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    },
+    {
       "id": "recIxCxkJpd7Q7BDP",
       "createdTime": "2026-02-07T13:32:21.000Z",
       "rowId": 10,
@@ -6166,6 +6219,16 @@
       "notes": ""
     },
     {
+      "id": "recPQqNm8MaXBBots",
+      "createdTime": "2026-04-02T22:52:17.000Z",
+      "rowId": 30,
+      "playerId": "rec8nYCRFDSNo6RhB",
+      "date": "2026-03-24",
+      "amountPaid": 60,
+      "subsAdded": 15,
+      "notes": ""
+    },
+    {
       "id": "recPXBlrJIlMaEh17",
       "createdTime": "2026-02-07T13:31:55.000Z",
       "rowId": 9,
@@ -6186,6 +6249,26 @@
       "notes": ""
     },
     {
+      "id": "recRg7Jvmi1CmLR3L",
+      "createdTime": "2026-04-02T22:52:44.000Z",
+      "rowId": 31,
+      "playerId": "rect8nIhrhsGH3mPK",
+      "date": "2026-03-27",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    },
+    {
+      "id": "recTMNK9AjRuGeYGg",
+      "createdTime": "2026-04-02T22:50:12.000Z",
+      "rowId": 26,
+      "playerId": "recTyiy2Eu2vZqKkx",
+      "date": "2026-03-06",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": ""
+    },
+    {
       "id": "recVh1X9PVv9NB2s9",
       "createdTime": "2026-02-07T13:33:19.000Z",
       "rowId": 13,
@@ -6193,6 +6276,16 @@
       "date": "2026-01-15",
       "amountPaid": 40,
       "subsAdded": 10,
+      "notes": ""
+    },
+    {
+      "id": "recdLjVA5phdM2NU1",
+      "createdTime": "2026-04-02T22:48:20.000Z",
+      "rowId": 23,
+      "playerId": "recZIZ8WBcb1IyqoS",
+      "date": "2026-03-02",
+      "amountPaid": 20,
+      "subsAdded": 5,
       "notes": ""
     },
     {
@@ -6214,6 +6307,26 @@
       "amountPaid": 40,
       "subsAdded": 10,
       "notes": "\n\n"
+    },
+    {
+      "id": "rechCXW1GWdlpA3Dy",
+      "createdTime": "2026-04-02T22:49:48.000Z",
+      "rowId": 25,
+      "playerId": "rechPSwQq3TluwcPa",
+      "date": "2026-03-05",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": ""
+    },
+    {
+      "id": "recilnk4abHaDbNOt",
+      "createdTime": "2026-04-02T22:51:44.000Z",
+      "rowId": 29,
+      "playerId": "rec3m0f9cBSdbwGS0",
+      "date": "2026-04-24",
+      "amountPaid": 60,
+      "subsAdded": 15,
+      "notes": ""
     },
     {
       "id": "reciznatchgWOiKgn",
@@ -6241,6 +6354,26 @@
       "rowId": 19,
       "playerId": "rec714npZmMlLeu8Z",
       "date": "2026-02-06",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": ""
+    },
+    {
+      "id": "recsHRr6TWwvQcAKl",
+      "createdTime": "2026-04-02T22:51:17.000Z",
+      "rowId": 28,
+      "playerId": "recfZUeAUzKcMAziC",
+      "date": "2026-03-23",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": ""
+    },
+    {
+      "id": "recsewteJLtXdagHS",
+      "createdTime": "2026-04-02T22:47:46.000Z",
+      "rowId": 22,
+      "playerId": "recZauOLb3ET9m9Ix",
+      "date": "2026-03-02",
       "amountPaid": 40,
       "subsAdded": 10,
       "notes": ""
@@ -6559,15 +6692,158 @@
       "playerName": "Mark Blake",
       "previousBalance": 3,
       "updatedBalance": 8
+    },
+    {
+      "id": "recsewteJLtXdagHS",
+      "createdTime": "2026-04-02T22:47:46.000Z",
+      "rowId": 22,
+      "playerId": "recZauOLb3ET9m9Ix",
+      "date": "2026-03-02",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "",
+      "playerName": "Jimmy Powell",
+      "previousBalance": 6,
+      "updatedBalance": 16
+    },
+    {
+      "id": "recdLjVA5phdM2NU1",
+      "createdTime": "2026-04-02T22:48:20.000Z",
+      "rowId": 23,
+      "playerId": "recZIZ8WBcb1IyqoS",
+      "date": "2026-03-02",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Mark Buttress",
+      "previousBalance": 1,
+      "updatedBalance": 6
+    },
+    {
+      "id": "rec2chxSASFlut9qH",
+      "createdTime": "2026-04-02T22:49:14.000Z",
+      "rowId": 24,
+      "playerId": "rechz0vtrzI4YNLt6",
+      "date": "2026-03-04",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Sam Wheat",
+      "previousBalance": 5,
+      "updatedBalance": 10
+    },
+    {
+      "id": "rechCXW1GWdlpA3Dy",
+      "createdTime": "2026-04-02T22:49:48.000Z",
+      "rowId": 25,
+      "playerId": "rechPSwQq3TluwcPa",
+      "date": "2026-03-05",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "",
+      "playerName": "Chris Grace",
+      "previousBalance": -6,
+      "updatedBalance": 4
+    },
+    {
+      "id": "recTMNK9AjRuGeYGg",
+      "createdTime": "2026-04-02T22:50:12.000Z",
+      "rowId": 26,
+      "playerId": "recTyiy2Eu2vZqKkx",
+      "date": "2026-03-06",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Sam Jones",
+      "previousBalance": 3,
+      "updatedBalance": 8
+    },
+    {
+      "id": "rec17dgQKPxyyoacR",
+      "createdTime": "2026-04-02T22:50:41.000Z",
+      "rowId": 27,
+      "playerId": "rechz0vtrzI4YNLt6",
+      "date": "2026-03-10",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Sam Wheat",
+      "previousBalance": 10,
+      "updatedBalance": 15
+    },
+    {
+      "id": "recsHRr6TWwvQcAKl",
+      "createdTime": "2026-04-02T22:51:17.000Z",
+      "rowId": 28,
+      "playerId": "recfZUeAUzKcMAziC",
+      "date": "2026-03-23",
+      "amountPaid": 40,
+      "subsAdded": 10,
+      "notes": "",
+      "playerName": "James Swift",
+      "previousBalance": 3,
+      "updatedBalance": 13
+    },
+    {
+      "id": "recPQqNm8MaXBBots",
+      "createdTime": "2026-04-02T22:52:17.000Z",
+      "rowId": 30,
+      "playerId": "rec8nYCRFDSNo6RhB",
+      "date": "2026-03-24",
+      "amountPaid": 60,
+      "subsAdded": 15,
+      "notes": "",
+      "playerName": "Oli Roberts",
+      "previousBalance": -5,
+      "updatedBalance": 10
+    },
+    {
+      "id": "recRg7Jvmi1CmLR3L",
+      "createdTime": "2026-04-02T22:52:44.000Z",
+      "rowId": 31,
+      "playerId": "rect8nIhrhsGH3mPK",
+      "date": "2026-03-27",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Mark Blake",
+      "previousBalance": 8,
+      "updatedBalance": 13
+    },
+    {
+      "id": "recIAv3ZxoFUabYHa",
+      "createdTime": "2026-04-02T22:53:11.000Z",
+      "rowId": 32,
+      "playerId": "recZauOLb3ET9m9Ix",
+      "date": "2026-03-31",
+      "amountPaid": 20,
+      "subsAdded": 5,
+      "notes": "",
+      "playerName": "Jimmy Powell",
+      "previousBalance": 16,
+      "updatedBalance": 21
+    },
+    {
+      "id": "recilnk4abHaDbNOt",
+      "createdTime": "2026-04-02T22:51:44.000Z",
+      "rowId": 29,
+      "playerId": "rec3m0f9cBSdbwGS0",
+      "date": "2026-04-24",
+      "amountPaid": 60,
+      "subsAdded": 15,
+      "notes": "",
+      "playerName": "Jon Doughty",
+      "previousBalance": 3,
+      "updatedBalance": 18
     }
   ],
   "meta": {
-    "generatedAt": "2026-04-02T22:15:52.597Z",
+    "generatedAt": "2026-04-02T22:54:14.109Z",
     "year": 2026,
     "matchesInYear": 13,
     "matchesCountForStatsInYear": 13,
     "matchesNonStatInYear": 0,
     "goalsIncluded": 68,
-    "subsTransactionsIncluded": 21
+    "subsTransactionsIncluded": 32
   }
 }

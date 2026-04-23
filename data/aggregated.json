@@ -232,7 +232,7 @@
       "id": "rec3IB6CNEMmwNykE",
       "name": "Mike Doyle",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "draws": 3,
         "losses": 6,
         "goals": 1,
@@ -242,32 +242,32 @@
         "gkCleanSheets": 0,
         "otfs": 2,
         "honourableMentions": 2,
-        "conceded2026": 40,
+        "conceded2026": 41,
         "concededExactlyOneMatches2026": 1,
         "concededExactlyTwoMatches2026": 2,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -5,
-        "caps": 189,
-        "caps2026": 13,
+        "subs": -6,
+        "caps": 190,
+        "caps2026": 14,
         "motm": 9,
         "motm2026": 1,
         "captain": 1,
         "captain2026": 1,
-        "playedLast10": 9,
-        "ovr": 66,
-        "ovrRawSeason": 49,
+        "playedLast10": 10,
+        "ovr": 71,
+        "ovrRawSeason": 53,
         "ovrPenalty": 0,
-        "ovrCombined": 49,
+        "ovrCombined": 53,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 10,
-          "OTHER": 3
+          "OTHER": 4
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 3,
-          "OTHER": 1
+          "OTHER": 2
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -275,7 +275,7 @@
           "OTHER": 1
         },
         "form": [
-          "X",
+          "W",
           "D",
           "D",
           "L",
@@ -3411,7 +3411,7 @@
       "id": "recmvgvNKMltLjvmL",
       "name": "Mike Morgan",
       "stats": {
-        "wins": 1,
+        "wins": 0,
         "draws": 0,
         "losses": 0,
         "goals": 0,
@@ -3421,32 +3421,32 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 0,
-        "conceded2026": 1,
+        "conceded2026": 0,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -1,
-        "caps": 6,
-        "caps2026": 1,
+        "subs": 0,
+        "caps": 5,
+        "caps2026": 0,
         "motm": 0,
         "motm2026": 0,
         "captain": 0,
         "captain2026": 0,
-        "playedLast10": 1,
-        "ovr": 9,
-        "ovrRawSeason": 4,
-        "ovrPenalty": 6,
-        "ovrCombined": -2,
+        "playedLast10": 0,
+        "ovr": 0,
+        "ovrRawSeason": 0,
+        "ovrPenalty": 12,
+        "ovrCombined": -12,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 1
+          "OTHER": 0
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 1
+          "OTHER": 0
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -3454,7 +3454,7 @@
           "OTHER": 0
         },
         "form": [
-          "W",
+          "X",
           "X",
           "X",
           "X",
@@ -4630,9 +4630,9 @@
         "rechPSwQq3TluwcPa",
         "recQYOmJTyCjaOdqk",
         "reckG9bP68ANrvc3p",
-        "recmvgvNKMltLjvmL",
         "recnBQ5gajZdiyZt3",
-        "rechz0vtrzI4YNLt6"
+        "rechz0vtrzI4YNLt6",
+        "rec3IB6CNEMmwNykE"
       ],
       "pinkDefs": [
         "recXENjRMi0GTUi6y",
@@ -6933,7 +6933,7 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-04-23T23:12:59.499Z",
+    "generatedAt": "2026-04-23T23:28:48.029Z",
     "year": 2026,
     "matchesInYear": 15,
     "matchesCountForStatsInYear": 15,

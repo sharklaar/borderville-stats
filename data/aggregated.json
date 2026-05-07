@@ -403,7 +403,7 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 0,
-        "conceded2026": 57,
+        "conceded2026": 58,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 2,
@@ -497,7 +497,7 @@
         "gkCleanSheets": 0,
         "otfs": 1,
         "honourableMentions": 0,
-        "conceded2026": 10,
+        "conceded2026": 11,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
@@ -1007,7 +1007,7 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 0,
-        "conceded2026": 30,
+        "conceded2026": 31,
         "concededExactlyOneMatches2026": 2,
         "concededExactlyTwoMatches2026": 1,
         "winningCaptain2026": 1,
@@ -1892,7 +1892,7 @@
         "gkCleanSheets": 0,
         "otfs": 1,
         "honourableMentions": 0,
-        "conceded2026": 33,
+        "conceded2026": 34,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 2,
@@ -2603,7 +2603,7 @@
         "gkCleanSheets": 0,
         "otfs": 3,
         "honourableMentions": 1,
-        "conceded2026": 46,
+        "conceded2026": 47,
         "concededExactlyOneMatches2026": 4,
         "concededExactlyTwoMatches2026": 1,
         "winningCaptain2026": 0,
@@ -2804,7 +2804,7 @@
         "gkCleanSheets": 0,
         "otfs": 1,
         "honourableMentions": 1,
-        "conceded2026": 42,
+        "conceded2026": 43,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
@@ -3327,7 +3327,7 @@
         "gkCleanSheets": 0,
         "otfs": 1,
         "honourableMentions": 2,
-        "conceded2026": 22,
+        "conceded2026": 23,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
@@ -3555,7 +3555,7 @@
         "gkCleanSheets": 0,
         "otfs": 5,
         "honourableMentions": 1,
-        "conceded2026": 29,
+        "conceded2026": 30,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 1,
         "winningCaptain2026": 0,
@@ -3810,7 +3810,7 @@
         "gkCleanSheets": 1,
         "otfs": 0,
         "honourableMentions": 1,
-        "conceded2026": 43,
+        "conceded2026": 44,
         "concededExactlyOneMatches2026": 1,
         "concededExactlyTwoMatches2026": 4,
         "winningCaptain2026": 0,
@@ -4818,7 +4818,7 @@
       "blueGKId": null,
       "pinkCS": [],
       "blueCS": [],
-      "pinkGoals": 5,
+      "pinkGoals": 6,
       "blueGoals": 2,
       "winningTeam": "PINK",
       "motmIds": [
@@ -6206,13 +6206,6 @@
       "gaPerMatch": 3
     },
     {
-      "playerId1": "recG662mRw9nTfmcU",
-      "playerId2": "recZauOLb3ET9m9Ix",
-      "matches": 3,
-      "goalsAgainst": 10,
-      "gaPerMatch": 3.3333333333333335
-    },
-    {
       "playerId1": "recZauOLb3ET9m9Ix",
       "playerId2": "rechz0vtrzI4YNLt6",
       "matches": 2,
@@ -6232,6 +6225,13 @@
       "matches": 4,
       "goalsAgainst": 14,
       "gaPerMatch": 3.5
+    },
+    {
+      "playerId1": "recG662mRw9nTfmcU",
+      "playerId2": "recZauOLb3ET9m9Ix",
+      "matches": 3,
+      "goalsAgainst": 11,
+      "gaPerMatch": 3.6666666666666665
     },
     {
       "playerId1": "rec3IB6CNEMmwNykE",
@@ -6416,15 +6416,6 @@
     },
     {
       "playerIds": [
-        "recG662mRw9nTfmcU",
-        "recZauOLb3ET9m9Ix"
-      ],
-      "matches": 2,
-      "goalsAgainst": 6,
-      "gaPerMatch": 3
-    },
-    {
-      "playerIds": [
         "rec1NVl8RI5HIZxU0",
         "recG662mRw9nTfmcU",
         "recZIZ8WBcb1IyqoS"
@@ -6462,6 +6453,15 @@
       "matches": 1,
       "goalsAgainst": 3,
       "gaPerMatch": 3
+    },
+    {
+      "playerIds": [
+        "recG662mRw9nTfmcU",
+        "recZauOLb3ET9m9Ix"
+      ],
+      "matches": 2,
+      "goalsAgainst": 7,
+      "gaPerMatch": 3.5
     },
     {
       "playerIds": [
@@ -7420,7 +7420,7 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-05-07T22:16:33.509Z",
+    "generatedAt": "2026-05-07T22:17:35.799Z",
     "year": 2026,
     "matchesInYear": 17,
     "matchesCountForStatsInYear": 17,

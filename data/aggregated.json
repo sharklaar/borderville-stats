@@ -675,7 +675,7 @@
       "id": "rec8nYCRFDSNo6RhB",
       "name": "Oli Roberts",
       "stats": {
-        "wins": 7,
+        "wins": 6,
         "draws": 2,
         "losses": 4,
         "goals": 2,
@@ -685,32 +685,32 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 3,
-        "conceded2026": 32,
+        "conceded2026": 30,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 1,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -3,
-        "caps": 96,
-        "caps2026": 13,
+        "subs": -2,
+        "caps": 95,
+        "caps2026": 12,
         "motm": 6,
         "motm2026": 0,
         "captain": 1,
         "captain2026": 1,
-        "playedLast10": 6,
-        "ovr": 59,
-        "ovrRawSeason": 57,
+        "playedLast10": 5,
+        "ovr": 54,
+        "ovrRawSeason": 53,
         "ovrPenalty": 0,
-        "ovrCombined": 57,
+        "ovrCombined": 53,
         "fantasyRoleApps": {
           "GK": 2,
           "DEF": 1,
-          "OTHER": 10
+          "OTHER": 9
         },
         "fantasyRoleWins": {
           "GK": 1,
           "DEF": 1,
-          "OTHER": 5
+          "OTHER": 4
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -718,7 +718,7 @@
           "OTHER": 2
         },
         "form": [
-          "W",
+          "X",
           "W",
           "W",
           "X",
@@ -2729,7 +2729,7 @@
       "stats": {
         "wins": 0,
         "draws": 2,
-        "losses": 2,
+        "losses": 3,
         "goals": 2,
         "assists": 1,
         "ogs": 0,
@@ -2737,27 +2737,27 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 1,
-        "conceded2026": 8,
+        "conceded2026": 14,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -3,
-        "caps": 13,
-        "caps2026": 4,
+        "subs": -4,
+        "caps": 14,
+        "caps2026": 5,
         "motm": 0,
         "motm2026": 0,
         "captain": 1,
         "captain2026": 1,
-        "playedLast10": 2,
-        "ovr": 19,
-        "ovrRawSeason": 15,
+        "playedLast10": 3,
+        "ovr": 20,
+        "ovrRawSeason": 16,
         "ovrPenalty": 0,
-        "ovrCombined": 15,
+        "ovrCombined": 16,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 4
+          "OTHER": 5
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -2770,7 +2770,7 @@
           "OTHER": 2
         },
         "form": [
-          "X",
+          "L",
           "L",
           "X",
           "X",
@@ -3089,9 +3089,9 @@
       "id": "recj9rbJP1c0qJEYo",
       "name": "Matt Tarrant",
       "stats": {
-        "wins": 5,
+        "wins": 6,
         "draws": 3,
-        "losses": 7,
+        "losses": 6,
         "goals": 10,
         "assists": 10,
         "ogs": 0,
@@ -3099,7 +3099,7 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 1,
-        "conceded2026": 43,
+        "conceded2026": 39,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
@@ -3112,10 +3112,10 @@
         "captain": 2,
         "captain2026": 2,
         "playedLast10": 7,
-        "ovr": 82,
-        "ovrRawSeason": 103,
+        "ovr": 84,
+        "ovrRawSeason": 106,
         "ovrPenalty": 0,
-        "ovrCombined": 103,
+        "ovrCombined": 106,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
@@ -3124,7 +3124,7 @@
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 5
+          "OTHER": 6
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -3132,7 +3132,7 @@
           "OTHER": 10
         },
         "form": [
-          "L",
+          "W",
           "X",
           "W",
           "CL",
@@ -4893,23 +4893,23 @@
         "recx98b2sy6pbRyEt",
         "recNuFhkMZr8OAjbH",
         "recZauOLb3ET9m9Ix",
-        "recj9rbJP1c0qJEYo",
         "rec3IB6CNEMmwNykE",
         "recnZCa2uj1fenN4y",
         "recXENjRMi0GTUi6y",
         "reckG9bP68ANrvc3p",
-        "recfZUeAUzKcMAziC"
+        "recfZUeAUzKcMAziC",
+        "recahovWa9ryO8F10"
       ],
       "playersBlue": [
         "recFqxDYKYAkKmV7Z",
-        "rec8nYCRFDSNo6RhB",
         "rechPSwQq3TluwcPa",
         "recG662mRw9nTfmcU",
         "recZIZ8WBcb1IyqoS",
         "recjnn0QDEMpSHREB",
         "rechAJdN0YnZZo45n",
         "rec3m0f9cBSdbwGS0",
-        "recTyiy2Eu2vZqKkx"
+        "recTyiy2Eu2vZqKkx",
+        "recj9rbJP1c0qJEYo"
       ],
       "pinkDefs": [
         "recZauOLb3ET9m9Ix",
@@ -7719,7 +7719,7 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-05-21T22:47:06.492Z",
+    "generatedAt": "2026-05-21T23:17:50.050Z",
     "year": 2026,
     "matchesInYear": 19,
     "matchesCountForStatsInYear": 19,

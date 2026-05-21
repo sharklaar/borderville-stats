@@ -1,5 +1,5 @@
 // results.js
-// Renders a BBC-ish match results list from data/aggregated.json
+// Renders a conventional match results list from data/aggregated.json
 
 function escapeHTML(s) {
   return String(s ?? "")
@@ -27,12 +27,8 @@ function uniq(arr) {
   return [...new Set(Array.isArray(arr) ? arr : [])];
 }
 
-function countByName(names) {
-  const map = new Map();
-  for (const n of names) map.set(n, (map.get(n) || 0) + 1);
-  return [...map.entries()]
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-    .map(([name, count]) => (count > 1 ? `${name} (x${count})` : name));
+function namesFromIds(ids, playersById) {
+  return uniq(ids).map((id) => playersById[id]?.name || "Unknown");
 }
 
 function isInTeam(id, teamIds) {
@@ -43,43 +39,99 @@ function otherTeam(team) {
   return team === "PINK" ? "BLUE" : "PINK";
 }
 
-function buildMatchDerived(match, goals, playersById) {
-  const playersPink = match.playersPink || [];
-  const playersBlue = match.playersBlue || [];
-  const goalsForMatch = goals.filter((g) => g.matchId === match.id);
-
-  const creditedGoals = { PINK: [], BLUE: [] };
-  const assistsByTeam = { PINK: [], BLUE: [] };
-
-  for (const ev of goalsForMatch) {
-    const scorerName = playersById[ev.scorerId]?.name || "Unknown";
-    const assistName = ev.assistId ? (playersById[ev.assistId]?.name || "Unknown") : null;
-
-    const scorerTeam = isInTeam(ev.scorerId, playersPink)
-      ? "PINK"
-      : isInTeam(ev.scorerId, playersBlue)
-        ? "BLUE"
-        : "PINK";
-
-    const creditedTeam = ev.isOwnGoal ? otherTeam(scorerTeam) : scorerTeam;
-    creditedGoals[creditedTeam].push(ev.isOwnGoal ? `${scorerName} (OG)` : scorerName);
-
-    if (assistName) {
-      const assistTeam = isInTeam(ev.assistId, playersPink)
-        ? "PINK"
-        : isInTeam(ev.assistId, playersBlue)
-          ? "BLUE"
-          : scorerTeam;
-
-      assistsByTeam[assistTeam].push(assistName);
-    }
-  }
-
-  return { creditedGoals, assistsByTeam };
+function teamForPlayer(playerId, match) {
+  if (isInTeam(playerId, match.playersPink || [])) return "PINK";
+  if (isInTeam(playerId, match.playersBlue || [])) return "BLUE";
+  return null;
 }
 
-function namesFromIds(ids, playersById) {
-  return uniq(ids).map((id) => playersById[id]?.name || "Unknown");
+function formatScorerLine(goalEvent, playersById) {
+  const scorerName = playersById[goalEvent.scorerId]?.name || "Unknown";
+  const assistName = goalEvent.assistId
+    ? (playersById[goalEvent.assistId]?.name || "Unknown")
+    : null;
+
+  const scorerText = goalEvent.isOwnGoal ? `${scorerName} OG` : scorerName;
+  return assistName ? `${scorerText} (${assistName})` : scorerText;
+}
+
+function buildMatchDerived(match, goals, playersById) {
+  const goalsForMatch = goals.filter((g) => g.matchId === match.id);
+
+  const scorers = { PINK: [], BLUE: [] };
+  const otfs = { PINK: [], BLUE: [] };
+
+  for (const ev of goalsForMatch) {
+    const scorerTeam = teamForPlayer(ev.scorerId, match) || "PINK";
+    const creditedTeam = ev.isOwnGoal ? otherTeam(scorerTeam) : scorerTeam;
+    scorers[creditedTeam].push(formatScorerLine(ev, playersById));
+  }
+
+  for (const playerId of match.otfIds || []) {
+    const team = teamForPlayer(playerId, match);
+    if (team) otfs[team].push(playersById[playerId]?.name || "Unknown");
+  }
+
+  return { scorers, otfs };
+}
+
+function renderLines(items, emptyText = "—") {
+  const safeItems = Array.isArray(items) ? items : [];
+  if (!safeItems.length) return `<div class="muted result-line">${escapeHTML(emptyText)}</div>`;
+  return safeItems
+    .map((item) => `<div class="result-line">${escapeHTML(item)}</div>`)
+    .join("");
+}
+
+function renderTeamResult({ side, scorers, otfs, captain }) {
+  const sideClass = side.toLowerCase();
+  const isPink = side === "PINK";
+  const shirt = isPink ? "👚" : "👕";
+
+  return `
+    <section class="team-result team-result-${sideClass}">
+      <div class="team-result-section">
+        <div class="team-result-label">Goals</div>
+        <div class="team-result-lines">
+          ${renderLines(scorers)}
+        </div>
+      </div>
+
+      <div class="team-result-section">
+        <div class="team-result-label">OTFs</div>
+        <div class="team-result-lines">
+          ${renderLines(otfs)}
+        </div>
+      </div>
+
+      <div class="team-result-captain">
+        <span class="team-result-label">Captain:</span>
+        <span>${shirt} ${escapeHTML(captain || "—")}</span>
+      </div>
+    </section>
+  `;
+}
+
+function renderInlineScoreline(pinkScore, blueScore) {
+  return `
+    <div class="inline-scoreline">
+      <div class="inline-team inline-team-pink">
+        <span class="team-pill pill-pink"></span>
+        <span class="team-name">Pink</span>
+      </div>
+
+      <div class="inline-score">
+        <span>${pinkScore}</span>
+        <span class="dash">–</span>
+        <span>${blueScore}</span>
+      </div>
+
+      <div class="inline-team inline-team-blue">
+        <span class="team-name">Blue</span>
+        <span class="team-pill pill-blue"></span>
+      </div>
+    </div>
+  `;
 }
 
 function renderMatchCard(match, derived, playersById) {
@@ -90,7 +142,6 @@ function renderMatchCard(match, derived, playersById) {
 
   const motmNames = namesFromIds(match.motmIds || [], playersById);
   const hmNames = namesFromIds(match.honourableMentionIds || [], playersById);
-  const otfNames = namesFromIds(match.otfIds || [], playersById);
 
   const captainPink = match.captainPinkId ? playersById[match.captainPinkId]?.name : null;
   const captainBlue = match.captainBlueId ? playersById[match.captainBlueId]?.name : null;
@@ -98,49 +149,28 @@ function renderMatchCard(match, derived, playersById) {
   const notes = (match.notes ?? "").trim();
   const isNonStat = match.countsForStats === false;
 
-  const goalsPink = countByName(derived.creditedGoals.PINK);
-  const goalsBlue = countByName(derived.creditedGoals.BLUE);
-  const astPink = countByName(derived.assistsByTeam.PINK);
-  const astBlue = countByName(derived.assistsByTeam.BLUE);
+  const recapBox = `
+    <section class="match-recap section">
+      <h3>Match recap</h3>
 
-  const goalsSection = (goalsPink.length || goalsBlue.length) ? `
-    <div class="section">
-      <h3>Goals</h3>
-      <div class="two-col">
-        <div>
-          <div class="muted results-label">Pink</div>
-          ${goalsPink.length ? `<ul class="list">${goalsPink.map(n => `<li>${escapeHTML(n)}</li>`).join("")}</ul>` : `<div class="muted">None</div>`}
+      <div class="recap-grid">
+        <div class="kv">
+          <div class="k">MOTM</div>
+          <div class="v">⭐ ${escapeHTML(motmNames.join(", ") || "—")}</div>
         </div>
-        <div>
-          <div class="muted results-label">Blue</div>
-          ${goalsBlue.length ? `<ul class="list">${goalsBlue.map(n => `<li>${escapeHTML(n)}</li>`).join("")}</ul>` : `<div class="muted">None</div>`}
+
+        <div class="kv">
+          <div class="k">Honourable Mentions</div>
+          <div class="v">👏 ${escapeHTML(hmNames.join(", ") || "—")}</div>
         </div>
       </div>
-    </div>
-  ` : "";
 
-  const assistsSection = (astPink.length || astBlue.length) ? `
-    <div class="section">
-      <h3>Assists</h3>
-      <div class="two-col">
-        <div>
-          <div class="muted results-label">Pink</div>
-          ${astPink.length ? `<ul class="list">${astPink.map(n => `<li>${escapeHTML(n)}</li>`).join("")}</ul>` : `<div class="muted">None</div>`}
-        </div>
-        <div>
-          <div class="muted results-label">Blue</div>
-          ${astBlue.length ? `<ul class="list">${astBlue.map(n => `<li>${escapeHTML(n)}</li>`).join("")}</ul>` : `<div class="muted">None</div>`}
-        </div>
+      <div class="kv kv-spaced">
+        <div class="k">Notes</div>
+        <div class="notes">${notes ? escapeHTML(notes) : `<span class="muted">—</span>`}</div>
       </div>
-    </div>
-  ` : "";
-
-  const notesSection = notes ? `
-    <div class="section">
-      <h3>Match notes</h3>
-      <div class="notes">${escapeHTML(notes)}</div>
-    </div>
-  ` : "";
+    </section>
+  `;
 
   return `
     <article class="match-card">
@@ -148,69 +178,33 @@ function renderMatchCard(match, derived, playersById) {
         <div class="match-meta">
           <div>${escapeHTML(dateStr)}${match.name ? ` · <span class="muted">${escapeHTML(match.name)}</span>` : ""}</div>
           <div class="results-flex">
-            ${isNonStat ? `<span class="badge">Non-stat match</span>` : ``}
+            ${isNonStat ? `<span class="badge">Non-stat match</span>` : ""}
             <span class="badge">Borderville</span>
           </div>
         </div>
 
-        <div class="scoreline">
-          <div class="team team-left">
-            <span class="team-pill pill-pink"></span>
-            <span class="team-name">Pink</span>
-          </div>
+        <div class="match-result-grid">
+          ${renderInlineScoreline(pinkScore, blueScore)}
 
-          <div class="score">
-            <span>${pinkScore}</span>
-            <span class="dash">–</span>
-            <span>${blueScore}</span>
-          </div>
+          <div class="team-stats-grid">
+            ${renderTeamResult({
+              side: "PINK",
+              scorers: derived.scorers.PINK,
+              otfs: derived.otfs.PINK,
+              captain: captainPink,
+            })}
 
-          <div class="team team-right">
-            <span class="team-name">Blue</span>
-            <span class="team-pill pill-blue"></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="match-body">
-        <div class="results-grid">
-          ${goalsSection}
-          ${assistsSection}
-          ${notesSection}
-        </div>
-
-        <div class="section">
-          <h3>Match info</h3>
-
-          <div class="kv">
-            <div class="k">MOTM</div>
-            <div class="v">⭐ ${escapeHTML(motmNames.join(", ") || "—")}</div>
-          </div>
-
-          <div class="kv kv-spaced">
-            <div class="k">Honourable Mentions</div>
-            <div class="v">👏 ${escapeHTML(hmNames.join(", ") || "—")}</div>
-          </div>
-
-          <div class="kv kv-spaced">
-            <div class="k">Captains</div>
-            <div class="v">👚 Pink: ${escapeHTML(captainPink || "—")}<br/>👕 Blue: ${escapeHTML(captainBlue || "—")}</div>
-          </div>
-
-          <div class="kv kv-spaced">
-            <div class="k">OTFs</div>
-            <div class="v">🎯 ${escapeHTML(otfNames.join(", ") || "—")}</div>
-          </div>
-
-          <div class="kv kv-spaced">
-            <div class="k">Players</div>
-            <div class="v">
-              Pink: ${(match.playersPink || []).length}<br/>
-              Blue: ${(match.playersBlue || []).length}
-            </div>
+            ${renderTeamResult({
+              side: "BLUE",
+              scorers: derived.scorers.BLUE,
+              otfs: derived.otfs.BLUE,
+              captain: captainBlue,
+            })}
           </div>
         </div>
       </div>
+
+      ${recapBox}
     </article>
   `;
 }
@@ -241,20 +235,21 @@ async function main() {
   try {
     const payload = await loadAggregated();
     const playersById = Object.fromEntries(
-      Object.values(payload.players ?? {}).map(p => [p.id, p])
+      Object.values(payload.players ?? {}).map((p) => [p.id, p])
     );
 
     const matches = payload.matches ?? [];
     const goals = payload.goals ?? [];
 
     const sorted = matches
-      .filter(m => m?.date)
+      .filter((m) => m?.date)
       .sort((a, b) => String(b.date).localeCompare(String(a.date)));
 
     root.innerHTML = sorted.length
-      ? sorted.map(m => renderMatchCard(m, buildMatchDerived(m, goals, playersById), playersById)).join("")
+      ? sorted
+          .map((m) => renderMatchCard(m, buildMatchDerived(m, goals, playersById), playersById))
+          .join("")
       : `<div class="match-card results-empty"><div class="muted">No matches found</div></div>`;
-
   } catch (err) {
     root.innerHTML = `<div class="match-card results-empty"><div class="muted">Error loading results: ${escapeHTML(err.message)}</div></div>`;
     console.error(err);

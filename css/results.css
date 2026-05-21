@@ -1,9 +1,7 @@
 /* =========================
    Results page helpers
-   Extracted from results.js
    ========================= */
 
-/* Shared layout helpers */
 .results-flex {
   display: flex;
   gap: 8px;
@@ -15,33 +13,164 @@
   gap: 12px;
 }
 
-/* Two-column lists (Goals / Assists) */
-.two-col {
+.match-result-grid {
+  display: grid;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.inline-scoreline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+
+.inline-team {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.inline-team-pink {
+  justify-content: flex-start;
+}
+
+.inline-team-blue {
+  justify-content: flex-end;
+}
+
+.inline-score {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 38px;
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.team-stats-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.team-result {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  min-width: 0;
+}
+
+.team-result-pink {
+  text-align: left;
+}
+
+.team-result-blue {
+  text-align: right;
+}
+
+.team-result-section {
+  display: grid;
+  gap: 5px;
+}
+
+.team-result-label {
+  font-size: 12px;
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: 0.55px;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.team-result-lines {
+  display: grid;
+  gap: 4px;
+  font-size: 14px;
+  line-height: 1.28;
+  font-weight: 750;
+}
+
+.result-line {
+  min-height: 18px;
+}
+
+.team-result-captain {
+  display: flex;
+  gap: 7px;
+  align-items: baseline;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 750;
+}
+
+.team-result-blue .team-result-captain {
+  justify-content: flex-end;
+}
+
+.match-recap {
+  margin-top: 12px;
+}
+
+.recap-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-/* Muted label spacing */
-.results-label {
-  margin-bottom: 6px;
-}
-
-/* Team alignment in scoreline */
-.team-left {
-  justify-content: flex-start;
-}
-
-.team-right {
-  justify-content: flex-end;
-}
-
-/* Key–value spacing blocks */
 .kv-spaced {
   margin-top: 10px;
 }
 
-/* Error / empty states */
 .results-empty {
   padding: 14px;
+}
+
+@media (max-width: 700px) {
+  .inline-scoreline {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .inline-team,
+  .inline-team-pink,
+  .inline-team-blue {
+    justify-content: center;
+  }
+
+  .inline-score {
+    font-size: 34px;
+    order: 2;
+  }
+
+  .inline-team-pink {
+    order: 1;
+  }
+
+  .inline-team-blue {
+    order: 3;
+  }
+
+  .team-stats-grid,
+  .recap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-result,
+  .team-result-pink,
+  .team-result-blue {
+    text-align: left;
+  }
+
+  .team-result-blue .team-result-captain {
+    justify-content: flex-start;
+  }
 }

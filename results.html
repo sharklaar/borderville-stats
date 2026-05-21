@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Borderville Stats – Results</title>
  <link rel="stylesheet" href="./css/styles.css" />
+ <link rel="stylesheet" href="./css/results.css" />
  <link rel="icon" type="image/png" href="/images/favicon.png" sizes="32x32">
 
   <!-- Page-specific styling kept here so we don't destabilise your card CSS -->
@@ -118,11 +119,45 @@
       transform: translateY(-1px);
     }
 
+
+
+    .scorers-grid{
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 12px;
+      padding: 10px 12px 4px;
+    }
+
+    .scorers{
+      display: grid;
+      align-content: start;
+      gap: 5px;
+      font-size: 14px;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .scorers-pink{ text-align: left; }
+    .scorers-blue{ text-align: right; }
+
+    .scorers-spacer{
+      width: 104px;
+    }
+
+    .scorer-line{
+      min-height: 18px;
+    }
+
     .match-body{
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 12px;
       margin-top: 10px;
+    }
+
+    .match-body-info-only{
+      grid-template-columns: minmax(260px, 0.9fr);
+      justify-content: end;
     }
 
     .section{
@@ -174,13 +209,24 @@
     }
 
     @media (max-width: 900px){
-      .match-body{ grid-template-columns: 1fr; }
+      .match-body,
+      .match-body-info-only{
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 600px){
       .team-name{ font-size: 16px; }
       .score{ font-size: 26px; }
       .match-meta{ flex-direction: column; align-items: flex-start; }
+
+      .scorers-grid{
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .scorers-spacer{ display: none; }
+      .scorers-blue{ text-align: left; }
     }
   </style>
 </head>

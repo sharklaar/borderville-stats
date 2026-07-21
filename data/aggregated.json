@@ -71,11 +71,11 @@
       "id": "rec1NVl8RI5HIZxU0",
       "name": "Sam Sinclair",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "draws": 3,
         "losses": 2,
-        "goals": 3,
-        "assists": 3,
+        "goals": 4,
+        "assists": 4,
         "ogs": 0,
         "cleanSheets": 1,
         "gkCleanSheets": 1,
@@ -86,35 +86,36 @@
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 1,
-        "subs": -5,
-        "caps": 115,
-        "caps2026": 12,
+        "subs": -6,
+        "caps": 116,
+        "caps2026": 13,
         "motm": 12,
         "motm2026": 2,
         "captain": 2,
         "captain2026": 2,
         "playedLast10": 5,
-        "ovr": 70,
-        "ovrRawSeason": 79,
+        "ovr": 63,
+        "ovrRawSeason": 90,
         "ovrPenalty": 0,
-        "ovrCombined": 79,
+        "ovrCombined": 90,
         "fantasyRoleApps": {
           "GK": 3,
           "DEF": 1,
-          "OTHER": 8
+          "OTHER": 9
         },
         "fantasyRoleWins": {
           "GK": 3,
           "DEF": 0,
-          "OTHER": 4
+          "OTHER": 5
         },
         "fantasyRoleGoals": {
           "GK": 1,
           "DEF": 0,
-          "OTHER": 2
+          "OTHER": 3
         },
         "form": [
           "X",
+          "W",
           "W",
           "MCD",
           "X",
@@ -122,8 +123,7 @@
           "X",
           "X",
           "W",
-          "W",
-          "MW"
+          "W"
         ]
       },
       "meta": {
@@ -232,7 +232,7 @@
       "id": "rec3IB6CNEMmwNykE",
       "name": "Mike Doyle",
       "stats": {
-        "wins": 9,
+        "wins": 10,
         "draws": 4,
         "losses": 9,
         "goals": 1,
@@ -247,26 +247,26 @@
         "concededExactlyTwoMatches2026": 3,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": 1,
-        "caps": 198,
-        "caps2026": 22,
+        "subs": 0,
+        "caps": 199,
+        "caps2026": 23,
         "motm": 9,
         "motm2026": 1,
         "captain": 2,
         "captain2026": 2,
         "playedLast10": 8,
-        "ovr": 70,
-        "ovrRawSeason": 79,
+        "ovr": 60,
+        "ovrRawSeason": 85,
         "ovrPenalty": 0,
-        "ovrCombined": 79,
+        "ovrCombined": 85,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 13,
+          "DEF": 14,
           "OTHER": 9
         },
         "fantasyRoleWins": {
           "GK": 0,
-          "DEF": 4,
+          "DEF": 5,
           "OTHER": 5
         },
         "fantasyRoleGoals": {
@@ -277,13 +277,13 @@
         "form": [
           "X",
           "W",
+          "W",
           "D",
           "X",
           "L",
           "CW",
           "L",
           "L",
-          "W",
           "W"
         ]
       },
@@ -395,7 +395,7 @@
       "stats": {
         "wins": 7,
         "draws": 5,
-        "losses": 12,
+        "losses": 13,
         "goals": 10,
         "assists": 9,
         "ogs": 0,
@@ -403,27 +403,27 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 1,
-        "conceded2026": 74,
+        "conceded2026": 82,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 1,
         "motmCaptain2026": 1,
-        "subs": -6,
-        "caps": 161,
-        "caps2026": 24,
+        "subs": -7,
+        "caps": 162,
+        "caps2026": 25,
         "motm": 12,
         "motm2026": 2,
         "captain": 3,
         "captain2026": 3,
         "playedLast10": 9,
         "ovr": 76,
-        "ovrRawSeason": 119,
+        "ovrRawSeason": 120,
         "ovrPenalty": 0,
-        "ovrCombined": 119,
+        "ovrCombined": 120,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 24
+          "OTHER": 25
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -438,14 +438,14 @@
         "form": [
           "X",
           "L",
+          "L",
           "D",
           "W",
           "W",
           "W",
           "W",
           "L",
-          "CL",
-          "L"
+          "CL"
         ]
       },
       "meta": {
@@ -509,11 +509,11 @@
         "motm2026": 0,
         "captain": 0,
         "captain2026": 0,
-        "playedLast10": 2,
-        "ovr": 13,
+        "playedLast10": 1,
+        "ovr": 9,
         "ovrRawSeason": 10,
-        "ovrPenalty": 0,
-        "ovrCombined": 10,
+        "ovrPenalty": 6,
+        "ovrCombined": 4,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
@@ -538,7 +538,7 @@
           "X",
           "X",
           "X",
-          "L",
+          "X",
           "L"
         ]
       },
@@ -581,7 +581,7 @@
       "id": "rec7UewFBTISFASsD",
       "name": "Dan Medd",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "draws": 2,
         "losses": 4,
         "goals": 1,
@@ -594,28 +594,28 @@
         "conceded2026": 32,
         "concededExactlyOneMatches2026": 1,
         "concededExactlyTwoMatches2026": 2,
-        "winningCaptain2026": 1,
+        "winningCaptain2026": 2,
         "motmCaptain2026": 0,
-        "subs": 6,
-        "caps": 125,
-        "caps2026": 12,
+        "subs": 5,
+        "caps": 126,
+        "caps2026": 13,
         "motm": 5,
         "motm2026": 1,
-        "captain": 1,
-        "captain2026": 1,
-        "playedLast10": 1,
-        "ovr": 61,
-        "ovrRawSeason": 69,
+        "captain": 2,
+        "captain2026": 2,
+        "playedLast10": 2,
+        "ovr": 52,
+        "ovrRawSeason": 75,
         "ovrPenalty": 0,
-        "ovrCombined": 69,
+        "ovrCombined": 75,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 5,
+          "DEF": 6,
           "OTHER": 7
         },
         "fantasyRoleWins": {
           "GK": 0,
-          "DEF": 4,
+          "DEF": 5,
           "OTHER": 2
         },
         "fantasyRoleGoals": {
@@ -625,7 +625,7 @@
         },
         "form": [
           "W",
-          "X",
+          "CW",
           "X",
           "X",
           "X",
@@ -677,7 +677,7 @@
       "stats": {
         "wins": 8,
         "draws": 2,
-        "losses": 6,
+        "losses": 7,
         "goals": 3,
         "assists": 1,
         "ogs": 0,
@@ -685,27 +685,27 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 3,
-        "conceded2026": 39,
+        "conceded2026": 47,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 1,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": -6,
-        "caps": 99,
-        "caps2026": 16,
+        "subs": -7,
+        "caps": 100,
+        "caps2026": 17,
         "motm": 6,
         "motm2026": 0,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 6,
-        "ovr": 59,
-        "ovrRawSeason": 67,
+        "playedLast10": 7,
+        "ovr": 47,
+        "ovrRawSeason": 68,
         "ovrPenalty": 0,
-        "ovrCombined": 67,
+        "ovrCombined": 68,
         "fantasyRoleApps": {
           "GK": 2,
           "DEF": 1,
-          "OTHER": 13
+          "OTHER": 14
         },
         "fantasyRoleWins": {
           "GK": 1,
@@ -719,6 +719,7 @@
         },
         "form": [
           "L",
+          "L",
           "CW",
           "X",
           "W",
@@ -726,8 +727,7 @@
           "X",
           "X",
           "W",
-          "W",
-          "X"
+          "W"
         ]
       },
       "meta": {
@@ -791,11 +791,11 @@
         "motm2026": 0,
         "captain": 0,
         "captain2026": 0,
-        "playedLast10": 1,
-        "ovr": 10,
+        "playedLast10": 0,
+        "ovr": 6,
         "ovrRawSeason": 11,
-        "ovrPenalty": 6,
-        "ovrCombined": 5,
+        "ovrPenalty": 12,
+        "ovrCombined": -1,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
@@ -821,7 +821,7 @@
           "X",
           "X",
           "X",
-          "W"
+          "X"
         ]
       },
       "meta": {
@@ -887,8 +887,8 @@
           "X",
           "X",
           "X",
-          "MW",
-          "X"
+          "X",
+          "MW"
         ]
       },
       "meta": {
@@ -905,7 +905,7 @@
       "stats": {
         "wins": 10,
         "draws": 5,
-        "losses": 7,
+        "losses": 8,
         "goals": 11,
         "assists": 22,
         "ogs": 0,
@@ -913,27 +913,27 @@
         "gkCleanSheets": 0,
         "otfs": 5,
         "honourableMentions": 3,
-        "conceded2026": 57,
+        "conceded2026": 65,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 2,
         "motmCaptain2026": 0,
-        "subs": -1,
-        "caps": 135,
-        "caps2026": 22,
+        "subs": -2,
+        "caps": 136,
+        "caps2026": 23,
         "motm": 15,
         "motm2026": 1,
         "captain": 2,
         "captain2026": 2,
         "playedLast10": 9,
         "ovr": 100,
-        "ovrRawSeason": 160,
+        "ovrRawSeason": 161,
         "ovrPenalty": 0,
-        "ovrCombined": 160,
+        "ovrCombined": 161,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 22
+          "OTHER": 23
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -947,13 +947,13 @@
         },
         "form": [
           "L",
+          "L",
           "MW",
           "D",
           "L",
           "L",
           "X",
           "CW",
-          "W",
           "W",
           "W"
         ]
@@ -999,7 +999,7 @@
       "stats": {
         "wins": 5,
         "draws": 5,
-        "losses": 7,
+        "losses": 8,
         "goals": 2,
         "assists": 3,
         "ogs": 0,
@@ -1007,26 +1007,26 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 0,
-        "conceded2026": 49,
+        "conceded2026": 57,
         "concededExactlyOneMatches2026": 4,
         "concededExactlyTwoMatches2026": 2,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": -8,
-        "caps": 117,
-        "caps2026": 17,
+        "subs": -9,
+        "caps": 118,
+        "caps2026": 18,
         "motm": 6,
         "motm2026": 1,
         "captain": 2,
         "captain2026": 2,
         "playedLast10": 9,
-        "ovr": 79,
-        "ovrRawSeason": 88,
+        "ovr": 63,
+        "ovrRawSeason": 89,
         "ovrPenalty": 0,
-        "ovrCombined": 88,
+        "ovrCombined": 89,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 13,
+          "DEF": 14,
           "OTHER": 4
         },
         "fantasyRoleWins": {
@@ -1042,14 +1042,14 @@
         "form": [
           "L",
           "L",
+          "L",
           "D",
           "MW",
           "W",
           "X",
           "W",
           "L",
-          "L",
-          "CW"
+          "L"
         ]
       },
       "meta": {
@@ -1227,7 +1227,7 @@
       "stats": {
         "wins": 0,
         "draws": 3,
-        "losses": 5,
+        "losses": 6,
         "goals": 2,
         "assists": 1,
         "ogs": 0,
@@ -1235,27 +1235,27 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 0,
-        "conceded2026": 32,
+        "conceded2026": 40,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": 2,
-        "caps": 137,
-        "caps2026": 8,
+        "subs": 1,
+        "caps": 138,
+        "caps2026": 9,
         "motm": 11,
         "motm2026": 0,
-        "captain": 1,
-        "captain2026": 1,
-        "playedLast10": 0,
+        "captain": 2,
+        "captain2026": 2,
+        "playedLast10": 1,
         "ovr": 18,
-        "ovrRawSeason": 19,
+        "ovrRawSeason": 20,
         "ovrPenalty": 0,
-        "ovrCombined": 19,
+        "ovrCombined": 20,
         "fantasyRoleApps": {
           "GK": 1,
           "DEF": 0,
-          "OTHER": 7
+          "OTHER": 8
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -1269,7 +1269,7 @@
         },
         "form": [
           "X",
-          "X",
+          "CL",
           "X",
           "X",
           "X",
@@ -1569,8 +1569,8 @@
         "motm2026": 3,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 7,
-        "ovr": 95,
+        "playedLast10": 6,
+        "ovr": 94,
         "ovrRawSeason": 151,
         "ovrPenalty": 0,
         "ovrCombined": 151,
@@ -1591,6 +1591,7 @@
         },
         "form": [
           "MW",
+          "X",
           "W",
           "D",
           "W",
@@ -1598,8 +1599,7 @@
           "X",
           "L",
           "CW",
-          "X",
-          "L"
+          "X"
         ]
       },
       "meta": {
@@ -1837,8 +1837,8 @@
         "motm2026": 2,
         "captain": 1,
         "captain2026": 1,
-        "playedLast10": 7,
-        "ovr": 45,
+        "playedLast10": 6,
+        "ovr": 35,
         "ovrRawSeason": 52,
         "ovrPenalty": 0,
         "ovrCombined": 52,
@@ -1859,6 +1859,7 @@
         },
         "form": [
           "CL",
+          "X",
           "W",
           "X",
           "L",
@@ -1866,8 +1867,7 @@
           "MW",
           "X",
           "L",
-          "X",
-          "L"
+          "X"
         ]
       },
       "meta": {
@@ -1951,7 +1951,7 @@
       "stats": {
         "wins": 8,
         "draws": 2,
-        "losses": 6,
+        "losses": 7,
         "goals": 3,
         "assists": 7,
         "ogs": 0,
@@ -1959,27 +1959,27 @@
         "gkCleanSheets": 0,
         "otfs": 2,
         "honourableMentions": 0,
-        "conceded2026": 45,
+        "conceded2026": 53,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 3,
         "motmCaptain2026": 0,
-        "subs": -3,
-        "caps": 68,
-        "caps2026": 16,
+        "subs": -4,
+        "caps": 69,
+        "caps2026": 17,
         "motm": 8,
         "motm2026": 3,
         "captain": 3,
         "captain2026": 3,
         "playedLast10": 7,
-        "ovr": 53,
-        "ovrRawSeason": 80,
+        "ovr": 54,
+        "ovrRawSeason": 81,
         "ovrPenalty": 0,
-        "ovrCombined": 80,
+        "ovrCombined": 81,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 16
+          "OTHER": 17
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -1993,6 +1993,7 @@
         },
         "form": [
           "CW",
+          "L",
           "X",
           "X",
           "L",
@@ -2000,8 +2001,7 @@
           "X",
           "W",
           "MW",
-          "L",
-          "W"
+          "L"
         ]
       },
       "meta": {
@@ -2266,8 +2266,8 @@
         "motm2026": 0,
         "captain": 0,
         "captain2026": 0,
-        "playedLast10": 4,
-        "ovr": 13,
+        "playedLast10": 3,
+        "ovr": 10,
         "ovrRawSeason": 19,
         "ovrPenalty": 0,
         "ovrCombined": 19,
@@ -2288,15 +2288,15 @@
         },
         "form": [
           "X",
-          "L",
-          "X",
-          "X",
-          "L",
           "X",
           "L",
           "X",
           "X",
-          "W"
+          "L",
+          "X",
+          "L",
+          "X",
+          "X"
         ]
       },
       "meta": {
@@ -2494,8 +2494,8 @@
         "motm2026": 0,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 8,
-        "ovr": 75,
+        "playedLast10": 7,
+        "ovr": 59,
         "ovrRawSeason": 84,
         "ovrPenalty": 0,
         "ovrCombined": 84,
@@ -2517,14 +2517,14 @@
         "form": [
           "X",
           "X",
+          "X",
           "D",
           "L",
           "L",
           "W",
           "W",
           "W",
-          "CW",
-          "W"
+          "CW"
         ]
       },
       "meta": {
@@ -2611,11 +2611,11 @@
         "form": [
           "X",
           "X",
+          "X",
           "D",
           "L",
           "W",
           "L",
-          "X",
           "X",
           "X",
           "X"
@@ -2662,7 +2662,7 @@
       "stats": {
         "wins": 5,
         "draws": 4,
-        "losses": 14,
+        "losses": 15,
         "goals": 0,
         "assists": 0,
         "ogs": 0,
@@ -2670,26 +2670,26 @@
         "gkCleanSheets": 0,
         "otfs": 4,
         "honourableMentions": 1,
-        "conceded2026": 70,
+        "conceded2026": 78,
         "concededExactlyOneMatches2026": 5,
         "concededExactlyTwoMatches2026": 3,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": 3,
-        "caps": 78,
-        "caps2026": 23,
+        "subs": 2,
+        "caps": 79,
+        "caps2026": 24,
         "motm": 4,
         "motm2026": 0,
         "captain": 2,
         "captain2026": 2,
         "playedLast10": 9,
-        "ovr": 61,
-        "ovrRawSeason": 69,
+        "ovr": 49,
+        "ovrRawSeason": 70,
         "ovrPenalty": 0,
-        "ovrCombined": 69,
+        "ovrCombined": 70,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 21,
+          "DEF": 22,
           "OTHER": 2
         },
         "fantasyRoleWins": {
@@ -2705,10 +2705,10 @@
         "form": [
           "L",
           "L",
+          "L",
           "D",
           "X",
           "CW",
-          "L",
           "L",
           "L",
           "L",
@@ -2794,7 +2794,7 @@
       "id": "recahovWa9ryO8F10",
       "name": "Tom Hames",
       "stats": {
-        "wins": 0,
+        "wins": 1,
         "draws": 3,
         "losses": 5,
         "goals": 2,
@@ -2809,26 +2809,26 @@
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -7,
-        "caps": 17,
-        "caps2026": 8,
+        "subs": -8,
+        "caps": 18,
+        "caps2026": 9,
         "motm": 0,
         "motm2026": 0,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 5,
-        "ovr": 18,
-        "ovrRawSeason": 19,
+        "playedLast10": 6,
+        "ovr": 21,
+        "ovrRawSeason": 25,
         "ovrPenalty": 0,
-        "ovrCombined": 19,
+        "ovrCombined": 25,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 0,
+          "DEF": 1,
           "OTHER": 8
         },
         "fantasyRoleWins": {
           "GK": 0,
-          "DEF": 0,
+          "DEF": 1,
           "OTHER": 0
         },
         "fantasyRoleGoals": {
@@ -2838,6 +2838,7 @@
         },
         "form": [
           "L",
+          "W",
           "X",
           "D",
           "X",
@@ -2845,7 +2846,6 @@
           "X",
           "L",
           "L",
-          "X",
           "X"
         ]
       },
@@ -2863,7 +2863,7 @@
       "stats": {
         "wins": 7,
         "draws": 4,
-        "losses": 10,
+        "losses": 11,
         "goals": 4,
         "assists": 8,
         "ogs": 0,
@@ -2871,27 +2871,27 @@
         "gkCleanSheets": 0,
         "otfs": 1,
         "honourableMentions": 2,
-        "conceded2026": 62,
+        "conceded2026": 70,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -8,
-        "caps": 193,
-        "caps2026": 21,
+        "subs": -9,
+        "caps": 194,
+        "caps2026": 22,
         "motm": 5,
         "motm2026": 0,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 8,
+        "playedLast10": 9,
         "ovr": 54,
-        "ovrRawSeason": 81,
+        "ovrRawSeason": 82,
         "ovrPenalty": 0,
-        "ovrCombined": 81,
+        "ovrCombined": 82,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 21
+          "OTHER": 22
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -2905,6 +2905,7 @@
         },
         "form": [
           "X",
+          "L",
           "W",
           "D",
           "L",
@@ -2912,8 +2913,7 @@
           "W",
           "L",
           "CL",
-          "L",
-          "X"
+          "L"
         ]
       },
       "meta": {
@@ -3003,9 +3003,9 @@
           "X",
           "X",
           "X",
+          "X",
           "L",
           "W",
-          "X",
           "X",
           "X"
         ]
@@ -3022,11 +3022,11 @@
       "id": "rechPSwQq3TluwcPa",
       "name": "Chris Grace",
       "stats": {
-        "wins": 5,
+        "wins": 6,
         "draws": 1,
         "losses": 4,
-        "goals": 9,
-        "assists": 3,
+        "goals": 12,
+        "assists": 4,
         "ogs": 0,
         "cleanSheets": 0,
         "gkCleanSheets": 0,
@@ -3037,42 +3037,42 @@
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": -6,
-        "caps": 32,
-        "caps2026": 10,
-        "motm": 4,
-        "motm2026": 2,
+        "subs": -7,
+        "caps": 33,
+        "caps2026": 11,
+        "motm": 5,
+        "motm2026": 3,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 6,
-        "ovr": 51,
-        "ovrRawSeason": 75,
+        "playedLast10": 7,
+        "ovr": 63,
+        "ovrRawSeason": 97,
         "ovrPenalty": 0,
-        "ovrCombined": 75,
+        "ovrCombined": 97,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 10
+          "OTHER": 11
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 5
+          "OTHER": 6
         },
         "fantasyRoleGoals": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 9
+          "OTHER": 12
         },
         "form": [
           "X",
+          "MW",
           "L",
           "MD",
           "CW",
           "W",
           "L",
           "MW",
-          "X",
           "X",
           "X"
         ]
@@ -3112,7 +3112,7 @@
         "captain": 2,
         "captain2026": 2,
         "playedLast10": 4,
-        "ovr": 72,
+        "ovr": 57,
         "ovrRawSeason": 81,
         "ovrPenalty": 0,
         "ovrCombined": 81,
@@ -3135,13 +3135,13 @@
           "W",
           "X",
           "X",
+          "X",
           "W",
           "X",
           "X",
           "X",
           "W",
-          "W",
-          "X"
+          "W"
         ]
       },
       "meta": {
@@ -3178,7 +3178,7 @@
         "motm2026": 1,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 6,
+        "playedLast10": 5,
         "ovr": 80,
         "ovrRawSeason": 126,
         "ovrPenalty": 0,
@@ -3201,14 +3201,14 @@
         "form": [
           "W",
           "X",
+          "X",
           "D",
           "X",
           "X",
           "W",
           "W",
           "X",
-          "W",
-          "CL"
+          "W"
         ]
       },
       "meta": {
@@ -3245,8 +3245,8 @@
         "motm2026": 1,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 7,
-        "ovr": 80,
+        "playedLast10": 6,
+        "ovr": 79,
         "ovrRawSeason": 125,
         "ovrPenalty": 0,
         "ovrCombined": 125,
@@ -3269,13 +3269,13 @@
           "L",
           "X",
           "X",
+          "X",
           "CL",
           "L",
           "L",
           "W",
           "L",
-          "X",
-          "W"
+          "X"
         ]
       },
       "meta": {
@@ -3340,7 +3340,7 @@
         "captain": 1,
         "captain2026": 1,
         "playedLast10": 1,
-        "ovr": 15,
+        "ovr": 12,
         "ovrRawSeason": 21,
         "ovrPenalty": 0,
         "ovrCombined": 21,
@@ -3365,8 +3365,8 @@
           "X",
           "X",
           "X",
-          "L",
           "X",
+          "L",
           "X",
           "X",
           "X"
@@ -3384,11 +3384,11 @@
       "id": "reckG9bP68ANrvc3p",
       "name": "Tim Laws",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "draws": 3,
         "losses": 7,
         "goals": 4,
-        "assists": 11,
+        "assists": 12,
         "ogs": 1,
         "cleanSheets": 0,
         "gkCleanSheets": 0,
@@ -3399,27 +3399,27 @@
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -7,
-        "caps": 144,
-        "caps2026": 17,
+        "subs": -8,
+        "caps": 145,
+        "caps2026": 18,
         "motm": 9,
         "motm2026": 1,
         "captain": 2,
         "captain2026": 2,
         "playedLast10": 8,
-        "ovr": 56,
-        "ovrRawSeason": 85,
+        "ovr": 60,
+        "ovrRawSeason": 92,
         "ovrPenalty": 0,
-        "ovrCombined": 85,
+        "ovrCombined": 92,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 17
+          "OTHER": 18
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 7
+          "OTHER": 8
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -3428,6 +3428,7 @@
         },
         "form": [
           "X",
+          "W",
           "L",
           "D",
           "W",
@@ -3435,7 +3436,6 @@
           "CL",
           "L",
           "W",
-          "L",
           "L"
         ]
       },
@@ -3612,49 +3612,50 @@
       "id": "recnBQ5gajZdiyZt3",
       "name": "Martin Younghusband",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "draws": 5,
         "losses": 5,
-        "goals": 12,
-        "assists": 9,
+        "goals": 16,
+        "assists": 12,
         "ogs": 0,
         "cleanSheets": 0,
         "gkCleanSheets": 0,
         "otfs": 6,
-        "honourableMentions": 2,
+        "honourableMentions": 3,
         "conceded2026": 41,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 1,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": 1,
-        "caps": 133,
-        "caps2026": 16,
+        "subs": 0,
+        "caps": 134,
+        "caps2026": 17,
         "motm": 13,
         "motm2026": 1,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 5,
+        "playedLast10": 6,
         "ovr": 100,
-        "ovrRawSeason": 110,
+        "ovrRawSeason": 139,
         "ovrPenalty": 0,
-        "ovrCombined": 110,
+        "ovrCombined": 139,
         "fantasyRoleApps": {
           "GK": 1,
           "DEF": 0,
-          "OTHER": 15
+          "OTHER": 16
         },
         "fantasyRoleWins": {
           "GK": 1,
           "DEF": 0,
-          "OTHER": 5
+          "OTHER": 6
         },
         "fantasyRoleGoals": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 12
+          "OTHER": 16
         },
         "form": [
+          "W",
           "W",
           "W",
           "CD",
@@ -3663,8 +3664,7 @@
           "X",
           "X",
           "L",
-          "L",
-          "X"
+          "L"
         ]
       },
       "meta": {
@@ -3728,8 +3728,8 @@
         "motm2026": 2,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 7,
-        "ovr": 64,
+        "playedLast10": 6,
+        "ovr": 50,
         "ovrRawSeason": 72,
         "ovrPenalty": 0,
         "ovrCombined": 72,
@@ -3751,14 +3751,14 @@
         "form": [
           "X",
           "X",
+          "X",
           "D",
           "L",
           "L",
           "L",
           "L",
           "X",
-          "W",
-          "L"
+          "W"
         ]
       },
       "meta": {
@@ -3889,8 +3889,8 @@
         "motm2026": 1,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 7,
-        "ovr": 78,
+        "playedLast10": 6,
+        "ovr": 61,
         "ovrRawSeason": 87,
         "ovrPenalty": 0,
         "ovrCombined": 87,
@@ -3911,6 +3911,7 @@
         },
         "form": [
           "X",
+          "X",
           "CL",
           "D",
           "W",
@@ -3918,7 +3919,6 @@
           "W",
           "X",
           "X",
-          "L",
           "L"
         ]
       },
@@ -4122,7 +4122,7 @@
       "id": "recx98b2sy6pbRyEt",
       "name": "Steve Croft",
       "stats": {
-        "wins": 10,
+        "wins": 11,
         "draws": 4,
         "losses": 6,
         "goals": 6,
@@ -4137,27 +4137,27 @@
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": -6,
-        "caps": 32,
-        "caps2026": 20,
+        "subs": -7,
+        "caps": 33,
+        "caps2026": 21,
         "motm": 3,
         "motm2026": 3,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 7,
-        "ovr": 62,
-        "ovrRawSeason": 94,
+        "playedLast10": 8,
+        "ovr": 64,
+        "ovrRawSeason": 98,
         "ovrPenalty": 0,
-        "ovrCombined": 94,
+        "ovrCombined": 98,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 1,
-          "OTHER": 19
+          "OTHER": 20
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 1,
-          "OTHER": 9
+          "OTHER": 10
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -4166,6 +4166,7 @@
         },
         "form": [
           "W",
+          "W",
           "L",
           "D",
           "X",
@@ -4173,7 +4174,6 @@
           "W",
           "CL",
           "W",
-          "X",
           "X"
         ]
       },
@@ -4293,10 +4293,24 @@
       "isOwnGoal": false
     },
     {
+      "id": "rec8NGRQ4urwZUXqa",
+      "matchId": "rec4AJZajverq4JZO",
+      "scorerId": "recnBQ5gajZdiyZt3",
+      "assistId": null,
+      "isOwnGoal": false
+    },
+    {
       "id": "rec8rz2JF6rmFlHr0",
       "matchId": "recc0NI8pvu6nvR6B",
       "scorerId": "recjnn0QDEMpSHREB",
       "assistId": "rec3m0f9cBSdbwGS0",
+      "isOwnGoal": false
+    },
+    {
+      "id": "rec9GcdhnUHxgGEDp",
+      "matchId": "rec4AJZajverq4JZO",
+      "scorerId": "rechPSwQq3TluwcPa",
+      "assistId": "recnBQ5gajZdiyZt3",
       "isOwnGoal": false
     },
     {
@@ -4318,6 +4332,13 @@
       "matchId": "recXAgucDmC9xoGO3",
       "scorerId": "recjnn0QDEMpSHREB",
       "assistId": "recnBQ5gajZdiyZt3",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recAkQ6rEHLPa1iPD",
+      "matchId": "rec4AJZajverq4JZO",
+      "scorerId": "recnBQ5gajZdiyZt3",
+      "assistId": "rec1NVl8RI5HIZxU0",
       "isOwnGoal": false
     },
     {
@@ -4367,6 +4388,13 @@
       "matchId": "rec5E3wAuebMF78ih",
       "scorerId": "recj9rbJP1c0qJEYo",
       "assistId": "recFXaQaQqUJcs1ce",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recCIQt4IcBgVho0q",
+      "matchId": "rec4AJZajverq4JZO",
+      "scorerId": "recnBQ5gajZdiyZt3",
+      "assistId": "reckG9bP68ANrvc3p",
       "isOwnGoal": false
     },
     {
@@ -4489,6 +4517,13 @@
       "isOwnGoal": false
     },
     {
+      "id": "recJC4FLT9cBpWLm8",
+      "matchId": "rec4AJZajverq4JZO",
+      "scorerId": "recnBQ5gajZdiyZt3",
+      "assistId": "rechPSwQq3TluwcPa",
+      "isOwnGoal": false
+    },
+    {
       "id": "recJmrnKWeIYadhbX",
       "matchId": "recpOKcog7rdFKEKd",
       "scorerId": "recNuFhkMZr8OAjbH",
@@ -4563,6 +4598,13 @@
       "matchId": "recovRk2ejxAmPa4a",
       "scorerId": "recNuFhkMZr8OAjbH",
       "assistId": "recFqxDYKYAkKmV7Z",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recO30CtzcaThuWr9",
+      "matchId": "rec4AJZajverq4JZO",
+      "scorerId": "rechPSwQq3TluwcPa",
+      "assistId": "recnBQ5gajZdiyZt3",
       "isOwnGoal": false
     },
     {
@@ -5119,6 +5161,20 @@
       "isOwnGoal": false
     },
     {
+      "id": "recwInKXZxkSmcygs",
+      "matchId": "rec4AJZajverq4JZO",
+      "scorerId": "rec1NVl8RI5HIZxU0",
+      "assistId": "recnBQ5gajZdiyZt3",
+      "isOwnGoal": false
+    },
+    {
+      "id": "recwYJ9LvBPUhbUuo",
+      "matchId": "rec4AJZajverq4JZO",
+      "scorerId": "rechPSwQq3TluwcPa",
+      "assistId": null,
+      "isOwnGoal": false
+    },
+    {
       "id": "recx7NqFRXL6WZZ2x",
       "matchId": "rechRvhLiQJEF2yOV",
       "scorerId": "rec3m0f9cBSdbwGS0",
@@ -5186,6 +5242,58 @@
         "recFqxDYKYAkKmV7Z"
       ],
       "notes": "Dan E saved GOTS2025 Powell's penalty\n",
+      "countsForStats": true
+    },
+    {
+      "id": "rec4AJZajverq4JZO",
+      "name": "2026-07-09",
+      "date": "2026-07-09",
+      "playersPink": [
+        "recHMsjtFPTZv4fCO",
+        "recFqxDYKYAkKmV7Z",
+        "recTyiy2Eu2vZqKkx",
+        "recG662mRw9nTfmcU",
+        "rec3m0f9cBSdbwGS0",
+        "recfZUeAUzKcMAziC",
+        "recZauOLb3ET9m9Ix",
+        "rec8nYCRFDSNo6RhB"
+      ],
+      "playersBlue": [
+        "rec7UewFBTISFASsD",
+        "recnBQ5gajZdiyZt3",
+        "rechPSwQq3TluwcPa",
+        "recx98b2sy6pbRyEt",
+        "recahovWa9ryO8F10",
+        "reckG9bP68ANrvc3p",
+        "rec1NVl8RI5HIZxU0",
+        "rec3IB6CNEMmwNykE"
+      ],
+      "pinkDefs": [
+        "recG662mRw9nTfmcU",
+        "recZauOLb3ET9m9Ix"
+      ],
+      "blueDefs": [
+        "recahovWa9ryO8F10",
+        "rec3IB6CNEMmwNykE",
+        "rec7UewFBTISFASsD"
+      ],
+      "pinkGKId": null,
+      "blueGKId": null,
+      "pinkCS": [],
+      "blueCS": [],
+      "pinkGoals": 0,
+      "blueGoals": 8,
+      "winningTeam": "BLUE",
+      "motmIds": [
+        "rechPSwQq3TluwcPa"
+      ],
+      "honourableMentionIds": [
+        "recnBQ5gajZdiyZt3"
+      ],
+      "captainPinkId": "recHMsjtFPTZv4fCO",
+      "captainBlueId": "rec7UewFBTISFASsD",
+      "otfIds": [],
+      "notes": null,
       "countsForStats": true
     },
     {
@@ -6530,6 +6638,12 @@
       "countExclOG": 4
     },
     {
+      "scorerId": "reckG9bP68ANrvc3p",
+      "assistId": "recnBQ5gajZdiyZt3",
+      "count": 4,
+      "countExclOG": 3
+    },
+    {
       "scorerId": "recFqxDYKYAkKmV7Z",
       "assistId": "recj9rbJP1c0qJEYo",
       "count": 4,
@@ -6554,10 +6668,10 @@
       "countExclOG": 3
     },
     {
-      "scorerId": "reckG9bP68ANrvc3p",
+      "scorerId": "rechPSwQq3TluwcPa",
       "assistId": "recnBQ5gajZdiyZt3",
       "count": 3,
-      "countExclOG": 2
+      "countExclOG": 3
     },
     {
       "scorerId": "recFXaQaQqUJcs1ce",
@@ -6591,6 +6705,12 @@
     },
     {
       "scorerId": "recjnn0QDEMpSHREB",
+      "assistId": "recnBQ5gajZdiyZt3",
+      "count": 2,
+      "countExclOG": 2
+    },
+    {
+      "scorerId": "rec1NVl8RI5HIZxU0",
       "assistId": "recnBQ5gajZdiyZt3",
       "count": 2,
       "countExclOG": 2
@@ -7066,6 +7186,27 @@
   ],
   "defensivePartnershipsGoalsAgainst": [
     {
+      "playerId1": "rec3IB6CNEMmwNykE",
+      "playerId2": "recahovWa9ryO8F10",
+      "matches": 1,
+      "goalsAgainst": 0,
+      "gaPerMatch": 0
+    },
+    {
+      "playerId1": "rec7UewFBTISFASsD",
+      "playerId2": "recahovWa9ryO8F10",
+      "matches": 1,
+      "goalsAgainst": 0,
+      "gaPerMatch": 0
+    },
+    {
+      "playerId1": "rec3IB6CNEMmwNykE",
+      "playerId2": "rec7UewFBTISFASsD",
+      "matches": 1,
+      "goalsAgainst": 0,
+      "gaPerMatch": 0
+    },
+    {
       "playerId1": "rec8nYCRFDSNo6RhB",
       "playerId2": "recZauOLb3ET9m9Ix",
       "matches": 1,
@@ -7158,13 +7299,6 @@
     },
     {
       "playerId1": "recG662mRw9nTfmcU",
-      "playerId2": "recZauOLb3ET9m9Ix",
-      "matches": 5,
-      "goalsAgainst": 15,
-      "gaPerMatch": 3
-    },
-    {
-      "playerId1": "recG662mRw9nTfmcU",
       "playerId2": "recQYOmJTyCjaOdqk",
       "matches": 1,
       "goalsAgainst": 3,
@@ -7204,6 +7338,13 @@
       "matches": 2,
       "goalsAgainst": 7,
       "gaPerMatch": 3.5
+    },
+    {
+      "playerId1": "recG662mRw9nTfmcU",
+      "playerId2": "recZauOLb3ET9m9Ix",
+      "matches": 6,
+      "goalsAgainst": 23,
+      "gaPerMatch": 3.8333333333333335
     },
     {
       "playerId1": "rec3IB6CNEMmwNykE",
@@ -7261,6 +7402,16 @@
         "rec7UewFBTISFASsD",
         "recG662mRw9nTfmcU",
         "rect8nIhrhsGH3mPK"
+      ],
+      "matches": 1,
+      "goalsAgainst": 0,
+      "gaPerMatch": 0
+    },
+    {
+      "playerIds": [
+        "rec3IB6CNEMmwNykE",
+        "rec7UewFBTISFASsD",
+        "recahovWa9ryO8F10"
       ],
       "matches": 1,
       "goalsAgainst": 0,
@@ -7536,15 +7687,6 @@
     },
     {
       "playerIds": [
-        "recG662mRw9nTfmcU",
-        "recZauOLb3ET9m9Ix"
-      ],
-      "matches": 3,
-      "goalsAgainst": 10,
-      "gaPerMatch": 3.3333333333333335
-    },
-    {
-      "playerIds": [
         "recZauOLb3ET9m9Ix",
         "rechz0vtrzI4YNLt6"
       ],
@@ -7562,6 +7704,15 @@
       "matches": 1,
       "goalsAgainst": 4,
       "gaPerMatch": 4
+    },
+    {
+      "playerIds": [
+        "recG662mRw9nTfmcU",
+        "recZauOLb3ET9m9Ix"
+      ],
+      "matches": 4,
+      "goalsAgainst": 18,
+      "gaPerMatch": 4.5
     },
     {
       "playerIds": [
@@ -8767,12 +8918,12 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-07-21T13:23:24.021Z",
+    "generatedAt": "2026-07-21T13:43:49.401Z",
     "year": 2026,
-    "matchesInYear": 25,
-    "matchesCountForStatsInYear": 25,
+    "matchesInYear": 26,
+    "matchesCountForStatsInYear": 26,
     "matchesNonStatInYear": 0,
-    "goalsIncluded": 135,
+    "goalsIncluded": 143,
     "subsTransactionsIncluded": 50
   }
 }

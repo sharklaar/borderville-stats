@@ -663,6 +663,7 @@ function renderPlayers(players, cardsEl, datasetMeta) {
     const capsAll = s.caps ?? 0;
     const caps2026 = s.caps2026 ?? 0;
     const subs = s.subs ?? 0;
+    const hasLegendCard = num(capsAll) >= 200;
 
     const rawPoints = getRawFplPoints(p);
     const value = rawPointsToValueMillions(rawPoints);
@@ -697,7 +698,7 @@ function renderPlayers(players, cardsEl, datasetMeta) {
     const awardsHtml = playerId ? renderAwardsChips(playerId) : "";
 
     const el = document.createElement("div");
-    el.className = "card";
+    el.className = hasLegendCard ? "card card--legend" : "card";
     el.setAttribute("role", "button");
     el.setAttribute("tabindex", "0");
     el.setAttribute("aria-label", `Flip card for ${name}`);

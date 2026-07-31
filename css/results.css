@@ -18,9 +18,14 @@
   gap: 12px;
   padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(0,0,0,0.18);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+/* =========================
+   Scoreline
+   Pink | score | Blue
+   ========================= */
 
 .inline-scoreline {
   display: grid;
@@ -49,12 +54,18 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+
   font-size: 38px;
   line-height: 1;
   font-weight: 950;
   letter-spacing: 0.5px;
   white-space: nowrap;
 }
+
+/* =========================
+   Team details
+   Pink column | Blue column
+   ========================= */
 
 .team-stats-grid {
   display: grid;
@@ -80,6 +91,7 @@
 .team-result-section {
   display: grid;
   gap: 5px;
+  min-width: 0;
 }
 
 .team-result-label {
@@ -94,6 +106,8 @@
 .team-result-lines {
   display: grid;
   gap: 4px;
+  min-width: 0;
+
   font-size: 14px;
   line-height: 1.28;
   font-weight: 750;
@@ -101,12 +115,15 @@
 
 .result-line {
   min-height: 18px;
+  overflow-wrap: anywhere;
 }
 
 .team-result-captain {
   display: flex;
   gap: 7px;
   align-items: baseline;
+  min-width: 0;
+
   font-size: 14px;
   line-height: 1.3;
   font-weight: 750;
@@ -115,6 +132,10 @@
 .team-result-blue .team-result-captain {
   justify-content: flex-end;
 }
+
+/* =========================
+   Match recap
+   ========================= */
 
 .match-recap {
   margin-top: 12px;
@@ -134,43 +155,201 @@
   padding: 14px;
 }
 
+/* =========================
+   Tablet
+   ========================= */
+
 @media (max-width: 700px) {
+  .match-result-grid {
+    gap: 14px;
+    padding: 12px;
+  }
+
+  /*
+    Keep the match heading as:
+
+    Pink     1–6     Blue
+  */
   .inline-scoreline {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
   }
 
-  .inline-team,
-  .inline-team-pink,
-  .inline-team-blue {
-    justify-content: center;
-  }
-
-  .inline-score {
-    font-size: 34px;
-    order: 2;
+  .inline-team {
+    gap: 7px;
+    min-width: 0;
   }
 
   .inline-team-pink {
-    order: 1;
+    justify-content: flex-start;
   }
 
   .inline-team-blue {
-    order: 3;
+    justify-content: flex-end;
   }
 
-  .team-stats-grid,
-  .recap-grid {
-    grid-template-columns: 1fr;
+  .inline-score {
+    order: initial;
+    gap: 6px;
+    font-size: 30px;
   }
 
-  .team-result,
-  .team-result-pink,
-  .team-result-blue {
+  .inline-team-pink,
+  .inline-team-blue {
+    order: initial;
+  }
+
+  /*
+    Keep each team's information in its own column:
+
+    Pink details    Blue details
+  */
+  .team-stats-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .team-result {
+    gap: 12px;
+  }
+
+  .team-result-pink {
     text-align: left;
   }
 
+  .team-result-blue {
+    text-align: right;
+  }
+
   .team-result-blue .team-result-captain {
-    justify-content: flex-start;
+    justify-content: flex-end;
+  }
+
+  .team-result-label {
+    font-size: 11px;
+    letter-spacing: 0.45px;
+  }
+
+  .team-result-lines,
+  .team-result-captain {
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  /*
+    Recap is unrelated to the two teams, so it can still
+    become one full-width column on smaller screens.
+  */
+  .recap-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   Small phones
+   ========================= */
+
+@media (max-width: 480px) {
+  .match-result-grid {
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .inline-scoreline {
+    gap: 5px;
+  }
+
+  .inline-team {
+    gap: 5px;
+  }
+
+  .inline-score {
+    gap: 4px;
+    font-size: 26px;
+    letter-spacing: 0;
+  }
+
+  /*
+    Team names may be supplied by another stylesheet,
+    so cover the likely elements without affecting desktop.
+  */
+  .inline-team,
+  .inline-team .team-name {
+    font-size: 15px;
+    line-height: 1.1;
+  }
+
+  .inline-team .team-pill {
+    width: 9px;
+    height: 9px;
+    flex: 0 0 9px;
+  }
+
+  .team-stats-grid {
+    gap: 10px;
+  }
+
+  .team-result {
+    gap: 11px;
+  }
+
+  .team-result-section {
+    gap: 4px;
+  }
+
+  .team-result-label {
+    font-size: 10px;
+    letter-spacing: 0.35px;
+  }
+
+  .team-result-lines,
+  .team-result-captain {
+    font-size: 12px;
+    line-height: 1.32;
+  }
+
+  .team-result-captain {
+    gap: 4px;
+  }
+
+  .result-line {
+    min-height: 16px;
+  }
+}
+
+/* =========================
+   Very narrow phones
+   ========================= */
+
+@media (max-width: 360px) {
+  .match-result-grid {
+    padding: 9px 8px;
+  }
+
+  .inline-scoreline {
+    gap: 3px;
+  }
+
+  .inline-score {
+    font-size: 23px;
+  }
+
+  .inline-team,
+  .inline-team .team-name {
+    font-size: 13px;
+  }
+
+  .team-stats-grid {
+    gap: 8px;
+  }
+
+  .team-result-label {
+    font-size: 9px;
+  }
+
+  .team-result-lines,
+  .team-result-captain {
+    font-size: 11px;
   }
 }

@@ -36,7 +36,7 @@ function posClass(pos) {
   if (p === 'gk') return 'is-gk';
   if (p === 'def') return 'is-def';
   if (p === 'mid') return 'is-mid';
-  if (p === 'fwd') return 'is-fwd';
+  if (p === 'fwd' || p === '6/8/10') return 'is-fwd';
   return '';
 }
 function profilePhotoUrl(player) {
@@ -203,7 +203,9 @@ function renderSummary(rows) {
   const topOverall = rows[0] || null;
   const topDef = rows.find(row => ['DEF', 'GK'].includes(displayPosition(row.player))) || null;
   const topMid = rows.find(row => displayPosition(row.player) === 'MID') || null;
-  const topFwd = rows.find(row => displayPosition(row.player) === 'FWD') || null;
+  const topFwd = rows.find(row =>
+  ['FWD', '6/8/10'].includes(displayPosition(row.player))
+) || null;
 
   const card = (label, row) => `
     <article class="fpl-summary-card">
@@ -225,8 +227,17 @@ function renderTable(rows) {
   if (!body) return;
   const q = normaliseNameQuery(FPL_STATE.search);
   const pos = FPL_STATE.position;
-  const filtered = rows.filter(row => playerMatchesQuery(row, q)).filter(row => pos === 'ALL' || displayPosition(row.player) === pos);
+  const filtered = rows
+  .filter(row => playerMatchesQuery(row, q))
+  .filter(row => {
+    const playerPos = displayPosition(row.player);
 
+    if (pos === 'ALL') return true;
+    if (pos === 'FWD') return ['FWD', '6/8/10'].includes(playerPos);
+
+    return playerPos === pos;
+  });
+  
   if (!filtered.length) {
     body.innerHTML = '<tr><td colspan="13" class="fpl-empty">No players match those filters.</td></tr>';
     return;

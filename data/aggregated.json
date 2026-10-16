@@ -3625,7 +3625,7 @@
       "id": "rechz0vtrzI4YNLt6",
       "name": "Sam Wheat",
       "stats": {
-        "wins": 9,
+        "wins": 10,
         "draws": 4,
         "losses": 7,
         "goals": 2,
@@ -3635,32 +3635,32 @@
         "gkCleanSheets": 0,
         "otfs": 2,
         "honourableMentions": 1,
-        "conceded2026": 52,
+        "conceded2026": 57,
         "concededExactlyOneMatches2026": 5,
         "concededExactlyTwoMatches2026": 6,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": 3,
-        "caps": 32,
-        "caps2026": 21,
+        "subs": 2,
+        "caps": 33,
+        "caps2026": 22,
         "motm": 1,
         "motm2026": 1,
         "captain": 4,
         "captain2026": 4,
-        "playedLast10": 5,
-        "ovr": 59,
-        "ovrRawSeason": 98,
+        "playedLast10": 6,
+        "ovr": 62,
+        "ovrRawSeason": 102,
         "ovrPenalty": 0,
-        "ovrCombined": 98,
+        "ovrCombined": 102,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 17,
-          "OTHER": 4
+          "OTHER": 5
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 7,
-          "OTHER": 2
+          "OTHER": 3
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -3668,7 +3668,7 @@
           "OTHER": 2
         },
         "form": [
-          "X",
+          "W",
           "CL",
           "D",
           "MD",
@@ -3692,7 +3692,7 @@
       "id": "recj9rbJP1c0qJEYo",
       "name": "Matt Tarrant",
       "stats": {
-        "wins": 11,
+        "wins": 10,
         "draws": 6,
         "losses": 7,
         "goals": 13,
@@ -3702,32 +3702,32 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 2,
-        "conceded2026": 63,
+        "conceded2026": 58,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -6,
-        "caps": 116,
-        "caps2026": 25,
+        "subs": -5,
+        "caps": 115,
+        "caps2026": 24,
         "motm": 3,
         "motm2026": 1,
         "captain": 3,
         "captain2026": 3,
-        "playedLast10": 7,
-        "ovr": 70,
-        "ovrRawSeason": 152,
+        "playedLast10": 6,
+        "ovr": 69,
+        "ovrRawSeason": 148,
         "ovrPenalty": 0,
-        "ovrCombined": 152,
+        "ovrCombined": 148,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 25
+          "OTHER": 24
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 11
+          "OTHER": 10
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -3735,7 +3735,7 @@
           "OTHER": 13
         },
         "form": [
-          "W",
+          "X",
           "L",
           "X",
           "D",
@@ -6240,11 +6240,11 @@
         "recbMctChtMm0lqid",
         "recZauOLb3ET9m9Ix",
         "recfZUeAUzKcMAziC",
-        "recj9rbJP1c0qJEYo",
         "rechPSwQq3TluwcPa",
         "recZIZ8WBcb1IyqoS",
         "recTyiy2Eu2vZqKkx",
-        "rec1NVl8RI5HIZxU0"
+        "rec1NVl8RI5HIZxU0",
+        "rechz0vtrzI4YNLt6"
       ],
       "playersBlue": [
         "rec8nYCRFDSNo6RhB",
@@ -12298,7 +12298,7 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-10-16T22:47:32.679Z",
+    "generatedAt": "2026-10-16T22:50:27.482Z",
     "year": 2026,
     "matchesInYear": 37,
     "matchesCountForStatsInYear": 37,

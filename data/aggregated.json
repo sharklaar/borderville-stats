@@ -71,7 +71,7 @@
       "id": "rec1NVl8RI5HIZxU0",
       "name": "Sam Sinclair",
       "stats": {
-        "wins": 8,
+        "wins": 9,
         "draws": 5,
         "losses": 3,
         "goals": 6,
@@ -79,34 +79,34 @@
         "ogs": 0,
         "cleanSheets": 1,
         "gkCleanSheets": 1,
-        "otfs": 4,
+        "otfs": 5,
         "honourableMentions": 3,
-        "conceded2026": 35,
+        "conceded2026": 40,
         "concededExactlyOneMatches2026": 1,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 1,
-        "subs": 0,
-        "caps": 119,
-        "caps2026": 16,
+        "subs": -1,
+        "caps": 120,
+        "caps2026": 17,
         "motm": 12,
         "motm2026": 2,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 3,
-        "ovr": 62,
-        "ovrRawSeason": 103,
+        "playedLast10": 4,
+        "ovr": 64,
+        "ovrRawSeason": 106,
         "ovrPenalty": 0,
-        "ovrCombined": 103,
+        "ovrCombined": 106,
         "fantasyRoleApps": {
           "GK": 3,
           "DEF": 1,
-          "OTHER": 12
+          "OTHER": 13
         },
         "fantasyRoleWins": {
           "GK": 3,
           "DEF": 0,
-          "OTHER": 5
+          "OTHER": 6
         },
         "fantasyRoleGoals": {
           "GK": 1,
@@ -114,7 +114,7 @@
           "OTHER": 5
         },
         "form": [
-          "X",
+          "W",
           "X",
           "X",
           "D",
@@ -1332,7 +1332,7 @@
       "id": "recG662mRw9nTfmcU",
       "name": "Sean Knight",
       "stats": {
-        "wins": 10,
+        "wins": 9,
         "draws": 8,
         "losses": 10,
         "goals": 2,
@@ -1342,32 +1342,32 @@
         "gkCleanSheets": 0,
         "otfs": 1,
         "honourableMentions": 2,
-        "conceded2026": 84,
+        "conceded2026": 79,
         "concededExactlyOneMatches2026": 7,
         "concededExactlyTwoMatches2026": 4,
         "winningCaptain2026": 2,
         "motmCaptain2026": 0,
-        "subs": -3,
-        "caps": 128,
-        "caps2026": 28,
+        "subs": -2,
+        "caps": 127,
+        "caps2026": 27,
         "motm": 6,
         "motm2026": 1,
         "captain": 3,
         "captain2026": 3,
-        "playedLast10": 9,
-        "ovr": 80,
-        "ovrRawSeason": 134,
+        "playedLast10": 8,
+        "ovr": 77,
+        "ovrRawSeason": 130,
         "ovrPenalty": 0,
-        "ovrCombined": 134,
+        "ovrCombined": 130,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 22,
-          "OTHER": 6
+          "OTHER": 5
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 9,
-          "OTHER": 1
+          "OTHER": 0
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -1375,7 +1375,7 @@
           "OTHER": 0
         },
         "form": [
-          "W",
+          "X",
           "X",
           "D",
           "D",
@@ -6244,7 +6244,7 @@
         "rechPSwQq3TluwcPa",
         "recZIZ8WBcb1IyqoS",
         "recTyiy2Eu2vZqKkx",
-        "recG662mRw9nTfmcU"
+        "rec1NVl8RI5HIZxU0"
       ],
       "playersBlue": [
         "rec8nYCRFDSNo6RhB",
@@ -6278,7 +6278,9 @@
       "honourableMentionIds": [],
       "captainPinkId": "recQYOmJTyCjaOdqk",
       "captainBlueId": "rec8nYCRFDSNo6RhB",
-      "otfIds": [],
+      "otfIds": [
+        "rec1NVl8RI5HIZxU0"
+      ],
       "notes": null,
       "countsForStats": true
     },
@@ -12296,7 +12298,7 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-10-16T22:39:11.248Z",
+    "generatedAt": "2026-10-16T22:47:32.679Z",
     "year": 2026,
     "matchesInYear": 37,
     "matchesCountForStatsInYear": 37,

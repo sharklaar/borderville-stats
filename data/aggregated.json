@@ -3267,7 +3267,7 @@
         "draws": 5,
         "losses": 7,
         "goals": 4,
-        "assists": 5,
+        "assists": 2,
         "ogs": 0,
         "cleanSheets": 1,
         "gkCleanSheets": 0,
@@ -3286,10 +3286,10 @@
         "captain": 3,
         "captain2026": 3,
         "playedLast10": 6,
-        "ovr": 41,
-        "ovrRawSeason": 66,
+        "ovr": 36,
+        "ovrRawSeason": 57,
         "ovrPenalty": 0,
-        "ovrCombined": 66,
+        "ovrCombined": 57,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 2,
@@ -3334,7 +3334,7 @@
         "draws": 1,
         "losses": 1,
         "goals": 0,
-        "assists": 2,
+        "assists": 3,
         "ogs": 0,
         "cleanSheets": 0,
         "gkCleanSheets": 0,
@@ -3353,10 +3353,10 @@
         "captain": 0,
         "captain2026": 0,
         "playedLast10": 6,
-        "ovr": 17,
-        "ovrRawSeason": 28,
+        "ovr": 18,
+        "ovrRawSeason": 31,
         "ovrPenalty": 0,
-        "ovrCombined": 28,
+        "ovrCombined": 31,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
@@ -4987,7 +4987,7 @@
       "id": "rec7uJMaXwKTTVBir",
       "matchId": "recPVgzzfbif0VrDf",
       "scorerId": "rechPSwQq3TluwcPa",
-      "assistId": "recahovWa9ryO8F10",
+      "assistId": "recbMctChtMm0lqid",
       "isOwnGoal": false
     },
     {
@@ -5008,7 +5008,7 @@
       "id": "rec8tdhud8yT2jOBJ",
       "matchId": "recPVgzzfbif0VrDf",
       "scorerId": "rechPSwQq3TluwcPa",
-      "assistId": "recahovWa9ryO8F10",
+      "assistId": null,
       "isOwnGoal": false
     },
     {
@@ -5281,7 +5281,7 @@
       "id": "recI5oyPapA3iKCoo",
       "matchId": "recPVgzzfbif0VrDf",
       "scorerId": "rechPSwQq3TluwcPa",
-      "assistId": "recahovWa9ryO8F10",
+      "assistId": null,
       "isOwnGoal": false
     },
     {
@@ -8306,12 +8306,6 @@
       "countExclOG": 3
     },
     {
-      "scorerId": "recahovWa9ryO8F10",
-      "assistId": "rechPSwQq3TluwcPa",
-      "count": 3,
-      "countExclOG": 3
-    },
-    {
       "scorerId": "rechPSwQq3TluwcPa",
       "assistId": "recnBQ5gajZdiyZt3",
       "count": 3,
@@ -8542,6 +8536,12 @@
     {
       "scorerId": "recHMsjtFPTZv4fCO",
       "assistId": "recnBQ5gajZdiyZt3",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
+      "scorerId": "recbMctChtMm0lqid",
+      "assistId": "rechPSwQq3TluwcPa",
       "count": 1,
       "countExclOG": 1
     },
@@ -12296,7 +12296,7 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-10-16T22:22:02.433Z",
+    "generatedAt": "2026-10-16T22:39:11.248Z",
     "year": 2026,
     "matchesInYear": 37,
     "matchesCountForStatsInYear": 37,

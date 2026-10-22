@@ -210,17 +210,21 @@ function computeStrikePartners(goals, playersById, monthMatchIds) {
     if (!g || g.isOwnGoal) return;
     if (!monthMatchIds.has(g.matchId)) return;
     if (!g.scorerId || !g.assistId) return;
-    const key = `${g.scorerId}|${g.assistId}`;
+    if (g.scorerId === g.assistId) return;
+    // A partnership is unordered: A scoring from B and B scoring from A
+    // both contribute one goal to the same pair.
+    const key = [g.scorerId, g.assistId].sort().join("|");
     counts[key] = (counts[key] || 0) + 1;
   });
 
   const items = Object.entries(counts)
     .map(([key, count]) => {
       const [scorerId, assistId] = key.split("|");
-      return { scorerId, assistId, count: asNumber(count, 0) };
+      const name = [playerName(playersById, scorerId), playerName(playersById, assistId)].sort().join(" + ");
+      return { scorerId, assistId, name, count: asNumber(count, 0) };
     })
     .filter(x => x.count > 0)
-    .sort((a, b) => b.count - a.count)
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
     .slice(0, 5);
 
   return items.map((p, idx) => {

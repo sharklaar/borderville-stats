@@ -233,58 +233,52 @@ function computeStrikePartners(goals, playersById, monthMatchIds) {
   });
 }
 
-function computeDefensivePartners(matches, playersById, monthMatchIds) {
-  // Defensive Partnership CS (DPCS):
-  // - Occurs when a TEAM has a clean sheet AND has >=2 defenders listed for that match.
-  // - If >2 defenders, all unordered combinations of 2 defenders each get +1.
-  // - Goalkeepers are excluded.
-  // - Do NOT infer defenders from Players.position; use Matches explicit fields:
-  //   blueDefs / pinkDefs + blueCS / pinkCS, excluding blueGKId / pinkGKId.
-  const pairCounts = new Map();
-
-  const addPairs = (ids) => {
-    const list = Array.from(new Set(Array.isArray(ids) ? ids : [])).filter(Boolean);
-    if (list.length < 2) return;
-    for (let i = 0; i < list.length - 1; i++) {
-      for (let j = i + 1; j < list.length; j++) {
-        const a = list[i];
-        const b = list[j];
-        const id1 = a < b ? a : b;
-        const id2 = a < b ? b : a;
-        const key = `${id1}|${id2}`;
-        pairCounts.set(key, (pairCounts.get(key) || 0) + 1);
-      }
-    }
-  };
-
-  const csDefenders = (teamDefs, teamCS, gkId) => {
-    const defs = Array.isArray(teamDefs) ? teamDefs : [];
-    const cs = Array.isArray(teamCS) ? teamCS : [];
-    return defs.filter((pid) => cs.includes(pid) && pid !== gkId);
-  };
-
-  (matches || []).forEach((m) => {
-    if (!m || m.countsForStats !== true) return;
-    if (!monthMatchIds.has(m.id)) return;
-
-    // Pink clean sheet defenders
-    addPairs(csDefenders(m.pinkDefs, m.pinkCS, m.pinkGKId));
-    // Blue clean sheet defenders
-    addPairs(csDefenders(m.blueDefs, m.blueCS, m.blueGKId));
+function rankDefensivePartners(matches, goals, playersById, monthMatchIds) {
+  const pairs = new Map();
+  const goalsByMatch = new Map();
+  (goals || []).forEach(goal => {
+    if (!goalsByMatch.has(goal.matchId)) goalsByMatch.set(goal.matchId, []);
+    goalsByMatch.get(goal.matchId).push(goal);
   });
 
-  const items = Array.from(pairCounts.entries())
-    .map(([key, count]) => {
-      const [id1, id2] = key.split("|");
-      return { id1, id2, count: asNumber(count, 0) };
-    })
-    .filter(x => x.count > 0)
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 5);
+  (matches || []).forEach(match => {
+    if (!match || match.countsForStats !== true || !monthMatchIds.has(match.id)) return;
+    // Only count FPL points earned in this shared defensive appearance.
+    const scores = new Map(buildFplTable({
+      players: playersById, matches: [match], goals: goalsByMatch.get(match.id) || []
+    }).map(row => [row.id, row.total]));
+    const { getRole } = buildRoleMaps(match);
+    for (const team of ["Pink", "Blue"]) {
+      const prefix = team.toLowerCase();
+      const squad = new Set(match[`players${team}`] || []);
+      const defs = [...new Set(match[`${prefix}Defs`] ?? match[`${prefix}DefIds`] ?? [])]
+        .filter(id => squad.has(id) && getRole(id) === "DEF" && scores.has(id)).sort();
+      // Every unordered pair counts, including each pair within a trio.
+      for (let i = 0; i < defs.length; i++) {
+        for (let j = i + 1; j < defs.length; j++) {
+          const ids = [defs[i], defs[j]];
+          const key = ids.join("|");
+          const pair = pairs.get(key) || { ids, games: 0, points: 0 };
+          pair.games++;
+          pair.points += scores.get(ids[0]) + scores.get(ids[1]);
+          pairs.set(key, pair);
+        }
+      }
+    }
+  });
 
-  return items.map((p, idx) => {
-    const left = `${escapeHtml(playerName(playersById, p.id1))} <span class="lb-plus">+</span> ${escapeHtml(playerName(playersById, p.id2))}`;
-    return rowHtmlRanked(idx + 1, left, escapeHtml(String(p.count)));
+  return [...pairs.values()].map(pair => ({
+    ...pair,
+    name: pair.ids.map(id => playerName(playersById, id)).sort().join(" + ")
+  })).sort((a, b) => b.points - a.points || a.name.localeCompare(b.name)).slice(0, 5);
+}
+
+function computeDefensivePartners(matches, goals, playersById, monthMatchIds) {
+  return rankDefensivePartners(matches, goals, playersById, monthMatchIds).map((pair, idx) => {
+    const left = pair.ids.map(id => escapeHtml(playerName(playersById, id)))
+      .join(' <span class="lb-plus">+</span> ');
+    const right = `${pair.points} pts<span class="lb-games">${pair.games} ${pair.games === 1 ? "game" : "games"}</span>`;
+    return rowHtmlRanked(idx + 1, left, right);
   });
 }
 
@@ -362,7 +356,7 @@ async function main() {
     ));
 
     renderRows($("lbStrikePartners"), computeStrikePartners(goals, playersById, matchIdSet));
-    renderRows($("lbDefensivePartners"), computeDefensivePartners(matches, playersById, matchIdSet));
+    renderRows($("lbDefensivePartners"), computeDefensivePartners(matches, goals, playersById, matchIdSet));
 
     // Subs leaderboard stays global
     const { rows: negRows, totalArrears } = buildNegativeSubs(playersById);

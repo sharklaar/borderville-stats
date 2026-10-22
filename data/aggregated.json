@@ -71,42 +71,42 @@
       "id": "rec1NVl8RI5HIZxU0",
       "name": "Sam Sinclair",
       "stats": {
-        "wins": 9,
+        "wins": 10,
         "draws": 5,
         "losses": 3,
         "goals": 6,
-        "assists": 5,
+        "assists": 6,
         "ogs": 0,
         "cleanSheets": 1,
         "gkCleanSheets": 1,
         "otfs": 5,
         "honourableMentions": 3,
-        "conceded2026": 40,
+        "conceded2026": 41,
         "concededExactlyOneMatches2026": 1,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 1,
-        "subs": -1,
-        "caps": 120,
-        "caps2026": 17,
+        "subs": -2,
+        "caps": 121,
+        "caps2026": 18,
         "motm": 12,
         "motm2026": 2,
         "captain": 2,
         "captain2026": 2,
         "playedLast10": 4,
-        "ovr": 64,
-        "ovrRawSeason": 106,
+        "ovr": 68,
+        "ovrRawSeason": 113,
         "ovrPenalty": 0,
-        "ovrCombined": 106,
+        "ovrCombined": 113,
         "fantasyRoleApps": {
           "GK": 3,
           "DEF": 1,
-          "OTHER": 13
+          "OTHER": 14
         },
         "fantasyRoleWins": {
           "GK": 3,
           "DEF": 0,
-          "OTHER": 6
+          "OTHER": 7
         },
         "fantasyRoleGoals": {
           "GK": 1,
@@ -115,6 +115,7 @@
         },
         "form": [
           "W",
+          "W",
           "X",
           "X",
           "D",
@@ -122,8 +123,7 @@
           "X",
           "X",
           "X",
-          "D",
-          "L"
+          "D"
         ]
       },
       "meta": {
@@ -134,23 +134,23 @@
             "id": "att7fijhP0pFGdYC7",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/BBQr7LGQ8nAwA1fvCPW6Pg/Zk-3TzQkVV-kAQfkF4Jj1oT_zfEdH2Eqvv0-yqSyCBz_uDbVPSYxlDm6OCYoPd_XX621doj93GsQ2u5Hp1w9HewvcBl8xkHQ3XQH0lRBfGrnrWBjAwrgvuYP9Q7G4PbQYBPTXMH4HwYnT_kON48AUKlL-Z9LYNCqGG2KFQHjsyA/FEJw1apoqs3xNU-XgJt_DtFg2CndwZoet2xr7JFoWKQ",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/_JUCuDRTGxiqgc8-kwgu3Q/JpSHrOoiQUdSZNQN9Yvwv2_mV9JMZQNRrrywzwqBiRcEn4uhRjLoTg6XGApGuANIBc0jdWjDglO4HQxlAgxP6jE7uiEz_Uz3jDmNJR4Cf382Tcj2s6a1xh5lEenal0E5ssAyFRc_6ZtzswzMRf4XPy3fzJHiFUO0pTv9yMKiAJ4/FOUMJ1LSSnhms6lkSYEsOq8uLJamFXWZ3cXbPbp3gL0",
             "filename": "Sam_Sinclair.png",
             "size": 149998,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/d0tjs6fEkYsHbyoYQCnsbQ/JSiRfgfxITkBqtAxByJSQAExUCrcN1fA4aXZu9x20thAOaB2QY9T8mMqZngv1DNR3UiEOX_u80EmkjNLhZEbFQ1ksqLvH3iwBDdY-ct3Gmurt5nB889d6iMEAHTEjXLTJ5PB1j2jKMEcHOMjw2iQYA/PR2XKY--YxqBjvsSVProSFJ8upyvSjkQrJchsZNykKc",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/HajNHozj1iEaRGS4I55jqA/PH2jTdWP1UMOOU96XVM-jX21BOrslTfEYwMiuRnWZJogaY8vV7EnROQgEfuxZ-Cx794FpI6VMsy5l1iOCRBcjdTHDuUdu_klbGGpZLwtYrU4oGJbiC5RyAjFYwUyZmzKPf4sJkMaup-B2Y9AvJGcrA/xCfHWqrhu43GrnLTcY2aVO3jZSLV6Kikr1iiM4oIzF4",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/kfEHK5EpcbgzHDzO_VCWTQ/CwYY7jYm4J_WqNWY_yLqqbZLg36Or6w-wTqLF4DKQ_H0kYINf8wCM1A_D5jVWB2tZzQgLV_eKBcZN7gY5s5-8gZjDhHlLyMyRmUC1cG2Jw67LIVeXVyo_nC8JXUZX-Wy6-BkVdG7L8-1o4EtKFVzXA/WpB9RHnBtbJqO44j9b40fmQftFf5oLicJhzkz2IecJc",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/7lArcvRQ00ATNKKDMvW1yA/Y0gsfDcnFHgc1bqlvkcdtMAl7zsHRjbUzLX880ZXTtdVS4NJwn4y2MaEYGSLP12o6mMUup1QrOjIyC2_A586JTxxq8h_rPQyRV3fWhHyuENS1MKqY3bETIXWNwgZ_CG4UqLVIKACLMeO69lzBKNFQQ/24mT7o4Badf4CRO_1xor3WepUv7NAEYvpxwZjPy20MA",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/5Lylq6DzHzVWw_bs08jsAQ/hyWw1G4aE-wxwmqKPsRU_FfnS9Fh1xXbPEWwYlvGiknVkRFZClkzINTlAZfjTU_wJ0UgufDAeIP4ky6DzMqG_z_Nl85OlbwZrsuJsF1sXXwtCwYAye_B02Rb1FZuSvJGNP-KVGZwpNA5oqNafV6obQ/Lb2fHKk4P95HgjpmJZKOBUbRT2etKUmXWJ4Kc9Co2Hw",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/piOJXYOcuMAVKaR6cgDBcA/lic33tOXT_kbkeNHyuJ1XUrtm65nYc7V3Dz3AjEQqavSRy_jIdULwnbd1m44tajdCwlm3YgXy_m-BSDQmx0CYHJDKJlD1bqZQCSWzvDPKPmGrdTVlcxdtAlJrXy5dUdXUGHSQ_tBl4afHFDje58aEg/VZrusmKEGDGpyilu1-dse7t__D_P-vTrhy8o1qOnxlc",
                 "width": 433,
                 "height": 427
               }
@@ -368,7 +368,7 @@
       "stats": {
         "wins": 12,
         "draws": 7,
-        "losses": 13,
+        "losses": 14,
         "goals": 1,
         "assists": 4,
         "ogs": 0,
@@ -376,27 +376,27 @@
         "gkCleanSheets": 0,
         "otfs": 3,
         "honourableMentions": 3,
-        "conceded2026": 88,
+        "conceded2026": 90,
         "concededExactlyOneMatches2026": 2,
         "concededExactlyTwoMatches2026": 4,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": -4,
-        "caps": 209,
-        "caps2026": 33,
+        "subs": -5,
+        "caps": 210,
+        "caps2026": 34,
         "motm": 9,
         "motm2026": 1,
         "captain": 4,
         "captain2026": 4,
         "playedLast10": 10,
         "ovr": 69,
-        "ovrRawSeason": 115,
+        "ovrRawSeason": 116,
         "ovrPenalty": 0,
-        "ovrCombined": 115,
+        "ovrCombined": 116,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 17,
-          "OTHER": 16
+          "OTHER": 17
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -410,6 +410,7 @@
         },
         "form": [
           "L",
+          "L",
           "CL",
           "D",
           "D",
@@ -417,8 +418,7 @@
           "L",
           "L",
           "W",
-          "CD",
-          "W"
+          "CD"
         ]
       },
       "meta": {
@@ -429,23 +429,23 @@
             "id": "attmIR2DT9t2IRFgS",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/GW0ESZVMyfC-rB10gJ6IPQ/S7LloZ4H7OeFkKjd-CtdUhW8f4wEA0tctN7XVMv2Hws7M9-QJyjpjKhMiAwaC3iF6EuDBHPHSVlHs0sgb4lXlpHm88p8VaWcdnYu8a9zsDP6GWSLIN4THUKfgEeGXpRkuRlEqV8zCmO6sL-g0aJXA9_HRPt1ai57v1SuImanHDI/lSqkoZ2Xm8pzMv3PXIC0-7oMDmot3NiZssQ9OatlLrE",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/U0Oo2A7WdCTX4qsDKLvgkA/70OTxZvMHddgAygsAaxCbuPyTUEsBPTtB2EBaErSWhMXECuuTwVEYI-jDLKaTM0yGQPiThBNJt5Y4yopKDmLMcFKuxsyfvrDOPy_eEfKIfebOOYizQynDKirwHIEmlUO9KRf8IqjFSE7IScsqoAINr-_Xz1xf5-atUsECmOEjpI/iQbscBNPPmao2MvEiE1YuRPhCRLoetBSKYKDXRvXwTk",
             "filename": "Mike_Doyle.png",
             "size": 151661,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/Kxk5BmBoORzpXnc5WOeGXA/HAiDxXZI7_mngzyHxtB4ypLAgmdZMhChpliFYhTfY2P_vPQi2rzDsMcb9kV4c9ssCPbHBu_6wEBfqv6-U7hXYjrtC5g0fSFu5G7RAGLjHx3LfL2YNwLJTfDg-e6C0vpfn6jyU3ab0pSjru1_JTiNMg/QQuJ_MbcAOEDY-6TiwVrUhv0IeGjoUud0reVGn0nuPg",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/i2b97GNSNxHftiBlNK7r5Q/UBpYzfsfc4cynxqB3oFgja8iLOB1o09fVi8AwAD52sNQ4h2LoI4AngxLpJl-rlzyn4keGp1iw36fy1kor2RAhTRtbxFeu4XJVbh_A7l6_ig6tIRIbKD9xnU4j03MI1YUiTgXQEWpyzOAaWIm7NoCYg/lMPNBb7awyY3B_GwZPxD90I99zuBKCmo5dHIZ9V51eM",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/YaQ7Z2BzbC1oQQbrEy1ofA/bTsz5VKeK7lDVKYsI5RF9-rz1Q7Y1o9uh5VO1FxlMtJjHBjDRkSVtdz98uUQPmC8MSbXQ7MRW2Ky1-URIHYp25yC5-3zxoh-mECHQnI2U79LYnnYrcI7BEctq9dQ3kMcYxov5miFG0GG3VVlmBjEFQ/B41W-BxWliEkhErB9Wqdj4FjtJuOlApWbf3ECZVFnuo",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/0g72bUJQs7mOLIoCwSn-0g/pkR5yzdRe5hVP-g7fvKgfDT4r8ri1f_-mROtRMbPS0ricT5FfyOEqVNYn9Wa7h1fM6_Vf6Q9kXRapxLoF-hsGlr0r3PxN1zKxPoNJ5v9RFIl5jJy25fBaTdfMFnXu5yFx6wnffRe1FNZJuYD9NwH_Q/YfO3QtHUwZUQqTBiWs0zxD557Sb3P_3yhurkhUyLM0w",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/nftsMxJ5rTYMX3khg4wPJg/JsQv_b4ZoNcdqMr2zHeQZ4wCziGnSx4GNZtJu9hIjz96VcJnVv5AuBEROiCN4d1MHcHmn_UoeimeCS-a2x4sQfDBf7ZeiTmL3GZh8rmx7lbSQPCbH6r4G7gf8qO6LGFnbWeOyI1Qikinr18pXxnXpA/Upjgwjczc7W7796gjsS53fT_UY36XIYDheE1wjUORBk",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/t6vll2gEuJOwhyJEVDVFqw/YAFOiZultP_9LP5fgZrnhUkHIji_rUPyHXa2qBa3xKF4rKXzLlvtkOGTBvD0OamqnBjB2-MY8yxf-TgYiBUTfu53g1z-zZLaQeolQaGA9M0nMnEfTigk05xwsY8kXEzRYL1V-sVz8iRHsw430XJWog/QJJ_GUnlUei70g_KT_CoMn1ZOUUr-sOmHDbeOHMV8dk",
                 "width": 433,
                 "height": 427
               }
@@ -527,49 +527,50 @@
       "id": "rec3m0f9cBSdbwGS0",
       "name": "Jon Doughty",
       "stats": {
-        "wins": 11,
+        "wins": 12,
         "draws": 8,
         "losses": 15,
-        "goals": 14,
+        "goals": 16,
         "assists": 13,
         "ogs": 0,
         "cleanSheets": 0,
         "gkCleanSheets": 0,
-        "otfs": 1,
+        "otfs": 2,
         "honourableMentions": 2,
-        "conceded2026": 100,
+        "conceded2026": 101,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
-        "winningCaptain2026": 1,
-        "motmCaptain2026": 1,
-        "subs": 2,
-        "caps": 171,
-        "caps2026": 34,
-        "motm": 14,
-        "motm2026": 4,
-        "captain": 3,
-        "captain2026": 3,
+        "winningCaptain2026": 2,
+        "motmCaptain2026": 2,
+        "subs": 1,
+        "caps": 172,
+        "caps2026": 35,
+        "motm": 15,
+        "motm2026": 5,
+        "captain": 4,
+        "captain2026": 4,
         "playedLast10": 8,
-        "ovr": 80,
-        "ovrRawSeason": 174,
+        "ovr": 86,
+        "ovrRawSeason": 189,
         "ovrPenalty": 0,
-        "ovrCombined": 174,
+        "ovrCombined": 189,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 34
+          "OTHER": 35
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 11
+          "OTHER": 12
         },
         "fantasyRoleGoals": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 14
+          "OTHER": 16
         },
         "form": [
+          "MCW",
           "X",
           "X",
           "D",
@@ -578,8 +579,7 @@
           "W",
           "L",
           "L",
-          "D",
-          "MW"
+          "D"
         ]
       },
       "meta": {
@@ -590,23 +590,23 @@
             "id": "attE5EYS2CNkmlH4Q",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/w8krOEWXBq_kh9DfD8CQTA/nR2SObto8cGMnIEZ7JCvVVpBGA6cGZ8G3BsDjw0yajV8pQ0TlS0t3LLEHavJGgH92qvc4o5Oq8oe1zjHCnH6V6lyARLRmDAr32YslAR-4CmiZrbBoiZgBkFPjG1LPdaFLXYXKRPW_4cahZNYfyBnwR3do43FUFMuRdnnExeVrto/Fff_ZY-DJ8Tsrlh3qi-f6EzaOzduhqPN61IkIPfN6js",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/FIuVVMCGNXPbxxgy6pGQdw/sYFRCGCuYQM5XjEjBjuWA-BfAV585BFPmqBkZinu9A924axrddPZs76gim0boZq_KmLItmtCbxi9VHh1voQZ-1ctXdOtuuNGhKzr5dVFILs0osSIWXUJy-mMA4NRoO8Pco8cClqhiD9TOY5r0j50KTPYx4gg6BSXEQ_BapnnIJY/L7RVkssKOClqoHZVIjxpjzb6yxMWrzR0wV304AF9uRw",
             "filename": "Jon_Doughty.png",
             "size": 188992,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/ci_sOeKkN9-sKzGmHeek8A/-MlDYYNVyMwWktWgIO6UfWIlqODDq7_WYVQuGaP_MzaATLTlY7OFub4GbIRDBSMF06Y-XF67_iYnGfXLqei4q568Ifl-SAb_Q6wMK3lYvNhbzM_aN9kAsv9WVrAa36Kvf-7WO61T-ipgKkWowa_ZDQ/QobG3D6HJthdcvSdwFKSEEg_scn7G3i-HrHJrw9sOWc",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/IYxc9XIZjBASDY6rL3eY7w/PHwGK7lQLf2UE9YWyRMYg3hjXpA0w492-mpwOIEG2umziFGsDxAFUzm7V9OFpZKbZLLpPeIEztidKHr2wtuRfsEkZZgSer-nuVqtaXSzeQhgkeO37F_x3F5k2MD0JwlWykth6mgO74ng5miBDxuhjg/7Hkha3z0GJwOy-eLPsGWsRLGRxp7lZN-zmftbr72Jpc",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/dpgkzn_XErwf4LZAU3yt1w/ORnj0yGw0P1pkuMMR9IW0DP3rATkziev7KHYf0QB-5Ds9W2hxwzrGTXawcS1447wpObP9WW49RuRlTUdi3yYPtV4dfYDxWsn35nM-RjHu383tQRLS61azFV5m1e184mopfKYCDMfsyC4UgAYTomVYg/nMXbKIDStevx69k5k9sTpgkVznrKxErKeSLt0fCPSNo",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/ssqP2fohYmJxfpY5RSR9qw/T4V_nUtdm1Ml5A5Hjm2a0Rg6LjIrpCLA9oeeIjS7jXY5N43sKBTKX0KZ_4f6hUaWyZc4aMcG-unHkL2IPtk6IiQiiOYYfRd9UZGlRyCu1kKSEeINmuYZOZv8KtCtCmFYUV8FMUwi8bqe9RxLRog1gg/6NnN04-IrjhH12GHojSbNtZx4NwwrNukhZQt20vUTY0",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/88hEEw1-f2rdRkuRXRIf9A/cWNKPBJOpoKMlzppGi4dn9147WcgDRI0pwDC_QCE3nHTO4BA217HdCuFlhejP8lWhqizx6WN2AuuD8a5NitwjrEUr9PJW85S6kUClNxX_LleihC0qBhLt9lC0XjDFTzC6N8GxDSao2sLoeB2LBjByA/qiAlaORoyPeWPRkZSf9g3sKdwN3ieMbNoMzNCoy1p-Q",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/XTNOHA0JYalxxDt-gLH-2w/gcTAb857nRWCdxr9F7daoyXhUAmSqnGmMTWLhRIcxrQZOWItVhWhktmXBW2qrA9lJVcsqXUJsww-WmDworof4p8dMZJssp8UcYq0q7HHW3Gj2yZT65hw7-_h98pgR4GRVVGONzwii0ZYKz2S86SEZw/NP7HYDq12VP_dX784GUj2A-aNVFTeh_G6r_zDgKuR5c",
                 "width": 433,
                 "height": 427
               }
@@ -621,7 +621,7 @@
       "id": "rec3nbd9YeWG6UHFf",
       "name": "Ali Moody",
       "stats": {
-        "wins": 0,
+        "wins": 1,
         "draws": 1,
         "losses": 4,
         "goals": 1,
@@ -631,32 +631,32 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 1,
-        "conceded2026": 15,
+        "conceded2026": 16,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -5,
-        "caps": 5,
-        "caps2026": 5,
+        "subs": -6,
+        "caps": 6,
+        "caps2026": 6,
         "motm": 0,
         "motm2026": 0,
         "captain": 1,
         "captain2026": 1,
-        "playedLast10": 4,
-        "ovr": 9,
-        "ovrRawSeason": 9,
+        "playedLast10": 5,
+        "ovr": 11,
+        "ovrRawSeason": 13,
         "ovrPenalty": 0,
-        "ovrCombined": 9,
+        "ovrCombined": 13,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 5
+          "OTHER": 6
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 0
+          "OTHER": 1
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -664,6 +664,7 @@
           "OTHER": 1
         },
         "form": [
+          "W",
           "L",
           "X",
           "X",
@@ -672,8 +673,7 @@
           "X",
           "X",
           "L",
-          "D",
-          "X"
+          "D"
         ]
       },
       "meta": {
@@ -818,23 +818,23 @@
             "id": "atttkbhwO99JrzXKX",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/9-x5PQXocuUkCJO7W83guQ/Fbpe0tPtj6xgXEGpnqKRQoP-9KALcrR6p6-dIt7WruqnfFOqhImylfnaDzJy7zUNoJ5gR97nJ3o3C2qRlktMrrNbDbOe4GstdvTu3DYAfNq6IIzKdv5SfDaYSNb3mCZyvZwONyIZ2puCr1jtjKv1uBKX3SUANlfpUJq4zt_IDO4/C7Fb8NDUmGIx1dR_xki40NajEsPnTHXhJQShEDz_t9Q",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/8cnqS9jrUTIp7n37TzVz8w/3YMw5YA6EfR2LoWhq9xz2VV29plhwFBEYZ4hsbyDR1c4RI5PozVsyLNfrfvfMptsryNeZLpeOc49-39-x-xGLZe8RTx_TqhpUP0TqluGEV90X9G52PF72bXlMh-GwohwvBHIUVyWoI9TJqVGDoQ0tyB9sTaOZj2tcwjR3cBXS1s/ipk_kLPbiWaLvJNxslHc1ciYv9C1JwC-AS4yZOTdQeE",
             "filename": "Tom_Turner.png",
             "size": 225230,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/CE5Y7cdD_jk6Z4qxe3ol4A/3GCPGQQv60xm3xFc1MtPEX_zRQEsr9KMOBrwktBM0otMSuI_LDesVcse93h0JfedRJ_LOurtmUCZYPVJv9pfA6YuguyG0-ShWyIf8Jivkkcn3lpM-pPAHpHiqIVTL9ErY9mI5nmQ8pMhNV3BEyn8jw/q0tP-QWKJ2Qb-Ps1f4SOtMHTdtTa4zO6L6MYqymlgUY",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/hzygaG0GHw3nLrdjhh9hxQ/o-KNe2u5tH3L8sRp7WElN6ueaHTAPa5ut1JeayJZh386iYdaq72ZaEoqINfC3NW2JkP2pShLCa-YMmmOiBeTCDYlT4mawAk-KmGoQAeRb0UH578GVdhnRFmE7pkO1PQ0R5g_XVo_H1VO-G-kWewQ1Q/ue5QTZQhuT9fAfWst73h1o0n7Ej0XnKr-GaFQMZq6z4",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/NZA4B69RY4zCpHhU9vhtDQ/eDAZIVpxHwAA7OQXiK5I3q9-O2gbxQ4TJ0pxhUx0Rw_Q-eJ_v_Y0BMz-hkLeVZTbTDTNsETbw4qzmyQjPkemByMCzDF9uKpmkYZ0lYUNrTTA5AkxEEEU8d1E3_ikf_vr18WUOZCWN9KlJdBbSRVsxA/mG-KMY7TgUEcCBBjv9Wat9eroO3Bco48VHBOaqM_pFw",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/cf4zsQLqp7rqJkPohlIARQ/eC4sTwxYtFk54tnlneMp_VjTeiAxeMTGzcaxvH543cuiQm-C8lVrQYngesUiDUXCMjpOoTExgUQCPKmhWudZOgBhma1XTBqyxzmMp7LEQvQkb3zLB8juOVNn5F01OoeX3AtPPBqv9WokfuNPwEcG1Q/zohFAdjaowLkSfvnLXYEkhBHE_gZAwKGQvt-pYrtYrI",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/ior7dHUPOG3XDMHQH1tLEQ/Tgu7nZdFiADbm7cVLCCWzFwo2F2n28a_1QXGu6fn2JXca1QQCbw32Ad_u0A6rRGinj3Qm2UE9yQ6fFhBzrIJuM66EN0VRL_1xGF0YBZ9X6JrC7kw0cY_dviHx3WNdya61Yw5m_xwNSC79A6lZqn50A/VSs-HlOW4tFM6dHe_KL4z8FF0G9JaQ4KqZYIcqa5OZ4",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/iNac_lgQhm54UYV3nUrCRA/FgCaC_SseFSgAnY4fTsLj5msI9M8Q48wMbJKhXneUfGYgweN0HRCFLfb9srffYVUObSsga4T_8JDOSOA4KCowChU1rPUSyBe-OgRqJCDV850jhkV64shF7PPhBmd3gsYdk358yqm42sYr3fbZ0sixA/c0A-0I3n9KwmizGRvGGGeyZbaJD6nWTYgiAdf5Hqzy4",
                 "width": 433,
                 "height": 427
               }
@@ -851,7 +851,7 @@
       "stats": {
         "wins": 7,
         "draws": 3,
-        "losses": 7,
+        "losses": 8,
         "goals": 1,
         "assists": 4,
         "ogs": 0,
@@ -859,26 +859,26 @@
         "gkCleanSheets": 0,
         "otfs": 1,
         "honourableMentions": 0,
-        "conceded2026": 46,
+        "conceded2026": 48,
         "concededExactlyOneMatches2026": 2,
-        "concededExactlyTwoMatches2026": 2,
+        "concededExactlyTwoMatches2026": 3,
         "winningCaptain2026": 2,
         "motmCaptain2026": 0,
-        "subs": 0,
-        "caps": 131,
-        "caps2026": 18,
+        "subs": -1,
+        "caps": 132,
+        "caps2026": 19,
         "motm": 5,
         "motm2026": 1,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 4,
-        "ovr": 51,
-        "ovrRawSeason": 83,
+        "playedLast10": 5,
+        "ovr": 53,
+        "ovrRawSeason": 86,
         "ovrPenalty": 0,
-        "ovrCombined": 83,
+        "ovrCombined": 86,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 9,
+          "DEF": 10,
           "OTHER": 9
         },
         "fantasyRoleWins": {
@@ -894,12 +894,12 @@
         "form": [
           "L",
           "L",
+          "L",
           "D",
           "X",
           "X",
           "X",
           "L",
-          "X",
           "X",
           "X"
         ]
@@ -912,23 +912,23 @@
             "id": "attUGtkbs7ocisTIL",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/2mdlTfwTeDq4dog_MXjcqA/bSLa7k_M7QVt-n9OsA9PO_uz6Yx0OncMtXaPRCv098xIrIVWdMCEYOtjNhi0Je1jtl9pgRYBxgua32xnscKkIT7VrC7Gg6hc_oI8g9ICUP6AWUnelcRhW8mITieztQNnoD3WWYqxyPqOkU6dLV2NhnprO1UJlZiDVbj693HZCe8/p0JQgtGCbM9JcHMhQRra5-vxHEFCtMdhPhz81OH9Tuk",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/zGK-bBQdpDaqEt3RWl23NA/MhYFnVsbJbauFkZdYPoX8tMSU-70AoYntoui3-r2qp2Ed-RUKIY1V78ZHHWOiofwdecA-vm1a_k2zrr1pvjEddXRAFAPOcTSe8l_rSJsGxBTWX1NXmBsUgZ0jgeNdPQYAQgHOovD_478s26IPjCTKD0E8y_FnliJoEqo8XDWY8c/VebFOXY5DLhsxGjXRR8JxMh0NrcO6TGRf8duA_N6GNo",
             "filename": "Dan_Medd.png",
             "size": 134565,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/jdF7NIFlsJBeVfKo8YhRGQ/sa-jHP0y-PtIV5XxALEjsomcqDQZEJo__3JhLQ3CU4A8Phw45g0EZ_NRxXhX0Iv2oLIlalTZozLaAzyhR3QFhgwXEnI_rMSZNHRMh9878leDqpGV9ifsnBdLpXory_YgsRlnnHe0giwrmnKe9l-Dtg/xKu48nCvKNBqe8yqbt_axSAsp0TfHiOQ3gED_6ELCz8",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/YSmAFLr6A2h0FmrjaJnsxw/mZd3P7YVzhkglc0TgGxl9SuAILC61K8bsdBXenZo6qDY-OePcqc4drg6U6BCY_PMLWpV68rtMIXy1YElB5MKQmFS_mlyaJ_BMtKZ5PzxpxXpzhm57GBfSRe61NPJHRaXerdrD_sRTrnqAyzeOphcfg/uM7Nqb7AeGkwW5HegauFdG82eoF75XX2QwpNbp7SklM",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/jf06fmrHq83Q5T6BRdJ5xw/GpOky0_9arJSv0HE1du3grjDBpGOAQJP7aebJNgXoGuKGVLFATEMwod7cH4j3--9dQTNccJfbiGCMIMfXqq66l4QDcUAAmtyOtVd0DccNuFMdHc505R5bmHoQsA11UxtwX71FDKsvSAe4z8cVtpAyQ/cchdniB65rz4A_UJUYwvxyZqOIX_unffRNYjMcYifMA",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/r4a-fotpz1u60d1JR7bang/UQkHQkcCUUvh6B8WghF3Pz2l33tDO0DbXFRPUWHpwa6C-n4lUBMBvfEqLWp1LLkPEzaIhUmx6XbLp6MJs1UrJG0lI0IKR612bX3AgdPlsE3nxG8WTtpaggTiSAzoHDzqL3l5qxvbKR7TY7M12fmGZQ/b62mOlpR4hE8Qb9pHtNQ71MO5DllCU8pIdj5hfIITX8",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/puVScShCvb2_yRAkmbFKSw/9iVrHmJJBUCEbkzONCzm5tVB7_6YbOGpr5vCp09hS_C5OGSHRq-s1VL8nNngZTFezwl1xh9xle7XjK2aDzWyGT3BcO_3oHDA49sHH4ovIB7-_nLVqu_OPNDSP6pNaJrmi30AU7R468FvAI-1LocOgA/xAMkNhWShrmjsXmj2sOR-cFuFiV9faEn7ccLM5MFgOI",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/3GsL98_LdawWaKLrI12DCg/E0cLJGVvHaag_nlHAqtoxJCuPXTwwn1aRqerC2V7MIJdIQy9i8M1WoGKhLWjPeQKt7GuPQTdwLUN644-u56JmqI8E1maSPo9kNpkBTypyH063Rg6CUKGTtHoyyORQVJgcorzBXRZBilXMtZLwQbjMQ/3iSLkkxq2RzlCl4OSgPyAtDE9MHhkUGBkGTRxjgAnzU",
                 "width": 433,
                 "height": 427
               }
@@ -943,7 +943,7 @@
       "id": "rec8nYCRFDSNo6RhB",
       "name": "Oli Roberts",
       "stats": {
-        "wins": 8,
+        "wins": 9,
         "draws": 2,
         "losses": 8,
         "goals": 3,
@@ -953,32 +953,32 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 3,
-        "conceded2026": 53,
+        "conceded2026": 54,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 1,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": -10,
-        "caps": 102,
-        "caps2026": 19,
+        "subs": -11,
+        "caps": 103,
+        "caps2026": 20,
         "motm": 6,
         "motm2026": 0,
         "captain": 3,
         "captain2026": 3,
-        "playedLast10": 2,
-        "ovr": 44,
-        "ovrRawSeason": 70,
+        "playedLast10": 3,
+        "ovr": 46,
+        "ovrRawSeason": 74,
         "ovrPenalty": 0,
-        "ovrCombined": 70,
+        "ovrCombined": 74,
         "fantasyRoleApps": {
           "GK": 2,
           "DEF": 1,
-          "OTHER": 16
+          "OTHER": 17
         },
         "fantasyRoleWins": {
           "GK": 1,
           "DEF": 1,
-          "OTHER": 6
+          "OTHER": 7
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -986,9 +986,9 @@
           "OTHER": 3
         },
         "form": [
+          "W",
           "CL",
           "L",
-          "X",
           "X",
           "X",
           "X",
@@ -1006,23 +1006,23 @@
             "id": "attDVPxKECkJ31erU",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/6AVQU8V4HLLELn2gYneCAw/2Qacz9QjnNodlnJ1GYK8Yo-Ex1ZGq1YzEG13XvAHICZzT36ob3-Bw0RLnduYa13FK3DY62CHFFFcXL_ifOr_FQw-vM_fpDSaLFJOlzFMo9MDz_W0JB5uOoyyt7wNedWBaCiubf5jsbWKQvfHeV42Sx7DvYIGpo8eA3UebEIY4xY/O9GXOeDkTfxuRBgOCRXc9NJ_2Yv_4WY8sM8kujttVOY",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/CtVbEiy1E7biFigrVQKxIA/E6kf3ELDkgFbN4sfrlmsqEdS3kHWvRoXmVt6o7k0DEHSbnN4bX_bpODv6fHyI9WOuEZzPzuKfz93_iNV5kXmJv4PfA1FfmPRYNmiuhSRowpRhsM7lyBjUlTq2HX5z5SgU_cG-ObGTAfCG2rnGG8iy_2llELEGOxGNKepI7HABoo/oWTiVWyxh8fKYZw2F7M9IuzOdEJ4311zJyEbMRUN9l4",
             "filename": "Oli_Roberts.png",
             "size": 158194,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/Mny69eGHntrgv5eOuW3F5w/-08rj0Ibx_aNSt6SHJVvqF0iVN6fyCkgCWZWWi48coMcOsRvG-8Olxdc22cQ6mPDNFBg01_2962NXdyxLuMqDyyAQGqEUOVgnOwVqUggIJvmEkX4ySSYy8buDdJsi8yU3-153d5u0gKjji7V0wIyew/12HZSUS4HXeUu0LlbtPvP0kcDj_behX07EzKdJOCm0g",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/LGczm8SRmY-n7JFalOdpwQ/YiPzDbOLdN98GxhyuvJkz95jxKURvEME0rS1hMjcOyDW6pVB5JRTiIfSOhzBdsK22TT2lZ_qVIoLIxiEWyZW2Xn2UgU7QEO4CBJZSRoS2AkVgclWHz-pI8le6qeP-t9_bItrpWDyM7C5xj6FTHXxhw/hjTYFteqm1b1nBac7l462xoxLN2QKhuROf1j5t3neeo",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/kKAAjsUnp78n0XT9CtaRBg/TUye30Hn9tYBsuKge2ADqz5rxR0qulmV2A6JCd-yRqDsgigG7TLV_LggMhBybgtyB8cwwSEn36KxPnQ8sUm_MZxP4hDRSq_I01HdXpCOyk6YKoEDVVT-kfS33Ctur_wut14gNIKgxP485-CTQIGaKg/IG7qT7OpQMmz41ugJkJevYNO_KG6M6JjmvAgWJDLvRo",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/wIbUxyRsNDX0tuTUuRtBKA/uUoY8U5RyqQMb9krTVwG32Qn1cwa2MQblLbh4azMopIf-iIAe397NPZWmdFuUGDQp5T7I30A-hdZ3Jsh71S2pWqv8h7FFccboc7LhZ64N8LXU4krN61La2FAIlGNG-QXBgZsskpBTlC-pX2ngnZIzg/R0FzwlUBkLGifa7yKC5D0VNObcyU3hKGKUE2N25r3ck",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/iBAFVn8851YHmHw5errtnQ/d8XsB3yVF61144CKeFqiw25A_5FSt0nubXCD504sFXJny8ij3hCLH7CLIS1CwvHxRHTZhksTSC8rB5DJpQkI9Kodse7xMtkYjfiM1d6LQeKlWmSGRxCoyqEVT4awZ7C-uN-_2lQp4H_xAhhWUltiJg/4wPuz2czwoQ6tOcQfSPeFncIIJ6vSgOApf4g8hjtGSc",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/A3FHChytR65OLBoRmhAkVQ/TrbXHv4AcSurWTqPa3Q4n9M_Vtv34cjZhyjOaBqLd4sSs6uy-tjItV-sxfOEDyYQOPGXv4zCapEM83_uGD_JDufgop_A0pgQSpBBjIiGnS3eU-ppmojZE5bWpa5vqlrnMfsz6CqQpRM67VtigOQYJA/tXIhh1v1CfDmAjQG2ZwJM6CWmR-bM-vWNh6KCOgu5Io",
                 "width": 433,
                 "height": 427
               }
@@ -1238,42 +1238,42 @@
       "id": "recFqxDYKYAkKmV7Z",
       "name": "Dan Dring",
       "stats": {
-        "wins": 12,
+        "wins": 13,
         "draws": 7,
         "losses": 8,
         "goals": 16,
-        "assists": 24,
+        "assists": 25,
         "ogs": 0,
         "cleanSheets": 0,
         "gkCleanSheets": 0,
-        "otfs": 6,
+        "otfs": 7,
         "honourableMentions": 4,
-        "conceded2026": 73,
+        "conceded2026": 74,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 2,
         "motmCaptain2026": 0,
-        "subs": 4,
-        "caps": 140,
-        "caps2026": 27,
+        "subs": 3,
+        "caps": 141,
+        "caps2026": 28,
         "motm": 17,
         "motm2026": 3,
         "captain": 3,
         "captain2026": 3,
-        "playedLast10": 4,
-        "ovr": 92,
-        "ovrRawSeason": 202,
+        "playedLast10": 5,
+        "ovr": 94,
+        "ovrRawSeason": 208,
         "ovrPenalty": 0,
-        "ovrCombined": 202,
+        "ovrCombined": 208,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 27
+          "OTHER": 28
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 12
+          "OTHER": 13
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -1281,6 +1281,7 @@
           "OTHER": 16
         },
         "form": [
+          "W",
           "X",
           "X",
           "MD",
@@ -1289,7 +1290,6 @@
           "X",
           "X",
           "MW",
-          "X",
           "X"
         ]
       },
@@ -1301,23 +1301,23 @@
             "id": "attAmNyNatpT4e680",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/yMul1bKbYpSBZQG0_fPKKQ/ryGPDqlLL02lMOn3yRBDvg8h-aOQPM6I9JPqMXW0ASkv3L5ZrpZBCs8eXmjSPlT-5IQ3U2xfmrggxB6UShTx22plEmtEBwuLt4H61xgr-5g6NHpeUQd0QSbBo6FOIjdeSP_HjovsZHqUEZ4a2wYfMlI_t560B6FDYWRPNITisME/6MYom3458r-s0d4MY3nffxQ66yfEGP5Y38NfP1kXvks",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/24EfVDCv4ZhTRjv-duG-hw/bUP9Vjk-rSZvaOjnuANAuIveb5SUODUjX9CgrysB-dvuNGSn14_8ztgtawd9Z4cE5bQcsR0rAO0DQdrGpu7kM3S2pL_uMkcfpdPxdfuv6pzys4whuqNxTLJqToBRDBb_C-378JzcFdCkEkcCkFLi7J1eots1tlaRi3PxO2QIKPA/Yvpl7_ixC_Hl8W5fqm6U4LjTlVw1D8F1McQgFu8Zu80",
             "filename": "Dan_Dring.png",
             "size": 161089,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/9GHcFbejqTEfpBNAZ7Rg6Q/t7WVhhD2U0m8OX7YO8h9iRZgL0qrW2Q-12oXasstJg4eWoEXQzyPjU2Xvw9KS96mMTMpk2WwKquh8z_nw1FU6dTJXL5zqyqPWtu-4UEtEDAy1inc5cGBDqNilEMOQ6Vm5bkwMRjRzlH112JnBhHhMA/9HUMnsq4VmFP47pZNhxVVQCajPcxvRpn7V_i_kKeHNc",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/hPsWieSkBcnZwUwkIqwk3w/Wa9rfBILWlXsgGgpC3q_EawQbTXFh4UzUItaGyDLuU1mplayUvDTJTpfnJ6oLE26PPOV-yhfbZ2int2q5sgG2S_64wgzY515dKEUczvMN_ETDRAJDYgn2SjnQe_YiwjaFIQp_fDczXvLgM9juEDm8A/k21Md78SmPSefLICyDmLNv7X-fYRq-TrAAExR-J7cTY",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/924nQIA7_XzFM6KWLqoO4w/bxwdiB-bn3YHZRxwxQ-3Ulr9b8sEA2A0P0IHgIiJ5lqz-YvEBon3IhfcnITMfSTBiEvz0VtJCdxE0-SMip7LihUYeGIiRrWEmtjHoDK1CjL8BuE9cEhoHqQjfJczRD9sgXIyVaiE15N8xw8gJuWT9g/rIgiutixZvZt1VxgrH38BYKH0gtqaw_tGZWII2ffjI8",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/5XcwQbNK7gV2pUa_6vS6RA/Q4pgyg4sIO6HWRNml20U9pJfnSLXkpmS33zIEBk6SxKi5f_lMt4CRTg5y1xzX437N0B7-Q8-Y6-htJFCi9QpRBhgC1CEgU4_EXjyh65JO48V0Rzdiq_c6q7OPJy7fgJ2SyKavyK1bYr3y0BUXf_8iw/zhqhdVs5kXsnge_A7V8fiDRRXy7qR0MBhpDQgtdjxGw",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/PuA86mafktbbBPc9iwX5Zw/uVCts01sfRofFo-X-gTSQZmdmQGGslnccRiJufLaIdItk4uMSchC3VMc_syQGReuh1eGKDOgKpxIqw8rSVcB7jiDC01GjKOPErmJwqRgMhH2Au_EjWctIipDlI-D9s7KfzqF5hGWoBjplokJSMDyoQ/NZe9FzRShw9iFXJCDo8Po-sFwXeFRaqSdGbdID-mHLw",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/uuNzclRzbsZ6P0Zkcbmpuw/E7LrqHcZthnLK4hP0iVFDPb7xo3WoS6NLwC5Q_4MpOeEFoK6eP8rKnBr5kGoaQYzfAQSC7fySka5YSMJLgZZ7H0nEFDb6pN620CBqfDAKP9uTgEFmjrVZEFkSEoDtTMKY7oMkSstGvhqOHeAaUorSQ/9GZ-BS3yjLJfDnPzYY5m7q8113PnWb5q_ssxpU2PSI0",
                 "width": 433,
                 "height": 427
               }
@@ -1332,7 +1332,7 @@
       "id": "recG662mRw9nTfmcU",
       "name": "Sean Knight",
       "stats": {
-        "wins": 9,
+        "wins": 10,
         "draws": 8,
         "losses": 10,
         "goals": 2,
@@ -1342,31 +1342,31 @@
         "gkCleanSheets": 0,
         "otfs": 1,
         "honourableMentions": 2,
-        "conceded2026": 79,
-        "concededExactlyOneMatches2026": 7,
+        "conceded2026": 80,
+        "concededExactlyOneMatches2026": 8,
         "concededExactlyTwoMatches2026": 4,
         "winningCaptain2026": 2,
         "motmCaptain2026": 0,
-        "subs": -2,
-        "caps": 127,
-        "caps2026": 27,
+        "subs": -3,
+        "caps": 128,
+        "caps2026": 28,
         "motm": 6,
         "motm2026": 1,
         "captain": 3,
         "captain2026": 3,
         "playedLast10": 8,
-        "ovr": 77,
-        "ovrRawSeason": 130,
+        "ovr": 82,
+        "ovrRawSeason": 139,
         "ovrPenalty": 0,
-        "ovrCombined": 130,
+        "ovrCombined": 139,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 22,
+          "DEF": 23,
           "OTHER": 5
         },
         "fantasyRoleWins": {
           "GK": 0,
-          "DEF": 9,
+          "DEF": 10,
           "OTHER": 0
         },
         "fantasyRoleGoals": {
@@ -1375,6 +1375,7 @@
           "OTHER": 0
         },
         "form": [
+          "W",
           "X",
           "X",
           "D",
@@ -1383,8 +1384,7 @@
           "W",
           "L",
           "CW",
-          "D",
-          "L"
+          "D"
         ]
       },
       "meta": {
@@ -1395,23 +1395,23 @@
             "id": "att9HQdlM2X9RWZEH",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/0s3wL-4G1l8SiKAAEdfg8g/jFKfdv3L9rhvNBGfH0mV4TeIeG9LRR-l2SLbaZZrQ3wdLgEWD13JQ7WFb6WktSLsSPuouvpZ-yAGZdxgvNX-PhtILJHTBISUBgjb_WsSgvht9FRzE1AJLdSb4T4skx0ZCBmmOl2qaILrHowJDVmPoMjA5vY8m-aTNao3Soug-_s/OwGDw5kN6OUxehUXXhWuOp4pWy7yzAHEtP9ED0HmMhE",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/-_v2WxedZgkOFGgIeslCng/T1wbsc0ejgSePqSFaO0i2fnf5roz33UfOSNWsqyzj2k95xoCFpaFVlHcFfYSnnSk3I1SoX1Tr5UCUqL64dXeflhi5aUHnU9e4voPQT-cio97E1RvoYVLSIXvJ5VVHMRC8cerkSq1swru9CplJns1tvcp_G9-SGTtQiqZBo5bCA0/Pv1beGkJQtxliuxki51nAo3pHJcvgvW9Df2mwmVH6s4",
             "filename": "Sean_Knight.png",
             "size": 206524,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/wLrBGBTowif313u4GlxQkQ/ZOt8WPo4ZAoW2glkCIuwjYseeZwnjzadAo1Kw7x0k6MbgKyZwtJUJrGf3Xj7tEvfkakuhxfT8esICW1Kcx1oMWx8yBFSGtVcUNQ-zkCtlel0RUw06L7Ig_5eblA0_XkjeRgSvq9iZ8gwoWSlffLj7g/2feub-2aRghwho-3LCeNQ-PysO7Vp-yBI7LLJCnIAsU",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/RIRpLat3xE7PX7xqZvbB1Q/dMnOuUARXMg95-7FH0ZUhCE5brtFt4Il1bq3bj8a2f5cpXca_kzWj8i3aY5emzCeA1VJcfftvjz4yxNHdXJRa0CK5nDiwELG6xmu-6p8f8DPu3SJYy4MjsFkUXSSS2QNTUQo1zavA_1ryfK_jDu1tQ/LLky7On14O6zT5MtGmr6COJ5tZKak8zrBCPCBuwmFqw",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/RE1VH3XBmc8lPYlKzZE-oA/ie2VsXqVWhJzISw467VTGVYnlSo753CSeqrQDRzqZJZ9eBdy4U9JauO3X3SnCQasOCCUyZHdzGCggMRZjd9nOdWOyOVBFqRx0uCqalpYPci5ydaB7hIBhQhZiiNeyVhf2hNf4RAizicupIUlMLmGdg/Jgudfu6R11TrSoWf-y2vCtdf3pTWdHP9LK8AmXh0wl8",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/pVlPAxWT-v2aZQtDF4Dffw/4Q1I8_T7aGI7DpHKAoyez77CywqgwRjGwPgElFUP6epDlJ4Dm7N78es8VLp96945JTSVvh0DQtDTxWfBzFu30Bvn04yylPdkb8Db9Z9l6WLLleekx5_bnvZ4L_l2jEhOj0FAxS4G6VCsat4J2N2QrQ/g-p3X-QMqcKJnU_V3l7_dr9a5rASmsNLGuajLddDRW4",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/QOPi89JDvb3aPPN-dVeU4Q/EutioXC4KO6cHc3qxpMhgrmG-8CQZTYNrv9h_G9ZjrfzzSsKgwbVHMZLUIew4dx_SgJY9p5QlgdKj3TEKn47r_8dApaM1TPLMMRaZ5-_5RcUs2T5WywyRnpo6ReyEbLxQ0OGQM0Cz6s7DtG1UeoQXQ/5qdX2-7cTElqxddevmtAZNx3JbVAJcFO_iB66PajhTQ",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/fHEzCY-Z2Cy901b2QhidNQ/4SZZrv1xvaweVwGUlIBbS1D0prkdMU_NPP-tiHZt0pzxbCv06i04HRnlZEHEiGEbVWGSK6WeGV6WISEjW0lgIefRRT7B__chcniE5v_6vZbydop4K1MHDaqsZmW2CKGQ6mF7A-pLYcy5SNi5WEqfrQ/Dwhz6oCk4H1qknH1oTPMPXslAvLjNAfHQpDLh5DsLZo",
                 "width": 433,
                 "height": 427
               }
@@ -1623,23 +1623,23 @@
             "id": "attHJzrIPTECjjjYf",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/NMP0Ho7EwMwJCpNuzVhqZg/sZ6MFa1WCU7JY9GkAyrzSOGI7GaLNJBYZVFayRoaD3fvlp972Q7z3nYl0F-Rwu8vAwCpGdRl5ap4ewmv3h_iMqG7jll5XVy79lUnsXPBBm5d6OxTztzBnu9bmmFQaJr6OQf5bW2wOLd_en2jCq1Lgw/tqhkHx1IP1I-Ym1q5655PUyGcKeArrs4X2FSWTVfzAM",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/1nYWx7RHUeLgQsqsxzTm8Q/iHEtCWSOlFxqYh89ot2vq8GCDRcRdP1LEkeoEmJc63Htu3Xz0QuWg_GVdlvP3CYmkXK2VRzvSaKy3towqJjmrys8kw6wP0Ev8ZwNYUI1XSTQ_1NsdAf3J6K0TiPtbw974I1wS0s3Inm-Uds7bKgF2Q/wVBlp7n9JuCHJCbP8lJu8XIh1EfehsmxSqMFOy8iYHE",
             "filename": "Shark.png",
             "size": 166361,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/WtFwW_hYovucvPJt9kA71w/stk98HTtTg2kT0k7FSci316Sb2YX_rDE4RkQcXIuwHwy74lQP0ptoM8QXO8Ls_LcCOlPvb5vepc_PYovCEgr4nHm0ptLp71rIum1xGvpzhuaZCkr9mOdt0J6zeQ6sMlTt5oN6zHI37OevBFqEnuTkg/bbeJOea09X1kjyeElK8JabmQUcB-mEptqKQoxyO1YEg",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/pvpTFgzY7SCp8FgfEk-rQQ/SufKBKLGARMVTM_eoadQvHgRLg4va5LBTN0i4o701nPk8UFJX53lB_U1Wi57lijn58DdY_juNA9vRGG8a4zrmFZ_jffJVtUMi6u6WylJOmgyX91pc4AtE9TW4MLln3u3chnxhUTRe-jLvGdcAAhKXg/nj5El4uGQGhJusRB-cYc5OaGFEyaKV1ICU2bTA_Npsw",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/wrlpI5xIb-OfqhtmzDKf2w/8imSb7W6LyYWLqpsaWOyybIh9yAmwAau79qk_vtZp5KOYc9OgBJEOdSMoQe2j041SJSSDrpSLiyACB6sw3f0OZf7LY68W1U9XuvbUITSbIVqKXRCcpUH3MvAkfNlmXP_7u-eSX8CdwmUM8NIpTtCAA/E-OEBZ9-TVt6TM-vurOZgyj3f2syj8d04FfXJMXg7tg",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/M9xu9fGDAssufOMwuLu1qA/_u-lFaZ-VxQtjKGDMs-IIRGc_12o7dtggzmLKunInTgFJYgj5pyhZ-p11_AjaBBDj6v2YzsoCtB3fARl-Ukp3xMmY_DytCcbBppDHOFU4ig49Fu38N2HKGUflFkrhxBaY9-pGVt51asNbc934IwVVg/NcZm-ZT7T-wbp04csKW-m7B3oCJp6hiMzak5X4FmDLc",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/6k5Wl6sNuNNjL_GsAP9u9g/exRdFcFNb2hBvVHo-UqZ9YTUA0aw2AoB1IcHVnc8vwk1I8vI5nPbCI2wXOkBb3HC7fdRcpyRwtzpMSs7PRmHRZ-PWM0uLLOFFb6Xq2QM7EA9BYlAgLfHNp54ChNbBPfsZUbWsV2Dmf0QCK7TV96C3A/-lrOZofZN0FuwBA-ibPdvGIk4RQtjL5cB07ud2_UcAk",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/jsEcIPWvX3mreHsa1qlRdA/whaYH7vDoPB3NqbXl22391HW2hQ1_n_ba6XAldjV1USa6Jarx9oXTcqi6edBVPxe_cuIWBsG_ZMdtq13JJoUIvIHcd4LgNI2SLsPz4FTQkvGwX0ebyQG84rkJ3qqFSKO-r1jyh2wPjeU9GRvouWY6Q/mZSzHRPu6pcWfYN8-SpgNVWU4NV99R3fpkNww9UT1N8",
                 "width": 433,
                 "height": 427
               }
@@ -1717,23 +1717,23 @@
             "id": "attGzAJLabVFUBSYf",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/fPhih1SVXqnjdHeJ6oGvAg/4oBGRb8ft5kwyqx75wZKyH-FYkzLJCUo80ap8tcSspcEZP6RV_IXYIaqOpsN2kat4VIp-mc5yH91kO-C61qUKVsxfxEzfA3jGR4g1ZjeUPddAQBZGY12V6uUvIbJkeSX3U0o7POlTLE3M3rR5by9Iwi3S0zLpFFrBgbtKVEKMwo/8boyKSG9xlPE44ExwWU4Pr6oH9A5bqRRfCb2Gh4fFBc",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/SNporeen_Wea4xE757HPog/ZUAi3h7oiyWIJa3XSJ06bYZA2x_PTc7DAyRI7xIvkXcna8LcpcySIyGFUXdTPYEONhnz6LbLcvkLzu7ykujYO5G6DsEXXYXHdTB8BF5Sc5HMbGAMW6yGP043VxzldybJzOEtEzYY2HoQtyhq5sSmJiAVkbiiooF1LpsoD3nl5ro/eVoEgyVT8_Vd5UxlD1Jhflnd_4-5HvF1_3nvTqIVOOU",
             "filename": "Andrew_Twell.png",
             "size": 204406,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/6xorimNYYxe3ScLuyaRtGQ/FEesNkjGBvj0tQ6gmgniqFCtp1P5Rfu8qKG1k1pxkkFjP0UOcuwLDUe_gTxhPp3orP6dNgjyTvzrJi6uQ1qnrGVRKY3D58Orx_Sm99RNDcWQA3LW5Esg2R12pkwagQ8Oo5HR-cu8_9GkUbA8MtaavQ/3vsGbY-aUg8GGSVcySTZ79lW9TsFmKAXvstRnfAkcWU",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/M1ijsgw-_LlFpYHGq69Cqg/-KmxKOAIMUI6qh8fhSv1KOjTyIfmAABf6zlzlD3jlors-N7lwNy_QbcXplcFrxEeojc5wGF9gQ4dzW6GAOL1abTxhhGeQ62IE7M1ddLyqwJM-_maY0NcjAlEfYWpMH3fLULqBCoTQKhtn7MYdwsKZg/P1rvdzSMv2cTzAZDpTMCD3yBk8rcWNsLATXhCcAmG-A",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/B3Jzcny0C-CFgwnhN2mHJQ/fy1c8AOJbGnbCklUctqCucD92QI-3lAMu7A8hJrmklBM414O9vx8Qs7ss0f-UzzUtUJdneuazrf6SeRMDrWjrVwWLhiLq_kO9jaIeqKck4YNXrwnDAm4MV9-VOuZeXdyKfPM80RGkOm1cZNXe5e8Qg/r7UjJO6KBx3mmq8s3hUZdHE_NFQJfddlLC7xNB2BPic",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/EB5Xp5-gU_fXKPHQwY0e3g/Lqe38LtHIHKZlbHN0SvbO4stUlY-vRjyMe-qCpleZH-jptaYc3CWgosrmVi_vBG92Wt5sV8Uie0CeGYPkBRHtMRRgy8wHZw7pOeARAWrTzPOstObrLg_2HZvXP5ZnwXoIKosu9zhZfjUpp9G77aWtQ/LtGQ7Ya4Ury34S5Nz-1zTs7cXhjY2urr8yHNEBJgPiE",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/3RbQERu80aCB18dblLNbuQ/Hl6RyObAK0y-LX2syqxxMn2_r04zj-20E89UvAGMoBshUMTPwIDP9kXpf-i64ZQjpCwm6N5J_ayG9X4trkMoWKoFb8qWrG24yKWU3nk8xJBOmv8Q3hLPZyqhEV-NtIsvIbD31LO0YWne0IdVrRf2WA/5oYlWmcr4em1WJRNI6yFZdxYdnheeruetvESZyH8Eh4",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/4-dtES8vLxg12h2KKahLDg/eEQKnWUM-kINZZ9sEcLJ9Tqsx849-M5rNuuQL8d6nPer0BzVkvYAdezmkVyOq8l4sKY5GzXMrm3lAYnHSI2TtrfEcf6hpEVTD9-MStM96QR_cbPsUFxvvKBy4ChvrXRhqZYcYrcJbNyl_ahwXwL8gQ/P88AZfZSIu3yKbUQC2zfgtce_DP878-Vw4eo1Wjwt0Q",
                 "width": 433,
                 "height": 427
               }
@@ -1770,7 +1770,7 @@
         "motm2026": 1,
         "captain": 1,
         "captain2026": 1,
-        "playedLast10": 7,
+        "playedLast10": 6,
         "ovr": 21,
         "ovrRawSeason": 30,
         "ovrPenalty": 0,
@@ -1791,6 +1791,7 @@
           "OTHER": 0
         },
         "form": [
+          "X",
           "L",
           "L",
           "X",
@@ -1799,8 +1800,7 @@
           "L",
           "W",
           "W",
-          "X",
-          "L"
+          "X"
         ]
       },
       "meta": {
@@ -2018,7 +2018,7 @@
       "stats": {
         "wins": 12,
         "draws": 8,
-        "losses": 10,
+        "losses": 11,
         "goals": 31,
         "assists": 7,
         "ogs": 0,
@@ -2026,27 +2026,27 @@
         "gkCleanSheets": 0,
         "otfs": 2,
         "honourableMentions": 3,
-        "conceded2026": 85,
+        "conceded2026": 87,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": 3,
-        "caps": 45,
-        "caps2026": 30,
+        "subs": 2,
+        "caps": 46,
+        "caps2026": 31,
         "motm": 5,
         "motm2026": 4,
         "captain": 3,
         "captain2026": 3,
         "playedLast10": 8,
         "ovr": 100,
-        "ovrRawSeason": 221,
+        "ovrRawSeason": 222,
         "ovrPenalty": 0,
-        "ovrCombined": 221,
+        "ovrCombined": 222,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 30
+          "OTHER": 31
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -2060,6 +2060,7 @@
         },
         "form": [
           "L",
+          "L",
           "X",
           "D",
           "D",
@@ -2067,8 +2068,7 @@
           "L",
           "W",
           "CL",
-          "MD",
-          "L"
+          "MD"
         ]
       },
       "meta": {
@@ -2284,7 +2284,7 @@
       "id": "recQYOmJTyCjaOdqk",
       "name": "Liam Davé",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "draws": 3,
         "losses": 6,
         "goals": 0,
@@ -2294,31 +2294,31 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 1,
-        "conceded2026": 35,
-        "concededExactlyOneMatches2026": 5,
+        "conceded2026": 36,
+        "concededExactlyOneMatches2026": 6,
         "concededExactlyTwoMatches2026": 4,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": -6,
-        "caps": 16,
-        "caps2026": 16,
+        "subs": -7,
+        "caps": 17,
+        "caps2026": 17,
         "motm": 2,
         "motm2026": 2,
         "captain": 2,
         "captain2026": 2,
         "playedLast10": 6,
-        "ovr": 55,
-        "ovrRawSeason": 91,
+        "ovr": 60,
+        "ovrRawSeason": 100,
         "ovrPenalty": 0,
-        "ovrCombined": 91,
+        "ovrCombined": 100,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 13,
+          "DEF": 14,
           "OTHER": 3
         },
         "fantasyRoleWins": {
           "GK": 0,
-          "DEF": 5,
+          "DEF": 6,
           "OTHER": 2
         },
         "fantasyRoleGoals": {
@@ -2327,6 +2327,7 @@
           "OTHER": 0
         },
         "form": [
+          "W",
           "CW",
           "X",
           "D",
@@ -2335,8 +2336,7 @@
           "X",
           "X",
           "W",
-          "X",
-          "W"
+          "X"
         ]
       },
       "meta": {
@@ -2418,7 +2418,7 @@
       "id": "recTyiy2Eu2vZqKkx",
       "name": "Sam Jones",
       "stats": {
-        "wins": 12,
+        "wins": 13,
         "draws": 3,
         "losses": 9,
         "goals": 5,
@@ -2428,32 +2428,32 @@
         "gkCleanSheets": 0,
         "otfs": 3,
         "honourableMentions": 0,
-        "conceded2026": 68,
+        "conceded2026": 69,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 3,
         "motmCaptain2026": 0,
-        "subs": -3,
-        "caps": 77,
-        "caps2026": 25,
+        "subs": -4,
+        "caps": 78,
+        "caps2026": 26,
         "motm": 9,
         "motm2026": 4,
         "captain": 3,
         "captain2026": 3,
-        "playedLast10": 7,
-        "ovr": 57,
-        "ovrRawSeason": 120,
+        "playedLast10": 8,
+        "ovr": 58,
+        "ovrRawSeason": 124,
         "ovrPenalty": 0,
-        "ovrCombined": 120,
+        "ovrCombined": 124,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 25
+          "OTHER": 26
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 12
+          "OTHER": 13
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -2462,6 +2462,7 @@
         },
         "form": [
           "W",
+          "W",
           "L",
           "X",
           "X",
@@ -2469,8 +2470,7 @@
           "W",
           "MW",
           "L",
-          "D",
-          "X"
+          "D"
         ]
       },
       "meta": {
@@ -2481,23 +2481,23 @@
             "id": "attsm9cKh3pfuvQmK",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/NSgpolEE12Z-3VbkQVFC8w/o95-H0ovZerzyHxET1BTgaEaLrLG7ETtdUHPeTX3sX5r_L5bOjbdVDWkrtWmVxeKDs0-KqAtn6O5wFCJOJCFK41KgPKZb70aMAhBscCkaLtBTU-H8t8pP74PbW73OhzcwqpPQFwAnGZPrC9-4Oqw99QaoezlwVAWuyBZ5MQCVXg/fR_jb_nf9UBRem4ePgerP5ymX531Rabv9FsvsNTE8XU",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/j1lTR2miTOftJsyEnmkk8Q/8mhbbFNQTfA5Y8wODFp5O9CORqaOf96o2rTrERixCU_t25zh3GbWndKU5m0Wse3D1nNv_Olw4OMFzaVw4YErQ0g_FEQKAYKwIIgFu4PxYHRDHEQVj21z1NzU7KnKQ-qkL4CSeEBEOOYF4zLDKemLEOqEMYRo4xzD4mCKB7yVyo4/faV6Dw2KjBf2PMr4yIPys1iPkzzY9chQBwOvOjQ8Wng",
             "filename": "Sam__Jones.png",
             "size": 155632,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/Ry1_GllAPwsW72FZRTJT8w/inPcnxohIMYoR89jbdLxsNSbZp9zt8Y8TtXDxBpgiGWsLp4JdhwjgmG-ucwCJTMq-P00Nt7L022t2PK4kby9ng2Q_DDR3s0BcCsT_3mMwsUNGGcVhrVIHSQRS7DIa0yM1K6SYz8yHDUZ3xSxCXGYMA/Jqo9Bf8tsscBQsAssBfvJtRmJNQz6TJ0aanRVdXIfnc",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/WhiziaVq3cMpo7uZrvugag/c7-9bO140fs9X1SjqHfYnK1QO0xCtyeWqRrNarbk4lvkwXOm1CvNZeKny1qm9Y6x3cRXw0qGbxkUjBfdk_L9D3nYndrVhot7vVPkXcTdZ9bFGjwHJXdrc7YOW9vS3V-byt-9YCSgmRK2ylhUCFHeFA/K_1YjX1ESlsmXlLvhoIhLWa3eR121bP8Cu0i3ZMiHLA",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/GO4H-vKt9jzJCs6q1Mdgug/HnqVUb5QakrMiETDIoPD3hxVAjg7X-yHiHsK5V-npRC8VWK2hdzJHNvx1qhy8NaMjywOA56PvzJNTVFlVVA7Mw44AT-ecror36NaMPJv0GtAjEtiPaK7M05Fk18M5p2eMS1zVRiXfLbeTvoxVVp8sA/KN603J9oYKgzn9ms-zPJLWsCrJ8ZF-a_xByYs-mTT9E",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/4J4coCOpKDG8vM5__fJ5pA/uMtk6FAvHGdP1jelGgZhp_xW92qHFFz8GiQuuJFpco9ZsU0igi-GJA1xuK3d-u9RjvFjZaIkeescYQEUsdNReER-aJuMaxu8rZTc_JajM-PcWBe4JVWGeLmNllxVNJ7bi2lu2orgimRGIQMOFTRWYw/_V8y4DTmtkWM7CJVjFdileAWIqg5AeTxvCmIwYVNHGU",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/DvaRyW4rzoVDUlO4Dv1KgA/iRBi5lEXSZ5urTYsil7aa9u1KX88kvVIEE1XEpdpw7Xj_HNtP32u6JPICuPPt0_RAT90pUYVlpkXlwb_ReBkJA1Nlflub_RbzjyMY_sRTNRcl0DJrxRKgTWZ92dUWgxFDF3ClftZKgWC8I4_Oy2csw/lYpmK6IRQ7eBynq-6VOyQHWwwz-ziklIfANS6AEOY08",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/E1i5jB6JxCJHJtfXbn6EMQ/BAKjnz2iocrut3D8puScMNtyKtqtCNzDQ1SzexL1KjpFOGX1WpK1kKNGzIMSaFDS9x8gp5vbEjng0IqvErc5bII54bBrZ2DX8DH9mHcpJX8X9rW8Aw28ys9V-nwnDjRC75ERt1Lx8D9t6NwmoCNMnQ/2M3PHbs7k0UV0j6r_vgucuUFR4j-JnND7yDAsJIb0lg",
                 "width": 433,
                 "height": 427
               }
@@ -2756,6 +2756,7 @@
           "OTHER": 4
         },
         "form": [
+          "X",
           "L",
           "L",
           "D",
@@ -2764,7 +2765,6 @@
           "MW",
           "W",
           "L",
-          "X",
           "X"
         ]
       },
@@ -2776,23 +2776,23 @@
             "id": "att0YQzaixUcptxP4",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/lwj_ZsF0FcxxRpsPqPf4Qw/sg9ilPggI_uFu8USblhGKnLH_54VctMFubDgcmvz1u9ngq_KnHtvC88d2QD6oMeug_f3Y3wWquqJpyGMyt6ULFDgX-mp9OVgPNpsJA6ePXuwuIGfF5hw6AzAzeXHoe7zKOQeK8Yp_1QPjiNyRkvbxVOwOghVmRqNUcIrTqzr7f8/11lTDTr7bDa2D15xO1GithgvWMkmUuozKJtUYJXVCSY",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/g3wfhNLeDaRWMmIM2CWhKg/PtAAW3p-jDDVzTGcX8MSjbPLukZvyJxSZgZ4XyIbUIyjwfEavs-R_vkX1NJe9koT4pi7Mo10VLlF2UOEEVTo6mbWaMq3NrNlD-rYthO9B58hVPXwP_0R29iGuPA0aaOIhD8WEfcMIeW1Xi1UGjL8n210atfxhQd1y40B6eOt2Kk/0NCgDNnXB2ldSqte5z0SDeQEli6cyRUr9L3Xn8mbXCU",
             "filename": "Matt_Glen.png",
             "size": 175510,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/eIsRrzqp_wHB1QYRSgbRYQ/uuwO5tJE9OZdgGU-jipV2ajAS5OV7-Kp9Qh3MKmjEG2-SmwaV4FizmCVTZXKnmDvTGzu2ofywP3rhZizX7AbS0sjfMIlZKTGl2J9mFF_Jlm1LP-FSx4TzCJpcbfZsbO5H-cKb4dxu0J6RvCNqR4-Eg/RNrt6okT2yVlMQ81MgkafARcdvIfDW4Zzz7FoLRAqTc",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/gYsa-aV5-AYvx8KLuMWULA/ETDKKDmIXgTmYYk0yOUHJSVfmsTLQvqeakpvfDM_2hx8Kd28UFE6kIvTiZ1Ec8k1JFE_WgOT5r10M5cQjb5-z4uCsYfLZq1zmWP4aQG1v5STvcjPa13U_htRq4bQNWu6pf_zcaCwGwlmJGg2tEr86w/Qk5T0m_HrONjZbpUgWkzB_FrV670cyundq1XsLgl7ak",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/QTPIpozfg_f_1Qc4rODk5w/L_ZbxaxEef23tXwg5KWDM8T3NHhf-p-novm4_QoleZ7EMsZpSAWmX0d88bzx6BO8_7EGqqI6HDXPXaCyWl6npuidqa4NiChEOZKubkreS3u0S05Pn1F2q4sZXVgqUV8LcDoadg-UKz70l6Zv5oFtFQ/2lRBYhHeT8knDSyCe14nbG7TeBiutRnvgYobMuGb7Kg",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/_x5FtFs-nA6s4S38ZC6vAg/g0tf0-ZYgYtuLEdDc9ylgkMAGE7H__xYmoKkhNdNCOpKff7K7J-TmGvdCjZHd1DMjVpNLffLQm0XyVz17i8RUcrYDNYOQMwy6OVU6o1C3szY4Dsu_UjhBYOLM-3FtfkLU9ZKP-7BHtxrIlLxi2ryOA/8hNhAUEPJUxzXkC2NjsOM-LTX_8u5Yc-MdpkDjrHvbs",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/wi0CXHx01WXxJBBMkDfsfQ/TvBEYHi_ZX_uJY4kZgHrKpCyKKNE588-MMPELusYvBFsV5cptvpIOyOxSl_lo_5FZnr6YKZ1USDXBfvPmBFNK2nRw46ET638NUeMjiKQnEZG63XTT-PKLTzrEBhm0_g9eQCkb7IiniS1D4A7zJB_wQ/G7GZqfIrHnsiLZMw7T8FsviRfweU01bQWx9dNs0OHnU",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/F1Q2drF6dzPiBnHd7F97wA/1DBIpwWt7vyp35PxmQ_cIPbDsAABdb2Zll2vBiKOQB2Mydau-FYlu7U07v7GS022O5tKbyv6Yvr0c9F9PHmfSK20KI4ba6wnis52qDQK9JHmpXVTfn2ISIIZhOIfAJdtie5tTkZWaaJEkM8jsIskaw/r5WOm7WGdYZb4-kQIPh5ANaWrVLX69GVFZWWyCGaKc0",
                 "width": 433,
                 "height": 427
               }
@@ -3051,6 +3051,7 @@
           "OTHER": 0
         },
         "form": [
+          "X",
           "W",
           "X",
           "X",
@@ -3059,8 +3060,7 @@
           "CL",
           "X",
           "X",
-          "D",
-          "X"
+          "D"
         ]
       },
       "meta": {
@@ -3071,23 +3071,23 @@
             "id": "attmBK4QsHSGD9Lcj",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/3KKnE1VQ4JfzB8YAI0mVNg/mB7IeK4k9Y45aPTPKNz6UQCLySoznUyOgD5cRxVC95hvaCYZGuVwEjJpGPeFGjuLGBKjZd3dgFscQYquc6eSt6jN0SHtrV_7thQBS6-Id5YT0VRTEvhlz7WpyzMLsSFkoCDn7SpxWVMxBwXMiNNhBG5SN9i9unXM9ZLGH1jRd2I/Q6aYJCkF5nrZXojlAMhU1A_6zDePLhbIBC5qxQ75qwY",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/pLZwXrPRfVNHI4GE4fRQfQ/_FWjLUak2QleKAsgNByqueZ-DkFGCXRHmk9fWOhniF5aO6fOe3u7ooxFQqQt_1dn60Rao1n-QbkMFokNSuRxmJRM5dPUGR3n3S6dQupFjhHEqiDgKvfGpHR0gVNpuoUbruxXsR-M01xfolJaZ2fvdl5pF1-HJpJy4vtT7C3NZic/Kos6gfhv72V5LsHmTxtj1eWa9dtg4KAer0HVImgEfqc",
             "filename": "Mark_Buttress.png",
             "size": 184063,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/ps9u5x5nSphMadNQwdNH0Q/JgD4idPp_-Ix2gFqWnbriWOUX8Fc4F07ovsq_eIZJifVTfmlNsNQwUxiyBCn-OD35I1EHVqEguTUTprSa8h9flZqVRpHicjUve_S0NaFZAc-NtYdtuUU4NjQe2lhMLjnOh-zv-xjtCYehreWdKtAxA/n21ltFq2jYlRfbbAstHn7LLcu-2N67SY6YQF3Tze3qg",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/1Ae1_6f-mKV0Wd3Lt2Mf3A/fkajN351RcNSgk0L5NHU0w_kwhSnsph5N0uipHAwdRDknSJ4adbFCVPFHQOCxHZ-NrfBrC8EpmfV1P8f0ikZ6byr07eN33jAgr8FiPfOQfSR46esQ31UcEamThzN7atvyoJpodhUb8ZZ6TGZnzyuGg/BYcF0dE5NalwtzQRRbSg-08wtTsEjQWwGU25REqrctQ",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/Z3Ncx4vFslX_1Ft14zCzMA/VXXLXmbmGDkLTCZmU36Rpk9m5AFM9N9OAR8pNNuCmnB_pnaZwv4qp741sjM5k4BzEt5xlnt9FMgidD-o6X8mNul-eleg-BKWkGb1XkFJyr5U8MA6wIT6y1pgfuL5KkT908bKhnBbiPheHITornfZ7g/h4_65TATnFy2YUzjB6XVE0RccCu5kYKlK1wDEEthu7s",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/t8RIg-jl3fFGyLfiVh_1LA/YkvrCqAFecupS_OwyeGw3AX-SilugjdShhOUYDB_OcexyByJtcYGmzlvs_e8N3iKSgmM7FymWB7wciNV4YgHqRjuq34rAe5-5991G847ZAggqdyTozpxfCMYSCtbr6m19mGpG7ohHRtpsPgUYI8GUg/FYRat_7y-IBz9iyKST5vRLFosPkcipPGf44zfiqmWR0",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/GUNWElAe145GsdtR5OPEFQ/XPcPYpWIfgshDFi6FKQZYzqaJCK2m5MUXFa_RgQl0_CWj7NheLNYexYweyVMi9Ef6ZItqv9yQviFlcOHp2STtQrq7JfLVRVbT8Oz4M9c6Jhufa8rMW2wTIbtAQswnUQ4hXN9KO2iuCm7Amp8zMKMUQ/y3okUcQauF7B7mhto1lMq4XOk1FR4dFu_MJcAR-t8Io",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/r-MGYQHuEe8ySKt1HSX9kA/axvy0oZl4aaQS7jQWPvLe-nqSshj6TZUbVeC7JIR1ES7PUqvDq3u3xOe2dGjqMmy8D0L59cIu6FpGsedf62sXEEIa_XNVi-mySssVZHspTWyQGeujuLqkbSwOr8vDgTQ40YrsN3BSAYgOsY4KuEfmQ/bupj8YNI1vIaTtQC8Z1qE2QHwjGfraGtxSncrS1S3sI",
                 "width": 433,
                 "height": 427
               }
@@ -3124,7 +3124,7 @@
         "motm2026": 1,
         "captain": 2,
         "captain2026": 2,
-        "playedLast10": 4,
+        "playedLast10": 3,
         "ovr": 32,
         "ovrRawSeason": 49,
         "ovrPenalty": 0,
@@ -3148,13 +3148,13 @@
           "X",
           "X",
           "X",
+          "X",
           "D",
           "X",
           "W",
           "X",
           "X",
-          "MD",
-          "L"
+          "MD"
         ]
       },
       "meta": {
@@ -3165,23 +3165,23 @@
             "id": "attktDbT6LnpYiDyN",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/iR3EKqT0q5XCbbZcqa3VyA/8uItuyUcUiFzY_jpfI3omarFimKu29aYylC9vQ4SjhXebNX5pjmvyHvosvNBQe-_4NAemO_ZNQANDAGUQu0P5cpxgQQMCCo06MuO3axcJUTXRROd5nmXSCPcRJzSN9I298oJXPUZCEJpVBw0VavHRSVUGpPoS7NNeIpPXjEhnvE/X-MN4x76GHk7-7UrKvuP50S4B5CkMVTNxPNVE75pX_I",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/B6WMAz28xz4RJQ4Xoc0Gkg/EP7Ds4A9swmDjI3w-G25gOQ0QMvM68uVONTLNH2GJNpwqZEIet1RPuuTj_hQHx0oO8VXiYFZrF6sjlcjmKDBtiezDkjN2uHHyDZtz9Hz2Z9R4EAk5_XZMN28iSUZIpYccqZ2RRKfvbtjBdTikG7p_9VGAKoP1Y1BGyxFm3Ark9E/LvUVGd6_feMUedYBGfj0AntWU0EfJCbPwPyjI92khwY",
             "filename": "Ross_Dennison.png",
             "size": 160550,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/XNxjPNbAFuMhRphHFMxGIw/08XaekM0aKIr9iEWBS8ibOdVDRob8W9oHvZhl6pdD0WgwBVokzg6Qef4tbHLzpShvycGlrlStU3q84VCiWtc88bE6BBMhhQAomb9LKDID7nAY6QKf782kGK98X1uy1NF-if1xbfc9mE2DTpbfW2MHQ/nHGB-4vVlkeh_AfP6Hug0FhOQy9KR17JfF59xeJtrS4",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/yQuEHMzG0wpmZdUPTt1xiQ/zuAcXyOsa3ecObT4Ij5Xd8VXm-rUWpkQGqy0-zxIHPqyzC9F-zjped_p-9qznvpe9srRJm8Ia5NWK0bpUhdMQim3tmD1U1XoEydmbZ69-S8zOMS0EGql9doxCewmRZlmGy4b7nu4H3A5jyGb-6-bYQ/wvt7_UcdOCPjl-MtpqAZ1SSEye-DhXnfGwZ2RNwbRFE",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/4SSkyt_BEcCA8A2QWoVwlA/dUAexqQuQ4l146d3RkROmW_V8istVeTBhxM6BeKsL51hStQkXruCUakEQsXXVCAzJNGfPVxYL0Issqjq1Kv_kbjOAkFKisetQtXNYigOWGkPyizNVH8IqfifEUt-eoKWlO8eY607lF_K9itfy6GyDw/sr9wFbSwigoXeAmNaac5JWv9-KXKcsIwiRQibKFVdrA",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/UaXeu8YZrihujDO0qPhYvg/_QvWKfNB6L5TdnhYnUftlFokmPA3M9SmkSTgyw5kUESphyZs-Vm0JnwDp1AP1CqRRPy3T8QnVTgn5p-sBoqFO5oKlAWkRW2RocFXY9kCOuQ4c5ps6IwlD4zFXSQbdF7ADG1hOnNjpOxXfBpOHOwjGA/IfHSIi5E8ZmnU_1fHx756xs_8Ibd90MZz7QfuRBBj6M",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/uQtttnY5Xef1OiIck_6F2w/s-xchNXDtcoM-6kduDcedl9hXaCj601WMCm0V6HDp3O7_F1o36ydFpThfQlmwMP7FTdZe2Zib1AsgThf1fP3AYj9BdU7izMcr4nZ_Pm42jSUGGciMwyKCCiDKNhm7Q9uShiHeYMTFYDR0PDFkqxFdw/fbRjWbwqSJFRPcFOnux7kT2qdC72yv7Dl8t68WHmK-g",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/WiZEki0y_CXAZBuxMIQBuQ/NcOZv0McAIMiaqcofOYGXA_jiN1ZTKdbQf6c85DYXvhZcIxcLNRN9CVGgVSlNxjQyyJ-UY8sRIQswvOhiSCOYrwtEcPLHDIbxlkxGWIZ_ejzXdhxj7RqxuUS5bv344v3q___Am8gIx-G0isHlb3Q6A/hcaA4XELcv7PvlIbQ23MRdzXlR-oQx0vBc8qrzDipd4",
                 "width": 433,
                 "height": 427
               }
@@ -3198,7 +3198,7 @@
       "stats": {
         "wins": 9,
         "draws": 6,
-        "losses": 17,
+        "losses": 18,
         "goals": 0,
         "assists": 0,
         "ogs": 0,
@@ -3206,26 +3206,26 @@
         "gkCleanSheets": 0,
         "otfs": 4,
         "honourableMentions": 2,
-        "conceded2026": 96,
+        "conceded2026": 98,
         "concededExactlyOneMatches2026": 10,
-        "concededExactlyTwoMatches2026": 3,
+        "concededExactlyTwoMatches2026": 4,
         "winningCaptain2026": 2,
         "motmCaptain2026": 0,
-        "subs": 4,
-        "caps": 87,
-        "caps2026": 32,
+        "subs": 3,
+        "caps": 88,
+        "caps2026": 33,
         "motm": 5,
         "motm2026": 1,
         "captain": 3,
         "captain2026": 3,
         "playedLast10": 7,
-        "ovr": 68,
-        "ovrRawSeason": 114,
+        "ovr": 70,
+        "ovrRawSeason": 117,
         "ovrPenalty": 0,
-        "ovrCombined": 114,
+        "ovrCombined": 117,
         "fantasyRoleApps": {
           "GK": 0,
-          "DEF": 28,
+          "DEF": 29,
           "OTHER": 4
         },
         "fantasyRoleWins": {
@@ -3239,6 +3239,7 @@
           "OTHER": 0
         },
         "form": [
+          "L",
           "W",
           "X",
           "D",
@@ -3247,8 +3248,7 @@
           "L",
           "CW",
           "X",
-          "X",
-          "W"
+          "X"
         ]
       },
       "meta": {
@@ -3306,6 +3306,7 @@
           "OTHER": 3
         },
         "form": [
+          "X",
           "L",
           "X",
           "D",
@@ -3314,8 +3315,7 @@
           "CW",
           "X",
           "L",
-          "D",
-          "X"
+          "D"
         ]
       },
       "meta": {
@@ -3352,7 +3352,7 @@
         "motm2026": 0,
         "captain": 0,
         "captain2026": 0,
-        "playedLast10": 6,
+        "playedLast10": 5,
         "ovr": 18,
         "ovrRawSeason": 31,
         "ovrPenalty": 0,
@@ -3373,6 +3373,7 @@
           "OTHER": 0
         },
         "form": [
+          "X",
           "W",
           "X",
           "X",
@@ -3381,8 +3382,7 @@
           "X",
           "W",
           "L",
-          "D",
-          "W"
+          "D"
         ]
       },
       "meta": {
@@ -3399,7 +3399,7 @@
       "stats": {
         "wins": 12,
         "draws": 7,
-        "losses": 13,
+        "losses": 14,
         "goals": 6,
         "assists": 12,
         "ogs": 0,
@@ -3407,27 +3407,27 @@
         "gkCleanSheets": 0,
         "otfs": 1,
         "honourableMentions": 4,
-        "conceded2026": 89,
+        "conceded2026": 91,
         "concededExactlyOneMatches2026": 1,
         "concededExactlyTwoMatches2026": 2,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": -2,
-        "caps": 205,
-        "caps2026": 33,
+        "subs": -3,
+        "caps": 206,
+        "caps2026": 34,
         "motm": 5,
         "motm2026": 0,
         "captain": 4,
         "captain2026": 4,
         "playedLast10": 10,
-        "ovr": 82,
-        "ovrRawSeason": 139,
+        "ovr": 83,
+        "ovrRawSeason": 140,
         "ovrPenalty": 0,
-        "ovrCombined": 139,
+        "ovrCombined": 140,
         "fantasyRoleApps": {
           "GK": 4,
           "DEF": 0,
-          "OTHER": 29
+          "OTHER": 30
         },
         "fantasyRoleWins": {
           "GK": 2,
@@ -3440,6 +3440,7 @@
           "OTHER": 6
         },
         "form": [
+          "L",
           "W",
           "L",
           "CD",
@@ -3448,8 +3449,7 @@
           "W",
           "W",
           "W",
-          "D",
-          "CW"
+          "D"
         ]
       },
       "meta": {
@@ -3460,23 +3460,23 @@
             "id": "attqPFeGglYpApH5F",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/NopZHgy-W0U3ssyeSipanw/-fRb06Yi26SCzul4SOx3SCdOQlVVMB_0-6GmMPsJuIIAyRfHS4TzOvUCYkYia2zBPxFuU4NqEsmeeRE-U4hGTVjQcXHFds_0TDZ63H8rDeHJsiNSxHcSQIak61iBKex-WME_5QkW4vdpoe8KnwpoYov6tP-s3bCaVQVyA918Lhg/wcpLE-ORALm-M2JHaJeyWE4-gMAYjWbOj8c2jxg5Iw0",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/FZ2PBa6IhX2t15--rFPnww/YtRELuNFr4vxGlgdI-mJElNqmCmVzSpXXyuB5SlesKrE3TXlep8iki0-apgEGld5Jg3jiqpuYD2VjhRv0hmnWReA5qoDX_4l1Z39u-eDavkfiWjJkughuuuRNFyzZS4l3U3Olu-fWsI7yKn7eFfgRGbgVco8E1cJW2vocYwKlfM/yH8uTd5ac8jhUOhp2DVPyCrwuM8uXH9DTdUWso3vSHo",
             "filename": "James_Swift.png",
             "size": 209577,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/UqBWUIGbQuXaeYJ-dceX8Q/nfQKYGBPgsV9XaXY_68NPg9Yiilyjxtww-3cWJWqAQ5Eq0Rj3qwRlHvpXr_c-ubb-sL7zjqVCGzTz-T_x3bVoGzUm7ibjTwMadV9DK0CGKMuHcFR2lVesjb1DIfvkZBtmRjPSEFxzRpa1oUFFOAULA/GQflHiQLUUSg0qF2AxqbqYMyIBQD4HxjsKImDTwud-0",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/6biR5CkwFL3C61IPvKpohA/bLq97aAwWYECgMrc2nJEF_4Ixr1k55Mn_PC0IMYnSbyOQw06raS9rItkCYVzXzzApHO_8NpLbZpWRSA8nC4MzNDqV3GrokrYlnsoDw-57HREIG30aARWwNOMG4Q_RKdip2A_UwTyqbX4-cvp-qdmjA/Xqlg0RMAanhffBKd0F3BCM6vMbrkSAnPzNEtSZ590ps",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/gwJmG19gQMGG_7Z6MgbWQg/3T-k5jv3yamlU3UQuSymONQzD14AvODcwHE0Y1Ls9qUt4yHQ4VoMsrfx6Omq6q49xZqHKqjWksY7EQsDHJz6gcT4_X9gIxZC4f-ljgsdRiJXR8_JoJkCnTOs8w5obD_FhxYBEWp5mfUtern5QmCkTQ/LR1CD4qVTsl9Nc6_Ms1LRHhHFrp4DsVJPl_QRcQt0wo",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/sU_g1eN7oF8Lz1-AP__14g/TKn7YdIIzgxDcZ3VT8jS0m8L3a0tIskDlPNAjkfDooB3e6PbhCV8MuyQ7ZUrpmTUdT68BaLknnshf9LPJ1nwtVvCB_0QbDYh4toVoUMHGJMQagQWug6vtTckLrbKkFcqvggdn27gVfHFR6DLW65e2Q/fErYlQyT5sHG2r8LYiEzcy2ly0X5etQ3ozOaRsYl2Q8",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/ONcZfPHwCNx7gPS55gfckg/EORBPaJ0EbpPCTI10Y--CKrnj0d-4ntz1PmT5mvCd-XRSTRHwgSW1NgycUmBFFVewSu_z8si0P5kqrX_oAt0j7JcUN2cc2-Lu3EOZGRDwlqZtu3OVagP3m8mQXShcipEBmYbQ1UWmHn_9ovs2hywCw/tzwkCz4bS3z7LdzLFX7xHd8-IUikMIsHXznZjwOB7Q0",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/FlpAI9Y61F9s-u7AIy2QDA/II5oQDpD3vK51QUXKEtZKV4z3bLYwT736jOsSBE4fOBNFbHhwN8ahoJbILtsb1V9OTSlMJByC0HxYMksrB3LOhPqbXtu8HeMRxdVWYJC5mjuP8vnMSNQ3AJhStDADOf-pLjVJQY6kbR66YTMEsJXyA/RRTBa9u1roEz4prbjztq1kBIUdO-5DRa20YRzP2d7dA",
                 "width": 433,
                 "height": 427
               }
@@ -3560,35 +3560,35 @@
       "stats": {
         "wins": 9,
         "draws": 1,
-        "losses": 6,
-        "goals": 18,
+        "losses": 7,
+        "goals": 19,
         "assists": 8,
         "ogs": 0,
         "cleanSheets": 0,
         "gkCleanSheets": 0,
         "otfs": 2,
         "honourableMentions": 1,
-        "conceded2026": 43,
+        "conceded2026": 45,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": 4,
-        "caps": 38,
-        "caps2026": 16,
+        "subs": 3,
+        "caps": 39,
+        "caps2026": 17,
         "motm": 6,
         "motm2026": 4,
         "captain": 2,
         "captain2026": 2,
         "playedLast10": 5,
-        "ovr": 69,
-        "ovrRawSeason": 149,
+        "ovr": 71,
+        "ovrRawSeason": 154,
         "ovrPenalty": 0,
-        "ovrCombined": 149,
+        "ovrCombined": 154,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 16
+          "OTHER": 17
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -3598,9 +3598,10 @@
         "fantasyRoleGoals": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 18
+          "OTHER": 19
         },
         "form": [
+          "L",
           "MW",
           "X",
           "X",
@@ -3609,8 +3610,7 @@
           "L",
           "L",
           "W",
-          "X",
-          "W"
+          "X"
         ]
       },
       "meta": {
@@ -3647,7 +3647,7 @@
         "motm2026": 1,
         "captain": 4,
         "captain2026": 4,
-        "playedLast10": 6,
+        "playedLast10": 5,
         "ovr": 62,
         "ovrRawSeason": 102,
         "ovrPenalty": 0,
@@ -3668,6 +3668,7 @@
           "OTHER": 2
         },
         "form": [
+          "X",
           "W",
           "CL",
           "D",
@@ -3676,8 +3677,7 @@
           "L",
           "X",
           "X",
-          "X",
-          "L"
+          "X"
         ]
       },
       "meta": {
@@ -3692,7 +3692,7 @@
       "id": "recj9rbJP1c0qJEYo",
       "name": "Matt Tarrant",
       "stats": {
-        "wins": 10,
+        "wins": 11,
         "draws": 6,
         "losses": 7,
         "goals": 13,
@@ -3702,32 +3702,32 @@
         "gkCleanSheets": 0,
         "otfs": 0,
         "honourableMentions": 2,
-        "conceded2026": 58,
+        "conceded2026": 59,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -5,
-        "caps": 115,
-        "caps2026": 24,
+        "subs": -6,
+        "caps": 116,
+        "caps2026": 25,
         "motm": 3,
         "motm2026": 1,
         "captain": 3,
         "captain2026": 3,
         "playedLast10": 6,
-        "ovr": 69,
-        "ovrRawSeason": 148,
+        "ovr": 70,
+        "ovrRawSeason": 152,
         "ovrPenalty": 0,
-        "ovrCombined": 148,
+        "ovrCombined": 152,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 24
+          "OTHER": 25
         },
         "fantasyRoleWins": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 10
+          "OTHER": 11
         },
         "fantasyRoleGoals": {
           "GK": 0,
@@ -3735,6 +3735,7 @@
           "OTHER": 13
         },
         "form": [
+          "W",
           "X",
           "L",
           "X",
@@ -3743,8 +3744,7 @@
           "L",
           "X",
           "X",
-          "CD",
-          "W"
+          "CD"
         ]
       },
       "meta": {
@@ -3804,14 +3804,14 @@
         "form": [
           "X",
           "X",
+          "X",
           "D",
           "D",
           "W",
           "W",
           "L",
           "X",
-          "D",
-          "X"
+          "D"
         ]
       },
       "meta": {
@@ -3822,23 +3822,23 @@
             "id": "attrub38XlVJ9Xusr",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/IIlU2gG_M8GWlFGO-0wjAQ/Moospkbz_Xk7EFseZChOVlgOFRHq3zKBr66rfiHGrTyY_B4PtflSEE7ivdoiug30p3Evr73Kesmc2sgC1fGLJe7Xj_8wL-nhK-BX1J_bdpyydl5VCjaaCO1s_eV06E5OAoI070PKWdbYS2__YQycGLpB0G7uynKUrQEUxGalQw8/FCW_UeVFoA7e1ozbR9MHS9W3OjLDSo243Ih8c53n2mg",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/YuymKTREIk_dfpBb783s3g/jCsuVDe08XLKx0BB0lohcDtJvnXuwOUrXxrnIR_rW_s6jY2jmhv6gOj7_bKVDRwRr0B81udNF7OZt9L2EdQCROzRPfyoqQIM3LFSYBdah5AcmgEuNsXKsbq_CRuWVC2nI_F9pCTjRXkdWgFjPH82eWWZkSyX6HFMLzumuIDURaA/7i9nesS-gd0578yk9982phRKyvtXwsfhxquvtOinnP4",
             "filename": "Dean_Cornish.png",
             "size": 194966,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/jovOuhR4pQohBnTQQR4oTQ/kpwrxZdMRqyxyZxFJzRX_omI8q0p0dQJpeFlIjMQbBhtxru2dYIx6RlofFT4bU1jOu02bn96U69co2bJFC8csWMP-sZeRcVF6nP84ldxgCMd_0dDuVtBHTygN7vGRLWe6BJiuBDnxE3pGX3J6973ug/d_rFwc6O3D7mR5xhlqDehwZA71UxGjrFL7VRtBTgkIU",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/9OegeXP0OQ4aEWH_fo8VOw/_Qs1NW59T7jlqseFCERDQtHcxOXXvSlD5bOF5uFNSwWjPy1L_Jpoff_EUSE237gX4u3MiSa34c1DpKsQv2lh0Mp873ybYZWOHuiRT5VMKJAUrbUklNsH3nSczTPXG7WelfhxtkHrUr0diuqr1f08Tw/hT7QWBV3hN8N_eE-PURLDK39uCr0ng-3FGlO3oJZDPo",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/62P0nabEw_XvqnwNcdMjjQ/nH79Uw7OUbLljWRa2bpVwUcZoqx_WAPolQVQawsKLWtHFO6IOGQPXuqpRnQ7PBEgZuqUBP6Gysuj_YYEy4KpZtVlKDDY5gXKaS43GNQOZnq_h972UOYWLSHf-N1NOMG6--86jelFoGLp-X-YRa6Yfg/02YbHCfYChTkv--7lMf7x5HaqJ9KL6224MRRiKILtfg",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/F2OCIjo-TBj7gkrwpcuEUw/lCP0seVNpV0p7I7W_yyY_7ADvbdnj1Hkw_aB5kARBB0nlxJ-GY4283vE4gW9hbQZhkPhBxz3mXF9jdghOhdOVf-Bo6j-wdqzA-E6fjSoD8tnY--RIRDC1FYZ9a0U7mIfno4-mwyThXjxSjBqpR6Hjg/Xbpjz0V_2KPBUVyF_fpcKZjiXKFsK1Q9eY6Xcahlxoc",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/mcUHgeIhku5tN4TH2lAObw/N_HW94-7GCxPFUI43PiA8ngPgzFDd1dk89Jwv-ApZXarO5tw1QLX0FGB6oPs5AI5S0GGk1Efr7i-4eVy8YtVTL64lvjsDf7D9EGPVRzg5_fCxJhsQfw-oHgR-qChVGlsP2QhIGYrufzshe8TSG_bPg/82y9gYgat_HpZKhMtA__9JinbLEdqHbR7CaR9Xf0TZc",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/4XFUxTwBlr9vLWOIecYHZg/f28gGM3K4NjT_Pfa-cX7hE7oCsX__PX5GMhix33v0pFb0KarY8Ycpj2LdgEVoB3I7YRdMRQCNGArq9ej6rjs7Jh7CjwHm5CW331j5wF3BKi1vA9Ih9AdRAhF3-Kryl71_6KxHddG7O4zKfPmctK-pQ/e9iU2dsFxysPLiw2E0zIOGcZmSej2gFPTiEPezIm3ZI",
                 "width": 433,
                 "height": 427
               }
@@ -3922,35 +3922,35 @@
       "stats": {
         "wins": 10,
         "draws": 6,
-        "losses": 9,
+        "losses": 10,
         "goals": 6,
-        "assists": 15,
+        "assists": 16,
         "ogs": 1,
         "cleanSheets": 0,
         "gkCleanSheets": 0,
         "otfs": 4,
         "honourableMentions": 4,
-        "conceded2026": 59,
+        "conceded2026": 61,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -1,
-        "caps": 152,
-        "caps2026": 25,
+        "subs": -2,
+        "caps": 153,
+        "caps2026": 26,
         "motm": 9,
         "motm2026": 1,
         "captain": 3,
         "captain2026": 3,
         "playedLast10": 7,
-        "ovr": 57,
-        "ovrRawSeason": 121,
+        "ovr": 59,
+        "ovrRawSeason": 125,
         "ovrPenalty": 0,
-        "ovrCombined": 121,
+        "ovrCombined": 125,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 0,
-          "OTHER": 25
+          "OTHER": 26
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -3963,6 +3963,7 @@
           "OTHER": 6
         },
         "form": [
+          "L",
           "X",
           "X",
           "D",
@@ -3971,8 +3972,7 @@
           "L",
           "CL",
           "W",
-          "D",
-          "W"
+          "D"
         ]
       },
       "meta": {
@@ -3983,23 +3983,23 @@
             "id": "attMJ7ppApEjfMQZa",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/8E3kcKdVtsuEg8d721SwXg/_uA6latqBPqwafiBDfXQUut88reJK6Us2gYLxoOptDBLFa9ZoKJrLWQW6R1Ngo93G-WkBLS6IrAsy6jViqtagPyfWGVU81WBRstcOvhVe4EhmBcYbKaTdBnFuxh6GFu5fXbAwbD8iD-QBLzhtwK4y_MBEo1gKEwd-Qn2fQLUy1g/CXG71KvHs-UhpquVhs2DB9NiyV9DFt50iCF4BylQwcs",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/TpGcHWE2s0Pk3I1d_MGsLA/ujw3axjj7TvsY3NzHlqLGrIz41F1sPG4b2lYZx9SBfhN8Tb2aVBz_XZYgSPh6phBWgyOqUrU56wQ47Zbp8jj43pRwkSnScweoaQKz8L36pPTB8ihIRzAmCV49fsHVKYnhsPp5iBRwBEcCaftpz8wsxIr7xbBFekb8dPVjgqK7VY/X2C2bhTSkqP0Q4NRdhiVcfsaxGG69_uZ5vTxOFj3msc",
             "filename": "Tim_Laws.png",
             "size": 148257,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/NbMhX6nGlSt_K3dB6iKyCQ/9xuIn-8gituxXZ6hHc2KDWg6a5a9ra6nVTOGBSnFADrzEMStJthQu_69HvX5U7iDyE0he5X3MXCR3WC28ZrZo_wirU59FOUF5znb-V56dXM3nPkTKWEXYdgv_9yQBFdJSNjVO_FzPir7IEmKQRZqEg/XwR1BO-JIuDKDw2VKWaD4S3tUhkJaMFKy1GkuoSTLPg",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/l5PUaWEjCaDU7d-eYI-jFg/_Y7fdGUs6IlFKyi-uJYgohXKqtPrSSNHZHseEGm4rsnJKTTRs9BcSNbkyjZ06FLpCVAsZ6eCdblZBb6_YA2hqHi0hv_wGgcR-c-MLsYJZXHZZe5HpEfQgIIJxDIoQAGhIDjXHQnZBLYJGDOdbC9aIg/r3b3BbgieM3s8NbeCXwTCCJ8-chTc2x7Mb4C4Jh2ATs",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/2x8YCS26D9gXDH5wA_7kyw/FAVzL-RyDlCkXcFWSBCpVFP7N8R_3kbwy0JhO9LFJR6KPSiHnMu3nG0f7tD7fIVDGjmqFaX1FtjHvGzn9bCT5KAR3BfV3pb7oN1aXRk08_qXURj_uKUqr12gzjazszy8iurJmWCcuw3G0xv9YFYBig/VaH4wQmotQp95oM-iii9705zETDbQHywuwJBDz4aTgM",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/CKtOEed0EGLmy1KQs-7nCA/hSxsT7emsEoBmBrIfDK9-VWyCUV-AC4rDfGm9ALPPJB21rDQvMlsEZV6thROULDOS79x9Bsw3c0Z1p-Bu_WrlwYgm8zgJE9o3wRPRcs5WwpdfT0KtkR8_FL3KxH2Z7XwXur39chaqocWTZl-5shLDQ/i3wz9NQ6VOH7MKKIQ5Slo1eZTNtnEMH9YD-Hkee4WgA",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/FdtGTHImBVYKFRx2HJN3yA/5JBApqpagZXjP6oZQVAkAiHUYfWdvZLZEcZGGHuoLSsMqqFeTSx2ICb7P1MzMIyAZJGbYZT_mdS7JxRPAsDKtsS2zT7ZHOidcfQVJEJDnqx-yv7VLl7qnrIm0ymPYGkbObDbpLdRop1dPs8lJal_ew/L3uFNFBrG_nCgUloKnfKb7-OAGRf_z5lUrQwJ6hVO44",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/6um72olmyFfIZVrwZK2TzQ/M8nQjMA6oBtTuwDhmLr2nRmV-ujW2YvCxHu7vcYgnxsLe3tiEmYdmueUElJiDHNT9TTHjnbX00kRSWS3GbvSvlUAEdjSxoLx0esw5iyGBwGmWukFihxdLYoybnlql7BIuJOp2aey1VJeQ6Py3o1WZg/FOaQPPzXaXvdzMrAFjEpdGyRDAhwJdp-zKPlPctzCn0",
                 "width": 433,
                 "height": 427
               }
@@ -4191,6 +4191,7 @@
           "OTHER": 17
         },
         "form": [
+          "X",
           "L",
           "X",
           "MD",
@@ -4199,8 +4200,7 @@
           "X",
           "X",
           "L",
-          "D",
-          "X"
+          "D"
         ]
       },
       "meta": {
@@ -4211,23 +4211,23 @@
             "id": "attm8YepdICAAFH8i",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/3blYUFcx8a_5Zq48YxrIEA/aVK6koxywNYz8qBl4QfuxEkyZUqspGCkiEpTyEiEeA2DC43ky9PKzAKE-eB0vkcrvTbzFoh0KMOWSPZciLoJfY6i29DubfMpubLQvTWNkVK6wVOcHNQISKlB_UpPcgZgZZMhJbaEHEv2gp3LXGwRfyBitZcPHIY3nPghVxbrSLo/PxthrNffv34SRMJFGk3xNymCExKjzb66BvO4ItKMqf8",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/PSX2NINKZn5RFb-lHPXUng/TeeX4vfU82B2KQJEUdRWS4nE5O4A_DhkATy6mksPvO42TvJocjU69K4AE3B9ddGbVJMAvebUsECr6GjfrInf2xySf8TAdyyP_b34awSabqIR1M5a-uZOn2s7oe6mjYw-fVd8fDmU2ZwI78wYf3Z-h5aL0lCb-mWU-sz8AIsYSKU/r5V1nzUJalEJh4rsLcUhFRjukqsdyM_LCERCNfahALA",
             "filename": "Martin__Younghusband.png",
             "size": 170978,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/Z85wiJugJUcyCTO4LLDBOQ/kVFTmK5lbUTGpS_MJ4zTOKkI4-8tpBmVPJtGp0h2N23tlEjBTTcD7gBox0O-901zHn0IqLAMRqnMG4M72hBK2JJiPiEQ7_WaqcBAyqDCeG0FOUPFgts64n279SPJWvfU2fAJA5P5rh6aMszYgaisEQ/3K8nFx-GUBNX8wsOpjKbAgJvPuOrMNPOSsb76t-ROL4",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/xWGEYWU7cSkhZCG_r6ydLw/c7A5vqeLfhFwU0Lm02LPepJSUnfW4WXzuCHfykRpzNZOGuaZKxkY_SoxFa3u2s0O0FixUAtabwQq5l8YnoYDO7W4Gleg1mzBhZJPHaABgRMkXLENeeITvbXR6l-eksSz8O8LYphwBj3KqK77JcHW0w/TlA1sfjM8dvtsDBZULjiDhfNcn5rMlFPpRj5_DnAfT0",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/5x7ga_0MNtohb-E3sEt2Gw/Y_fD-HKDhWlTNSAk6UAqgbAT1VrHa98I7qUJ7Um30cAUlcy3yTcMkjrQlReE1tGtZLi84ho8DQs6MmzPrY-bMLWQ-l9X0SvitLS-DY4eXdNvBxO6TaCq1zQHx0l7j_09Nv4VIrXSuxXBU-NLtduSew/eUZ9g7wwYFlu1C9XJ3SESWxmk1NS8Us_MomPw6IpOQA",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/lzQBYEb84w7Lb3IzNVB_XQ/xxqEYf1b_7xlMqOX6TmxJtpQoQeKbwGliEAKLej8PqdaPA-E9_Q-tHN8o4O0iSgC9knFibNDFy3TKnSMeqDF7dswx-vpVk7_7vGMGfsD9mkWSPLpqaY76SSOJOYWPjZuoJMQepqZQHW2MIR_8KSItw/YQavOUOcRo98QagsbkTwR7sNNZSyNIJjxH5lwP4rtYk",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/JSwuBoNqlvS7hcGc5uuHcg/nrND3Y4r9VJWyur-szoIcnpU84BDIAvEN2RlBLJxyaL3G2Os_xDO2BEHwGAZZy8aSHPYVXaoHzwRJEhkIbS8ecTnelaNlU5IX2a1qwxo47BpsahPVDQimRMmG_f2GxFdhcsqcyX_yRh65KgFqMSjcA/9YPep4t9Lrg6adJynq5VLB_wfcd81_hmkLWJZJ78Buw",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/kCH0Zgr9uVsz7JeEDP9kOw/9Uy3wSViRzOmar4MpDUmt4qqJITX2hj0wKPu8VRV85Q8X4lqZzQxtc2-Ovqv3C7uSYGaBU8BV7kJ89mdAYUpnMpVWW_SKES2OH6lCE4XfccZHJlJk9XLMhPiOec1KEIK3AOoYXcFjAD7ojTPKRJlzw/wZjvrHiGQrR8DomL8tLxRx6VlqA8sWBwlvfD6gsY-Ug",
                 "width": 433,
                 "height": 427
               }
@@ -4264,7 +4264,7 @@
         "motm2026": 2,
         "captain": 3,
         "captain2026": 3,
-        "playedLast10": 5,
+        "playedLast10": 4,
         "ovr": 47,
         "ovrRawSeason": 77,
         "ovrPenalty": 0,
@@ -4286,6 +4286,7 @@
         },
         "form": [
           "X",
+          "X",
           "L",
           "CD",
           "D",
@@ -4293,8 +4294,7 @@
           "X",
           "X",
           "X",
-          "X",
-          "L"
+          "X"
         ]
       },
       "meta": {
@@ -4305,23 +4305,23 @@
             "id": "attPMOU98N4LLSFCI",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/0Z3-BlBfUTu0AKAMtX6GxA/Ving-vJaHAQE8rJlGULpNMgWWSENy0ZlV9NZXrqpShyO90i6Gt45oL3So6nvUKEtsJQWJkROwRx3QdS29nAgaD_QvlTWXQJaB7xWtKnYrSk8gECTaKR4DpyuOgTrWZK7HdFMcSzZBgzXhuTNwOoY5LnUtiAVccTi3bmvUh69aYs/rKXXClaTXd-AOg56INy6hlNeeNDFMWt7hrSpeC8bi5E",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/kcaOXGcle1t4NBUtMlY2qw/5Ei19GGww7LsWLsTNtiSqnxIvqCmm4nMK6j3VjQ59CbqpajAfXoMFFFB3FU4Bx_dlYzSHUfkazQ7RNfBQ5lU6iKAzUdCzZYvXyB5_7WrfIkBxZrLsAHpwwPbU4v0ChXejMmK6ieg2sWjYpAbYQqSnWSq-zdotG7PN2kiXUhNtoM/wqsXsbgHQTVYgbNIxPI5z08JApWzMOkhZAJGk7_FZSU",
             "filename": "Sam_Gregory-Smith.png",
             "size": 171665,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/igeykxGtSwsiJ-GIGfvohw/HK0DTCMOO-XoKXXJ-csb9FP1Akz_nqeD1zqcbgp6K20f-gOI2pfdnVMeFPHCtN7y51GS89Cp0_5rqeMHpyop-S9dbzrwMb1Jc3qhXryLbQb41I6oEf0Swp_Roc1r9jsgl9piJwhzKVJ2dmCH8kDObw/TNur7KCylcjcuwtL7cYxIzQj473bjXawGMeM1-SnTfo",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/EWoha16-jjZHjOTIlPa_Eg/ldyl7v0d9LLr3y3wpeI-gfZM8exUS3Ad9OqTE-d5YhG0NcIudnVF1XKJfUg3v4Zk76X72Gp_aQQlnwLaQu3fR44eL5O6rel9GeDfsfizplqNaUs2mU3a2ZSFRen38uuhPyimTqxxbMVn6bfHhE6pSQ/syhM7Mbr72S4qrksljtheVytPOQP2VbZlc46XRru-sU",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/dXvznCoNYOdrE5UEUx2GHg/n3vMlosVeyRBOfLVE1Y1t8CopBGmh5w5yKvAQ7bvLk9PDi-saYip4Z7-x2h7fmrKgGG3XmfMp7CyYiaw1wIYSUNJD_PJ6W8hdRG1U0w2KAvtWc76gWRM5Ph7iHblMMsFUHVrrorYuk3fp_amr_Jw7A/toYsjOcY6l6xPj11fFz1Yia_DedwUE3C3EoOIsrrtuE",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/n32LM9RBFVGmnJSwogOMdw/7SwR4ixnZAbczzQxrF4LBlwlldLRl-OYHMLQNsbUY2QDEPiNQrizCu0WkOi0Q8tT394qBpW_1aOHa3BMpg-8yK5PS6Y2nJEua_RNP-Uj84yc24XJJN9PQhkU61f7VQvE1M-v0wv5EMUN68qLYnZyiQ/9ySM5A4RYVFKWOy--rlrsuduDHTmBQatIgXcjcxoNMY",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/1oIqLEd5wYLCdXQCPgvO3Q/f0oBveUHPnKO91_Rc0kBckSWZNz4H2J6lWn6Dk2TzyqEpfUCAc9e-3LIfh1vm3b6CKeQQ7Vpu4ZxE0DxL5i0jH-OU_3XBJX_UCYfV9e-SZxT9K9rRWe-7wob7hc-_o6OJucSYwLwpKi07WPZxHH1CA/s73NMhnRb_YaVvlBd8AvgOFT82PgKqKZ2dxQpTMcUbY",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/nV61uznTtMkBPb-OxKck0w/4vlo5YlegzzxZFNEB0OTYrHuXr1VWO9yzjwUsEGhQjoViXmKn1npu3GnRmVxpAh07d5i21ga2LdTLRZgmKPS3b8_Zzk_8TCFrkP73N0fIcsLvGeHBRlgNfbtQw1MXzFxKxLJGg6F5FXe5GOiKaXsRg/AJxO5ROLLBphyoC6MjEnTXsMDHh_0MjyuciE8u0rPNQ",
                 "width": 433,
                 "height": 427
               }
@@ -4405,7 +4405,7 @@
       "stats": {
         "wins": 8,
         "draws": 5,
-        "losses": 11,
+        "losses": 12,
         "goals": 0,
         "assists": 2,
         "ogs": 0,
@@ -4413,25 +4413,25 @@
         "gkCleanSheets": 1,
         "otfs": 0,
         "honourableMentions": 1,
-        "conceded2026": 71,
+        "conceded2026": 73,
         "concededExactlyOneMatches2026": 6,
-        "concededExactlyTwoMatches2026": 6,
+        "concededExactlyTwoMatches2026": 7,
         "winningCaptain2026": 0,
         "motmCaptain2026": 0,
-        "subs": -1,
-        "caps": 184,
-        "caps2026": 24,
+        "subs": -2,
+        "caps": 185,
+        "caps2026": 25,
         "motm": 11,
         "motm2026": 1,
         "captain": 3,
         "captain2026": 3,
         "playedLast10": 6,
-        "ovr": 66,
-        "ovrRawSeason": 109,
+        "ovr": 67,
+        "ovrRawSeason": 112,
         "ovrPenalty": 0,
-        "ovrCombined": 109,
+        "ovrCombined": 112,
         "fantasyRoleApps": {
-          "GK": 23,
+          "GK": 24,
           "DEF": 0,
           "OTHER": 1
         },
@@ -4446,6 +4446,7 @@
           "OTHER": 0
         },
         "form": [
+          "L",
           "X",
           "X",
           "D",
@@ -4454,8 +4455,7 @@
           "W",
           "L",
           "L",
-          "D",
-          "CL"
+          "D"
         ]
       },
       "meta": {
@@ -4466,23 +4466,23 @@
             "id": "att5QyaDMdyFMWygu",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/5EDeKGInf_x9sQncQ2Ue3Q/8SnDud6S11FbatMl-EUd2eRChDrSf0p5EVnRM2uHViAkt6HVGMGPOpFXOwzdM3LEg0Ol2K47wMF_HZlNvaZc6czW1Zkd7jKBmiEaagiAFXQPntg4UXAQV1qo7F-AGGOAl1SOlBr2-GDkcQHRaF6rjeRIMrhq86_eU_7L7xy_lL0/0AeEgeC015mr-e_FT-DyR-wlTO9OweMS9UI9m0ctjwI",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/aq64RQrV_Qc31mGbC5s85w/lhS1rxhy7lTNlgDlF97-qPDaPkmxMPSefAyp3CwBTHQBmsHcqO8oaRkAv7MQ0NJOVCvfayLzhdxIfAIr9PjjusCezY3p6fC8BDIVythl2Gd5eRk2J_7mIcuzIxuknfdgjMMcIHkt2PZAW59PK7kLybTGczi1ZTMgl0ReOzoVwwk/SoQn4Prk7V4ypYoDtR9U_1kShANpG6PK9ZD5vfkB5g8",
             "filename": "Mark_Blake.png",
             "size": 197692,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/WF5NttEKoTLKB6Z2_Pk1iw/hQNBlBksQpdyocM9jJJ9scEucf3qy2R030NSaqXmMyjihZN0DS1tMVtz-q1Ds_2413Ay37GRIjsqE9fkorC6-Nl13o-DtBOPH4-TIHlpWAh4ekI8axA-Rwn7nWuft-Q44a2Y_VDmiIpOVIsaaGQptg/oBBMN5a9H8tB00FeovJFNivRLVxt6TrvFvv15OtxAfE",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/F4Jqmxj4xwd7GPtmGMPM0Q/etNdvu6223DCTCMMipzh7Lw5BaBjqrSY1Cad90WgPQdQmJ8L4zA3j62tlVexGVn2wgY-ZXWTl3E8THavcsi6gogtUdbYaRcV-dkgL-GmCnuXm8mSGt0WqvVAF3w8B0jhBBUaG1-p5Dr93PWHZzhkdA/74g1taTJLE8TlWVXxSPomz2Cq_SEWDEe5umqZwn85p8",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/WKvvDcENcrsPCOVJDrYWOA/Jhd8f8DR9yxE2KXflYxs5Ne-PBocJfzjI18EBpOAt1S94_w_umTTQaVbYjGg1JJdVi6whKe4xurgqYBbYx88Lk5FfsaLlRE_GqeMZ_cEraCt8Lh6_HHoFCrqpawfgoltAb21X-UEEMfZu-1ojhdjkw/zJTNDH5j_YFuOJW5axhFHzmVDm0Jr5mQlzo0o_uSdpE",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/p_HLKRQO7Y82KLgWoY_irw/Yt5m3FLRrlMvEuI7MUIky4JRpGD37QKDqpZFTA7DpQJ-nB_rA70J9DtvjevGzL7V9UwBwdbB6GvQgXFUL8y8kweuffUNwJ8UccckwBJ902BLUowlkag-ccwr96Ar_x2kTsoaPTVvnNEaMLAqc85jLg/umf0Z8PYBexhHJFsuEaunRI87vaiJCfcRcXrH7_SiPo",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/WBEkmhe1PYcA5nsbluFbRg/tACqOIFD9fazBaqbS842yNSw6c0HXngmsPzFFsVFRFUocpvm8h89vVCu7U5sys1PYn7UPmnsqVsvZMktJCRFb9zHq2Y2E4S-Jz4K5-D5pZy7fX4sohcGpTT3pQWgG0c63TVlHlMbBENdya30lZdi-w/rKu3WG3mPyzVVXQKwVaQZ53cc-a9dVXW3wQbu_cj99I",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/LYzLubT5ITy9Uir5z_N9aw/q70mC0iMRuua2myIUkzPOEjwnzgOKC3dpFZLAykDNoQN4RD5VFrzMzuysJ0i7qZCGZ7GB77c2c-iAqe7zw76A76xC68Ua3y6_YiW3YK4TwpeA4h-nP0HM_x2aMeFziyc1ED21ded6m9KRNia2LeUuQ/Ak8Gx-hEKdhS-4i7LU9sAXWIDhnNfyDnMvQDlOgWi1A",
                 "width": 433,
                 "height": 427
               }
@@ -4560,23 +4560,23 @@
             "id": "attQJemLm5CclBdBd",
             "width": 433,
             "height": 427,
-            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/-OWErhsrfXB29K9rDkZLkg/ioNU15I2ABhNjwvWGcnuUmlXVSear5kvlq3kSevR07wrhgWE3_OgreU6xu9HZvXFWUTLujknW45Gg8RnIA8I-tPHu0Y9R9k8qldESxW1VDlsQGdjkxBLzh9Pg75B_l7wWJRbYqwqUj2mseRkjj9clTp1LYg_JQTZUCBIJd2c3fE/oNyMDn376e4WMFXO-1YmUwb_1WOtH18Fy19aQIN7PXQ",
+            "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/RCyDDKyUoGmkprEV9PX2LQ/7XAyjve8neRCBwxTqvHYENPI-vixawLjg2JeXX-Gmn2wIloRXmkdHuP3Dot1oDsvuzZFNOEok8wQUuQ5Ev_3XBBItxdsae-Mgypt6C_qCyy9y_D7xUn5_kG1LctHsM8C0caRIuzXQGCBzEsXOBPCBwPkKTdD_T1gOTuGkX-yqhQ/jBf-8uHi6PypZ00hv9RAr-6441ZohYan2LldskkjbyU",
             "filename": "Will_Stacey.png",
             "size": 189258,
             "type": "image/png",
             "thumbnails": {
               "small": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/0G9knzyiko6LITr1Ufk5bQ/AZqNy32uYZG_2UFU80zrIEal_hAtc5-G_YH3kCSqAIW2s2VMdNQLAmICOiMEh8A5QE_kN6AWr-rs9RcF9vAlFQjMBsUEO1bM69PKxgOeIPn_RyMY_fqZ5ryVI2JVx2WrRSDuEAgMplO04B9q-Xp2LA/3kZ8iu7ewzIbXXFf6Px_Kex-etLnzSXJ6ckrQOTax3o",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/RIhEAhJm9NIuyC7ee8Q3IA/AmplBpq9x1TzeusfUt-fkIgJVcv1ihSnHB8vxtAp5Nju1C98cZhnOAIdBBBnj2qP9ceyGL8oABz68RyaNHeugpX2KbVxI1NEHIiAaUfQagidjBWQlumcIGMYbatgww1a7Jb0u8NzP0m0Gbaq_pwjCg/CN0Cn2jK-Ajy37KfgCGQ_G90Hf0yIhnch6iJxZOVd5g",
                 "width": 37,
                 "height": 36
               },
               "large": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/3r7VboRIPLSfgWSE5hvnoA/01LuYzx4TOo3uu4Cgli2y1WTO33JoixBfobCWWBQEXulw4vbSnoKukI3LgcaETgbCjhOfePb9BbIpIXt0bOjXbS_uj9oXxOQYFm8gqc3dTXhMFvSa2aCgt6fkX_K2I9R13VwVToBsWxhodrEQ7PCVQ/DXQbbKEySCiZNofdSFWqGgbhzyZC7bZpYjgQJl8c6J8",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/3C6cEYX4DSG7IIBio-g5LQ/7SEi1LjQiYJp2pM5-wYNsc9oIeGidGmjc6HnhW5cIj2ozYbLoDB8ZAJ9y8NI3pnniIw2tJYiTjsclocPl0c3zHYKsL2O6T4E4Ty4waxCVrAmGJ1NTI3heC9LxG3XCYq1habCyQz1HU26tUAImBqenA/3hZGrjTAs_yc0GTHSQOqGInxVnMgbt5Z4Gj1O7pP5Eg",
                 "width": 433,
                 "height": 427
               },
               "full": {
-                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792202400000/jfMjOy0xvsoH7de_ZPFqAQ/e4gNx6z0mSvhsPVdqWBGOMTT1VYXhHvKKW-TIi3B8p5xIG-MlmpgIvxBJ0ffzpvdTDJYhrFkNVfbvSDWT0u3B5mR7vKeESLywaIf6QboyAkjNJLMDNN6x8DPoS07Nd3aNIrC3eQX12nrDFgAb6G4jw/IR7YQlI239jvWQ8Lj9tc0AYEQ1NouuU_hLBjQd1DMZ4",
+                "url": "https://v5.airtableusercontent.com/v3/u/58/58/1792720800000/XE1B2062dbFteKFcBdkd2w/AO4vNGWPDCWTsrSfQxYqTpPZPHKP-XmVwH1EfwjsGChzZ7a18vd3s1qUcrofNLQWnC4miZ76lYeJvOr_OGJB4iTcilV9TeXp-v0Q-YBtaacR_FhTfEm8ZcKd0xMqPe6_JMy1DmxXhX9ZwK4TVInsdg/Nsu_zzfjXvSDPeT5AW5yG_2q8jyybBanz4eL_LwZ31c",
                 "width": 433,
                 "height": 427
               }
@@ -4794,7 +4794,7 @@
       "stats": {
         "wins": 12,
         "draws": 7,
-        "losses": 9,
+        "losses": 10,
         "goals": 6,
         "assists": 5,
         "ogs": 0,
@@ -4802,27 +4802,27 @@
         "gkCleanSheets": 0,
         "otfs": 9,
         "honourableMentions": 3,
-        "conceded2026": 71,
+        "conceded2026": 73,
         "concededExactlyOneMatches2026": 0,
         "concededExactlyTwoMatches2026": 0,
         "winningCaptain2026": 1,
         "motmCaptain2026": 0,
-        "subs": 1,
-        "caps": 40,
-        "caps2026": 28,
+        "subs": 0,
+        "caps": 41,
+        "caps2026": 29,
         "motm": 3,
         "motm2026": 3,
-        "captain": 2,
-        "captain2026": 2,
+        "captain": 3,
+        "captain2026": 3,
         "playedLast10": 6,
         "ovr": 51,
-        "ovrRawSeason": 107,
+        "ovrRawSeason": 108,
         "ovrPenalty": 0,
-        "ovrCombined": 107,
+        "ovrCombined": 108,
         "fantasyRoleApps": {
           "GK": 0,
           "DEF": 1,
-          "OTHER": 27
+          "OTHER": 28
         },
         "fantasyRoleWins": {
           "GK": 0,
@@ -4835,6 +4835,7 @@
           "OTHER": 5
         },
         "form": [
+          "CL",
           "X",
           "X",
           "D",
@@ -4843,8 +4844,7 @@
           "X",
           "X",
           "W",
-          "D",
-          "L"
+          "D"
         ]
       },
       "meta": {
@@ -5705,6 +5705,13 @@
       "isOwnGoal": true
     },
     {
+      "id": "recb8Nh2WDFu9jeWn",
+      "matchId": "recMfu96YisXMvXOx",
+      "scorerId": "rec3m0f9cBSdbwGS0",
+      "assistId": "rec1NVl8RI5HIZxU0",
+      "isOwnGoal": false
+    },
+    {
       "id": "recbLrleJpFeqyodC",
       "matchId": "recoFLx0GwM0dXYYe",
       "scorerId": "recx98b2sy6pbRyEt",
@@ -5772,6 +5779,13 @@
       "matchId": "recoFLx0GwM0dXYYe",
       "scorerId": "recj9rbJP1c0qJEYo",
       "assistId": "recfZUeAUzKcMAziC",
+      "isOwnGoal": false
+    },
+    {
+      "id": "receRiBDKkpzcxCBN",
+      "matchId": "recMfu96YisXMvXOx",
+      "scorerId": "rechPSwQq3TluwcPa",
+      "assistId": "reckG9bP68ANrvc3p",
       "isOwnGoal": false
     },
     {
@@ -6181,6 +6195,13 @@
       "isOwnGoal": false
     },
     {
+      "id": "recwLultPtF7N0XSg",
+      "matchId": "recMfu96YisXMvXOx",
+      "scorerId": "rec3m0f9cBSdbwGS0",
+      "assistId": "recFqxDYKYAkKmV7Z",
+      "isOwnGoal": false
+    },
+    {
       "id": "recwYJ9LvBPUhbUuo",
       "matchId": "rec4AJZajverq4JZO",
       "scorerId": "rechPSwQq3TluwcPa",
@@ -6231,6 +6252,60 @@
     }
   ],
   "matches": [
+    {
+      "id": "recMfu96YisXMvXOx",
+      "name": "38",
+      "date": "2026-10-22",
+      "playersPink": [
+        "rec3m0f9cBSdbwGS0",
+        "rec1NVl8RI5HIZxU0",
+        "rec3nbd9YeWG6UHFf",
+        "rec8nYCRFDSNo6RhB",
+        "recj9rbJP1c0qJEYo",
+        "recFqxDYKYAkKmV7Z",
+        "recQYOmJTyCjaOdqk",
+        "recTyiy2Eu2vZqKkx",
+        "recG662mRw9nTfmcU"
+      ],
+      "playersBlue": [
+        "recx98b2sy6pbRyEt",
+        "recZauOLb3ET9m9Ix",
+        "recfZUeAUzKcMAziC",
+        "rect8nIhrhsGH3mPK",
+        "rec3IB6CNEMmwNykE",
+        "rec7UewFBTISFASsD",
+        "rechPSwQq3TluwcPa",
+        "reckG9bP68ANrvc3p",
+        "recNuFhkMZr8OAjbH"
+      ],
+      "pinkDefs": [
+        "recQYOmJTyCjaOdqk",
+        "recG662mRw9nTfmcU"
+      ],
+      "blueDefs": [
+        "recZauOLb3ET9m9Ix",
+        "rec7UewFBTISFASsD"
+      ],
+      "pinkGKId": null,
+      "blueGKId": "rect8nIhrhsGH3mPK",
+      "pinkCS": [],
+      "blueCS": [],
+      "pinkGoals": 2,
+      "blueGoals": 1,
+      "winningTeam": "PINK",
+      "motmIds": [
+        "rec3m0f9cBSdbwGS0"
+      ],
+      "honourableMentionIds": [],
+      "captainPinkId": "rec3m0f9cBSdbwGS0",
+      "captainBlueId": "recx98b2sy6pbRyEt",
+      "otfIds": [
+        "rec3m0f9cBSdbwGS0",
+        "recFqxDYKYAkKmV7Z"
+      ],
+      "notes": null,
+      "countsForStats": true
+    },
     {
       "id": "recPVgzzfbif0VrDf",
       "name": "37",
@@ -8296,6 +8371,12 @@
       "countExclOG": 4
     },
     {
+      "scorerId": "rec3m0f9cBSdbwGS0",
+      "assistId": "recFqxDYKYAkKmV7Z",
+      "count": 4,
+      "countExclOG": 4
+    },
+    {
       "scorerId": "recFqxDYKYAkKmV7Z",
       "assistId": "recNuFhkMZr8OAjbH",
       "count": 3,
@@ -8326,6 +8407,12 @@
       "countExclOG": 3
     },
     {
+      "scorerId": "rechPSwQq3TluwcPa",
+      "assistId": "reckG9bP68ANrvc3p",
+      "count": 3,
+      "countExclOG": 3
+    },
+    {
       "scorerId": "recFqxDYKYAkKmV7Z",
       "assistId": "reckG9bP68ANrvc3p",
       "count": 3,
@@ -8352,12 +8439,6 @@
     {
       "scorerId": "recFqxDYKYAkKmV7Z",
       "assistId": "rechPSwQq3TluwcPa",
-      "count": 3,
-      "countExclOG": 3
-    },
-    {
-      "scorerId": "rec3m0f9cBSdbwGS0",
-      "assistId": "recFqxDYKYAkKmV7Z",
       "count": 3,
       "countExclOG": 3
     },
@@ -8394,12 +8475,6 @@
     {
       "scorerId": "recFXaQaQqUJcs1ce",
       "assistId": "recj9rbJP1c0qJEYo",
-      "count": 2,
-      "countExclOG": 2
-    },
-    {
-      "scorerId": "rechPSwQq3TluwcPa",
-      "assistId": "reckG9bP68ANrvc3p",
       "count": 2,
       "countExclOG": 2
     },
@@ -8740,6 +8815,12 @@
       "countExclOG": 1
     },
     {
+      "scorerId": "rec1NVl8RI5HIZxU0",
+      "assistId": "rec3m0f9cBSdbwGS0",
+      "count": 1,
+      "countExclOG": 1
+    },
+    {
       "scorerId": "rec3IB6CNEMmwNykE",
       "assistId": "recx98b2sy6pbRyEt",
       "count": 1,
@@ -8965,17 +9046,17 @@
       "gaPerMatch": 1.6666666666666667
     },
     {
+      "playerId1": "recG662mRw9nTfmcU",
+      "playerId2": "recQYOmJTyCjaOdqk",
+      "matches": 4,
+      "goalsAgainst": 7,
+      "gaPerMatch": 1.75
+    },
+    {
       "playerId1": "recQYOmJTyCjaOdqk",
       "playerId2": "recZauOLb3ET9m9Ix",
       "matches": 7,
       "goalsAgainst": 14,
-      "gaPerMatch": 2
-    },
-    {
-      "playerId1": "recG662mRw9nTfmcU",
-      "playerId2": "recQYOmJTyCjaOdqk",
-      "matches": 3,
-      "goalsAgainst": 6,
       "gaPerMatch": 2
     },
     {
@@ -9035,6 +9116,13 @@
       "gaPerMatch": 2.6666666666666665
     },
     {
+      "playerId1": "rec7UewFBTISFASsD",
+      "playerId2": "recZauOLb3ET9m9Ix",
+      "matches": 3,
+      "goalsAgainst": 8,
+      "gaPerMatch": 2.6666666666666665
+    },
+    {
       "playerId1": "recG662mRw9nTfmcU",
       "playerId2": "recZIZ8WBcb1IyqoS",
       "matches": 4,
@@ -9058,13 +9146,6 @@
     {
       "playerId1": "rec3IB6CNEMmwNykE",
       "playerId2": "recnZCa2uj1fenN4y",
-      "matches": 2,
-      "goalsAgainst": 6,
-      "gaPerMatch": 3
-    },
-    {
-      "playerId1": "rec7UewFBTISFASsD",
-      "playerId2": "recZauOLb3ET9m9Ix",
       "matches": 2,
       "goalsAgainst": 6,
       "gaPerMatch": 3
@@ -9205,16 +9286,6 @@
     },
     {
       "playerIds": [
-        "rec7UewFBTISFASsD",
-        "recZauOLb3ET9m9Ix",
-        "rect8nIhrhsGH3mPK"
-      ],
-      "matches": 1,
-      "goalsAgainst": 1,
-      "gaPerMatch": 1
-    },
-    {
-      "playerIds": [
         "recQYOmJTyCjaOdqk",
         "recZauOLb3ET9m9Ix",
         "recfZUeAUzKcMAziC"
@@ -9274,6 +9345,16 @@
     {
       "playerIds": [
         "rec7UewFBTISFASsD",
+        "recZauOLb3ET9m9Ix",
+        "rect8nIhrhsGH3mPK"
+      ],
+      "matches": 2,
+      "goalsAgainst": 3,
+      "gaPerMatch": 1.5
+    },
+    {
+      "playerIds": [
+        "rec7UewFBTISFASsD",
         "recG662mRw9nTfmcU",
         "rect8nIhrhsGH3mPK"
       ],
@@ -9289,6 +9370,15 @@
       ],
       "matches": 1,
       "goalsAgainst": 2,
+      "gaPerMatch": 2
+    },
+    {
+      "playerIds": [
+        "recG662mRw9nTfmcU",
+        "recQYOmJTyCjaOdqk"
+      ],
+      "matches": 2,
+      "goalsAgainst": 4,
       "gaPerMatch": 2
     },
     {
@@ -9452,15 +9542,6 @@
       ],
       "matches": 2,
       "goalsAgainst": 6,
-      "gaPerMatch": 3
-    },
-    {
-      "playerIds": [
-        "recG662mRw9nTfmcU",
-        "recQYOmJTyCjaOdqk"
-      ],
-      "matches": 1,
-      "goalsAgainst": 3,
       "gaPerMatch": 3
     },
     {
@@ -12298,12 +12379,12 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-10-16T22:50:27.482Z",
+    "generatedAt": "2026-10-22T22:50:21.688Z",
     "year": 2026,
-    "matchesInYear": 37,
-    "matchesCountForStatsInYear": 37,
+    "matchesInYear": 38,
+    "matchesCountForStatsInYear": 38,
     "matchesNonStatInYear": 0,
-    "goalsIncluded": 196,
+    "goalsIncluded": 199,
     "subsTransactionsIncluded": 115
   }
 }

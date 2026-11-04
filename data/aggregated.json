@@ -6283,7 +6283,7 @@
       "captainPinkId": null,
       "captainBlueId": null,
       "otfIds": [],
-      "notes": null,
+      "notes": "indoor game, no stats",
       "countsForStats": true
     },
     {
@@ -6425,7 +6425,7 @@
       "captainPinkId": "rechz0vtrzI4YNLt6",
       "captainBlueId": "rec3IB6CNEMmwNykE",
       "otfIds": [],
-      "notes": null,
+      "notes": "indoor game, no stats\n",
       "countsForStats": true
     },
     {
@@ -12413,7 +12413,7 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-11-04T22:22:47.837Z",
+    "generatedAt": "2026-11-04T22:27:59.368Z",
     "year": 2026,
     "matchesInYear": 39,
     "matchesCountForStatsInYear": 39,
